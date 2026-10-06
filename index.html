@@ -7,26 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
 
-  <title>American Sports TV Schedule & Viewing Guide</title>
+  <title>Live Sports TV Schedule & Viewing Guide</title>
 
-<meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO ranked teams, and conference schedules in one interactive dashboard.">
+<meta name="description" content="Find this week's live sports TV schedule and viewing guide. See game start times, ranked matchups, broadcast networks, streaming games, and conference schedules in one interactive dashboard.">
 <meta name="author" content="Matthew Killeen">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
+<link rel="canonical" href="https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
-<meta property="og:description" content="Interactive college hockey viewing guide with puck drop times, TV networks, streaming services, ranked matchups, USCHO ranked teams, and conference filters.">
-<meta property="og:url" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
-<meta property="og:site_name" content="Road to the Frozen Four">
-<meta property="og:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
-<meta property="og:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+<meta property="og:title" content="Live sports TV Schedule & Viewing Guide">
+<meta property="og:description" content="Interactive live sports viewing guide with game start times, TV networks, streaming services, ranked matchups, and conference filters.">
+<meta property="og:url" content="https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/">
+<meta property="og:site_name" content="Live Sports Guide">
+<meta property="og:image" content="https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/images/favicon.png">
+<meta property="og:image:alt" content="Live sports TV schedule and viewing guide dashboard">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
-<meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO ranked teams, networks, and conference filters.">
-<meta name="twitter:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
-<meta name="twitter:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+<meta name="twitter:title" content="Live sports TV Schedule & Viewing Guide">
+<meta name="twitter:description" content="Interactive weekly live sports TV and streaming schedule with game start times, ranked matchups, networks, and conference filters.">
+<meta name="twitter:image" content="https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/images/favicon.png">
+<meta name="twitter:image:alt" content="Live sports TV schedule and viewing guide dashboard">
 
   <meta name="language" content="English">
 
@@ -34,16 +34,14 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Road to the Frozen Four: College Hockey Viewing Guide",
+  "name": "Live Sports TV Viewing Guide",
   "alternateName": [
-    "College Hockey TV Schedule",
-    "College Hockey Viewing Schedule",
-    "College Hockey TV Guide",
-    "Men's College Hockey Viewing Guide",
-    "Women's College Hockey Viewing Guide"
+    "Live Sports TV Schedule",
+    "Live Sports Viewing Schedule",
+    "Live Sports TV Guide"
   ],
-  "url": "https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/",
-  "description": "Interactive weekly college hockey TV and streaming viewing guide showing puck drop times, broadcast networks, streaming providers, ranked matchups, USCHO ranked teams, and conference schedules.",
+  "url": "https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/",
+  "description": "Interactive weekly live sports TV and streaming viewing guide showing game start times, broadcast networks, streaming providers, ranked matchups, and conference schedules.",
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Web",
   "browserRequirements": "Requires JavaScript",
@@ -57,14 +55,14 @@
 </script>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PT6MQ1TDD7"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PT6MQ1TDD7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-PT6MQ1TDD7');
-</script>
+</script> -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -226,7 +224,7 @@
     // Lookup Table mapping team colors
     const TEAM_COLORS = {
       
-    // Alphabetical Team Hex Color List
+    // Alphabetical Team Hex Color List  - need to offload to and reference separate .js file
 "49ers": "#AA0000", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087", "Air Force": "#000000",
 "Akron": "#041E42", "Alabama": "#9E1B32", "Alaska": "#00205B", "Alaska-Anchorage": "#005A36", "Angels": "#BA0021",
 "Appalachian State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40", "Arkansas": "#9D2235", "Arkansas State": "#CC0000",
@@ -427,7 +425,7 @@ function getFilteredDataExcept(excludedFilter = null) {
       if (gameGender && !state.genders.includes(gameGender)) return false;
     }
 
-    // 4. AP Top 25 / USCHO Ranked Filter
+    // 4. Ranked Filter
     if (excludedFilter !== "top25" && state.top25Only) {
       const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
       if (!isTop25) return false;
