@@ -353,7 +353,7 @@ html, body {
 }
 
 /* Mobile Portrait Full-Width Sidebar Override */
-@media (max-width: 767.98px) {
+@media (max-width: 767.98px) and (orientation: portrait) {
   .sidebar-wrapper {
     --sidebar-width: calc(100vw - 34px);
     padding-left: 0;
