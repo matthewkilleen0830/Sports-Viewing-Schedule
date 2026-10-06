@@ -199,8 +199,8 @@
 
     // List of networks classified as streaming
     const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
-    "YouTube", "Midco Sports", "USAHockeyTV.com", "[NoLivestream]", "TBA", "hudl", "NEC FrontRow",
-    "CACC Network", "FloSports", "Prime Video", "ACCNX", "SECN+"];
+    "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
+    "CACC Net", "FloSports", "Prime", "ACCNX", "SECN+"];
 
     const PREFERRED_CONF_ORDER = [
       "AHA",
@@ -858,7 +858,7 @@ function applyFilters() {
           const internalRowKey = `${network}_row_${game.subRowIndex}`;
           const isRanked = game.Matchup.includes('#');
           const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
-          const formattedLabel = `<span style="font-size: 20px;">${matchupText}</span><br><span style="font-size: 14px; opacity: 0.85;">${game.League}</span>`;
+          const formattedLabel = `<span style="font-size: 22px;">${matchupText}</span><br><span style="font-size: 16px; opacity: 0.85;">${game.League}</span>`;
           // const hoverLeague = getHoverLeague(game.League);
 
           traces.push({
