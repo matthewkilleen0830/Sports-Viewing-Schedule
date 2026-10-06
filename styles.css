@@ -1,5 +1,5 @@
 :root {
-  --sidebar-width: calc(100vw / 3.05);
+  --sidebar-width: calc(100vw / 3);
 }
 
 html, body {
