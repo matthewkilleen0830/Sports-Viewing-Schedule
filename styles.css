@@ -1,5 +1,5 @@
 :root {
-  --sidebar-width: 90vw;
+  --sidebar-width: 325px;
 }
 
 html, body {
@@ -21,7 +21,6 @@ html, body {
   padding-bottom: 1rem;
   box-sizing: border-box;
   overflow: hidden;
-
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -270,7 +269,7 @@ html, body {
 .filter-panel::-webkit-scrollbar-track,
 .checkbox-panel::-webkit-scrollbar-track {
   background: transparent;
-  margin-top: 4px; 
+  margin-top: 4px;
   margin-bottom: 4px;
 }
 
@@ -324,6 +323,7 @@ html, body {
   height: 48px;
 }
 
+/* Tablet & Desktop Overlay */
 @media (max-width: 1199.98px) {
   .sidebar-wrapper {
     position: absolute;
@@ -349,5 +349,18 @@ html, body {
   .chart-container {
     padding: 0.75rem 0.25rem 0.25rem 0.25rem;
     border-radius: 10px;
+  }
+}
+
+/* Mobile Portrait Full-Width Sidebar Override */
+@media (max-width: 767.98px) {
+  .sidebar-wrapper {
+    --sidebar-width: calc(100vw - 34px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .filter-panel {
+    border-radius: 0 12px 12px 0;
   }
 }
