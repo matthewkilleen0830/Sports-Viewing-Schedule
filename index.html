@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+
+  <title>American Sports TV Schedule & Viewing Guide</title>
+
+<meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO ranked teams, and conference schedules in one interactive dashboard.">
+<meta name="author" content="Matthew Killeen">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
+<meta property="og:description" content="Interactive college hockey viewing guide with puck drop times, TV networks, streaming services, ranked matchups, USCHO ranked teams, and conference filters.">
+<meta property="og:url" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
+<meta property="og:site_name" content="Road to the Frozen Four">
+<meta property="og:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
+<meta property="og:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
+<meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO ranked teams, networks, and conference filters.">
+<meta name="twitter:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
+<meta name="twitter:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+
+  <meta name="language" content="English">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Road to the Frozen Four: College Hockey Viewing Guide",
+  "alternateName": [
+    "College Hockey TV Schedule",
+    "College Hockey Viewing Schedule",
+    "College Hockey TV Guide",
+    "Men's College Hockey Viewing Guide",
+    "Women's College Hockey Viewing Guide"
+  ],
+  "url": "https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/",
+  "description": "Interactive weekly college hockey TV and streaming viewing guide showing puck drop times, broadcast networks, streaming providers, ranked matchups, USCHO ranked teams, and conference schedules.",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript",
+  "author": {
+    "@type": "Person",
+    "name": "Matthew Killeen",
+    "url": "https://matthewkilleen0830.github.io/resume/"
+  },
+  "isAccessibleForFree": true
+}
+</script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PT6MQ1TDD7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PT6MQ1TDD7');
+</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+  <div class="container-fluid px-1 py-3 main-wrapper">
+
+    <header class="top-banner">
+      <img src="images/headerBanner.png" alt="Header Banner for Dashboard">
+    </header>
+
+    <div class="dashboard-body d-flex position-relative flex-grow-1">
+
+      <div class="sidebar-wrapper position-relative" id="sidebarWrapper">
+        
+        <button id="toggleFilterBtn" class="filter-toggle-btn" type="button" aria-label="Toggle Filters" title="Hide Filters">
+          <span id="toggleIcon" class="toggle-arrow">&#10094;</span>
+        </button>
+
+        <div class="filter-panel">
+          <h5 class="mb-3">Weekly Selections</h5>
+
+          <div class="mb-3">
+            <label for="dateFilter" class="form-label fw-semibold">Day/Date</label>
+            <select id="dateFilter" class="form-select"></select>
+          </div>
+
+          <!-- League -->
+<div class="mb-3">
+            <label class="form-label fw-semibold">Sports Leagues</label>
+            <div id="leagueFilter" class="checkbox-panel"></div>
+          </div>
+
+
+
+
+<!-- Gender Filter -->
+          <div class="mb-3 checkbox-panel">
+            <div class="slicer-container p-0 rounded">
+              <div class="form-check">
+                <input class="form-check-input gender-filter" type="checkbox" value="M" id="gender-m" checked>
+                <label class="form-check-label" for="gender-m">Men's</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input gender-filter" type="checkbox" value="W" id="gender-w" checked>
+                <label class="form-check-label" for="gender-w">Women's</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ranked Teams Toggle Checkbox -->
+          <div class="mb-3 ranked-toggle-wrapper">
+            <div class="form-check d-flex align-items-center gap-2 ps-0">
+              <input class="form-check-input ms-0" type="checkbox" id="rankedFilter">
+              <label class="form-check-label fw-semibold mb-0" for="rankedFilter">
+                Ranked Teams
+              </label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="timeFilter" class="form-label fw-semibold">Game Start</label>
+            <div id="timeFilter" class="checkbox-panel"></div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Conference</label>
+            <div id="conferenceFilter" class="checkbox-panel"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="charts-column flex-grow-1" id="chartsColumn">
+        
+        <div class="chart-container top-chart" id="networkChartContainer">
+          <h6 class="mb-2 chart-title">Linear Broadcast Networks <i style="font-size: 0.6em;">(Central Time)</i></h6>
+          <div id="barChart" class="plotly-chart"></div>
+        </div>
+
+        <div class="chart-container bottom-chart" id="digitalChartContainer">
+          <h6 class="mb-2 chart-title">Digital Streaming Platforms <i style="font-size: 0.6em;">(Central Time)</i></h6>
+          <div id="digitalChart" class="plotly-chart"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-4.0.0.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("toggleFilterBtn");
+      const sidebar = document.getElementById("sidebarWrapper");
+
+      if (toggleBtn && sidebar) {
+        
+        if (window.innerWidth < 1200) {
+          sidebar.classList.add("collapsed");
+          toggleBtn.setAttribute("title", "Show Filters");
+        }
+
+        if (sidebar.classList.contains("collapsed")) {
+          toggleBtn.classList.add("attention-flash");
+          setTimeout(() => {
+            toggleBtn.classList.remove("attention-flash");
+          }, 3500);
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          sidebar.classList.toggle("collapsed");
+
+          const isCollapsed = sidebar.classList.contains("collapsed");
+          toggleBtn.setAttribute("title", isCollapsed ? "Show Filters" : "Hide Filters");
+
+          setTimeout(() => {
+            window.dispatchEvent(new Event("resize"));
+            const barChart = document.getElementById("barChart");
+            const digitalChart = document.getElementById("digitalChart");
+            if (window.Plotly) {
+              if (barChart && barChart.clientHeight > 0) Plotly.Plots.resize(barChart);
+              if (digitalChart && digitalChart.clientHeight > 0) Plotly.Plots.resize(digitalChart);
+            }
+          }, 320);
+        });
+      }
+    });
+
+    // List of networks classified as streaming
+    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
+    "YouTube", "Midco Sports", "USAHockeyTV.com", "[NoLivestream]", "TBA", "hudl", "NEC FrontRow",
+    "CACC Network", "FloSports", "Prime Video", "ACCNX", "SECN+"];
+
+    const PREFERRED_CONF_ORDER = [
+      "AHA",
+      "Big Ten",
+      "CCHA",
+      "ECAC",
+      "Hockey East",
+      "Independents",
+      "NCHC",
+      "NEWHA",
+      "WCHA"
+    ];
+
+    // Shared X-Axis Time Config (Minutes from Midnight) for Vertical Alignment Across Charts
+    const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
+    const SHARED_X_AXIS_TEXT = [
+      '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
+      '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'
+    ];
+
+    // Lookup Table mapping team colors
+    const TEAM_COLORS = {
+      
+    // Alphabetical Team Hex Color List
+"49ers": "#AA0000", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087", "Air Force": "#000000",
+"Akron": "#041E42", "Alabama": "#9E1B32", "Alaska": "#00205B", "Alaska-Anchorage": "#005A36", "Angels": "#BA0021",
+"Appalachian State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40", "Arkansas": "#9D2235", "Arkansas State": "#CC0000",
+"Army": "#D4BF91", "Army": "#000000", "Assumption": "#004B87", "Astros": "#002D62", "Athletics": "#003831",
+"Auburn": "#0C2340", "Augustana": "#002D62", "Austin Peay": "#C41230", "Avalanche": "#6F263D", "Ball State": "#BA0C2F",
+"Baylor": "#154734", "Bears": "#0B162A", "Bemidji State": "#004B49", "Bengals": "#FB4F14", "Bentley": "#00205B",
+"Bills": "#00338D", "Blackhawks": "#CF0A2C", "Blue Jackets": "#002654", "Blue Jays": "#134A8E", "Blues": "#002F87",
+"Boise State": "#0033A0", "Boston College": "#98002E", "Boston University": "#CC0000", "Bowling Green": "#4F2C1D", "Braves": "#13274F",
+"Brewers": "#0A2351", "Broncos": "#FB4F14", "Brown": "#4E3629", "Browns": "#311D00", "Bruins": "#FFB81C",
+"Buccaneers": "#D50A0A", "Bucknell": "#003865", "Buffalo": "#005BBB", "Butler": "#002D62", "BYU": "#0062B8",
+"Cal": "#002676", "Cal Poly": "#003831", "Canadiens": "#AF1E2D", "Canisius": "#002D62", "Canucks": "#00205B",
+"Capitals": "#C8102E", "Cardinals": "#C41E3A", "Cardinals": "#97233F", "Central Arkansas": "#4F2683", "Central Michigan": "#6A0032",
+"Chargers": "#0080C6", "Charleston": "#660000", "Charleston Southern": "#00205B", "Charlotte": "#00502F", "Chattanooga": "#003865",
+"Chiefs": "#E31837", "Cincinnati": "#000000", "Clarkson": "#004B49", "Clemson": "#F56600", "Coastal Carolina": "#006F71",
+"Colgate": "#821019", "Colgate": "#822433", "Colts": "#002C5F", "Colorado": "#CFB87C", "Colorado College": "#000000",
+"Colorado State": "#1E4D2B", "Commanders": "#5A1414", "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633",
+"Cubs": "#0E3386", "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F",
+"Delaware": "#00539B", "Delaware State": "#CC0000", "Denver": "#8B2332", "Devils": "#CE1126", "Diamondbacks": "#A71930",
+"Dodgers": "#005A9C", "Dolphins": "#008E97", "Drake": "#003087", "Dream": "#C8102E", "Ducks": "#F47A38",
+"Duke": "#003087", "Eagles": "#004C54", "East Carolina": "#582C83", "East Tennessee State": "#002855", "East Texas A&M": "#002F6C",
+"Eastern Illinois": "#003594", "Eastern Kentucky": "#4C151B", "Eastern Michigan": "#006633", "Eastern Washington": "#A10022", "Falcons": "#A71930",
+"Ferris State": "#BA0C2F", "Fever": "#041E42", "Flames": "#C8102E", "Florida": "#0021A5", "Florida Atlantic": "#003366",
+"Florida International": "#FE52E5", "Florida State": "#782F40", "Flyers": "#F47920", "Fordham": "#860038", "Franklin Pierce": "#A91938",
+"Fresno State": "#C41230", "Furman": "#4D1979", "Gardner-Webb": "#CC0000", "Georgetown": "#041E42", "Georgia": "#BA0C2F",
+"Georgia Southern": "#00152B", "Georgia State": "#0039A6", "Georgia Tech": "#B3A369", "Giants": "#FD5A1E", "Giants": "#0B2265",
+"Golden Knights": "#B3995D", "Guardians": "#0C2340", "Harvard": "#A51C30", "Hawai'i": "#024731", "Holy Cross": "#60269E",
+"Holy Cross": "#602D89", "Houston": "#C8102E", "Houston Christian": "#002F6C", "Howard": "#002147", "Hurricanes": "#CC0000",
+"Idaho": "#B3A369", "Idaho State": "#F47920", "Illinois": "#E84A27", "Illinois State": "#CE1126", "Indiana": "#990000",
+"Indiana State": "#00437A", "Iowa": "#000000", "Iowa State": "#C8102E", "Islanders": "#00539B", "Jackson State": "#002147",
+"Jacksonville State": "#CC0000", "Jaguars": "#006778", "James Madison": "#450084", "Jets": "#041E42", "NY Jets": "#125740",
+"Kansas": "#0051BA", "Kansas State": "#512888", "Kennesaw State": "#000000", "Kent State": "#002664", "Kentucky": "#0033A0",
+"Kings": "#111111", "Kraken": "#001628", "Lafayette": "#9E1B32", "Lake Superior": "#005A36", "Lamar": "#D11919",
+"Lehigh": "#653815", "Liberty": "#0A2342", "Liberty": "#6ECEB2", "Lightning": "#002868", "Lindenwood": "#B3A369",
+"Lindenwood": "#B5A36A", "Lions": "#0076B6", "LIU": "#69B3E7", "Louisiana": "#CE181E", "Louisiana Tech": "#003087",
+"Louisville": "#AD0000", "LSU": "#461D7C", "Lynx": "#0C2340", "Maine": "#003263", "Mammoth": "#000000",
+"Maple Leafs": "#00205B", "Marist": "#C8102E", "Mariners": "#0C2C56", "Marlins": "#00A3E0", "Marshall": "#00B359",
+"Maryland": "#E21A23", "Maryville": "#C8102E", "McNeese": "#004B87", "Memphis": "#003087", "Mercer": "#F26522",
+"Mercyhurst": "#00594E", "Mercury": "#211747", "Merrimack": "#00205B", "Mets": "#002D72", "Miami": "#F47321",
+"Miami (Ohio)": "#C41230", "Michigan": "#00274C", "Michigan State": "#18453B", "Michigan Tech": "#FFCD00",
+"Middle Tennessee": "#0066CC", "Minnesota": "#7A003C", "Minnesota": "#7A0019", "Minnesota Duluth": "#4A121A", "Minnesota State": "#4B2E83",
+"Mississippi State": "#660000", "Missouri": "#000000", "Missouri State": "#5E0009", "Montana": "#660000", "Montana State": "#00205B",
+"Morehead State": "#002F6C", "Morgan State": "#FF6600", "Murray State": "#002147", "Mystics": "#C8102E", "Nationals": "#AB0003",
+"Navy": "#0C2340", "NC State": "#CC0000", "Nebraska": "#E31837", "Nevada": "#003366", "New Hampshire": "#00205B",
+"New Mexico": "#BA0C2F", "New Mexico State": "#891216", "Niagara": "#002D62", "Nicholls": "#C41230", "Norfolk State": "#007A3d",
+"North Alabama": "#9E1B32", "North Carolina": "#7BAFD4", "North Carolina Central": "#841F2B", "North Dakota": "#006A4E", "North Dakota": "#008244",
+"North Dakota State": "#00583D", "North Texas": "#00853E", "Northeastern": "#CC0000", "Northern Arizona": "#002447", "Northern Colorado": "#002A54",
+"Northern Illinois": "#C8102E", "Northern Michigan": "#006633", "Northwestern": "#4E2A84", "Northwestern State": "#F15A22", "Notre Dame": "#0C2340",
+"Notre Dame": "#00843D", "Ohio": "#00694E", "Ohio State": "#BB0000", "Oilers": "#041E42", "Oklahoma": "#841617",
+"Oklahoma State": "#FE5C00", "Old Dominion": "#003057", "Ole Miss": "#006BA6", "Omaha": "#000000", "Oregon": "#001600",
+"Oregon State": "#D73F09", "Orioles": "#DF4601", "Packers": "#203731", "Padres": "#2F241D", "Panthers": "#C8102E",
+"Panthers": "#0085CA", "Patriots": "#002244", "Penguins": "#FCB514", "Penn State": "#001E44", "Penn State": "#041E42",
+"Phillies": "#E81828", "Pirates": "#27251F", "Pitt": "#003594", "Portland State": "#154734", "Post": "#F68B1F",
+"Prairie View A&M": "#330066", "Predators": "#FFB81C", "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000",
+"Purdue": "#000000", "Quinnipiac": "#0A2240", "Raiders": "#000000", "Rams": "#003594", "Rangers": "#0038A8",
+"Rangers": "#003278", "Ravens": "#241773", "Rays": "#092C5C", "Red Sox": "#BD3039", "Red Wings": "#CE1126",
+"Reds": "#C6011F", "Rice": "#00205B", "Richmond": "#8A1538", "RIT": "#F36E21", "Robert Morris": "#00205B",
+"Rockies": "#33006F", "Royals": "#004687", "RPI": "#D6001C", "Rutgers": "#000000", "Sabres": "#003087",
+"Sacred Heart": "#C8102E", "Sacramento State": "#043927", "Saint Anselm": "#002B5C", "Saint Michael's": "#55318C", "Saints": "#D3BC8D",
+"Sam Houston": "#F47920", "Samford": "#CC0000", "San Diego": "#007A33", "San Diego State": "#000000", "San Jose State": "#0055A2",
+"SE Louisiana": "#244A31", "SE Missouri State": "#CE1126", "Seahawks": "#002244", "Senators": "#C8102E", "Sharks": "#006D75",
+"Sky": "#418FDE", "SMU": "#0033A0", "South Alabama": "#00205B", "South Carolina": "#73000A", "South Carolina State": "#800000",
+"South Dakota": "#AD0000", "South Dakota State": "#0033A0", "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000",
+"Southern Utah": "#DB0000", "Sparks": "#702F8A", "St. Cloud State": "#CC0000", "St. Lawrence": "#AF1E2D", "St. Thomas": "#512888",
+"St. Thomas": "#51267B", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
+"Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Syracuse": "#F76900",
+"Syracuse": "#D44500", "Tarleton State": "#4F2683", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200",
+"Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F", "Texas": "#BF5700", "Texas A&M": "#BA9B77",
+"Texas State": "#501214", "Texas Tech": "#C30020", "The Citadel": "#3A75C4", "Tigers": "#0C2340", "Titans": "#0C2340",
+"Toledo": "#15397F", "Troy": "#AE1127", "Tulane": "#006747", "Tulsa": "#002D62", "Twins": "#002B5C",
+"UAB": "#215732", "UC Davis": "#002855", "UCF": "#BA9B37", "UCLA": "#2D68C4", "UConn": "#000E2E",
+"UConn": "#000E2F", "UIW": "#C41230", "UL Monroe": "#531B2B", "UMass": "#881C1C", "UMass Lowell": "#0067C5",
+"UNI": "#4B116F", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000",
+"UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", "Utah": "#BE0000",
+"Utah State": "#00263A", "Utah Tech": "#BA1C21", "UTSA": "#0C2340", "Valkyries": "#B896D4", "Valparaiso": "#613312",
+"Vanderbilt": "#866D4B", "Vermont": "#005A36", "Vikings": "#4F2683", "Villanova": "#00205B", "Virginia": "#232D4B",
+"Virginia Tech": "#630031", "VMI": "#E4002B", "Wake Forest": "#9E7E38", "Washington": "#4B2E83", "Washington State": "#981E32",
+"Weber State": "#4B2682", "West Florida": "#007A87", "West Georgia": "#002F6C", "West Virginia": "#002855", "Western Carolina": "#51267B",
+"Western Illinois": "#663399", "Western Kentucky": "#BD0F26", "Western Michigan": "#5C1322", "Western Michigan": "#532E1F", "White Sox": "#000000",
+"Wild": "#154734", "William & Mary": "#115740", "Windsor": "#005A36", "Wings": "#0C2340", "Wisconsin": "#C5050C",
+"Wofford": "#B3A369", "Wyoming": "#492F24", "Yale": "#00356B", "Yankees": "#0C2340", "Youngstown State": "#E4002B"
+
+    };
+
+
+
+const DOM = {
+  dateFilter: document.getElementById("dateFilter"),
+  leagueFilter: document.getElementById("leagueFilter"),
+  rankedFilter: document.getElementById("rankedFilter"),
+  timeFilter: document.getElementById("timeFilter"),
+  conferenceFilter: document.getElementById("conferenceFilter")
+};
+
+d3.csv("currentWeek/weekFull.csv", raw => {
+  const clean = {};
+  Object.keys(raw).forEach(key => {
+    const normalizedKey = key.replace(/^\uFEFF/, "");
+    clean[normalizedKey] = raw[key];
+  });
+  return clean;
+}).then(data => {
+  window.gameData = data;
+
+  const initialDate = getFirstAvailableDate(window.gameData);
+  updateDateSlicerOptions(window.gameData, initialDate);
+  
+  refreshAllSlicersExcept();
+  applyFilters();
+
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize"));
+    const barChart = document.getElementById("barChart");
+    const digitalChart = document.getElementById("digitalChart");
+    if (window.Plotly) {
+      if (barChart && barChart.clientHeight > 0) Plotly.Plots.resize(barChart);
+      if (digitalChart && digitalChart.clientHeight > 0) Plotly.Plots.resize(digitalChart);
+    }
+  }, 100);
+
+  // Event Listeners for Base Filters
+  DOM.dateFilter?.addEventListener("change", () => {
+    refreshAllSlicersExcept("date");
+    applyFilters();
+  });
+
+  DOM.rankedFilter?.addEventListener("change", () => {
+    refreshAllSlicersExcept("top25");
+    applyFilters();
+  });
+
+  document.querySelectorAll(".gender-filter").forEach(cb => {
+    cb.addEventListener("change", () => {
+      refreshAllSlicersExcept("gender");
+      applyFilters();
+    });
+  });
+});
+
+function getActiveSelections() {
+  const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
+  const top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
+
+  const selectedGenders = Array.from(
+    document.querySelectorAll(".gender-filter:checked:not(:disabled)")
+  ).map(cb => cb.value.toUpperCase());
+
+  const leagueAllChecked = document.getElementById("league_all")?.checked ?? true;
+  const selectedLeagues = leagueAllChecked ? [] : Array.from(
+    document.querySelectorAll("#leagueFilter .league-checkbox:checked")
+  ).map(cb => cb.value);
+
+  const timeAllChecked = document.getElementById("time_all")?.checked ?? true;
+  const selectedTimes = timeAllChecked ? [] : Array.from(
+    document.querySelectorAll("#timeFilter .time-checkbox:checked")
+  ).map(cb => cb.value);
+
+  const confAllChecked = document.getElementById("conf_all")?.checked ?? true;
+  const selectedConferences = confAllChecked ? [] : Array.from(
+    document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
+  ).map(cb => cb.value);
+
+  return {
+    date: selectedDate,
+    top25Only: top25Only,
+    genders: selectedGenders,
+    leagues: selectedLeagues,
+    isLeagueAll: leagueAllChecked,
+    times: selectedTimes,
+    isTimeAll: timeAllChecked,
+    conferences: selectedConferences,
+    isConfAll: confAllChecked
+  };
+}
+
+// Cross-filter evaluation engine
+function getFilteredDataExcept(excludedFilter = null) {
+  const state = getActiveSelections();
+
+  return window.gameData.filter(d => {
+    // 1. Date Filter (Single choice driver)
+    if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+      return false;
+    }
+
+    // 2. League Filter
+    if (excludedFilter !== "league") {
+      if (!state.isLeagueAll && state.leagues.length === 0) return false;
+      if (!state.isLeagueAll) {
+        const gameLeague = d.League?.trim();
+        if (!state.leagues.includes(gameLeague)) return false;
+      }
+    }
+
+    // 3. Gender Filter
+    if (excludedFilter !== "gender") {
+      if (state.genders.length === 0) return false;
+      const gameGender = d.Gender?.trim().toUpperCase();
+      if (gameGender && !state.genders.includes(gameGender)) return false;
+    }
+
+    // 4. AP Top 25 / USCHO Ranked Filter
+    if (excludedFilter !== "top25" && state.top25Only) {
+      const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
+      if (!isTop25) return false;
+    }
+
+    // 5. Time Filter
+    if (excludedFilter !== "time") {
+      if (!state.isTimeAll && state.times.length === 0) return false;
+      if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
+    }
+
+    // 6. Conference Filter
+    if (excludedFilter !== "conference") {
+      if (!state.isConfAll && state.conferences.length === 0) return false;
+      if (!state.isConfAll) {
+        const vConf = d.Visitor_Conference?.trim();
+        const hConf = d.Home_Conference?.trim();
+        if (!state.conferences.includes(vConf) && !state.conferences.includes(hConf)) return false;
+      }
+    }
+
+    return true;
+  });
+}
+
+function updateGenderSlicerState() {
+  const genderSubset = getFilteredDataExcept("gender");
+
+  const hasMens = genderSubset.some(d => d.Gender?.trim().toUpperCase() === "M");
+  const hasWomens = genderSubset.some(d => d.Gender?.trim().toUpperCase() === "W");
+
+  const genderM = document.getElementById("gender-m");
+  const genderW = document.getElementById("gender-w");
+
+  if (genderM) {
+    if (!hasMens) {
+      genderM.checked = false;
+      genderM.disabled = true;
+    } else {
+      if (genderM.disabled) genderM.checked = true;
+      genderM.disabled = false;
+    }
+  }
+
+  if (genderW) {
+    if (!hasWomens) {
+      genderW.checked = false;
+      genderW.disabled = true;
+    } else {
+      if (genderW.disabled) genderW.checked = true;
+      genderW.disabled = false;
+    }
+  }
+}
+
+function updateRankedToggleState() {
+  if (!DOM.rankedFilter) return;
+
+  const rankedSubset = getFilteredDataExcept("top25");
+  const hasTop25 = rankedSubset.some(d => d.Ranked && d.Ranked.trim().toUpperCase() === "Y");
+
+  if (!hasTop25) {
+    DOM.rankedFilter.checked = false;
+    DOM.rankedFilter.disabled = true;
+  } else {
+    DOM.rankedFilter.disabled = false;
+  }
+}
+
+function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = true) {
+  if (!DOM.leagueFilter) return;
+
+  const uniqueLeagues = Array.from(new Set(filteredData.map(d => d.League?.trim()))).filter(Boolean).sort();
+
+  DOM.leagueFilter.innerHTML = "";
+
+  if (uniqueLeagues.length === 0) {
+    DOM.leagueFilter.innerHTML = `<div class="text-muted small p-1">No leagues available</div>`;
+    return;
+  }
+
+  const allDiv = document.createElement("div");
+  allDiv.className = "form-check border-bottom pb-1 mb-2";
+  allDiv.innerHTML = `
+    <input class="form-check-input" type="checkbox" id="league_all" ${isAllChecked ? 'checked' : ''}>
+    <label class="form-check-label fw-bold" for="league_all">All Leagues</label>
+  `;
+  DOM.leagueFilter.appendChild(allDiv);
+
+  uniqueLeagues.forEach((league, idx) => {
+    const isChecked = isAllChecked || selectedLeagues.includes(league);
+    const div = document.createElement("div");
+    div.className = "form-check";
+    div.innerHTML = `
+      <input class="form-check-input league-checkbox" type="checkbox" value="${league}" id="league_${idx}" ${isChecked ? 'checked' : ''}>
+      <label class="form-check-label" for="league_${idx}">${league}</label>
+    `;
+    DOM.leagueFilter.appendChild(div);
+  });
+
+  const allCheckbox = document.getElementById("league_all");
+  const itemCheckboxes = DOM.leagueFilter.querySelectorAll(".league-checkbox");
+
+  allCheckbox?.addEventListener("change", (e) => {
+    itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+    refreshAllSlicersExcept("league");
+    applyFilters();
+  });
+
+  itemCheckboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+      allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                            Array.from(itemCheckboxes).every(item => item.checked);
+      refreshAllSlicersExcept("league");
+      applyFilters();
+    });
+  });
+}
+
+function refreshAllSlicersExcept(targetSource = null) {
+  updateGenderSlicerState();
+  updateRankedToggleState();
+
+  const currentState = getActiveSelections();
+
+  if (targetSource !== "league") {
+    const leagueSubset = getFilteredDataExcept("league");
+    updateLeagueSlicer(leagueSubset, currentState.leagues, currentState.isLeagueAll);
+  }
+
+  if (targetSource !== "time") {
+    const timeSubset = getFilteredDataExcept("time");
+    updateTimeSlicer(timeSubset, currentState.times, currentState.isTimeAll);
+  }
+
+  if (targetSource !== "conference") {
+    const confSubset = getFilteredDataExcept("conference");
+    updateConferenceSlicer(confSubset, currentState.conferences, currentState.isConfAll);
+  }
+}
+
+function getFirstAvailableDate(allData) {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
+
+  if (uniqueDates.length === 0) return null;
+
+  const parsedDates = uniqueDates.map(dateStr => {
+    let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+
+    if (!/\b20\d{2}\b/.test(cleanStr)) {
+      cleanStr = `${cleanStr}, ${currentYear}`;
+    }
+
+    const parsed = new Date(cleanStr);
+    const normalized = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
+
+    return { originalStr: dateStr, parsedDate: normalized };
+  });
+
+  parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
+
+  const upcoming = parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
+
+  return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
+}
+
+function updateDateSlicerOptions(allData, selectedDate) {
+  const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
+
+  const currentYear = new Date().getFullYear();
+  uniqueDates.sort((a, b) => {
+    let cleanA = a.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    let cleanB = b.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    if (!/\b20\d{2}\b/.test(cleanA)) cleanA = `${cleanA}, ${currentYear}`;
+    if (!/\b20\d{2}\b/.test(cleanB)) cleanB = `${cleanB}, ${currentYear}`;
+    return new Date(cleanA) - new Date(cleanB);
+  });
+
+  DOM.dateFilter.innerHTML = "";
+  uniqueDates.forEach(date => {
+    const opt = document.createElement("option");
+    opt.value = date;
+    opt.textContent = date;
+    DOM.dateFilter.appendChild(opt);
+  });
+
+  if (selectedDate && uniqueDates.includes(selectedDate)) {
+    DOM.dateFilter.value = selectedDate;
+  } else if (uniqueDates.length > 0) {
+    DOM.dateFilter.value = uniqueDates[0];
+  }
+}
+
+function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
+  const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
+    .filter(Boolean)
+    .sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
+
+  DOM.timeFilter.innerHTML = "";
+
+  if (uniqueTimes.length === 0) {
+    DOM.timeFilter.innerHTML = `<div class="text-muted small p-1">No times available</div>`;
+    return;
+  }
+
+  const allDiv = document.createElement("div");
+  allDiv.className = "form-check border-bottom pb-1 mb-2";
+  allDiv.innerHTML = `
+    <input class="form-check-input" type="checkbox" id="time_all" ${isAllChecked ? 'checked' : ''}>
+    <label class="form-check-label fw-bold" for="time_all">All Times</label>
+  `;
+  DOM.timeFilter.appendChild(allDiv);
+
+  uniqueTimes.forEach((time, idx) => {
+    const isChecked = isAllChecked || selectedTimes.includes(time);
+    const div = document.createElement("div");
+    div.className = "form-check";
+    div.innerHTML = `
+      <input class="form-check-input time-checkbox" type="checkbox" value="${time}" id="time_${idx}" ${isChecked ? 'checked' : ''}>
+      <label class="form-check-label" for="time_${idx}">${time}</label>
+    `;
+    DOM.timeFilter.appendChild(div);
+  });
+
+  const allCheckbox = document.getElementById("time_all");
+  const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
+
+  allCheckbox?.addEventListener("change", (e) => {
+    itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+    refreshAllSlicersExcept("time");
+    applyFilters();
+  });
+
+  itemCheckboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+      allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                            Array.from(itemCheckboxes).every(item => item.checked);
+      refreshAllSlicersExcept("time");
+      applyFilters();
+    });
+  });
+}
+
+function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
+  const extractedConfs = new Set();
+  filteredData.forEach(d => {
+    if (d.Visitor_Conference) extractedConfs.add(d.Visitor_Conference.trim());
+    if (d.Home_Conference) extractedConfs.add(d.Home_Conference.trim());
+  });
+
+  const uniqueConfs = Array.from(extractedConfs).filter(Boolean);
+
+  const priorityConfs = PREFERRED_CONF_ORDER.filter(conf => uniqueConfs.includes(conf));
+  const remainingConfs = uniqueConfs
+    .filter(conf => !PREFERRED_CONF_ORDER.includes(conf))
+    .sort((a, b) => a.localeCompare(b));
+
+  const orderedConfs = [...priorityConfs, ...remainingConfs];
+
+  DOM.conferenceFilter.innerHTML = "";
+
+  if (orderedConfs.length === 0) {
+    DOM.conferenceFilter.innerHTML = `<div class="text-muted small p-1">No conferences available</div>`;
+    return;
+  }
+
+  const allDiv = document.createElement("div");
+  allDiv.className = "form-check border-bottom pb-1 mb-2";
+  allDiv.innerHTML = `
+    <input class="form-check-input" type="checkbox" id="conf_all" ${isAllChecked ? 'checked' : ''}>
+    <label class="form-check-label fw-bold" for="conf_all">All Conferences</label>
+  `;
+  DOM.conferenceFilter.appendChild(allDiv);
+
+  orderedConfs.forEach((conf, idx) => {
+    const isChecked = isAllChecked || selectedConferences.includes(conf);
+    const div = document.createElement("div");
+    div.className = "form-check";
+    div.innerHTML = `
+      <input class="form-check-input conf-checkbox" type="checkbox" value="${conf}" id="conf_${idx}" ${isChecked ? 'checked' : ''}>
+      <label class="form-check-label" for="conf_${idx}">${conf}</label>
+    `;
+    DOM.conferenceFilter.appendChild(div);
+  });
+
+  const allCheckbox = document.getElementById("conf_all");
+  const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
+
+  allCheckbox?.addEventListener("change", (e) => {
+    itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+    refreshAllSlicersExcept("conference");
+    applyFilters();
+  });
+
+  itemCheckboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+      allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                            Array.from(itemCheckboxes).every(item => item.checked);
+      refreshAllSlicersExcept("conference");
+      applyFilters();
+    });
+  });
+}
+
+function applyFilters() {
+  const filtered = getFilteredDataExcept(null);
+
+  const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
+  const digitalData = filtered.filter(d => DIGITAL_NETWORKS.includes(d.TV_Network));
+
+  renderChart('barChart', primaryData, false);
+  renderChart('digitalChart', digitalData, true);
+}
+
+    function getHomeTeamColor(matchup) {
+      if (!matchup) return '#D3D3D3';
+
+      const parts = matchup.split(/\s+(?:at|vs\.?)\s+/i);
+      if (parts.length < 2) return '#D3D3D3';
+
+      const homeTeamRaw = parts[parts.length - 1].trim();
+
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
+        return TEAM_COLORS[homeTeamRaw];
+      }
+
+      let homeTeamClean = homeTeamRaw
+        .replace(/^(?:No\.\s*\d+|#\d+)\s+/i, '')
+        .replace(/\s*\([^)]*\)/g, '')
+        .trim();
+
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
+        return TEAM_COLORS[homeTeamClean];
+      }
+
+      return '#D3D3D3';
+    }
+
+    function timeToMinutes(t) {
+      if (!t) return 0;
+      const [time, ampm] = t.split(' ');
+      let [h, m] = time.split(':').map(Number);
+      if (ampm === 'PM' && h !== 12) h += 12;
+      if (ampm === 'AM' && h === 12) h = 0;
+      return h * 60 + m;
+    }
+
+    function resolveOverlapSubRows(games) {
+      games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
+
+      const subRowEndTimes = [];
+      const assignedGames = [];
+
+      games.forEach(game => {
+        const start = timeToMinutes(game.Start_Time);
+        const end = timeToMinutes(game.End_Time);
+        const effectiveEnd = end >= start ? end : end + 1440;
+
+        let rowIndex = -1;
+        for (let i = 0; i < subRowEndTimes.length; i++) {
+          if (subRowEndTimes[i] <= start) {
+            rowIndex = i;
+            break;
+          }
+        }
+
+        if (rowIndex === -1) {
+          subRowEndTimes.push(effectiveEnd);
+          rowIndex = subRowEndTimes.length - 1;
+        } else {
+          subRowEndTimes[rowIndex] = effectiveEnd;
+        }
+
+        assignedGames.push({
+          ...game,
+          subRowIndex: rowIndex
+        });
+      });
+
+      return { assignedGames, totalSubRows: subRowEndTimes.length };
+    }
+
+    function renderChart(targetId, data, isDigital = false) {
+      const container = document.getElementById(targetId);
+
+      if (!data || data.length === 0) {
+        container.style.height = '120px';
+        Plotly.newPlot(targetId, [], {
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          title: {
+            text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
+            font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
+          },
+          xaxis: { visible: false },
+          yaxis: { visible: false },
+          showlegend: false
+        }, { responsive: true, displayModeBar: false });
+        return;
+      }
+
+      const grouped = d3.group(data, d => d.TV_Network);
+      const traces = [];
+      const yTicks = [];
+      const yTickLabels = [];
+
+      function formatMatchupText(text) {
+        if (!text) return '';
+        return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
+      }
+
+      grouped.forEach((games, network) => {
+        const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
+
+        for (let i = 0; i < totalSubRows; i++) {
+          const rowKey = `${network}_row_${i}`;
+          yTicks.push(rowKey);
+          yTickLabels.push(network);
+        }
+
+        assignedGames.forEach(game => {
+          const start = timeToMinutes(game.Start_Time);
+          const end = timeToMinutes(game.End_Time);
+          const duration = end >= start ? (end - start) : (end + 1440 - start);
+          const teamHexColor = getHomeTeamColor(game.Matchup);
+          const internalRowKey = `${network}_row_${game.subRowIndex}`;
+          const isRanked = game.Matchup.includes('#');
+          const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
+          const formattedLabel = `<span style="font-size: 20px;">${matchupText}</span><br><span style="font-size: 14px; opacity: 0.85;">${game.League}</span>`;
+          // const hoverLeague = getHoverLeague(game.League);
+
+          traces.push({
+  type: 'bar',
+  orientation: 'h',
+  y: [internalRowKey],
+  x: [duration],
+  base: [start],
+  name: game.Matchup,
+  textfont: {
+    size: 16,
+  },
+  marker: { 
+    color: teamHexColor,
+    line: { color: '#5a6578', width: 1.5 },
+    cornerradius: "45%"
+  },
+  text: [formattedLabel],
+  textposition: 'inside',
+  insidetextanchor: 'middle',
+  insidetextfont: { 
+    family: 'Segoe UI, Arial, sans-serif',
+    color: '#ffffff'
+  },
+  hoverlabel: {
+    font: {
+      family: 'Segoe UI, Arial, sans-serif',
+      size: 20,
+    },
+    bgcolor: teamHexColor
+  },
+
+            hovertemplate:
+  '<b>' + game.Matchup + '</b><br>' +
+  'League: ' + game.League + '<br>' +
+  'Broadcast Outlet: ' + network + '<br>' +
+  'Game Start: %{customdata[0]}<extra></extra>',
+customdata: [[
+  game.Start_Time
+]]
+          });
+        });
+      });
+
+      const ROW_HEIGHT = 40;
+      const TOP_AXIS_PADDING = 80;
+      const totalRows = yTicks.length;
+      
+      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_AXIS_PADDING;
+
+      container.style.height = `${calculatedPlotHeight}px`;
+
+      const layout = {
+        height: calculatedPlotHeight,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        barmode: 'stack',
+        bargap: 0.15,                 
+        autosize: true,
+        margin: {
+          l: 89,
+          r: 0,
+          t: 60,
+          b: 10
+        },
+        dragmode: false,
+        xaxis: {
+          fixedrange: true,
+          side: 'top',
+          type: 'linear',
+          // range: [600, 1350],
+          tickmode: 'array',
+          tickvals: SHARED_X_AXIS_VALS,
+          ticktext: SHARED_X_AXIS_TEXT,
+          tickangle: -30,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
+          ticks: 'outside',
+          ticklen: 10,
+          tickcolor: 'rgba(0,0,0,0)',
+          showgrid: true,
+          gridcolor: 'rgba(212, 175, 55, 0.15)',
+          autorange: true,
+          autorangeoptions: {
+            maxallowed: 1500
+          },
+          automargin: false
+        },
+        yaxis: {
+          fixedrange: true,
+          ticksuffix: '',
+          autorange: 'reversed',
+          ticks: 'outside',
+          ticklen: 8,
+          tickcolor: 'rgba(0,0,0,0)',
+          tickmode: 'array',
+          tickvals: yTicks,
+          ticktext: yTickLabels,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' }
+        },
+        showlegend: false
+      };
+
+      const config = { responsive: true, displayModeBar: false };
+
+      Plotly.newPlot(targetId, traces, layout, config);
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const plotlyContainers = document.querySelectorAll('.plotly-chart');
+        plotlyContainers.forEach(container => {
+          if (window.Plotly && container.clientHeight > 0) {
+            Plotly.Plots.resize(container);
+          }
+        });
+      }, 100);
+    });
+  </script>
+
+  <footer class="footer-copyright">
+    &copy; Matthew Killeen
+  </footer>
+</body>
+</html>
