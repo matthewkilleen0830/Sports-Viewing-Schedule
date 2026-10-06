@@ -63,13 +63,13 @@ Blackhawks,Islanders,"Thu, Oct 08",NHL,Blackhawks at Islanders,ESPN+,N,M,6:30 PM
 blankVisitor,blankHome,"Thu, Oct 08",NCAA Hockey (M),Lake Superior at Lindenwood,FloHockey,N,M,7:00 PM,9:30 PM,CCHA,Independents
 Rays,Yankees,"Thu, Oct 08",MLB,Rays at Yankees,TBS/truTV,N,M,7:00 PM,10:00 PM,AL East,AL East
 Sharks,Blues,"Thu, Oct 08",NHL,Sharks at Blues,ESPN+,N,M,7:00 PM,9:45 PM,Western (Pacific),Western (Central)
-Buccaneers,Cowboys,"Thu, Oct 08",NFL,Buccaneers at Cowboys,Prime Video,N,M,7:15 PM,10:45 PM,NFC South,NFC East
+Buccaneers,Cowboys,"Thu, Oct 08",NFL,Buccaneers at Cowboys,Prime,N,M,7:15 PM,10:45 PM,NFC South,NFC East
 Wisconsin,Illinois,"Thu, Oct 08",NCAA Volleyball (W),#7 Wisconsin at #24 Illinois,BTN,Y,W,7:30 PM,9:30 PM,Big Ten,Big Ten
 Avalanche,Flames,"Thu, Oct 08",NHL,Avalanche at Flames,ESPN+,N,M,8:00 PM,10:45 PM,Western (Central),Western (Pacific)
 Maple Leafs,Golden Knights,"Thu, Oct 08",NHL,Maple Leafs at Golden Knights,ESPN+,N,M,9:00 PM,11:45 PM,Eastern (Atlantic),Western (Pacific)
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),Mercyhurst at Lindenwood,FloHockey,N,W,12:00 PM,2:15 PM,AHA,AHA
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),#7 Northeastern at Providence,ESPN+,Y,W,1:00 PM,3:15 PM,Hockey East,Hockey East
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),LIU at Post,CACC Network,N,W,1:30 PM,3:45 PM,NEWHA,NEWHA
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),LIU at Post,CACC Net,N,W,1:30 PM,3:45 PM,NEWHA,NEWHA
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),Robert Morris at RPI,ESPN+,N,W,2:00 PM,4:15 PM,AHA,ECAC
 Padres,Brewers,"Fri, Oct 09",MLB,Padres at Brewers,FS1,N,M,3:30 PM,6:30 PM,NL West,NL Central
 Stanford,Notre Dame,"Fri, Oct 09",NCAA Volleyball (W),#14 Stanford at Notre Dame,ACCN,Y,W,4:00 PM,6:00 PM,ACC,ACC
@@ -87,7 +87,7 @@ Minnesota,Rutgers,"Fri, Oct 09",NCAA Volleyball (W),#21 Minnesota at Rutgers,B1G
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Football,Florida State at Louisville,ESPN,N,M,6:00 PM,9:30 PM,ACC,ACC
 Penguins,Blue Jackets,"Fri, Oct 09",NHL,Penguins at Blue Jackets,ESPN+,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Kraken,Red Wings,"Fri, Oct 09",NHL,Kraken at Red Wings,ESPN+,N,M,6:00 PM,8:45 PM,Western (Pacific),Eastern (Atlantic)
-Rangers,Capitals,"Fri, Oct 09",NHL,Rangers at Capitals,NHL Network,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
+Rangers,Capitals,"Fri, Oct 09",NHL,Rangers at Capitals,NHL Net,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),Boston College at Holy Cross,ESPN+,N,W,6:00 PM,8:15 PM,Hockey East,Hockey East
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),Sacred Heart at Assumption,hudl,N,W,6:00 PM,8:15 PM,NEWHA,NEWHA
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (W),Stonehill at Saint Michael's,FloHockey,N,W,6:00 PM,8:15 PM,NEWHA,NEWHA
@@ -101,10 +101,10 @@ blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Ohio State at RPI,ESPN+,N,M
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#6 Quinnipiac at Maine,ESPN+,Y,M,6:00 PM,8:30 PM,ECAC,Hockey East
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Vermont at Bentley,FloHockey,N,M,6:00 PM,8:30 PM,Hockey East,AHA
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Alaska at #11 Boston College,ESPN+,Y,M,6:00 PM,8:30 PM,Independents,Hockey East
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Colgate at Stonehill,NEC FrontRow,N,M,6:00 PM,8:30 PM,ECAC,Independents
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Colgate at Stonehill,NEC FR,N,M,6:00 PM,8:30 PM,ECAC,Independents
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Niagara at Notre Dame,Peacock,N,M,6:00 PM,8:30 PM,AHA,Big Ten
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Bowling Green at Sacred Heart,FloHockey,N,M,6:00 PM,8:30 PM,CCHA,AHA
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#8 Western Michigan at Ferris State,Midco Sports,Y,M,6:07 PM,8:37 PM,NCHC,CCHA
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#8 Western Michigan at Ferris State,Midco,Y,M,6:07 PM,8:37 PM,NCHC,CCHA
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Clarkson at UMass Lowell,ESPN+,N,M,6:15 PM,8:45 PM,ECAC,Hockey East
 Dream,Liberty,"Fri, Oct 09",WNBA,Dream at Liberty,ESPN2,N,W,6:30 PM,8:30 PM,Eastern,Eastern
 Valkyries,Aces,"Fri, Oct 09",WNBA,Valkyries at Aces,Peacock,N,W,8:30 PM,10:30 PM,Western,Western
@@ -121,9 +121,9 @@ blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Lake Superior at Lindenwood
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#12 Michigan Tech at St. Cloud State,NCHC.tv,Y,M,7:00 PM,9:30 PM,CCHA,NCHC
 Ducks,Jets,"Fri, Oct 09",NHL,Ducks at Jets,ESPN+,N,M,7:00 PM,9:45 PM,Western (Pacific),Western (Central)
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),Air Force at St. Thomas,NCHC.tv,N,M,7:05 PM,9:35 PM,AHA,NCHC
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#7 Wisconsin at #19 Minnesota State,Midco Sports,Y,M,7:07 PM,9:37 PM,Big Ten,CCHA
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#5 Minnesota Duluth at Augustana,Midco Sports,Y,M,7:07 PM,9:37 PM,NCHC,CCHA
-blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#4 North Dakota at Bemidji State,Midco Sports,Y,M,7:07 PM,9:37 PM,NCHC,CCHA
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#7 Wisconsin at #19 Minnesota State,Midco,Y,M,7:07 PM,9:37 PM,Big Ten,CCHA
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#5 Minnesota Duluth at Augustana,Midco,Y,M,7:07 PM,9:37 PM,NCHC,CCHA
+blankVisitor,blankHome,"Fri, Oct 09",NCAA Hockey (M),#4 North Dakota at Bemidji State,Midco,Y,M,7:07 PM,9:37 PM,NCHC,CCHA
 USC,Purdue,"Fri, Oct 09",NCAA Volleyball (W),USC at #16 Purdue,BTN,Y,W,7:30 PM,9:30 PM,Big Ten,Big Ten
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Football,#20 Iowa at Washington,FOX,Y,M,8:00 PM,11:30 PM,Big Ten,Big Ten
 blankVisitor,blankHome,"Fri, Oct 09",NCAA Football,Washington State at Utah State,CW,N,M,8:00 PM,11:30 PM,Pac-12,Pac-12
@@ -142,7 +142,7 @@ blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Tulane at Army,CBSSN,N,M,11:0
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Sacramento State at Bowling Green,ESPN+,N,M,11:00 AM,2:30 PM,MAC,MAC
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Ball State at Northwestern,BTN,N,M,11:30 AM,3:00 PM,MAC,Big Ten
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,South Carolina at #16 Florida,SECN,Y,M,11:45 AM,3:15 PM,SEC,SEC
-Flyers,Bruins,"Sat, Oct 10",NHL,Flyers at Bruins,NHL Network,N,M,12:00 PM,2:45 PM,Eastern (Metropolitan),Eastern (Atlantic)
+Flyers,Bruins,"Sat, Oct 10",NHL,Flyers at Bruins,NHL Net,N,M,12:00 PM,2:45 PM,Eastern (Metropolitan),Eastern (Atlantic)
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Old Dominion at Appalachian State,ESPN+,N,M,12:00 PM,3:30 PM,Sun Belt,Sun Belt
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Northern Michigan at #3 Michigan State,B1G+,Y,M,12:00 PM,2:30 PM,CCHA,Big Ten
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Miami (Ohio) at UMass,ESPN+,N,M,1:00 PM,4:30 PM,MAC,MAC
@@ -195,7 +195,7 @@ blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,North Dakota State at UNLV,CW
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Coastal Carolina at Marshall,ESPN+,N,M,6:00 PM,9:30 PM,Sun Belt,Sun Belt
 Mammoth,Sabres,"Sat, Oct 10",NHL,Mammoth at Sabres,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Atlantic)
 Hurricanes,Blackhawks,"Sat, Oct 10",NHL,Hurricanes at Blackhawks,ESPN+,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Western (Central)
-Maple Leafs,Avalanche,"Sat, Oct 10",NHL,Maple Leafs at Avalanche,NHL Network,N,M,6:00 PM,8:45 PM,Eastern (Atlantic),Western (Central)
+Maple Leafs,Avalanche,"Sat, Oct 10",NHL,Maple Leafs at Avalanche,NHL Net,N,M,6:00 PM,8:45 PM,Eastern (Atlantic),Western (Central)
 Red Wings,Canadiens,"Sat, Oct 10",NHL,Red Wings at Canadiens,ESPN+,N,M,6:00 PM,8:45 PM,Eastern (Atlantic),Eastern (Atlantic)
 Predators,Senators,"Sat, Oct 10",NHL,Predators at Senators,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Atlantic)
 Stars,Penguins,"Sat, Oct 10",NHL,Stars at Penguins,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Metropolitan)
@@ -206,12 +206,12 @@ blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Ohio State at RPI,ESPN+,N,M
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#12 Michigan Tech at St. Cloud State,NCHC.tv,Y,M,6:00 PM,8:30 PM,CCHA,NCHC
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#6 Quinnipiac at Maine,ESPN+,Y,M,6:00 PM,8:30 PM,ECAC,Hockey East
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Alaska at Union,ESPN+,N,M,6:00 PM,8:30 PM,Independents,ECAC
-blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Colgate at Stonehill,NEC FrontRow,N,M,6:00 PM,8:30 PM,ECAC,Independents
+blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Colgate at Stonehill,NEC FR,N,M,6:00 PM,8:30 PM,ECAC,Independents
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Brown at #14 Boston University,ESPN+,Y,M,6:00 PM,8:30 PM,ECAC,Hockey East
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#17 Penn State at Sacred Heart,FloHockey,Y,M,6:00 PM,8:30 PM,Big Ten,AHA
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Air Force at St. Thomas,NCHC.tv,N,M,6:05 PM,8:35 PM,AHA,NCHC
-blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#7 Wisconsin at #19 Minnesota State,Midco Sports,Y,M,6:07 PM,8:37 PM,Big Ten,CCHA
-blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#5 Minnesota Duluth at Augustana,Midco Sports,Y,M,6:07 PM,8:37 PM,NCHC,CCHA
+blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#7 Wisconsin at #19 Minnesota State,Midco,Y,M,6:07 PM,8:37 PM,Big Ten,CCHA
+blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),#5 Minnesota Duluth at Augustana,Midco,Y,M,6:07 PM,8:37 PM,NCHC,CCHA
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Hockey (M),Bemidji State at #4 North Dakota,NCHC.tv,Y,M,6:07 PM,8:37 PM,CCHA,NCHC
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,James Madison at Georgia Southern,ESPNU,N,M,6:30 PM,10:00 PM,Sun Belt,Sun Belt
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,#2 Georgia at #6 Alabama,ABC,Y,M,6:30 PM,10:00 PM,SEC,SEC
@@ -231,7 +231,7 @@ Kings,Golden Knights,"Sat, Oct 10",NHL,Kings at Golden Knights,ESPN+,N,M,9:00 PM
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Kansas at #12 Utah,ESPN,Y,M,9:15 PM,12:45 AM,Big XII,Big XII
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,#23 Boise State at Fresno State,CW,Y,M,9:30 PM,1:00 AM,Pac-12,Pac-12
 blankVisitor,blankHome,"Sat, Oct 10",NCAA Football,Hawai'i at Arizona State,FS1,N,M,9:30 PM,1:00 AM,Mountain West,Big XII
-Eagles,Jaguars,"Sun, Oct 11",NFL,Eagles at Jaguars,NFL Network,N,M,8:30 AM,12:00 PM,NFC East,AFC South
+Eagles,Jaguars,"Sun, Oct 11",NFL,Eagles at Jaguars,NFL Net,N,M,8:30 AM,12:00 PM,NFC East,AFC South
 Washington,Penn State,"Sun, Oct 11",NCAA Volleyball (W),#20 Washington at #18 Penn State,BTN,Y,W,11:00 AM,1:00 PM,Big Ten,Big Ten
 Bears,Packers,"Sun, Oct 11",NFL,Bears at Packers,FOX,N,M,12:00 PM,3:30 PM,NFC North,NFC North
 Bengals,Dolphins,"Sun, Oct 11",NFL,Bengals at Dolphins,FOX,N,M,12:00 PM,3:30 PM,AFC North,AFC East
@@ -254,7 +254,7 @@ Florida,Vanderbilt,"Sun, Oct 11",NCAA Volleyball (W),#5 Florida at Vanderbilt,SE
 USC,Indiana,"Sun, Oct 11",NCAA Volleyball (W),USC at #15 Indiana,BTN,Y,W,1:00 PM,3:00 PM,Big Ten,Big Ten
 Ole Miss,Kentucky,"Sun, Oct 11",NCAA Volleyball (W),Ole Miss at #4 Kentucky,SECN+,Y,W,1:00 PM,3:00 PM,SEC,SEC
 LSU,Tennessee,"Sun, Oct 11",NCAA Volleyball (W),LSU at #10 Tennessee,SECN+,Y,W,1:00 PM,3:00 PM,SEC,SEC
-blankVisitor,blankHome,"Sun, Oct 11",NCAA Hockey (M),Royal Military at Army,[NoLivestream],N,M,1:00 PM,3:30 PM,,AHA
+blankVisitor,blankHome,"Sun, Oct 11",NCAA Hockey (M),Royal Military at Army,[OffAir],N,M,1:00 PM,3:30 PM,,AHA
 Texas,Oklahoma,"Sun, Oct 11",NCAA Volleyball (W),#9 Texas at Oklahoma,SECN+,Y,W,2:00 PM,4:00 PM,SEC,SEC
 Pitt,SMU,"Sun, Oct 11",NCAA Volleyball (W),#2 Pitt at #6 SMU,ESPN,Y,W,2:00 PM,4:00 PM,ACC,ACC
 Kansas State,Colorado,"Sun, Oct 11",NCAA Volleyball (W),Kansas State at #23 Colorado,ESPN+,Y,W,2:00 PM,4:00 PM,Big XII,Big XII
@@ -267,6 +267,6 @@ Lions,Cardinals,"Sun, Oct 11",NFL,Lions at Cardinals,FOX,N,M,3:25 PM,6:55 PM,NFC
 TCU,Arizona State,"Sun, Oct 11",NCAA Volleyball (W),#8 TCU at #11 Arizona State,ESPN2,Y,W,4:00 PM,6:00 PM,Big XII,Big XII
 Kraken,Capitals,"Sun, Oct 11",NHL,Kraken at Capitals,ESPN+,N,M,4:00 PM,6:45 PM,Western (Pacific),Eastern (Metropolitan)
 Canucks,Rangers,"Sun, Oct 11",NHL,Canucks at Rangers,ESPN+,N,M,5:00 PM,7:45 PM,Western (Pacific),Eastern (Metropolitan)
-Hurricanes,Flyers,"Sun, Oct 11",NHL,Hurricanes at Flyers,NHL Network,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
+Hurricanes,Flyers,"Sun, Oct 11",NHL,Hurricanes at Flyers,NHL Net,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Ravens,Falcons,"Sun, Oct 11",NFL,Ravens at Falcons,NBC,N,M,7:20 PM,10:50 PM,AFC North,NFC South
 Bills,Rams,"Mon, Oct 12",NFL,Bills at Rams,ESPN,N,M,7:15 PM,10:45 PM,AFC East,NFC West
