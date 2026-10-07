@@ -1,31 +1,4 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
-VCU,Davidson,"Tue, Oct 06",NCAA Volleyball (W),VCU at Davidson,ESPN+,N,W,4:00 PM,6:00 PM,Atlantic 10,Atlantic 10
-Duquesne,Dayton,"Tue, Oct 06",NCAA Volleyball (W),Duquesne at Dayton,ESPN+,N,W,4:00 PM,6:00 PM,Atlantic 10,Atlantic 10
-blankVisitor,blankHome,"Tue, Oct 06",NCAA Hockey (W),Post at #5 Quinnipiac,ESPN+,Y,W,5:00 PM,7:15 PM,NEWHA,ECAC
-Bryant,Holy Cross,"Tue, Oct 06",NCAA Volleyball (W),Bryant at Holy Cross,ESPN+,N,W,5:00 PM,7:00 PM,America East,Patriot League
-Robert Morris,Youngstown State,"Tue, Oct 06",NCAA Volleyball (W),Robert Morris at Youngstown State,ESPN+,N,W,5:00 PM,7:00 PM,Horizon League,Horizon League
-Austin Peay,Eastern Kentucky,"Tue, Oct 06",NCAA Volleyball (W),Austin Peay at Eastern Kentucky,ESPN+,N,W,5:00 PM,7:00 PM,UAC,UAC
-Furman,The Citadel,"Tue, Oct 06",NCAA Volleyball (W),Furman at The Citadel,ESPN+,N,W,5:00 PM,7:00 PM,SoCon,SoCon
-High Point,Charleston,"Tue, Oct 06",NCAA Volleyball (W),High Point at Charleston,FloSports,N,W,5:00 PM,7:00 PM,Big South,CAA
-Miami (Ohio),Ball State,"Tue, Oct 06",NCAA Volleyball (W),Miami (Ohio) at Ball State,ESPN+,N,W,5:00 PM,7:00 PM,MAC,MAC
-UNC Greensboro,East Tennessee State,"Tue, Oct 06",NCAA Volleyball (W),UNC Greensboro at East Tennessee State,ESPN+,N,W,5:00 PM,7:00 PM,SoCon,SoCon
-Western Carolina,Wofford,"Tue, Oct 06",NCAA Volleyball (W),Western Carolina at Wofford,ESPN+,N,W,5:00 PM,7:00 PM,SoCon,SoCon
-Dodgers,Braves,"Tue, Oct 06",MLB,Dodgers at Braves,FS1,N,M,5:00 PM,8:00 PM,NL West,NL East
-Bradley,Illinois State,"Tue, Oct 06",NCAA Volleyball (W),Bradley at Illinois State,ESPN+,N,W,6:00 PM,8:00 PM,MVC,MVC
-Chattanooga,Tennessee Tech,"Tue, Oct 06",NCAA Volleyball (W),Chattanooga at Tennessee Tech,ESPN+,N,W,6:00 PM,8:00 PM,SoCon,SoCon
-Wild,Sabres,"Tue, Oct 06",NHL,Wild at Sabres,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Atlantic)
-Senators,Red Wings,"Tue, Oct 06",NHL,Senators at Red Wings,ESPN+,N,M,6:00 PM,8:45 PM,Eastern (Atlantic),Eastern (Atlantic)
-Hurricanes,Canadiens,"Tue, Oct 06",NHL,Hurricanes at Canadiens,ESPN+,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Atlantic)
-Mammoth,Devils,"Tue, Oct 06",NHL,Mammoth at Devils,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Metropolitan)
-Predators,Maple Leafs,"Tue, Oct 06",NHL,Predators at Maple Leafs,ESPN+,N,M,6:00 PM,8:45 PM,Western (Central),Eastern (Atlantic)
-Mercer,Samford,"Tue, Oct 06",NCAA Volleyball (W),Mercer at Samford,ESPN+,N,W,6:30 PM,8:30 PM,SoCon,SoCon
-Islanders,Rangers,"Tue, Oct 06",NHL,Islanders at Rangers,ESPN,N,M,6:30 PM,9:15 PM,Eastern (Metropolitan),Eastern (Metropolitan)
-blankVisitor,blankHome,"Tue, Oct 06",NCAA Football,Southern Miss at Troy,ESPN2,N,M,7:00 PM,10:30 PM,Sun Belt,Sun Belt
-Blues,Blackhawks,"Tue, Oct 06",NHL,Blues at Blackhawks,ESPN+,N,M,7:00 PM,9:45 PM,Western (Central),Western (Central)
-Idaho,Eastern Washington,"Tue, Oct 06",NCAA Volleyball (W),Idaho at Eastern Washington,ESPN+,N,W,8:00 PM,10:00 PM,Big Sky,Big Sky
-Brewers,Padres,"Tue, Oct 06",MLB,Brewers at Padres,FS1,N,M,8:30 PM,11:30 PM,NL Central,NL West
-Golden Knights,Kraken,"Tue, Oct 06",NHL,Golden Knights at Kraken,ESPN+,N,M,8:40 PM,11:25 PM,Western (Pacific),Western (Pacific)
-Panthers,Kings,"Tue, Oct 06",NHL,Panthers at Kings,ESPN,N,M,9:00 PM,11:45 PM,Eastern (Atlantic),Western (Pacific)
 Guardians,White Sox,"Wed, Oct 07",MLB,Guardians at White Sox,TBS/truTV,N,M,3:00 PM,6:00 PM,AL Central,AL Central
 Dodgers,Braves,"Wed, Oct 07",MLB,Dodgers at Braves,FS1,N,M,5:00 PM,8:00 PM,NL West,NL East
 SMU,Pitt,"Wed, Oct 07",NCAA Volleyball (W),#6 SMU at #2 Pitt,ACCN,Y,W,6:00 PM,8:00 PM,ACC,ACC
@@ -270,3 +243,12 @@ Canucks,Rangers,"Sun, Oct 11",NHL,Canucks at Rangers,ESPN+,N,M,5:00 PM,7:45 PM,W
 Hurricanes,Flyers,"Sun, Oct 11",NHL,Hurricanes at Flyers,NHL Net,N,M,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Ravens,Falcons,"Sun, Oct 11",NFL,Ravens at Falcons,NBC,N,M,7:20 PM,10:50 PM,AFC North,NFC South
 Bills,Rams,"Mon, Oct 12",NFL,Bills at Rams,ESPN,N,M,7:15 PM,10:45 PM,AFC East,NFC West
+Howard,UMBC,"Tue, Oct 13",NCAA Volleyball,Howard at UMBC,America East,N,W,4:00 PM,6:00 PM,MEAC,America East
+Buffalo,Akron,"Tue, Oct 13",NCAA Volleyball,Buffalo at Akron,ESPN+,N,W,5:00 PM,7:00 PM,MAC,MAC
+Saint Peter's,Fairleigh Dickinson,"Tue, Oct 13",NCAA Volleyball,Saint Peter's at Fairleigh Dickinson,[OffAir],N,W,5:00 PM,7:00 PM,Metro Conference,NEC
+Little Rock,Central Arkansas,"Tue, Oct 13",NCAA Volleyball,Little Rock at Central Arkansas,ESPN+,N,W,6:00 PM,8:00 PM,United Athletic,United Athletic
+Milwaukee,Green Bay,"Tue, Oct 13",NCAA Volleyball,Milwaukee at Green Bay,ESPN+,N,W,6:00 PM,8:00 PM,Horizon League,Horizon League
+Miles,Alabama A&M,"Tue, Oct 13",NCAA Volleyball,Miles at Alabama A&M,[OffAir],N,W,6:00 PM,8:00 PM,SIAC,SWAC
+Delaware,Middle Tennessee,"Tue, Oct 13",NCAA Football,Delaware at Middle Tennessee,CBSSN,N,M,6:00 PM,9:30 PM,Conference USA,Conference USA
+Florida International,Jacksonville State,"Tue, Oct 13",NCAA Football,Florida International at Jacksonville State,ESPNU,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
+Weber State,Idaho State,"Tue, Oct 13",NCAA Volleyball,Weber State at Idaho State,ESPN+,N,W,8:00 PM,10:00 PM,Big Sky,Big Sky
