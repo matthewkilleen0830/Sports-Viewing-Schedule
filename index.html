@@ -397,6 +397,35 @@ function getActiveSelections() {
   };
 }
 
+function isGameExpiredToday(d) {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+  if (cleanStr && !/\b20\d{2}\b/.test(cleanStr)) {
+    cleanStr = `${cleanStr}, ${currentYear}`;
+  }
+  const gameDateParsed = cleanStr ? new Date(cleanStr) : null;
+  if (!gameDateParsed) return false;
+
+  const gameNormalized = new Date(gameDateParsed.getFullYear(), gameDateParsed.getMonth(), gameDateParsed.getDate());
+
+  if (gameNormalized.getTime() === startOfToday.getTime()) {
+    const startMins = timeToMinutes(d.Start_Time);
+    let endMins = timeToMinutes(d.End_Time);
+    if (endMins < startMins) endMins += 1440;
+
+    const gameEndTimestamp = startOfToday.getTime() + endMins * 60000;
+    const thresholdTimestamp = gameEndTimestamp + 30 * 60000;
+
+    if (now.getTime() >= thresholdTimestamp) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Cross-filter evaluation engine
 function getFilteredDataExcept(excludedFilter = null) {
   const state = getActiveSelections();
@@ -404,6 +433,11 @@ function getFilteredDataExcept(excludedFilter = null) {
   return window.gameData.filter(d => {
     // 1. Date Filter (Single choice driver)
     if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+      return false;
+    }
+
+    // Exclude games on today that ended more than 30 minutes ago
+    if (isGameExpiredToday(d)) {
       return false;
     }
 
@@ -592,7 +626,36 @@ function getFirstAvailableDate(allData) {
 
   parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
 
-  const upcoming = parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
+  const todayItem = parsedDates.find(item => item.parsedDate.getTime() === startOfToday.getTime());
+
+  if (todayItem) {
+    const todaysGames = allData.filter(d => d.Date === todayItem.originalStr);
+    if (todaysGames.length > 0) {
+      let maxEndMinutes = -1;
+      todaysGames.forEach(g => {
+        const startMins = timeToMinutes(g.Start_Time);
+        let endMins = timeToMinutes(g.End_Time);
+        if (endMins < startMins) endMins += 1440;
+        if (endMins > maxEndMinutes) {
+          maxEndMinutes = endMins;
+        }
+      });
+
+      if (maxEndMinutes !== -1) {
+        const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
+        const thresholdTime = new Date(latestEndDateTime.getTime() + 30 * 60000);
+
+        // If current time is before the 30-min post-game mark, land on today
+        if (now.getTime() < thresholdTime.getTime()) {
+          return todayItem.originalStr;
+        }
+      }
+    }
+  }
+
+  // Otherwise, land on the next upcoming date >= today
+  const upcoming = parsedDates.find(item => item.parsedDate.getTime() > startOfToday.getTime()) ||
+                   parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
 
   return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
 }
