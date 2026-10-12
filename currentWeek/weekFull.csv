@@ -1,11 +1,11 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
-Cleveland,Tampa Bay,"Mon, Oct 12",MLB,Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
+Cleveland,Tampa Bay,"Mon, Oct 12",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
 London,Portland,"Mon, Oct 12",NBA (Preseason),London at Trailblazers,[OffAir],Y,M,3:00 PM,5:30 PM,,Western Conference
 Oklahoma City,Atlanta,"Mon, Oct 12",NBA (Preseason),Thunder at Hawks,[OffAir],Y,M,6:00 PM,8:30 PM,Western Conference,Eastern Conference
 Brooklyn,Washington,"Mon, Oct 12",NBA (Preseason),Nets at Wizards,MNMT,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Minnesota,New York,"Mon, Oct 12",NBA (Preseason),Timberwolves at Knicks,NBA TV,Y,M,6:30 PM,9:00 PM,Western Conference,Eastern Conference
 San Antonio,Utah,"Mon, Oct 12",NBA (Preseason),Spurs at Jazz,[OffAir],Y,M,8:00 PM,10:30 PM,Western Conference,Western Conference
-Los Angeles,Milwaukee,"Mon, Oct 12",MLB,Dodgers at Brewers,FOX/FS1,Y,M,4:00 PM,7:15 PM,NL West,NL Central
+Los Angeles,Milwaukee,"Mon, Oct 12",MLB (NLCS),Dodgers at Brewers,FOX/FS1,Y,M,4:00 PM,7:15 PM,NL West,NL Central
 Buffalo,Los Angeles,"Mon, Oct 12",NFL,Bills at Rams,ESPN/ABC,Y,M,7:15 PM,10:45 PM,AFC East,NFC West
 Vegas,Minnesota,"Mon, Oct 12",NHL,Golden Knights at Wild,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Pacific),Western (Central)
 Ottawa,New Jersey,"Mon, Oct 12",NHL,Senators at Devils,NHL Net,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Metropolitan)
@@ -14,7 +14,7 @@ Indiana,Oklahoma City,"Tue, Oct 13",NBA (Preseason),Pacers at Thunder,[OffAir],Y
 Golden State,Los Angeles,"Tue, Oct 13",NBA (Preseason),Warriors at Lakers,NBA TV,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
 Portland,Sacramento,"Tue, Oct 13",NBA (Preseason),Trailblazers at Kings,[OffAir],Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
 Delaware,Middle Tennessee,"Tue, Oct 13",NCAAF,Delaware at Middle Tennessee,CBSSN,N,M,6:00 PM,9:30 PM,Conference USA,Conference USA
-Cleveland,Tampa Bay,"Tue, Oct 13",MLB,Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
+Cleveland,Tampa Bay,"Tue, Oct 13",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
 New York,Toronto,"Tue, Oct 13",NBA (Preseason),Knicks at Raptors,[OffAir],Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Cleveland,Orlando,"Tue, Oct 13",NBA (Preseason),Cavaliers at Magic,Peacock,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Florida International,Jacksonville State,"Tue, Oct 13",NCAAF,Florida International at Jacksonville State,ESPNU,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
@@ -233,7 +233,7 @@ Carolina,Winnipeg,"Sat, Oct 17",NHL,Hurricanes at Jets,ESPN+,Y,M,2:30 PM,5:00 PM
 New Jersey,Washington,"Sat, Oct 17",NHL,Devils at Capitals,NHL Net,Y,M,12:00 PM,2:30 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Tampa Bay,Cleveland,"Sat, Oct 17",MLB,Rays at Guardians,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL East,AL Central
 Ball State,Bowling Green,"Sat, Oct 17",NCAAF,Ball State at Bowling Green,ESPN+,N,M,11:00 AM,2:30 PM,MAC,MAC
-Atlanta,Golden State,"Sat, Oct 17",WNBA,Dream at Valkyries,NBC,Y,W,2:30 PM,4:30 PM,Eastern Conference,Western Conference
+Atlanta,Golden State,"Sat, Oct 17",WNBA (Finals),Dream at Valkyries,NBC,Y,W,2:30 PM,4:30 PM,Eastern Conference,Western Conference
 Rutgers,Maryland,"Sat, Oct 17",NCAAF,Rutgers at Maryland,BTN,N,M,11:30 AM,3:00 PM,Big Ten,Big Ten
 Tulsa,Rice,"Sat, Oct 17",NCAAF,Tulsa at Rice,ESPN+,N,M,3:30 PM,7:00 PM,AAC,AAC
 Georgia State,James Madison,"Sat, Oct 17",NCAAF,Georgia State at James Madison,ESPNU,N,M,11:00 AM,2:30 PM,Sun Belt,Sun Belt
@@ -273,7 +273,7 @@ Houston,Jacksonville,"Sun, Oct 18",NFL,Texans at Jaguars,NFL Net,Y,M,8:30 AM,12:
 Chicago,Atlanta,"Sun, Oct 18",NFL,Bears at Falcons,FOX,Y,M,12:00 PM,3:30 PM,NFC North,NFC South
 Baltimore,Cleveland,"Sun, Oct 18",NFL,Ravens at Browns,FOX,Y,M,12:00 PM,3:30 PM,AFC South,AFC North
 New York,New England,"Sun, Oct 18",NFL,Jets at Patriots,CBS,Y,M,12:00 PM,3:30 PM,AFC East,AFC East
-Los Angeles,Milwaukee,"Sun, Oct 18",MLB,Dodgers at Brewers,FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
+Los Angeles,Milwaukee,"Sun, Oct 18",MLB (NLCS),Dodgers at Brewers,FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
 Carolina,Philadelphia,"Sun, Oct 18",NFL,Panthers at Eagles,CBS,Y,M,12:00 PM,3:30 PM,NFC South,NFC East
 Florida,Texas,"Sun, Oct 18",NCAA Volleyball (W),#5 Florida at #9 Texas,ESPN,Y,W,7:30 PM,9:30 PM,SEC,SEC
 Indiana,Washington,"Sun, Oct 18",NCAA Volleyball (W),#15 Indiana at #20 Washington,B1G+,Y,W,4:00 PM,6:00 PM,Big Ten,Big Ten
