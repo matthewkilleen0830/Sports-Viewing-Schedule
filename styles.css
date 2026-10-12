@@ -72,7 +72,7 @@ html, body {
   width: 24px;
   height: 52px;
   background: linear-gradient(180deg, #1d2127 0%, #0d0f12 100%);
-  border: 2px solid #475569;
+  border: 2px solid #ca8a04;
   border-left: none;
   border-radius: 0 8px 8px 0;
   color: #ffffff;
@@ -82,27 +82,27 @@ html, body {
   cursor: pointer;
   z-index: 200;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6),
-              inset 0 1px 1px rgba(224, 242, 254, 0.4);
+              inset 0 1px 1px rgba(254, 240, 138, 0.4);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .filter-toggle-btn:hover {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-  border-color: #93c5fd;
+  background: linear-gradient(180deg, #292524 0%, #1c1917 100%);
+  border-color: #fde047;
 }
 
 /* Pulse / Flash Animation */
 @keyframes toggleAttention {
   0%, 100% {
     transform: scale(1);
-    border-color: #475569;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(224, 242, 254, 0.4);
+    border-color: #ca8a04;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(254, 240, 138, 0.4);
   }
   50% {
     transform: scale(1.2);
-    background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+    background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
     border-color: #ffffff;
-    box-shadow: 0 0 18px rgba(59, 130, 246, 0.9), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 18px rgba(245, 158, 11, 0.9), inset 0 1px 2px rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -113,7 +113,7 @@ html, body {
 .toggle-arrow {
   font-size: 11px;
   line-height: 1;
-  color: #cbd5e1;
+  color: #fef08a;
   transition: transform 0.3s ease;
   display: inline-block;
 }
@@ -136,18 +136,18 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Shiny Bluish-Silver Border Metallic Gradient & Subtle Cool Glow */
+/* Shiny Gold Border Metallic Gradient & Subtle Warm Glow */
 .filter-panel, 
 .chart-container {
   border-radius: 14px;
   border: 3px solid transparent;
   background: 
     linear-gradient(#141619, #090a0c) padding-box, 
-    linear-gradient(135deg, #ffffff 0%, #cbd5e1 20%, #60a5fa 42%, #334155 68%, #94a3b8 85%, #1e293b 100%) border-box;
+    linear-gradient(135deg, #fffbeb 0%, #fef08a 20%, #facc15 42%, #78350f 68%, #eab308 85%, #451a03 100%) border-box;
   box-shadow: 
-    0 0 15px rgba(148, 163, 184, 0.22),
-    0 0 6px rgba(96, 165, 250, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(250, 204, 21, 0.2),
+    0 0 6px rgba(234, 179, 8, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
     0 10px 30px rgba(0, 0, 0, 0.95);
   letter-spacing: -0.05em !important;
 }
@@ -165,7 +165,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Silver Headers with Ice-Blue Accent Sheen */
+/* Gold Headers with Bright Yellow-Gold Accent Sheen */
 .filter-panel h1, 
 .filter-panel h2, 
 .filter-panel h3, 
@@ -176,7 +176,7 @@ html, body {
 .chart-container h3,
 .chart-container h4,
 .chart-container .chart-title {
-  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 50%, #93c5fd 100%);
+  background: linear-gradient(180deg, #fffbeb 0%, #fef08a 50%, #facc15 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
@@ -185,7 +185,7 @@ html, body {
 }
 
 .filter-panel label {
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 60%, #93c5fd 100%);
+  background: linear-gradient(180deg, #fffbeb 0%, #fef08a 60%, #facc15 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 400;
@@ -198,7 +198,7 @@ html, body {
 .filter-panel .form-select {
   background-color: #0d0f12;
   color: #ffffff;
-  border: 2px solid #475569;
+  border: 2px solid #ca8a04;
   border-radius: 6px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
 }
@@ -207,14 +207,14 @@ html, body {
 .filter-panel .form-select:focus {
   background-color: #14171c;
   color: #ffffff;
-  border-color: #93c5fd;
-  box-shadow: 0 0 10px rgba(147, 197, 253, 0.4);
+  border-color: #facc15;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
 }
 
 .checkbox-panel {
   overflow-y: auto;
   background-color: #0b0d0f;
-  border: 2px solid #475569;
+  border: 2px solid #ca8a04;
   border-radius: 0.375rem;
   padding: 0.5rem 0.75rem;
   color: #f0f0f0;
@@ -236,7 +236,7 @@ html, body {
 
 .form-check-input {
   background-color: #000000;
-  border: 1.5px solid #64748b;
+  border: 1.5px solid #d97706;
   border-radius: 4px;
   cursor: pointer;
   flex-shrink: 0;
@@ -245,16 +245,16 @@ html, body {
 }
 
 .form-check-input:checked {
-  background-color: #60a5fa;
-  border-color: #93c5fd;
-  box-shadow: 0 0 6px rgba(96, 165, 250, 0.6);
+  background-color: #facc15;
+  border-color: #fef08a;
+  box-shadow: 0 0 6px rgba(250, 204, 21, 0.6);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
 }
 
 .form-check-input:focus {
-  border-color: #ffffff;
+  border-color: #fffbeb;
   outline: 0;
-  box-shadow: 0 0 8px rgba(147, 197, 253, 0.4);
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
 }
 
 .form-check-label {
@@ -273,10 +273,10 @@ html, body {
   margin-bottom: 4px;
 }
 
-/* Bluish-Silver Scrollbar Thumb */
+/* Gold Scrollbar Thumb */
 .filter-panel::-webkit-scrollbar-thumb,
 .checkbox-panel::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f1f5f9 0%, #60a5fa 50%, #334155 100%);
+  background: linear-gradient(180deg, #fffbeb 0%, #facc15 50%, #78350f 100%);
   border-radius: 3px;
 }
 
