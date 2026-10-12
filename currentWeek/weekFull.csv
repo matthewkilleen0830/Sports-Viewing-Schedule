@@ -32,7 +32,7 @@ Pittsburgh,Chicago,"Tue, Oct 13",NHL,Penguins at Blackhawks,ESPN+,Y,M,7:00 PM,9:
 Minnesota,Winnipeg,"Tue, Oct 13",NHL,Wild at Jets,ESPN+,Y,M,7:15 PM,9:45 PM,Western (Central),Western (Central)
 Colorado,Dallas,"Tue, Oct 13",NHL,Avalanche at Stars,ESPN,Y,M,7:30 PM,10:00 PM,Western (Central),Western (Central)
 Vegas,Nashville,"Tue, Oct 13",NHL,Golden Knights at Predators,ESPN+,Y,M,7:45 PM,10:15 PM,Western (Pacific),Western (Central)
-Vancouver,New York,"Tue, Oct 13",NHL,Canucks at Rangers,ESPN+,Y,M,6:45 PM,9:15 PM,Western (Pacific),Eastern (Metropolitan)
+Vancouver,New York,"Tue, Oct 13",NHL,Canucks at Islanders,ESPN+,Y,M,6:45 PM,9:15 PM,Western (Pacific),Eastern (Metropolitan)
 Calgary,Anaheim,"Tue, Oct 13",NHL,Flames at Ducks,ESPN+,Y,M,8:45 PM,11:15 PM,Western (Pacific),Western (Pacific)
 Detroit,Minnesota,"Wed, Oct 14",NBA (Preseason),Pistons at Timberwolves,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Milwaukee,Los Angeles,"Wed, Oct 14",MLB,Brewers at Dodgers,FS1,Y,M,7:00 PM,10:15 PM,NL Central,NL West
@@ -68,7 +68,7 @@ Oklahoma City,Houston,"Thu, Oct 15",NBA (Preseason),Thunder at Rockets,NBA TV,Y,
 Purdue,Iowa,"Thu, Oct 15",NCAA Volleyball (W),#16 Purdue at Iowa,TBA,Y,W,8:00 PM,10:00 PM,Big Ten,Big Ten
 New York,New Jersey,"Thu, Oct 15",NHL,Rangers at Devils,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Buffalo,Toronto,"Thu, Oct 15",NHL,Sabres at Maple Leafs,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Atlantic)
-New York,Ottawa,"Thu, Oct 15",NHL,Rangers at Senators,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
+New York,Ottawa,"Thu, Oct 15",NHL,Islanders at Senators,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
 Seattle,Tampa Bay,"Thu, Oct 15",NHL,Kraken at Lightning,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Atlantic)
 Vancouver,Florida,"Thu, Oct 15",NHL,Canucks at Panthers,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Atlantic)
 Winnipeg,Chicago,"Thu, Oct 15",NHL,Jets at Blackhawks,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Central),Western (Central)
@@ -226,7 +226,7 @@ New York,Columbus,"Sat, Oct 17",NHL,Rangers at Blue Jackets,ESPN+,Y,M,6:00 PM,8:
 Ottawa,Philadelphia,"Sat, Oct 17",NHL,Senators at Flyers,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Metropolitan)
 San Jose,Detroit,"Sat, Oct 17",NHL,Sharks at Red Wings,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Atlantic)
 Buffalo,Montreal,"Sat, Oct 17",NHL,Sabres at Canadiens,NHL Net,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Atlantic)
-New York,Toronto,"Sat, Oct 17",NHL,Rangers at Maple Leafs,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
+New York,Toronto,"Sat, Oct 17",NHL,Islanders at Maple Leafs,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
 Seattle,Florida,"Sat, Oct 17",NHL,Kraken at Panthers,ESPN+,Y,M,5:00 PM,7:30 PM,Western (Pacific),Eastern (Atlantic)
 Vancouver,Tampa Bay,"Sat, Oct 17",NHL,Canucks at Lightning,ESPN+,Y,M,3:00 PM,5:30 PM,Western (Pacific),Eastern (Atlantic)
 Carolina,Winnipeg,"Sat, Oct 17",NHL,Hurricanes at Jets,ESPN+,Y,M,2:30 PM,5:00 PM,Eastern (Metropolitan),Western (Central)
