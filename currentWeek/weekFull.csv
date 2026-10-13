@@ -1,6 +1,6 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
 Devils,Red Wings,"Tue, Oct 13",NHL,Devils at Red Wings,ESPN,Y,M,5:00 PM,7:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
-Panthers,Blue Jackets,"Tue, Oct 13",NHL,Panthers at Blue Jackets,ESPN+,Y,M,5:15 PM,7:45 PM,Eastern (Atlantic),Eastern (Metropolitan)
+FL Panthers,Blue Jackets,"Tue, Oct 13",NHL,FL Panthers at Blue Jackets,ESPN+,Y,M,5:15 PM,7:45 PM,Eastern (Atlantic),Eastern (Metropolitan)
 Sabres,Canadiens,"Tue, Oct 13",NHL,Sabres at Canadiens,ESPN+,Y,M,5:30 PM,8:00 PM,Eastern (Atlantic),Eastern (Atlantic)
 Capitals,Hurricanes,"Tue, Oct 13",NHL,Capitals at Hurricanes,ESPN+,Y,M,5:45 PM,8:15 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Cavaliers,Magic,"Tue, Oct 13",NBA (Preseason),Cavaliers at Magic,Peacock,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
@@ -21,7 +21,7 @@ Maple Leafs,Mammoth,"Tue, Oct 13",NHL,Maple Leafs at Mammoth,ESPN+,Y,M,8:00 PM,1
 Flames,Ducks,"Tue, Oct 13",NHL,Flames at Ducks,ESPN+,Y,M,8:45 PM,11:15 PM,Western (Pacific),Western (Pacific)
 Warriors,Lakers,"Tue, Oct 13",NBA (Preseason),Warriors at Lakers,NBA TV,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
 Trail Blazers,Kings,"Tue, Oct 13",NBA (Preseason),Trail Blazers at Kings,N/A,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
-Oilers,Kings,"Tue, Oct 13",NHL,Oilers at Kings,ESPN+,Y,M,9:30 PM,12:00 AM,Western (Pacific),Western (Pacific)
+Oilers,LA Kings,"Tue, Oct 13",NHL,Oilers at LA Kings,ESPN+,Y,M,9:30 PM,12:00 AM,Western (Pacific),Western (Pacific)
 Bruins,Sharks,"Tue, Oct 13",NHL,Bruins at Sharks,ESPN,Y,M,10:00 PM,12:30 AM,Eastern (Atlantic),Western (Pacific)
 Merrimack,Boston College,"Wed, Oct 14",NCAA Hockey (W),Merrimack at Boston College,ESPN+,N,W,6:00 PM,8:30 PM,Hockey East,Hockey East
 Nets,Heat,"Wed, Oct 14",NBA (Preseason),Nets at Heat,N/A,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
@@ -247,7 +247,7 @@ Michigan State,Northwestern,"Sat, Oct 17",NCAA Volleyball (W),#22 Michigan State
 Blues,Predators,"Sat, Oct 17",NHL,Blues at Predators,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Central),Western (Central)
 San Jose State,UTEP,"Sat, Oct 17",NCAAF,San Jose State at UTEP,MW+,N,M,8:00 PM,11:30 PM,Mountain West,Mountain West
 BYU,Arizona,"Sat, Oct 17",NCAA Volleyball (W),#14 BYU at Arizona,ESPN+,Y,W,8:00 PM,10:00 PM,Big XII,Big XII
-Bruins,Kings,"Sat, Oct 17",NHL,Bruins at Kings,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Atlantic),Western (Pacific)
+Bruins,LA Kings,"Sat, Oct 17",NHL,Bruins at LA Kings,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Atlantic),Western (Pacific)
 Ohio,Sacramento State,"Sat, Oct 17",NCAAF,Ohio at Sacramento State,ESPN+,N,M,9:00 PM,12:30 AM,MAC,MAC
 Oilers,Mammoth,"Sat, Oct 17",NHL,Oilers at Mammoth,ESPN+,Y,M,9:00 PM,11:30 PM,Western (Pacific),Western (Central)
 Penguins,Golden Knights,"Sat, Oct 17",NHL,Penguins at Golden Knights,ESPN+,Y,M,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
@@ -264,8 +264,8 @@ Auburn,Texas A&M,"Sun, Oct 18",NCAA Volleyball (W),Auburn at #19 Texas A&M,SECN+
 Bears,Falcons,"Sun, Oct 18",NFL,Bears at Falcons,FOX,Y,M,12:00 PM,3:30 PM,NFC North,NFC South
 Ravens,Browns,"Sun, Oct 18",NFL,Ravens at Browns,FOX,Y,M,12:00 PM,3:30 PM,AFC South,AFC North
 Titans,Colts,"Sun, Oct 18",NFL,Titans at Colts,FOX,Y,M,12:00 PM,3:30 PM,AFC South,AFC South
-Jets,Patriots,"Sun, Oct 18",NFL,Jets at Patriots,CBS,Y,M,12:00 PM,3:30 PM,AFC East,AFC East
-Saints,Giants,"Sun, Oct 18",NFL,Saints at Giants,FOX,Y,M,12:00 PM,3:30 PM,NFC South,NFC East
+NY Jets,Patriots,"Sun, Oct 18",NFL,NY Jets at Patriots,CBS,Y,M,12:00 PM,3:30 PM,AFC East,AFC East
+Saints,NY Giants,"Sun, Oct 18",NFL,Saints at NY Giants,FOX,Y,M,12:00 PM,3:30 PM,NFC South,NFC East
 Panthers,Eagles,"Sun, Oct 18",NFL,Panthers at Eagles,CBS,Y,M,12:00 PM,3:30 PM,NFC South,NFC East
 Steelers,Buccaneers,"Sun, Oct 18",NFL,Steelers at Buccaneers,CBS,Y,M,12:00 PM,3:30 PM,AFC North,NFC South
 Florida State,SMU,"Sun, Oct 18",NCAA Volleyball (W),Florida State at #5 SMU,ACCNX,Y,W,1:00 PM,3:00 PM,ACC,ACC
@@ -277,7 +277,7 @@ Baylor,TCU,"Sun, Oct 18",NCAA Volleyball (W),Baylor at #10 TCU,ESPN+,Y,W,2:00 PM
 Army,Holy Cross,"Sun, Oct 18",NCAA Hockey (M),Army at Holy Cross,N/A,N,M,3:00 PM,5:30 PM,AHA,AHA
 Rutgers,Oregon,"Sun, Oct 18",NCAA Volleyball (W),Rutgers at #11 Oregon,N/A,Y,W,3:00 PM,5:00 PM,Big Ten,Big Ten
 NC State,Stanford,"Sun, Oct 18",NCAA Volleyball (W),NC State at #16 Stanford,ACCNX,Y,W,3:00 PM,5:00 PM,ACC,ACC
-Cardinals,Rams,"Sun, Oct 18",NFL,Cardinals at Rams,FOX,Y,M,3:05 PM,6:35 PM,NFC West,AFC West
+AZ Cardinals,Rams,"Sun, Oct 18",NFL,AZ Cardinals at Rams,FOX,Y,M,3:05 PM,6:35 PM,NFC West,AFC West
 Chargers,Chiefs,"Sun, Oct 18",NFL,Chargers at Chiefs,CBS,Y,M,3:25 PM,6:55 PM,NFC West,AFC West
 Bills,Raiders,"Sun, Oct 18",NFL,Bills at Raiders,CBS,Y,M,3:25 PM,6:55 PM,AFC East,AFC West
 Indiana,Washington,"Sun, Oct 18",NCAA Volleyball (W),#18 Indiana at #20 Washington,B1G+,Y,W,4:00 PM,6:00 PM,Big Ten,Big Ten
