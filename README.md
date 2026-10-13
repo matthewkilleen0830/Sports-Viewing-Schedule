@@ -1,6 +1,6 @@
 # Live Men's and Women's Sports Broadcast Dashboard
 
-An interactive, single-page web dashboard designed to simplify your weekly college hockey viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of all broadcast and streaming game schedules with real-time dynamic filtering.
+An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of all broadcast and streaming game schedules with real-time dynamic filtering.
 
 ![Live Sports Dashboard Banner](images/headerBanner.png)
 
