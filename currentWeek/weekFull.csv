@@ -1,14 +1,14 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
 Merrimack,Boston College,"Wed, Oct 14",NCAA Hockey (W),Merrimack at Boston College,ESPN+,N,W,6:00 PM,8:30 PM,Hockey East,Hockey East
-Nets,Heat,"Wed, Oct 14",NBA (Preseason),Nets at Heat,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
-Hornets,Celtics,"Wed, Oct 14",NBA (Preseason),Hornets at Celtics,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
+Nets,Heat,"Wed, Oct 14",NBA (Preseason),Nets at Heat,[OffAir],Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
+Hornets,Celtics,"Wed, Oct 14",NBA (Preseason),Hornets at Celtics,[OffAir],Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
 Kennesaw State,Missouri State,"Wed, Oct 14",NCAAF,Kennesaw State at Missouri State,CBSSN,N,M,6:30 PM,10:00 PM,Conference USA,Conference USA
 Canadiens,Capitals,"Wed, Oct 14",NHL,Canadiens at Capitals,ESPN+,Y,M,6:30 PM,9:00 PM,Eastern (Atlantic),Eastern (Metropolitan)
 Brewers,Dodgers,"Wed, Oct 14",MLB (NLCS),Brewers at Dodgers,FS1,Y,M,7:00 PM,10:15 PM,NL Central,NL West
-Suns,Spurs,"Wed, Oct 14",NBA (Preseason),Suns at Spurs,TBA,Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
+Suns,Spurs,"Wed, Oct 14",NBA (Preseason),Suns at Spurs,[OffAir],Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
 Pelicans,Mavericks,"Wed, Oct 14",NBA (Preseason),Pelicans at Mavericks,NBA TV,Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
-Bulls,Bucks,"Wed, Oct 14",NBA (Preseason),Bulls at Bucks,TBA,Y,M,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
-Pistons,Timberwolves,"Wed, Oct 14",NBA (Preseason),Pistons at Timberwolves,TBA,Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
+Bulls,Bucks,"Wed, Oct 14",NBA (Preseason),Bulls at Bucks,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
+Pistons,Timberwolves,"Wed, Oct 14",NBA (Preseason),Pistons at Timberwolves,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Western Kentucky,Sam Houston,"Wed, Oct 14",NCAAF,Western Kentucky at Sam Houston,ESPN,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
 Stars,Avalanche,"Wed, Oct 14",NHL,Stars at Avalanche,TNT/truTV,Y,M,7:30 PM,10:00 PM,Western (Central),Western (Central)
 Nuggets,Clippers,"Wed, Oct 14",NBA (Preseason),Nuggets at Clippers,NBA TV,Y,M,9:30 PM,12:00 AM,Western Conference,Western Conference
@@ -290,7 +290,3 @@ Thunder,Spurs,"Tue, Oct 20",NBA,Thunder at Spurs,NBC,Y,M,8:30 PM,11:00 PM,Wester
 Red Wings,Kraken,"Tue, Oct 20",NHL,Red Wings at Kraken,ESPN+,Y,M,8:40 PM,11:10 PM,Eastern (Atlantic),Western (Pacific)
 Hurricanes,Canucks,"Tue, Oct 20",NHL,Hurricanes at Canucks,ESPN+,Y,M,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
 Lightning,Golden Knights,"Tue, Oct 20",NHL,Lightning at Golden Knights,ESPN,Y,M,9:30 PM,12:00 AM,Eastern (Atlantic),Western (Pacific)
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
