@@ -1,28 +1,4 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
-Devils,Red Wings,"Tue, Oct 13",NHL,Devils at Red Wings,ESPN,Y,M,5:00 PM,7:30 PM,Eastern (Metropolitan),Eastern (Atlantic)
-FL Panthers,Blue Jackets,"Tue, Oct 13",NHL,FL Panthers at Blue Jackets,ESPN+,Y,M,5:15 PM,7:45 PM,Eastern (Atlantic),Eastern (Metropolitan)
-Sabres,Canadiens,"Tue, Oct 13",NHL,Sabres at Canadiens,ESPN+,Y,M,5:30 PM,8:00 PM,Eastern (Atlantic),Eastern (Atlantic)
-Capitals,Hurricanes,"Tue, Oct 13",NHL,Capitals at Hurricanes,ESPN+,Y,M,5:45 PM,8:15 PM,Eastern (Metropolitan),Eastern (Metropolitan)
-Cavaliers,Magic,"Tue, Oct 13",NBA (Preseason),Cavaliers at Magic,Peacock,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
-Knicks,Raptors,"Tue, Oct 13",NBA (Preseason),Knicks at Raptors,[OffAir],Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
-Delaware,Middle Tennessee,"Tue, Oct 13",NCAAF,Delaware at Middle Tennessee,CBSSN,N,M,6:00 PM,9:30 PM,Conference USA,Conference USA
-Kraken,Flyers,"Tue, Oct 13",NHL,Kraken at Flyers,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Metropolitan)
-Lightning,NY Rangers,"Tue, Oct 13",NHL,Lightning at NY Rangers,ESPN+,Y,M,6:15 PM,8:45 PM,Eastern (Atlantic),Eastern (Metropolitan)
-Blues,Senators,"Tue, Oct 13",NHL,Blues at Senators,ESPN+,Y,M,6:30 PM,9:00 PM,Western (Central),Eastern (Atlantic)
-Canucks,Islanders,"Tue, Oct 13",NHL,Canucks at Islanders,ESPN+,Y,M,6:45 PM,9:15 PM,Western (Pacific),Eastern (Metropolitan)
-Guardians,Rays,"Tue, Oct 13",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
-Pacers,Thunder,"Tue, Oct 13",NBA (Preseason),Pacers at Thunder,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
-Florida International,Jacksonville State,"Tue, Oct 13",NCAAF,Florida International at Jacksonville State,ESPNU,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
-Penguins,Blackhawks,"Tue, Oct 13",NHL,Penguins at Blackhawks,ESPN+,Y,M,7:00 PM,9:30 PM,Eastern (Metropolitan),Western (Central)
-Wild,Jets,"Tue, Oct 13",NHL,Wild at Jets,ESPN+,Y,M,7:15 PM,9:45 PM,Western (Central),Western (Central)
-Avalanche,Stars,"Tue, Oct 13",NHL,Avalanche at Stars,ESPN,Y,M,7:30 PM,10:00 PM,Western (Central),Western (Central)
-Golden Knights,Predators,"Tue, Oct 13",NHL,Golden Knights at Predators,ESPN+,Y,M,7:45 PM,10:15 PM,Western (Pacific),Western (Central)
-Maple Leafs,Mammoth,"Tue, Oct 13",NHL,Maple Leafs at Mammoth,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Atlantic),Western (Central)
-Flames,Ducks,"Tue, Oct 13",NHL,Flames at Ducks,ESPN+,Y,M,8:45 PM,11:15 PM,Western (Pacific),Western (Pacific)
-Warriors,Lakers,"Tue, Oct 13",NBA (Preseason),Warriors at Lakers,NBA TV,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
-Trail Blazers,Kings,"Tue, Oct 13",NBA (Preseason),Trail Blazers at Kings,[OffAir],Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
-Oilers,LA Kings,"Tue, Oct 13",NHL,Oilers at LA Kings,ESPN+,Y,M,9:30 PM,12:00 AM,Western (Pacific),Western (Pacific)
-Bruins,Sharks,"Tue, Oct 13",NHL,Bruins at Sharks,ESPN,Y,M,10:00 PM,12:30 AM,Eastern (Atlantic),Western (Pacific)
 Merrimack,Boston College,"Wed, Oct 14",NCAA Hockey (W),Merrimack at Boston College,ESPN+,N,W,6:00 PM,8:30 PM,Hockey East,Hockey East
 Nets,Heat,"Wed, Oct 14",NBA (Preseason),Nets at Heat,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
 Hornets,Celtics,"Wed, Oct 14",NBA (Preseason),Hornets at Celtics,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
@@ -76,12 +52,12 @@ Post,Stonehill,"Fri, Oct 16",NCAA Hockey (W),Post at Stonehill,TBA,N,W,4:00 PM,6
 Rays,Guardians,"Fri, Oct 16",MLB (ALCS),Rays at Guardians,TBS/truTV,Y,M,5:00 PM,8:15 PM,AL East,AL Central
 Assumption,St. Anselm,"Fri, Oct 16",NCAA Hockey (W),Assumption at St. Anselm,TBA,N,W,5:00 PM,7:30 PM,NEWHA,NEWHA
 Colgate,Boston University,"Fri, Oct 16",NCAA Hockey (W),#9 Colgate at Boston University,ESPN+,Y,W,5:00 PM,7:30 PM,ECAC,Hockey East
-Union,Delaware,"Fri, Oct 16",NCAA Hockey (W),Union at Delaware,TBA,N,W,5:00 PM,7:30 PM,ECAC,AHA
-Brown,RIT,"Fri, Oct 16",NCAA Hockey (W),Brown at RIT,TBA,N,W,5:00 PM,7:30 PM,ECAC,AHA
+Union,Delaware,"Fri, Oct 16",NCAA Hockey (W),Union at Delaware,FloSports,N,W,5:00 PM,7:30 PM,ECAC,AHA
+Brown,RIT,"Fri, Oct 16",NCAA Hockey (W),Brown at RIT,FloSports,N,W,5:00 PM,7:30 PM,ECAC,AHA
 Harvard,Holy Cross,"Fri, Oct 16",NCAA Hockey (W),Harvard at Holy Cross,ESPN+,N,W,5:00 PM,7:30 PM,ECAC,Hockey East
 Northeastern,Quinnipiac,"Fri, Oct 16",NCAA Hockey (W),#6 Northeastern at #4 Quinnipiac,ESPN+,Y,W,5:00 PM,7:30 PM,Hockey East,ECAC
 Vermont,Cornell,"Fri, Oct 16",NCAA Hockey (W),#15 Vermont at #14 Cornell,TBA,Y,W,5:00 PM,7:30 PM,Hockey East,ECAC
-UConn,Princeton,"Fri, Oct 16",NCAA Hockey (W),#8 UConn at #7 Princeton,TBA,Y,W,5:00 PM,7:30 PM,Hockey East,ECAC
+UConn,Princeton,"Fri, Oct 16",NCAA Hockey (W),#8 UConn at #7 Princeton,ESPN+,Y,W,5:00 PM,7:30 PM,Hockey East,ECAC
 North Carolina,Notre Dame,"Fri, Oct 16",NCAA Volleyball (W),#25 North Carolina at Notre Dame,ACCNX,Y,W,5:30 PM,7:30 PM,ACC,ACC
 Heat,Magic,"Fri, Oct 16",NBA (Preseason),Heat at Magic,TBA,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Celtics,76ers,"Fri, Oct 16",NBA (Preseason),Celtics at 76ers,NBA TV,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
@@ -155,7 +131,7 @@ Florida Atlantic,Army,"Sat, Oct 17",NCAAF,Florida Atlantic at Army,CBSSN,N,M,11:
 Ball State,Bowling Green,"Sat, Oct 17",NCAAF,Ball State at Bowling Green,ESPN+,N,M,11:00 AM,2:30 PM,MAC,MAC
 Georgia State,James Madison,"Sat, Oct 17",NCAAF,Georgia State at James Madison,ESPNU,N,M,11:00 AM,2:30 PM,Sun Belt,Sun Belt
 Lindenwood,Penn State,"Sat, Oct 17",NCAA Hockey (W),Lindenwood at #5 Penn State,B1G+,Y,W,11:00 AM,1:30 PM,AHA,AHA
-Brown,RIT,"Sat, Oct 17",NCAA Hockey (W),Brown at RIT,TBA,N,W,11:00 AM,1:30 PM,ECAC,AHA
+Brown,RIT,"Sat, Oct 17",NCAA Hockey (W),Brown at RIT,FloSports,N,W,11:00 AM,1:30 PM,ECAC,AHA
 Rutgers,Maryland,"Sat, Oct 17",NCAAF,Rutgers at Maryland,BTN,N,M,11:30 AM,3:00 PM,Big Ten,Big Ten
 The Citadel,Texas A&M,"Sat, Oct 17",NCAAF,The Citadel at Texas A&M,SECN+,N,M,12:00 PM,3:30 PM,Southern,SEC
 Charlotte,Temple,"Sat, Oct 17",NCAAF,Charlotte at Temple,ESPN+,N,M,12:00 PM,3:30 PM,AAC,AAC
@@ -164,14 +140,14 @@ Franklin Pierce,Clarkson,"Sat, Oct 17",NCAA Hockey (W),Franklin Pierce at #11 Cl
 Devils,Capitals,"Sat, Oct 17",NHL,Devils at Capitals,NHL Net,Y,M,12:00 PM,2:30 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 Western Michigan,Central Michigan,"Sat, Oct 17",NCAAF,Western Michigan at Central Michigan,ESPN+,N,M,12:30 PM,4:00 PM,MAC,MAC
 Post,Stonehill,"Sat, Oct 17",NCAA Hockey (W),Post at Stonehill,TBA,N,W,1:00 PM,3:30 PM,NEWHA,NEWHA
-Union,Delaware,"Sat, Oct 17",NCAA Hockey (W),Union at Delaware,TBA,N,W,1:00 PM,3:30 PM,ECAC,AHA
+Union,Delaware,"Sat, Oct 17",NCAA Hockey (W),Union at Delaware,FloSports,N,W,1:00 PM,3:30 PM,ECAC,AHA
 Ohio State,Minnesota,"Sat, Oct 17",NCAA Hockey (W),#1 Ohio State at #3 Minnesota,B1G+,Y,W,2:00 PM,4:30 PM,WCHA,WCHA
 St. Cloud State,St. Thomas-Minnesota,"Sat, Oct 17",NCAA Hockey (W),#10 St. Cloud State at St. Thomas-Minnesota,B1G+,Y,W,2:00 PM,4:30 PM,WCHA,WCHA
 Minnesota State,Wisconsin,"Sat, Oct 17",NCAA Hockey (W),Minnesota State at #2 Wisconsin,B1G+,Y,W,2:00 PM,4:30 PM,WCHA,WCHA
 Maine,RPI,"Sat, Oct 17",NCAA Hockey (W),Maine at RPI,ESPN+,N,W,2:00 PM,4:30 PM,Hockey East,ECAC
 Northeastern,Quinnipiac,"Sat, Oct 17",NCAA Hockey (W),#6 Northeastern at #4 Quinnipiac,ESPN+,Y,W,2:00 PM,4:30 PM,Hockey East,ECAC
 Vermont,Cornell,"Sat, Oct 17",NCAA Hockey (W),#15 Vermont at #14 Cornell,TBA,Y,W,2:00 PM,4:30 PM,Hockey East,ECAC
-UConn,Princeton,"Sat, Oct 17",NCAA Hockey (W),#8 UConn at #7 Princeton,TBA,Y,W,2:00 PM,4:30 PM,Hockey East,ECAC
+UConn,Princeton,"Sat, Oct 17",NCAA Hockey (W),#8 UConn at #7 Princeton,ESPN+,Y,W,2:00 PM,4:30 PM,Hockey East,ECAC
 Syracuse,Robert Morris,"Sat, Oct 17",NCAA Hockey (W),Syracuse at Robert Morris,FloSports,N,W,2:00 PM,4:30 PM,AHA,AHA
 Auburn,Georgia,"Sat, Oct 17",NCAAF,Auburn at #1 Georgia,ESPN,Y,M,2:30 PM,6:00 PM,SEC,SEC
 Alabama,Tennessee,"Sat, Oct 17",NCAAF,#6 Alabama at #14 Tennessee,ABC,Y,M,2:30 PM,6:00 PM,SEC,SEC
@@ -294,3 +270,27 @@ Dodgers,Brewers,"Mon, Oct 19",MLB (NLCS),Dodgers at Brewers,FOX/FS1,Y,M,7:00 PM,
 Dream,Valkyries,"Mon, Oct 19",WNBA (Finals),Dream at Valkyries,USA,Y,W,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Commanders,49ers,"Mon, Oct 19",NFL,Commanders at 49ers,ABC,Y,M,7:15 PM,10:45 PM,NFC East,NFC West
 Penguins,Mammoth,"Mon, Oct 19",NHL,Penguins at Mammoth,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Metropolitan),Western (Central)
+Celtics,Pistons,"Tue, Oct 20",NBA,Celtics at Pistons,NBC,Y,M,2:00 PM,4:30 PM,Eastern Conference,Eastern Conference
+Robert Morris,Penn State,"Tue, Oct 20",NCAA Hockey (M),Robert Morris at Penn State,B1G+,N,M,5:00 PM,7:30 PM,AHA,Big Ten
+76ers,Knicks,"Tue, Oct 20",NBA,76ers at Knicks,NBC,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
+Middle Tennessee,Florida International,"Tue, Oct 20",NCAAF,Middle Tennessee at Florida International,CBSSN,N,M,6:00 PM,9:30 PM,Conference USA,Conference USA
+Missouri State,Delaware,"Tue, Oct 20",NCAAF,Missouri State at Delaware,ESPNU,N,M,6:00 PM,9:30 PM,Conference USA,Conference USA
+LIU,St. Lawrence,"Tue, Oct 20",NCAA Hockey (M),LIU at St. Lawrence,ESPN+,N,M,6:00 PM,8:30 PM,Independents,ECAC
+Sharks,Canadiens,"Tue, Oct 20",NHL,Sharks at Canadiens,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Atlantic)
+Avalanche,Devils,"Tue, Oct 20",NHL,Avalanche at Devils,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Central),Eastern (Metropolitan)
+Ducks,Islanders,"Tue, Oct 20",NHL,Ducks at Islanders,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Metropolitan)
+LA Kings,Capitals,"Tue, Oct 20",NHL,LA Kings at Capitals,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Metropolitan)
+Maple Leafs,Blue Jackets,"Tue, Oct 20",NHL,Maple Leafs at Blue Jackets,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Metropolitan)
+South Alabama,Marshall,"Tue, Oct 20",NCAAF,South Alabama at Marshall,ESPN2,N,M,6:30 PM,10:00 PM,Sun Belt,Sun Belt
+Guardians,Rays,"Tue, Oct 20",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
+Jets,Blues,"Tue, Oct 20",NHL,Jets at Blues,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Central),Western (Central)
+Bruins,Stars,"Tue, Oct 20",NHL,Bruins at Stars,ESPN,Y,M,7:00 PM,9:30 PM,Eastern (Atlantic),Western (Central)
+Wild,Oilers,"Tue, Oct 20",NHL,Wild at Oilers,ESPN+,Y,M,8:00 PM,10:30 PM,Western (Central),Western (Pacific)
+Thunder,Spurs,"Tue, Oct 20",NBA,Thunder at Spurs,NBC,Y,M,8:30 PM,11:00 PM,Western Conference,Western Conference
+Red Wings,Kraken,"Tue, Oct 20",NHL,Red Wings at Kraken,ESPN+,Y,M,8:40 PM,11:10 PM,Eastern (Atlantic),Western (Pacific)
+Hurricanes,Canucks,"Tue, Oct 20",NHL,Hurricanes at Canucks,ESPN+,Y,M,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
+Lightning,Golden Knights,"Tue, Oct 20",NHL,Lightning at Golden Knights,ESPN,Y,M,9:30 PM,12:00 AM,Eastern (Atlantic),Western (Pacific)
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
