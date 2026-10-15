@@ -424,7 +424,7 @@ function isGameExpiredToday(d) {
     if (endMins < startMins) endMins += 1440;
 
     const gameEndTimestamp = startOfToday.getTime() + endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 30 * 60000;
+    const thresholdTimestamp = gameEndTimestamp + 20 * 60000;
 
     if (now.getTime() >= thresholdTimestamp) {
       return true;
@@ -443,7 +443,7 @@ function getFilteredDataExcept(excludedFilter = null) {
       return false;
     }
 
-    // Exclude games on today that ended more than 30 minutes ago
+    // Exclude games on today that ended more than 20 minutes ago
     if (isGameExpiredToday(d)) {
       return false;
     }
@@ -650,7 +650,7 @@ function getFirstAvailableDate(allData) {
 
       if (maxEndMinutes !== -1) {
         const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
-        const thresholdTime = new Date(latestEndDateTime.getTime() + 30 * 60000);
+        const thresholdTime = new Date(latestEndDateTime.getTime() + 20 * 60000);
 
         if (now.getTime() < thresholdTime.getTime()) {
           return todayItem.originalStr;
@@ -1007,7 +1007,7 @@ function renderChart(targetId, data, isDigital = false) {
       const matchesDate = gDate === selectedDate || gDate.includes(selectedDate) || selectedDate.includes(gDate);
       if (!matchesDate) return false;
       
-      // Filter out games that ended more than 30 minutes ago today
+      // Filter out games that ended more than 20 minutes ago today
       if (isGameExpiredToday(g)) return false;
       
       return true;
