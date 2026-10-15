@@ -148,7 +148,7 @@ UNLV,Air Force,"Sat, Oct 17",NCAAF,UNLV at Air Force,CBSSN,N,M,2:30 PM,6:00 PM,M
 Toledo,Eastern Michigan,"Sat, Oct 17",NCAAF,Toledo at Eastern Michigan,ESPN+,N,M,2:30 PM,6:00 PM,MAC,MAC
 Akron,Miami (OH),"Sat, Oct 17",NCAAF,Akron at Miami (OH),ESPN+,N,M,2:30 PM,6:00 PM,MAC,MAC
 Hurricanes,Jets,"Sat, Oct 17",NHL,Hurricanes at Jets,ESPN+,Y,M,2:30 PM,5:00 PM,Eastern (Metropolitan),Western (Central)
-Dream,Valkyries,"Sat, Oct 17",WNBA,Dream at Valkyries,NBC,Y,W,2:30 PM,4:45 PM,Eastern Conference,Western Conference
+Dream,Valkyries,"Sat, Oct 17",WNBA (Finals),Dream at Valkyries,NBC,Y,W,2:30 PM,4:45 PM,Eastern Conference,Western Conference
 Minnesota Duluth,Bemidji State,"Sat, Oct 17",NCAA Hockey (W),#12 Minnesota Duluth at Bemidji State,B1G+,N,W,3:00 PM,5:30 PM,WCHA,WCHA
 Dartmouth,Saint Michael's,"Sat, Oct 17",NCAA Hockey (W),Dartmouth at Saint Michael's,FloSports,N,W,3:00 PM,5:30 PM,ECAC,NEWHA
 Canucks,Lightning,"Sat, Oct 17",NHL,Canucks at Lightning,ESPN+,Y,M,3:00 PM,5:30 PM,Western (Pacific),Eastern (Atlantic)
@@ -254,7 +254,7 @@ Ducks,NY Rangers,"Mon, Oct 19",NHL,Ducks at NY Rangers,ESPN+,Y,M,6:00 PM,8:30 PM
 Avalanche,Flyers,"Mon, Oct 19",NHL,Avalanche at Flyers,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Central),Eastern (Metropolitan)
 Sharks,Maple Leafs,"Mon, Oct 19",NHL,Sharks at Maple Leafs,ESPN+,Y,M,6:30 PM,9:00 PM,Western (Pacific),Eastern (Atlantic)
 Dodgers,Brewers,"Mon, Oct 19",MLB (NLCS),Dodgers at Brewers,FOX/FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
-Dream,Valkyries,"Mon, Oct 19",WNBA,Dream at Valkyries,USA,Y,W,7:00 PM,9:15 PM,Eastern Conference,Western Conference
+Dream,Valkyries,"Mon, Oct 19",WNBA (Finals),Dream at Valkyries,USA,Y,W,7:00 PM,9:15 PM,Eastern Conference,Western Conference
 Commanders,49ers,"Mon, Oct 19",NFL,Commanders at 49ers,ABC,Y,M,7:15 PM,10:45 PM,NFC East,NFC West
 Penguins,Mammoth,"Mon, Oct 19",NHL,Penguins at Mammoth,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Metropolitan),Western (Central)
 Celtics,Pistons,"Tue, Oct 20",NBA,Celtics at Pistons,NBC,Y,M,2:00 PM,4:30 PM,Eastern Conference,Eastern Conference
@@ -288,7 +288,7 @@ FL Panthers,Senators,"Wed, Oct 21",NHL,FL Panthers at Senators,ESPN+,Y,M,6:30 PM
 Jazz,Grizzlies,"Wed, Oct 21",NBA,Jazz at Grizzlies,[ TBA ],Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
 Pacers,Pelicans,"Wed, Oct 21",NBA,Pacers at Pelicans,[ TBA ],Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 New Mexico State,Sam Houston,"Wed, Oct 21",NCAAF,New Mexico State at Sam Houston,ESPN2,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
-Valkyries,Dream,"Wed, Oct 21",WNBA,Valkyries at Dream,USA,Y,W,7:00 PM,9:15 PM,Western Conference,Eastern Conference
+Valkyries,Dream,"Wed, Oct 21",WNBA (Finals),Valkyries at Dream,USA,Y,W,7:00 PM,9:15 PM,Western Conference,Eastern Conference
 Mavericks,Rockets,"Wed, Oct 21",NBA,Mavericks at Rockets,[ TBA ],Y,M,7:30 PM,10:00 PM,Western Conference,Western Conference
 Warriors,Lakers,"Wed, Oct 21",NBA,Warriors at Lakers,ESPN,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
 Suns,Trail Blazers,"Wed, Oct 21",NBA,Suns at Trail Blazers,[ TBA ],Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
