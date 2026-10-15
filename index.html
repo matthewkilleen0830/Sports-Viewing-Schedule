@@ -200,7 +200,7 @@
     // List of networks classified as streaming
     const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
-    "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "[ TBA ]"];
+    "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --"];
 
     const PREFERRED_CONF_ORDER = [
       "AHA",
@@ -305,7 +305,9 @@
   "West Georgia": "#002F6C", "West Virginia": "#002855", "Western Carolina": "#51267B", "Western Illinois": "#663399", "Western Kentucky": "#BD0F26",
   "Western Michigan": "#5C1322", "White Sox": "#000000", "Wild": "#154734", "William & Mary": "#115740", "Windsor": "#005A36", "Wings": "#0C2340",
   "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24", "Yale": "#00356B", "Yankees": "#0C2340",
-  "Youngstown State": "#E4002B"
+  "Youngstown State": "#E4002B",
+
+  "Port Royal GC": "#003F62", "Vidanta Vallarta Course": "#252525", "Diamante El Cardonal": "#0088ED"
 };
 
 const DOM = {
@@ -959,7 +961,7 @@ function resolveOverlapSubRows(games) {
   '<b>' + game.Matchup + '</b><br>' +
   'League: ' + game.League + '<br>' +
   'Broadcast Outlet: ' + network + '<br>' +
-  'Game Start: %{customdata[0]}<extra></extra>',
+  'Start Time: %{customdata[0]}<extra></extra>',
 customdata: [[
   game.Start_Time
 ]]
