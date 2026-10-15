@@ -93,14 +93,15 @@
             <select id="dateFilter" class="form-select"></select>
           </div>
 
-          <!-- League -->
-<div class="mb-3">
-            <label class="form-label fw-semibold">Sports League</label>
-            <div id="leagueFilter" class="checkbox-panel"></div>
+<!-- Ranked Teams Toggle Checkbox -->
+          <div class="mb-3 ranked-toggle-wrapper">
+            <div class="form-check d-flex align-items-center gap-2 ps-0">
+              <input class="form-check-input ms-0" type="checkbox" id="rankedFilter">
+              <label class="form-check-label fw-semibold mb-0" for="rankedFilter">
+                Ranked Teams
+              </label>
+            </div>
           </div>
-
-
-
 
 <!-- Gender Filter -->
           <div class="mb-3 checkbox-panel">
@@ -116,15 +117,19 @@
             </div>
           </div>
 
-          <!-- Ranked Teams Toggle Checkbox -->
-          <div class="mb-3 ranked-toggle-wrapper">
-            <div class="form-check d-flex align-items-center gap-2 ps-0">
-              <input class="form-check-input ms-0" type="checkbox" id="rankedFilter">
-              <label class="form-check-label fw-semibold mb-0" for="rankedFilter">
-                Ranked Teams
-              </label>
-            </div>
+
+          <!-- League -->
+<div class="mb-3">
+            <label class="form-label fw-semibold">Sports League</label>
+            <div id="leagueFilter" class="checkbox-panel"></div>
           </div>
+
+
+
+
+
+
+          
 
           <div class="mb-3">
             <label for="timeFilter" class="form-label fw-semibold">Game Start</label>
