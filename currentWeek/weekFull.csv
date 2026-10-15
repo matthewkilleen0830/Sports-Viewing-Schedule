@@ -1,19 +1,6 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Gender,Start_Time,End_Time,Visitor_Conference,Home_Conference
-Merrimack,Boston College,"Wed, Oct 14",NCAA Hockey (W),Merrimack at Boston College,ESPN+,N,W,6:00 PM,8:30 PM,Hockey East,Hockey East
-Nets,Heat,"Wed, Oct 14",NBA (Preseason),Nets at Heat,[OffAir],Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
-Hornets,Celtics,"Wed, Oct 14",NBA (Preseason),Hornets at Celtics,[OffAir],Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
-Kennesaw State,Missouri State,"Wed, Oct 14",NCAAF,Kennesaw State at Missouri State,CBSSN,N,M,6:30 PM,10:00 PM,Conference USA,Conference USA
-Canadiens,Capitals,"Wed, Oct 14",NHL,Canadiens at Capitals,ESPN+,Y,M,6:30 PM,9:00 PM,Eastern (Atlantic),Eastern (Metropolitan)
-Brewers,Dodgers,"Wed, Oct 14",MLB (NLCS),Brewers at Dodgers,FS1,Y,M,7:00 PM,10:15 PM,NL Central,NL West
-Suns,Spurs,"Wed, Oct 14",NBA (Preseason),Suns at Spurs,[OffAir],Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
-Pelicans,Mavericks,"Wed, Oct 14",NBA (Preseason),Pelicans at Mavericks,NBA TV,Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
-Bulls,Bucks,"Wed, Oct 14",NBA (Preseason),Bulls at Bucks,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
-Pistons,Timberwolves,"Wed, Oct 14",NBA (Preseason),Pistons at Timberwolves,[OffAir],Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
-Western Kentucky,Sam Houston,"Wed, Oct 14",NCAAF,Western Kentucky at Sam Houston,ESPN,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
-Stars,Avalanche,"Wed, Oct 14",NHL,Stars at Avalanche,TNT/truTV,Y,M,7:30 PM,10:00 PM,Western (Central),Western (Central)
-Nuggets,Clippers,"Wed, Oct 14",NBA (Preseason),Nuggets at Clippers,NBA TV,Y,M,9:30 PM,12:00 AM,Western Conference,Western Conference
+Rays,Guardians,"Thu, Oct 15",MLB (ALCS),Rays at Guardians,TBS/truTV,Y,M,12:00 PM,3:15 PM,AL East,AL Central
 St. Lawrence,New Hampshire,"Thu, Oct 15",NCAA Hockey (W),St. Lawrence at New Hampshire,ESPN+,N,W,4:00 PM,6:30 PM,ECAC,Hockey East
-Rays,Guardians,"Thu, Oct 15",MLB (ALCS),Rays at Guardians,TBS/truTV,Y,M,5:00 PM,8:15 PM,AL East,AL Central
 Robert Morris,Miami (Ohio),"Thu, Oct 15",NCAA Hockey (M),Robert Morris at Miami (Ohio),NCHC.tv,N,M,6:00 PM,8:30 PM,AHA,NCHC
 St. Cloud State,Boston College,"Thu, Oct 15",NCAA Hockey (M),St. Cloud State at #16 Boston College,ESPN+,Y,M,6:00 PM,8:30 PM,NCHC,Hockey East
 Michigan State,Illinois,"Thu, Oct 15",NCAA Volleyball (W),#22 Michigan State at #24 Illinois,TBA,Y,W,6:00 PM,8:00 PM,Big Ten,Big Ten
@@ -28,6 +15,7 @@ Georgia Southern,Old Dominion,"Thu, Oct 15",NCAAF,Georgia Southern at Old Domini
 Kansas,Kansas State,"Thu, Oct 15",NCAA Volleyball (W),#19 Kansas at Kansas State,ESPN+,Y,W,6:30 PM,8:30 PM,Big XII,Big XII
 Colorado,Iowa State,"Thu, Oct 15",NCAA Volleyball (W),#23 Colorado at Iowa State,ESPN+,Y,W,6:30 PM,8:30 PM,Big XII,Big XII
 Flyers,Red Wings,"Thu, Oct 15",NHL,Flyers at Red Wings,ESPN+,Y,M,6:30 PM,9:00 PM,Eastern (Metropolitan),Eastern (Atlantic)
+Brewers,Dodgers,"Thu, Oct 15",MLB (NLCS),Brewers at Dodgers,FS1,Y,M,7:00 PM,10:15 PM,NL Central,NL West
 Colorado State,Texas State,"Thu, Oct 15",NCAAF,Colorado State at Texas State,CBSSN,N,M,7:00 PM,10:30 PM,Pac-12,Pac-12
 Nebraska,Northwestern,"Thu, Oct 15",NCAA Volleyball (W),#1 Nebraska at Northwestern,B1G+,Y,W,7:00 PM,9:00 PM,Big Ten,Big Ten
 Jets,Blackhawks,"Thu, Oct 15",NHL,Jets at Blackhawks,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Central),Western (Central)
@@ -36,7 +24,6 @@ Blues,Wild,"Thu, Oct 15",NHL,Blues at Wild,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Ce
 Omaha,Augustana,"Thu, Oct 15",NCAA Hockey (M),Omaha at #15 Augustana,Midco,Y,M,7:07 PM,9:37 PM,NCHC,CCHA
 Seahawks,Broncos,"Thu, Oct 15",NFL,Seahawks at Broncos,Prime,Y,M,7:15 PM,10:45 PM,NFC West,AFC West
 Thunder,Rockets,"Thu, Oct 15",NBA (Preseason),Thunder at Rockets,NBA TV,Y,M,7:30 PM,10:00 PM,Western Conference,Western Conference
-Brewers,Dodgers,"Thu, Oct 15",MLB (NLCS),Brewers at Dodgers,FS1,Y,M,8:00 PM,11:15 PM,NL Central,NL West
 Purdue,Iowa,"Thu, Oct 15",NCAA Volleyball (W),#16 Purdue at Iowa,TBA,Y,W,8:00 PM,10:00 PM,Big Ten,Big Ten
 BYU,Utah,"Thu, Oct 15",NCAA Volleyball (W),#17 BYU at Utah,ESPN+,Y,W,8:00 PM,10:00 PM,Big XII,Big XII
 Mammoth,Oilers,"Thu, Oct 15",NHL,Mammoth at Oilers,ESPN+,Y,M,8:00 PM,10:30 PM,Western (Central),Western (Pacific)
@@ -258,15 +245,15 @@ Chargers,Chiefs,"Sun, Oct 18",NFL,Chargers at Chiefs,CBS,Y,M,3:25 PM,6:55 PM,NFC
 Bills,Raiders,"Sun, Oct 18",NFL,Bills at Raiders,CBS,Y,M,3:25 PM,6:55 PM,AFC East,AFC West
 Indiana,Washington,"Sun, Oct 18",NCAA Volleyball (W),#15 Indiana at #20 Washington,B1G+,Y,W,4:00 PM,6:00 PM,Big Ten,Big Ten
 Blue Jackets,Wild,"Sun, Oct 18",NHL,Blue Jackets at Wild,ESPN+,Y,M,5:00 PM,7:30 PM,Eastern (Metropolitan),Western (Central)
-Dodgers,Brewers,"Sun, Oct 18",MLB (NLCS),Dodgers at Brewers,FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
+Dodgers,Brewers,"Sun, Oct 18",MLB,Dodgers at Brewers,FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
 Hurricanes,Flames,"Sun, Oct 18",NHL,Hurricanes at Flames,ESPN+,Y,M,7:00 PM,9:30 PM,Eastern (Metropolitan),Western (Pacific)
 Cowboys,Packers,"Sun, Oct 18",NFL,Cowboys at Packers,NBC,Y,M,7:20 PM,10:50 PM,NFC East,NFC North
 Florida,Texas,"Sun, Oct 18",NCAA Volleyball (W),#5 Florida at #9 Texas,ESPN,Y,W,7:30 PM,9:30 PM,SEC,SEC
-Guardians,Rays,"Mon, Oct 19",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,4:00 PM,7:15 PM,AL Central,AL East
+Guardians,Rays,"Mon, Oct 19",MLB,Guardians at Rays,TBS/truTV,Y,M,4:00 PM,7:15 PM,AL Central,AL East
 Ducks,NY Rangers,"Mon, Oct 19",NHL,Ducks at NY Rangers,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Metropolitan)
 Avalanche,Flyers,"Mon, Oct 19",NHL,Avalanche at Flyers,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Central),Eastern (Metropolitan)
 Sharks,Maple Leafs,"Mon, Oct 19",NHL,Sharks at Maple Leafs,ESPN+,Y,M,6:30 PM,9:00 PM,Western (Pacific),Eastern (Atlantic)
-Dodgers,Brewers,"Mon, Oct 19",MLB (NLCS),Dodgers at Brewers,FOX/FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
+Dodgers,Brewers,"Mon, Oct 19",MLB,Dodgers at Brewers,FOX/FS1,Y,M,7:00 PM,10:15 PM,NL West,NL Central
 Dream,Valkyries,"Mon, Oct 19",WNBA (Finals),Dream at Valkyries,USA,Y,W,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Commanders,49ers,"Mon, Oct 19",NFL,Commanders at 49ers,ABC,Y,M,7:15 PM,10:45 PM,NFC East,NFC West
 Penguins,Mammoth,"Mon, Oct 19",NHL,Penguins at Mammoth,ESPN+,Y,M,8:00 PM,10:30 PM,Eastern (Metropolitan),Western (Central)
@@ -282,7 +269,7 @@ Ducks,Islanders,"Tue, Oct 20",NHL,Ducks at Islanders,ESPN+,Y,M,6:00 PM,8:30 PM,W
 LA Kings,Capitals,"Tue, Oct 20",NHL,LA Kings at Capitals,ESPN+,Y,M,6:00 PM,8:30 PM,Western (Pacific),Eastern (Metropolitan)
 Maple Leafs,Blue Jackets,"Tue, Oct 20",NHL,Maple Leafs at Blue Jackets,ESPN+,Y,M,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Metropolitan)
 South Alabama,Marshall,"Tue, Oct 20",NCAAF,South Alabama at Marshall,ESPN2,N,M,6:30 PM,10:00 PM,Sun Belt,Sun Belt
-Guardians,Rays,"Tue, Oct 20",MLB (ALCS),Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
+Guardians,Rays,"Tue, Oct 20",MLB,Guardians at Rays,TBS/truTV,Y,M,7:00 PM,10:15 PM,AL Central,AL East
 Jets,Blues,"Tue, Oct 20",NHL,Jets at Blues,ESPN+,Y,M,7:00 PM,9:30 PM,Western (Central),Western (Central)
 Bruins,Stars,"Tue, Oct 20",NHL,Bruins at Stars,ESPN,Y,M,7:00 PM,9:30 PM,Eastern (Atlantic),Western (Central)
 Wild,Oilers,"Tue, Oct 20",NHL,Wild at Oilers,ESPN+,Y,M,8:00 PM,10:30 PM,Western (Central),Western (Pacific)
@@ -290,3 +277,19 @@ Thunder,Spurs,"Tue, Oct 20",NBA,Thunder at Spurs,NBC,Y,M,8:30 PM,11:00 PM,Wester
 Red Wings,Kraken,"Tue, Oct 20",NHL,Red Wings at Kraken,ESPN+,Y,M,8:40 PM,11:10 PM,Eastern (Atlantic),Western (Pacific)
 Hurricanes,Canucks,"Tue, Oct 20",NHL,Hurricanes at Canucks,ESPN+,Y,M,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
 Lightning,Golden Knights,"Tue, Oct 20",NHL,Lightning at Golden Knights,ESPN,Y,M,9:30 PM,12:00 AM,Eastern (Atlantic),Western (Pacific)
+Hawks,Magic,"Wed, Oct 21",NBA,Hawks at Magic,TBA,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
+Bucks,Wizards,"Wed, Oct 21",NBA,Bucks at Wizards,MNMT,Y,M,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
+Kentucky,Tennessee,"Wed, Oct 21",NCAA Volleyball (W),#4 Kentucky at #10 Tennessee,SECN,Y,W,6:00 PM,8:00 PM,SEC,SEC
+Timberwolves,Heat,"Wed, Oct 21",NBA,Timberwolves at Heat,ESPN,Y,M,6:30 PM,9:00 PM,Western Conference,Eastern Conference
+Hornets,Nets,"Wed, Oct 21",NBA,Hornets at Nets,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
+Bulls,Raptors,"Wed, Oct 21",NBA,Bulls at Raptors,TBA,Y,M,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
+Flyers,Sabres,"Wed, Oct 21",NHL,Flyers at Sabres,TNT/truTV,Y,M,6:30 PM,9:00 PM,Eastern (Metropolitan),Eastern (Atlantic)
+FL Panthers,Senators,"Wed, Oct 21",NHL,FL Panthers at Senators,ESPN+,Y,M,6:30 PM,9:00 PM,Eastern (Atlantic),Eastern (Atlantic)
+Jazz,Grizzlies,"Wed, Oct 21",NBA,Jazz at Grizzlies,TBA,Y,M,7:00 PM,9:30 PM,Western Conference,Western Conference
+Pacers,Pelicans,"Wed, Oct 21",NBA,Pacers at Pelicans,TBA,Y,M,7:00 PM,9:30 PM,Eastern Conference,Western Conference
+New Mexico State,Sam Houston,"Wed, Oct 21",NCAAF,New Mexico State at Sam Houston,ESPN2,N,M,7:00 PM,10:30 PM,Conference USA,Conference USA
+Valkyries,Dream,"Wed, Oct 21",WNBA (Finals),Valkyries at Dream,USA,Y,W,7:00 PM,9:30 PM,Western Conference,Eastern Conference
+Mavericks,Rockets,"Wed, Oct 21",NBA,Mavericks at Rockets,TBA,Y,M,7:30 PM,10:00 PM,Western Conference,Western Conference
+Warriors,Lakers,"Wed, Oct 21",NBA,Warriors at Lakers,ESPN,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
+Suns,Trail Blazers,"Wed, Oct 21",NBA,Suns at Trail Blazers,TBA,Y,M,9:00 PM,11:30 PM,Western Conference,Western Conference
+Kings,Clippers,"Wed, Oct 21",NBA,Kings at Clippers,TBA,Y,M,9:30 PM,12:00 AM,Western Conference,Western Conference
