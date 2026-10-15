@@ -970,10 +970,13 @@ customdata: [[
       });
 
       const ROW_HEIGHT = 32;
-      const TOP_AXIS_PADDING = 75;
+      const TOP_MARGIN = 45;
+      const BOTTOM_MARGIN = 5;
+      
       const totalRows = yTicks.length;
       
-      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_AXIS_PADDING;
+      // Total height = exact row space + top and bottom margins only
+      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_MARGIN + BOTTOM_MARGIN;
 
       container.style.height = `${calculatedPlotHeight}px`;
 
@@ -987,8 +990,8 @@ customdata: [[
         margin: {
           l: 66,
           r: 0,
-          t: 45,
-          b: 5
+          t: TOP_MARGIN,
+          b: BOTTOM_MARGIN
         },
         dragmode: false,
         xaxis: {
