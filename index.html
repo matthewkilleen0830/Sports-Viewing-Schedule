@@ -652,7 +652,6 @@ function getFirstAvailableDate(allData) {
         const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
         const thresholdTime = new Date(latestEndDateTime.getTime() + 30 * 60000);
 
-        // If current time is before the 30-min post-game mark, land on today
         if (now.getTime() < thresholdTime.getTime()) {
           return todayItem.originalStr;
         }
@@ -660,7 +659,6 @@ function getFirstAvailableDate(allData) {
     }
   }
 
-  // Otherwise, land on the next upcoming date >= today
   const upcoming = parsedDates.find(item => item.parsedDate.getTime() > startOfToday.getTime()) ||
                    parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
 
@@ -883,173 +881,229 @@ function resolveOverlapSubRows(games) {
   return { assignedGames, totalSubRows: subRowEndTimes.length };
 }
 
-    function renderChart(targetId, data, isDigital = false) {
-      const container = document.getElementById(targetId);
+// Helper function to get current time in minutes from midnight for Central Time (America/Chicago)
+function getCurrentCentralMinutes() {
+  const now = new Date();
+  const ctTimeStr = now.toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour12: false });
+  const [hours, minutes] = ctTimeStr.split(':').map(Number);
+  return (hours * 60) + minutes;
+}
 
-      if (!data || data.length === 0) {
-        container.style.height = '120px';
-        Plotly.newPlot(targetId, [], {
-          paper_bgcolor: 'rgba(0,0,0,0)',
-          plot_bgcolor: 'rgba(0,0,0,0)',
-          title: {
-            text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
-            font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
-          },
-          xaxis: { visible: false },
-          yaxis: { visible: false },
-          showlegend: false
-        }, { responsive: true, displayModeBar: false });
-        return;
-      }
+function renderChart(targetId, data, isDigital = false) {
+  const container = document.getElementById(targetId);
 
-      const grouped = d3.group(data, d => d.TV_Network);
-      const traces = [];
-      const yTicks = [];
-      const yTickLabels = [];
+  if (!data || data.length === 0) {
+    container.style.height = '120px';
+    Plotly.newPlot(targetId, [], {
+      paper_bgcolor: 'rgba(0,0,0,0)',
+      plot_bgcolor: 'rgba(0,0,0,0)',
+      title: {
+        text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
+        font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
+      },
+      xaxis: { visible: false },
+      yaxis: { visible: false },
+      showlegend: false
+    }, { responsive: true, displayModeBar: false });
+    return;
+  }
 
-      function formatMatchupText(text) {
-        if (!text) return '';
-        return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
-      }
+  const grouped = d3.group(data, d => d.TV_Network);
+  const traces = [];
+  const yTicks = [];
+  const yTickLabels = [];
 
-      grouped.forEach((games, network) => {
-        const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
+  function formatMatchupText(text) {
+    if (!text) return '';
+    return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
+  }
 
-        for (let i = 0; i < totalSubRows; i++) {
-          const rowKey = `${network}_row_${i}`;
-          yTicks.push(rowKey);
-          yTickLabels.push(network);
-        }
+  grouped.forEach((games, network) => {
+    const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
 
-        assignedGames.forEach(game => {
-          const start = timeToMinutes(game.Start_Time);
-          const end = timeToMinutes(game.End_Time);
-          const duration = end >= start ? (end - start) : (end + 1440 - start);
-          const teamHexColor = getHomeTeamColor(game.Matchup);
-          const internalRowKey = `${network}_row_${game.subRowIndex}`;
-          const isRanked = game.Matchup.includes('#');
-          const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
-          const formattedLabel = `<span style="font-size: 22px;">${matchupText}</span><br><span style="font-size: 16px; opacity: 0.85;">${game.League}</span>`;
-          // const hoverLeague = getHoverLeague(game.League);
-
-          traces.push({
-  type: 'bar',
-  orientation: 'h',
-  y: [internalRowKey],
-  x: [duration],
-  base: [start],
-  name: game.Matchup,
-  textfont: {
-    size: 16,
-  },
-  marker: { 
-    color: teamHexColor,
-    line: { color: '#eab308', width: 1.5 },
-    cornerradius: "45%"
-  },
-  text: [formattedLabel],
-  textposition: 'inside',
-  insidetextanchor: 'middle',
-  insidetextfont: { 
-    family: 'Segoe UI, Arial, sans-serif',
-    color: '#ffffff'
-  },
-  hoverlabel: {
-    font: {
-      family: 'Segoe UI, Arial, sans-serif',
-      size: 20,
-    },
-    bgcolor: teamHexColor
-  },
-
-            hovertemplate:
-  '<b>' + game.Matchup + '</b><br>' +
-  'League: ' + game.League + '<br>' +
-  'Broadcast Outlet: ' + network + '<br>' +
-  'Start Time: %{customdata[0]}<extra></extra>',
-customdata: [[
-  game.Start_Time
-]]
-          });
-        });
-      });
-
-      const ROW_HEIGHT = 39;
-      const TOP_MARGIN = 45;
-      const BOTTOM_MARGIN = 5;
-      
-      const totalRows = yTicks.length;
-      
-      // Total height = exact row space + top and bottom margins only
-      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_MARGIN + BOTTOM_MARGIN;
-
-      container.style.height = `${calculatedPlotHeight}px`;
-
-      const layout = {
-        height: calculatedPlotHeight,
-        paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)',
-        barmode: 'stack',
-        bargap: 0.15,                 
-        autosize: true,
-        margin: {
-          l: 66,
-          r: 0,
-          t: TOP_MARGIN,
-          b: BOTTOM_MARGIN
-        },
-        dragmode: false,
-        xaxis: {
-          fixedrange: true,
-          side: 'top',
-          type: 'linear',
-          // range: [600, 1350],
-          tickmode: 'array',
-          tickvals: SHARED_X_AXIS_VALS,
-          ticktext: SHARED_X_AXIS_TEXT,
-          tickangle: -30,
-          tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
-          ticks: 'outside',
-          ticklen: 10,
-          tickcolor: 'rgba(0,0,0,0)',
-          showgrid: true,
-          gridcolor: 'rgba(212, 175, 55, 0.15)',
-          autorange: true,
-          
-          automargin: false
-        },
-        yaxis: {
-          fixedrange: true,
-          ticksuffix: '',
-          autorange: 'reversed',
-          ticks: 'outside',
-          ticklen: 8,
-          tickcolor: 'rgba(0,0,0,0)',
-          tickmode: 'array',
-          tickvals: yTicks,
-          ticktext: yTickLabels,
-          tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' }
-        },
-        showlegend: false
-      };
-
-      const config = { responsive: true, displayModeBar: false };
-
-      Plotly.newPlot(targetId, traces, layout, config);
+    for (let i = 0; i < totalSubRows; i++) {
+      const rowKey = `${network}_row_${i}`;
+      yTicks.push(rowKey);
+      yTickLabels.push(network);
     }
 
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        const plotlyContainers = document.querySelectorAll('.plotly-chart');
-        plotlyContainers.forEach(container => {
-          if (window.Plotly && container.clientHeight > 0) {
-            Plotly.Plots.resize(container);
-          }
-        });
-      }, 100);
+    assignedGames.forEach(game => {
+      const start = timeToMinutes(game.Start_Time);
+      const end = timeToMinutes(game.End_Time);
+      const duration = end >= start ? (end - start) : (end + 1440 - start);
+      const teamHexColor = getHomeTeamColor(game.Matchup);
+      const internalRowKey = `${network}_row_${game.subRowIndex}`;
+      const isRanked = game.Matchup.includes('#');
+      const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
+      const formattedLabel = `<span style="font-size: 22px;">${matchupText}</span><br><span style="font-size: 16px; opacity: 0.85;">${game.League}</span>`;
+
+      traces.push({
+        type: 'bar',
+        orientation: 'h',
+        y: [internalRowKey],
+        x: [duration],
+        base: [start],
+        name: game.Matchup,
+        textfont: {
+          size: 16,
+        },
+        marker: { 
+          color: teamHexColor,
+          line: { color: '#eab308', width: 1.5 },
+          cornerradius: "45%"
+        },
+        text: [formattedLabel],
+        textposition: 'inside',
+        insidetextanchor: 'middle',
+        insidetextfont: { 
+          family: 'Segoe UI, Arial, sans-serif',
+          color: '#ffffff'
+        },
+        hoverlabel: {
+          font: {
+            family: 'Segoe UI, Arial, sans-serif',
+            size: 20,
+          },
+          bgcolor: teamHexColor
+        },
+        hovertemplate:
+          '<b>' + game.Matchup + '</b><br>' +
+          'League: ' + game.League + '<br>' +
+          'Broadcast Outlet: ' + network + '<br>' +
+          'Start Time: %{customdata[0]}<extra></extra>',
+        customdata: [[
+          game.Start_Time
+        ]]
+      });
     });
+  });
+
+  const ROW_HEIGHT = 37;
+  const TOP_MARGIN = 45;
+  const BOTTOM_MARGIN = 5;
+  
+  const totalRows = yTicks.length;
+  
+  const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_MARGIN + BOTTOM_MARGIN;
+
+  container.style.height = `${calculatedPlotHeight}px`;
+
+  // 1. Identify currently selected date from UI dropdown
+  let selectedDate = '';
+  const dateSelect = document.getElementById("dateFilter") || document.querySelector('.filter-panel select, select');
+  if (dateSelect && dateSelect.value) {
+    selectedDate = dateSelect.value.trim();
+  }
+  if (!selectedDate && data && data.length > 0) {
+    selectedDate = data[0].Date || data[0].Day || data[0].Game_Date || '';
+  }
+
+  // 2. Scan window.gameData for the selected date, excluding expired games
+  let dayUnexpiredGames = [];
+  if (window.gameData && Array.isArray(window.gameData)) {
+    dayUnexpiredGames = window.gameData.filter(g => {
+      if (!selectedDate) return true;
+      const gDate = g.Date || g.Day || g.Game_Date || '';
+      const matchesDate = gDate === selectedDate || gDate.includes(selectedDate) || selectedDate.includes(gDate);
+      if (!matchesDate) return false;
+      
+      // Filter out games that ended more than 30 minutes ago today
+      if (isGameExpiredToday(g)) return false;
+      
+      return true;
+    });
+  }
+
+  if (dayUnexpiredGames.length === 0) {
+    dayUnexpiredGames = data;
+  }
+
+  // 3. Find the next earliest start time among unexpired games for this day across all networks
+  let earliestStart = 1440;
+  dayUnexpiredGames.forEach(game => {
+    const startMin = timeToMinutes(game.Start_Time);
+    if (!isNaN(startMin) && startMin < earliestStart) {
+      earliestStart = startMin;
+    }
+  });
+
+  if (earliestStart === 1440 || isNaN(earliestStart)) {
+    earliestStart = 600; // Fallback default (10:00 AM)
+  }
+
+  const END_OF_DAY_MINUTES = 1470; // 12:30 a.m. midnight
+
+  const layout = {
+    height: calculatedPlotHeight,
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    barmode: 'stack',
+    bargap: 0.15,                 
+    autosize: true,
+    margin: {
+      l: 66,
+      r: 0,
+      t: TOP_MARGIN,
+      b: BOTTOM_MARGIN
+    },
+    dragmode: false,
+    xaxis: {
+      fixedrange: true,
+      side: 'top',
+      type: 'linear',
+      range: [earliestStart, END_OF_DAY_MINUTES],
+      tickmode: 'array',
+      tickvals: SHARED_X_AXIS_VALS,
+      ticktext: SHARED_X_AXIS_TEXT,
+      tickangle: -30,
+      tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
+      ticks: 'outside',
+      ticklen: 10,
+      tickcolor: 'rgba(0,0,0,0)',
+      showgrid: true,
+      gridcolor: 'rgba(212, 175, 55, 0.15)',
+      autorange: false,
+      automargin: false
+    },
+    yaxis: {
+      fixedrange: true,
+      ticksuffix: '',
+      autorange: 'reversed',
+      ticks: 'outside',
+      ticklen: 8,
+      tickcolor: 'rgba(0,0,0,0)',
+      tickmode: 'array',
+      tickvals: yTicks,
+      ticktext: yTickLabels,
+      tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' }
+    },
+    showlegend: false
+  };
+
+  const config = { responsive: true, displayModeBar: false };
+
+  Plotly.newPlot(targetId, traces, layout, config);
+}
+
+// Auto-refresh active charts every 60 seconds
+setInterval(() => {
+  if (typeof refreshActiveCharts === 'function') {
+    refreshActiveCharts();
+  }
+}, 60000);
+
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const plotlyContainers = document.querySelectorAll('.plotly-chart');
+    plotlyContainers.forEach(container => {
+      if (window.Plotly && container.clientHeight > 0) {
+        Plotly.Plots.resize(container);
+      }
+    });
+  }, 100);
+});
   </script>
 
   <footer class="footer-copyright">
