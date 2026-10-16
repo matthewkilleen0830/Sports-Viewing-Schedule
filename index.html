@@ -205,7 +205,9 @@
     // List of networks classified as streaming
     const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
-    "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", ""];
+    "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
+    "XAVIER+"
+  ];
 
     const PREFERRED_CONF_ORDER = [
       "AHA",
@@ -247,7 +249,7 @@
   "Charlotte": "#00502F", "Chattanooga": "#003865", "Chiefs": "#E31837", "Cincinnati": "#000000", "Clarkson": "#004B49",
   "Clemson": "#F56600", "Clippers": "#C8102E", "Coastal Carolina": "#006F71", "Colgate": "#821019", "Colts": "#002C5F",
   "Colorado": "#CFB87C", "Colorado College": "#000000", "Colorado State": "#1E4D2B", "Commanders": "#5A1414",
-  "Coppin State": "#003056", "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633", "Cubs": "#0E3386",
+  "Coppin State": "#003056", "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633", "Creighton": "#005CA9", "Cubs": "#0E3386",
   "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F", "Delaware State": "#CC0000",
   "Denver": "#8B2332", "Devils": "#CE1126", "Diamondbacks": "#A71930", "Dodgers": "#005A9C", "Dolphins": "#008E97",
   "Drake": "#003087", "Dream": "#C8102E", "Ducks": "#F47A38", "Duke": "#003087", "Eagles": "#004C54",
@@ -257,13 +259,13 @@
   "Florida Atlantic": "#003366", "Florida International": "#081E3F", "Florida State": "#782F40", "Flyers": "#F47920",
   "Fordham": "#860038", "Franklin Pierce": "#A91938", "Fresno State": "#C41230", "Furman": "#4D1979", "Gardner-Webb": "#CC0000",
   "Georgetown": "#041E42", "Georgia": "#BA0C2F", "Georgia Southern": "#00152B", "Georgia State": "#0039A6", "Georgia Tech": "#B3A369",
-  "Giants": "#FD5A1E", "NY Giants": "#0B2265", "Golden Knights": "#B3995D", "Green Bay": "#006747", "Grizzlies": "#5D76A9", "Guardians": "#0C2340",
+  "Giants": "#FD5A1E", "NY Giants": "#0B2265", "Golden Knights": "#B3995D", "Gonzaga": "#041E42", "Green Bay": "#006747", "Grizzlies": "#5D76A9", "Guardians": "#0C2340",
   "Harvard": "#A51C30", "Hawai'i": "#024731", "Hawks": "#C8102E", "Heat": "#98002E", "Holy Cross": "#60269E", "Hornets": "#1D1160",
   "Houston": "#C8102E", "Houston Christian": "#002F6C", "Howard": "#002147", "Hurricanes": "#CC0000", "Idaho": "#B3A369",
   "Idaho State": "#F47920", "Illinois": "#E84A27", "Illinois State": "#CE1126", "Incarnate Word": "#CB333B", "Indiana": "#990000",
   "Indiana State": "#00437A", "Iowa": "#000000", "Iowa State": "#C8102E", "Islanders": "#00539B", "Jackson State": "#002147",
   "Jacksonville State": "#CC0000", "Jaguars": "#006778", "James Madison": "#450084", "Jazz": "#002B5C", "Jets": "#041E42",
-  "NY Jets": "#125740", "Kansas": "#0051BA", "Kansas State": "#512888", "Kennesaw State": "#000000", "Kent State": "#002664",
+  "NY Jets": "#125740", "Kansas": "#0051BA", "Kansas City": "#FFD52F", "Kansas State": "#512888", "Kennesaw State": "#000000", "Kent State": "#002664",
   "Kentucky": "#0033A0", "Kings": "#5A2D81", "LA Kings": "#000000", "Knicks": "#006BB6", "Kraken": "#001628", "Lafayette": "#9E1B32", "Lake Superior": "#005A36",
   "Lamar": "#D11919", "Lakers": "#552583", "Lehigh": "#653815", "Liberty": "#6ECEB2", "Liberty University": "#B72025",
   "Lightning": "#002868", "Lindenwood": "#B3A369", "Lions": "#0076B6", "LIU": "#69B3E7", "Louisiana": "#CE181E",
@@ -282,7 +284,7 @@
   "Northern Colorado": "#002A54", "Northern Illinois": "#C8102E", "Northern Michigan": "#006633", "Northwestern": "#4E2A84",
   "Northwestern State": "#F15A22", "Notre Dame": "#0C2340", "Nuggets": "#0E2240", "Ohio": "#00694E", "Ohio State": "#BB0000",
   "Oilers": "#041E42", "Oklahoma": "#841617", "Oklahoma State": "#FE5C00", "Old Dominion": "#003057", "Ole Miss": "#006BA6",
-  "Omaha": "#000000", "Oregon": "#007030", "Oregon State": "#D73F09", "Orioles": "#DF4601", "Pacers": "#002D62", "Packers": "#203731",
+  "Omaha": "#000000", "Oregon": "#007030", "Oregon State": "#D73F09", "Orioles": "#DF4601", "Oral Roberts": "#002F60", "Pacers": "#002D62", "Packers": "#203731",
   "Padres": "#2F241D", "Panthers": "#C8102E", "FL Panthers": "#C8102E", "Patriots": "#002244", "Pelicans": "#002B5C", "Penguins": "#FCB514", "Penn State": "#001E44",
   "Phillies": "#E81828", "Pirates": "#27251F", "Pistons": "#1D428A", "Pitt": "#003594", "Portland State": "#154734", "Post": "#F68B1F",
   "Prairie View A&M": "#330066", "Predators": "#FFB81C", "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000",
@@ -292,10 +294,10 @@
   "RPI": "#D6001C", "Rutgers": "#CC0033", "Sabres": "#003087", "Sacred Heart": "#C8102E", "Sacramento State": "#043927",
   "St. Anselm": "#002B5C", "Saint Michael's": "#55318C", "Saints": "#D3BC8D", "Sam Houston": "#F47920", "Samford": "#CC0000",
   "San Diego": "#007A33", "San Diego State": "#000000", "San José State": "#0055A2", "SE Louisiana": "#244A31", "SE Missouri State": "#CE1126",
-  "Seahawks": "#002244", "Senators": "#C8102E", "Sharks": "#006D75", "Sky": "#418FDE", "SMU": "#0033A0", "South Alabama": "#00205B",
+  "Seahawks": "#002244", "Senators": "#C8102E", "Seton Hall": "#004488", "Sharks": "#006D75", "Sky": "#418FDE", "SMU": "#0033A0", "South Alabama": "#00205B",
   "South Carolina": "#73000A", "South Carolina State": "#800000", "South Dakota": "#AD0000", "South Dakota State": "#0033A0",
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A",
-  "Spurs": "#000000", "St. Cloud State": "#CC0000", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847",
+  "Spurs": "#000000", "St. Cloud State": "#CC0000", "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847",
   "Steelers": "#101820", "Stetson": "#005A36", "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02",
   "Suns": "#1D1160", "Syracuse": "#F76900", "Tarleton State": "#4F2683", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200",
   "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F", "Texas": "#BF5700", "Texas A&M": "#500000",
@@ -309,7 +311,7 @@
   "Warriors": "#1D428A", "Washington": "#4B2E83", "Washington State": "#981E32", "Weber State": "#4B2682", "West Florida": "#007A87",
   "West Georgia": "#002F6C", "West Virginia": "#002855", "Western Carolina": "#51267B", "Western Illinois": "#663399", "Western Kentucky": "#BD0F26",
   "Western Michigan": "#5C1322", "White Sox": "#000000", "Wild": "#154734", "William & Mary": "#115740", "Windsor": "#005A36", "Wings": "#0C2340",
-  "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24", "Yale": "#00356B", "Yankees": "#0C2340",
+  "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24", "Xavier": "#0C2340", "Yale": "#00356B", "Yankees": "#0C2340",
   "Youngstown State": "#E4002B",
 
   "Port Royal GC": "#076652", "Vidanta Vallarta": "#076652", "Diamante El Cardonal": "#076652"
