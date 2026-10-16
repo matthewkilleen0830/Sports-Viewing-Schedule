@@ -312,7 +312,7 @@
   "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24", "Yale": "#00356B", "Yankees": "#0C2340",
   "Youngstown State": "#E4002B",
 
-  "Port Royal GC": "#003F62", "Vidanta Vallarta": "#252525", "Diamante El Cardonal": "#0088ED"
+  "Port Royal GC": "#076652", "Vidanta Vallarta": "#076652", "Diamante El Cardonal": "#076652"
 };
 
 const DOM = {
@@ -424,7 +424,7 @@ function isGameExpiredToday(d) {
     if (endMins < startMins) endMins += 1440;
 
     const gameEndTimestamp = startOfToday.getTime() + endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 20 * 60000;
+    const thresholdTimestamp = gameEndTimestamp + 15 * 60000;
 
     if (now.getTime() >= thresholdTimestamp) {
       return true;
@@ -443,7 +443,7 @@ function getFilteredDataExcept(excludedFilter = null) {
       return false;
     }
 
-    // Exclude games on today that ended more than 20 minutes ago
+    // Exclude games on today that ended more than 15 minutes ago
     if (isGameExpiredToday(d)) {
       return false;
     }
@@ -650,7 +650,7 @@ function getFirstAvailableDate(allData) {
 
       if (maxEndMinutes !== -1) {
         const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
-        const thresholdTime = new Date(latestEndDateTime.getTime() + 20 * 60000);
+        const thresholdTime = new Date(latestEndDateTime.getTime() + 15 * 60000);
 
         if (now.getTime() < thresholdTime.getTime()) {
           return todayItem.originalStr;
@@ -949,7 +949,7 @@ function renderChart(targetId, data, isDigital = false) {
         },
         marker: { 
           color: teamHexColor,
-          line: { color: '#eab308', width: 1.5 },
+          line: { color: '#eab308', width: 1.25 },
           cornerradius: "45%"
         },
         text: [formattedLabel],
@@ -1007,7 +1007,7 @@ function renderChart(targetId, data, isDigital = false) {
       const matchesDate = gDate === selectedDate || gDate.includes(selectedDate) || selectedDate.includes(gDate);
       if (!matchesDate) return false;
       
-      // Filter out games that ended more than 20 minutes ago today
+      // Filter out games that ended more than 15 minutes ago today
       if (isGameExpiredToday(g)) return false;
       
       return true;
