@@ -1,16 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ---------------------------------------------------------------------------
-  // 1. Sidebar Toggle & Responsive Resize Handling
-  // ---------------------------------------------------------------------------
+
+  // ===========================================================================
+  // 1. SIDEBAR TOGGLE & RESPONSIVE RESIZE HANDLING
+  // ===========================================================================
   const toggleBtn = document.getElementById("toggleFilterBtn");
   const sidebar = document.getElementById("sidebarWrapper");
 
   if (toggleBtn && sidebar) {
+    // Automatically collapse the filter sidebar on smaller viewports (< 1200px)
     if (window.innerWidth < 1200) {
       sidebar.classList.add("collapsed");
       toggleBtn.setAttribute("title", "Show Filters");
     }
 
+    // Trigger an attention-flashing visual cue if the sidebar loads collapsed
     if (sidebar.classList.contains("collapsed")) {
       toggleBtn.classList.add("attention-flash");
       setTimeout(() => {
@@ -18,12 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 3500);
     }
 
+    // Handle click events to toggle sidebar expansion and trigger Plotly re-renders
     toggleBtn.addEventListener("click", function () {
       sidebar.classList.toggle("collapsed");
 
       const isCollapsed = sidebar.classList.contains("collapsed");
       toggleBtn.setAttribute("title", isCollapsed ? "Show Filters" : "Hide Filters");
 
+      // Give CSS transitions time to finish before resizing Plotly charts to fit new width
       setTimeout(() => {
         window.dispatchEvent(new Event("resize"));
         const barChart = document.getElementById("barChart");
@@ -36,9 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ---------------------------------------------------------------------------
-  // 2. Constants & DOM Elements
-  // ---------------------------------------------------------------------------
+  // ===========================================================================
+  // 2. CONSTANTS & DOM ELEMENT CACHE
+  // ===========================================================================
+  
+  // List of television networks classified as streaming/digital rather than linear broadcast
   const DIGITAL_NETWORKS = [
     "ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
@@ -46,12 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
     "XAVIER+"
   ];
 
+  // Shared X-Axis time intervals (expressed in minutes from midnight) for vertical grid alignment
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
   const SHARED_X_AXIS_TEXT = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
     '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'
   ];
 
+  // Cached DOM references for filter container elements
   const DOM = {
     dateFilter: document.getElementById("dateFilter"),
     leagueFilter: document.getElementById("leagueFilter"),
@@ -60,9 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
     conferenceFilter: document.getElementById("conferenceFilter")
   };
 
-  // ---------------------------------------------------------------------------
-  // 3. Data Loading & Initialization
-  // ---------------------------------------------------------------------------
+  // ===========================================================================
+  // 3. DATA LOADING & INITIALIZATION
+  // ===========================================================================
+  
+  // Load raw schedule data from CSV, sanitize UTF-8 BOM characters, and initialize dashboard
   d3.csv("currentWeek/weekFull.csv", raw => {
     const clean = {};
     Object.keys(raw).forEach(key => {
@@ -73,12 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }).then(data => {
     window.gameData = data;
 
+    // Determine initial date selection and populate date dropdown options
     const initialDate = getFirstAvailableDate(window.gameData);
     updateDateSlicerOptions(window.gameData, initialDate);
     
+    // Build initial filter slicers and render charts
     refreshAllSlicersExcept();
     applyFilters();
 
+    // Trigger window resize event shortly after load to ensure Plotly dimensions render correctly
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
       const barChart = document.getElementById("barChart");
@@ -89,17 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 100);
 
-    // Event Listeners for Base Filters
+    // Event Listener: Date Slicer Change
     DOM.dateFilter?.addEventListener("change", () => {
       refreshAllSlicersExcept("date");
       applyFilters();
     });
 
+    // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
       refreshAllSlicersExcept("top25");
       applyFilters();
     });
 
+    // Event Listeners: Gender Filter Checkboxes (Men's / Women's)
     document.querySelectorAll(".gender-filter").forEach(cb => {
       cb.addEventListener("change", () => {
         refreshAllSlicersExcept("gender");
@@ -108,9 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ---------------------------------------------------------------------------
-  // 4. Filtering & State Management Functions
-  // ---------------------------------------------------------------------------
+  // ===========================================================================
+  // 4. FILTERING & STATE MANAGEMENT FUNCTIONS
+  // ===========================================================================
+
+  /**
+   * Retrieves the current user-selected state across all active filter controls.
+   */
   function getActiveSelections() {
     const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
     const top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
@@ -147,6 +167,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
+  /**
+   * Checks if a game scheduled for today has already concluded more than 15 minutes ago.
+   */
   function isGameExpiredToday(d) {
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -176,17 +199,19 @@ document.addEventListener("DOMContentLoaded", function () {
     return false;
   }
 
-  // Cross-filter evaluation engine
+  /**
+   * Multi-dimensional cross-filter evaluation engine supporting cascading slicer updates.
+   */
   function getFilteredDataExcept(excludedFilter = null) {
     const state = getActiveSelections();
 
     return window.gameData.filter(d => {
-      // 1. Date Filter (Single choice driver)
+      // 1. Date Filter (Primary single-choice driver)
       if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
         return false;
       }
 
-      // Exclude games on today that ended more than 15 minutes ago
+      // Automatically filter out games on today's date that ended over 15 minutes ago
       if (isGameExpiredToday(d)) {
         return false;
       }
@@ -200,26 +225,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // 3. Gender Filter
+      // 3. Gender Filter (Men's / Women's)
       if (excludedFilter !== "gender") {
         if (state.genders.length === 0) return false;
         const gameGender = d.Gender?.trim().toUpperCase();
         if (gameGender && !state.genders.includes(gameGender)) return false;
       }
 
-      // 4. Ranked Filter
+      // 4. Ranked NCAA Teams Filter
       if (excludedFilter !== "top25" && state.top25Only) {
         const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
         if (!isTop25) return false;
       }
 
-      // 5. Time Filter
+      // 5. Game Start Time Filter
       if (excludedFilter !== "time") {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // 6. Conference Filter
+      // 6. Conference Filter (Visitor or Home Conference match)
       if (excludedFilter !== "conference") {
         if (!state.isConfAll && state.conferences.length === 0) return false;
         if (!state.isConfAll) {
@@ -233,6 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /**
+   * Updates availability and enabled/disabled state of Gender filter checkboxes based on subset.
+   */
   function updateGenderSlicerState() {
     const genderSubset = getFilteredDataExcept("gender");
 
@@ -263,6 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Updates availability of the Ranked NCAA Teams toggle based on filtered games.
+   */
   function updateRankedToggleState(forceCheck = false) {
     if (!DOM.rankedFilter) return;
 
@@ -280,6 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Dynamically renders and binds event listeners for the Sports League checkbox filter panel.
+   */
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = true) {
     if (!DOM.leagueFilter) return;
 
@@ -292,6 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Render "All Leagues" master checkbox
     const allDiv = document.createElement("div");
     allDiv.className = "form-check border-bottom pb-1 mb-2";
     allDiv.innerHTML = `
@@ -300,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     DOM.leagueFilter.appendChild(allDiv);
 
+    // Render individual league checkboxes
     uniqueLeagues.forEach((league, idx) => {
       const isChecked = isAllChecked || selectedLeagues.includes(league);
       const div = document.createElement("div");
@@ -330,6 +366,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /**
+   * Refreshes all dependent filter slicers and toggle states while preserving user selection on the target dimension.
+   */
   function refreshAllSlicersExcept(targetSource = null) {
     updateGenderSlicerState();
     updateRankedToggleState(targetSource === "date" || targetSource === null);
@@ -352,6 +391,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Intelligent logic to determine the most relevant initial date to display on dashboard load.
+   */
   function getFirstAvailableDate(allData) {
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -408,6 +450,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
   }
 
+  /**
+   * Populates the Date dropdown slicer options sorted chronologically.
+   */
   function updateDateSlicerOptions(allData, selectedDate) {
     const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
 
@@ -435,6 +480,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Dynamically renders and binds event listeners for the Game Start Time checkbox filter panel.
+   */
   function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
     const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
       .filter(Boolean)
@@ -485,6 +533,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /**
+   * Dynamically renders and binds event listeners for the Conference checkbox filter panel.
+   */
   function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
     const extractedConfs = new Set();
     filteredData.forEach(d => {
@@ -539,6 +590,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /**
+   * Applies active filters, splits dataset into linear broadcast vs. digital streaming, and triggers rendering.
+   */
   function applyFilters() {
     const filtered = getFilteredDataExcept(null);
 
@@ -549,6 +603,9 @@ document.addEventListener("DOMContentLoaded", function () {
     renderChart('digitalChart', digitalData, true);
   }
 
+  /**
+   * Matches a game matchup string to the home team's brand hex color from TEAM_COLORS lookup.
+   */
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#D3D3D3';
 
@@ -573,6 +630,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return '#D3D3D3';
   }
 
+  /**
+   * Helper function to convert 12-hour time string (e.g. "7:30 PM") into total minutes from midnight.
+   */
   function timeToMinutes(t) {
     if (!t) return 0;
     const [time, ampm] = t.split(' ');
@@ -582,6 +642,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return h * 60 + m;
   }
 
+  /**
+   * Bin-packing algorithm to stack overlapping game time windows into non-conflicting sub-rows.
+   */
   function resolveOverlapSubRows(games) {
     games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
 
@@ -617,12 +680,17 @@ document.addEventListener("DOMContentLoaded", function () {
     return { assignedGames, totalSubRows: subRowEndTimes.length };
   }
 
-  // ---------------------------------------------------------------------------
-  // 5. Chart Rendering & Visualization
-  // ---------------------------------------------------------------------------
+  // ===========================================================================
+  // 5. CHART RENDERING & VISUALIZATION (PLOTLY)
+  // ===========================================================================
+
+  /**
+   * Renders or updates a Plotly horizontal Gantt-style timeline chart for broadcast networks or streaming platforms.
+   */
   function renderChart(targetId, data, isDigital = false) {
     const container = document.getElementById(targetId);
 
+    // Handle empty data state by rendering a placeholder message
     if (!data || data.length === 0) {
       container.style.height = '120px';
       Plotly.newPlot(targetId, [], {
@@ -644,6 +712,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
+    // Process each network group and construct Plotly bar traces for each game
     grouped.forEach((games, network) => {
       const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
 
@@ -704,6 +773,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+    // Calculate dynamic container height based on total rows required
     const ROW_HEIGHT = 37;
     const TOP_MARGIN = 45;
     const BOTTOM_MARGIN = 5;
@@ -713,6 +783,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.style.height = `${calculatedPlotHeight}px`;
 
+    // Determine earliest game start time to dynamically clamp X-axis starting range
     const currentFilteredSubset = getFilteredDataExcept(null);
 
     let earliestStart = 1440;
@@ -726,11 +797,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (earliestStart === 1440 || isNaN(earliestStart)) {
-      earliestStart = 600;
+      earliestStart = 600; // Fallback default (10:00 AM)
     }
 
-    const END_OF_DAY_MINUTES = 1500;
+    const END_OF_DAY_MINUTES = 1500; // 1:00 AM
 
+    // Configure Plotly chart layout parameters
     const layout = {
       height: calculatedPlotHeight,
       paper_bgcolor: 'rgba(0,0,0,0)',
@@ -780,16 +852,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = { responsive: true, displayModeBar: false };
 
+    // Render the Plotly chart inside the target container
     Plotly.newPlot(targetId, traces, layout, config);
   }
 
-  // Auto-refresh active charts every 60 seconds
+  // ===========================================================================
+  // 6. GLOBAL TIMERS & EVENT LISTENERS
+  // ===========================================================================
+
+  // Auto-refresh active charts every 60 seconds (if refresh function is defined)
   setInterval(() => {
     if (typeof refreshActiveCharts === 'function') {
       refreshActiveCharts();
     }
   }, 60000);
 
+  // Debounced window resize event listener to trigger responsive Plotly chart scaling
   let resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
@@ -802,4 +880,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }, 100);
   });
+
 });
