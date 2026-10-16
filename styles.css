@@ -1,3 +1,7 @@
+/* ===========================================================================
+   1. ROOT VARIABLES & GLOBAL DOCUMENT STYLING
+   =========================================================================== */
+
 :root {
   --sidebar-width: calc(100vw / 2.8);
 }
@@ -13,6 +17,11 @@ html, body {
   overflow-x: hidden;
   width: 100%;
 }
+
+
+/* ===========================================================================
+   2. TOP BANNER HEADER STYLING
+   =========================================================================== */
 
 .top-banner {
   width: 100%;
@@ -34,6 +43,11 @@ html, body {
   filter: brightness(115%);
 }
 
+
+/* ===========================================================================
+   3. MAIN WRAPPER & DASHBOARD BODY LAYOUT
+   =========================================================================== */
+
 .main-wrapper {
   min-height: 100vh;
   display: flex;
@@ -49,6 +63,11 @@ html, body {
   align-items: flex-start;
   overflow-x: hidden;
 }
+
+
+/* ===========================================================================
+   4. SIDEBAR & COLLAPSE TOGGLE BUTTON STYLING
+   =========================================================================== */
 
 .sidebar-wrapper {
   width: var(--sidebar-width);
@@ -91,7 +110,7 @@ html, body {
   border-color: #fde047;
 }
 
-/* Pulse / Flash Animation */
+/* Pulse / Flash Animation for Collapsed Sidebar Attention */
 @keyframes toggleAttention {
   0%, 100% {
     transform: scale(1);
@@ -122,6 +141,11 @@ html, body {
   transform: rotate(180deg);
 }
 
+
+/* ===========================================================================
+   5. CHARTS COLUMN LAYOUT
+   =========================================================================== */
+
 .charts-column {
   flex: 1 1 auto !important;
   max-width: 100% !important;
@@ -136,7 +160,11 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Shiny Gold Border Metallic Gradient & Subtle Warm Glow */
+
+/* ===========================================================================
+   6. METALLIC GOLD BORDER GRADIENT & SHINY CARD STYLING
+   =========================================================================== */
+
 .filter-panel, 
 .chart-container {
   border-radius: 14px;
@@ -165,7 +193,11 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Gold Headers with Bright Yellow-Gold Accent Sheen */
+
+/* ===========================================================================
+   7. TYPOGRAPHY & GOLD ACCENT GRADIENTS FOR HEADINGS AND LABELS
+   =========================================================================== */
+
 .filter-panel h1, 
 .filter-panel h2, 
 .filter-panel h3, 
@@ -193,6 +225,11 @@ html, body {
   display: inline-block;
   margin-bottom: 0.25rem;
 }
+
+
+/* ===========================================================================
+   8. FORM CONTROLS & CHECKBOX PANELS
+   =========================================================================== */
 
 .filter-panel .form-control,
 .filter-panel .form-select {
@@ -261,6 +298,11 @@ html, body {
   cursor: pointer;
 }
 
+
+/* ===========================================================================
+   9. CUSTOM GOLD SCROLLBARS
+   =========================================================================== */
+
 .filter-panel::-webkit-scrollbar,
 .checkbox-panel::-webkit-scrollbar {
   width: 6px;
@@ -273,12 +315,16 @@ html, body {
   margin-bottom: 4px;
 }
 
-/* Gold Scrollbar Thumb */
 .filter-panel::-webkit-scrollbar-thumb,
 .checkbox-panel::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #fffbeb 0%, #facc15 50%, #78350f 100%);
   border-radius: 3px;
 }
+
+
+/* ===========================================================================
+   10. CHART CONTAINERS & PLOTLY STYLING OVERRIDES
+   =========================================================================== */
 
 .chart-container {
   padding: 1rem 1rem 0.5rem 1rem;
@@ -309,6 +355,11 @@ html, body {
   font-weight: 600 !important;
 }
 
+
+/* ===========================================================================
+   11. FOOTER & UTILITY CLASSES
+   =========================================================================== */
+
 .footer-copyright {
   text-align: center;
   font-size: 0.75rem;
@@ -323,7 +374,12 @@ html, body {
   height: 48px;
 }
 
-/* Tablet & Desktop Overlay */
+
+/* ===========================================================================
+   12. RESPONSIVE MEDIA QUERIES (TABLET & MOBILE)
+   =========================================================================== */
+
+/* Tablet & Desktop Overlay Mode (< 1200px) */
 @media (max-width: 1199.98px) {
   .sidebar-wrapper {
     position: absolute;
