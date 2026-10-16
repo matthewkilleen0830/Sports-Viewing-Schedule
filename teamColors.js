@@ -1,5 +1,6 @@
 // Lookup Table mapping team colors
 const TEAM_COLORS = {
+
   // Alphabetical Team Hex Color List
   "49ers": "#AA0000", "76ers": "#006BB6", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087",
   "Akron": "#041E42", "Alabama": "#9E1B32", "Alabama A&M": "#61162D", "Alaska": "#00205B", "Alaska Anchorage": "#005A36",
@@ -83,5 +84,6 @@ const TEAM_COLORS = {
   "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24", "Xavier": "#0C2340", "Yale": "#00356B", "Yankees": "#0C2340",
   "Youngstown State": "#E4002B",
 
+  // Host Golf Courses
   "Sheshan GC": "#076652", "Port Royal GC": "#076652", "Pine Beach Golf Links": "#076652", "Vidanta Vallarta": "#076652", "Diamante El Cardonal": "#076652"
 };
