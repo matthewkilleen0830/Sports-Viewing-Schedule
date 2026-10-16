@@ -19,14 +19,14 @@ Check out the live interactive application hosted on GitHub Pages:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., CBS, FOX, ESPN, etc.).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, Prime Video, etc.).
 * **Collapsible Slicers & Adaptive Filter Panel**:
-  * **Day / Date Selection**: Instant focus on specific game days.
-  * **Sport/League Toggle**: Multi-select filter to dial in your selections.
-  * **Category Toggle**: Multi-select filter for Men's or Women's sports.
+  * **Day/Date Selection**: Instant focus on specific days.
   * **Ranked Teams Toggle**: One-click filter to highlight college ranked teams and matchups.
+  * **Category Toggle**: Multi-select filter for Men's or Women's sports.
+  * **Sports/League Toggle**: Multi-select filter to dial in your sports selections.
   * **Game Time Slicer**: Dynamic multi-select filter adapting to available game start times for selected days.
-  * **Conference Slicer**: Multi-select conference filter that dynamically updates based on active date, league, category, ranking, and time constraints.
+  * **Conference Slicer**: Multi-select conference filter that dynamically updates based on active day/date, ranked, category, league, and start time constraints.
 * **Art Deco Dark Theme**:
-  * Clean, polished, custom CSS UI tailored for shiny blue.
+  * Clean, polished, custom CSS UI tailored for shiny gold accents.
   * Custom team color branding and high-contrast timeline bars for seamless visual scanning.
 * **Full Analytics Integration**:
   * Integrated **Google Analytics 4 (GA4)** for tracking real-time user activity, slicer interactions, and device metrics.
@@ -55,11 +55,11 @@ Check out the live interactive application hosted on GitHub Pages:
 ```text
 ├── index.html            # Main HTML entry point with layout & SEO metadata
 ├── styles.css            # Custom Art Deco dark-theme styling & responsive rules
-├── script.js             # Dynamic data fetching, filter logic, and Plotly chart rendering
+├── gameDashboard.js      # Dynamic data fetching, filter logic, and Plotly chart rendering
+├── teamColors.js         # Key pairs of unique teams and home color hex codes
 ├── currentWeek/          # Active schedule data directory
-│   └── weekFull.csv      # Weekly matchup dataset
+│   └── weekFull.csv      # Rolling 7 Day matchup dataset
 ├── images/               # Visual asset directory
 │   ├── favicon.png       # Browser favicon icon
 │   └── headerBanner.png  # Dashboard header banner & Open Graph preview image
-│    
 └── README.md             # Project documentation
