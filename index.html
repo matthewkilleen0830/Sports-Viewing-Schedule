@@ -988,44 +988,18 @@ function renderChart(targetId, data, isDigital = false) {
 
   container.style.height = `${calculatedPlotHeight}px`;
 
-  // 1. Identify currently selected date from UI dropdown
-  let selectedDate = '';
-  const dateSelect = document.getElementById("dateFilter") || document.querySelector('.filter-panel select, select');
-  if (dateSelect && dateSelect.value) {
-    selectedDate = dateSelect.value.trim();
-  }
-  if (!selectedDate && data && data.length > 0) {
-    selectedDate = data[0].Date || data[0].Day || data[0].Game_Date || '';
-  }
+  // Get all currently filtered data across both charts to find the true earliest remaining start time
+  const currentFilteredSubset = getFilteredDataExcept(null);
 
-  // 2. Scan window.gameData for the selected date, excluding expired games
-  let dayUnexpiredGames = [];
-  if (window.gameData && Array.isArray(window.gameData)) {
-    dayUnexpiredGames = window.gameData.filter(g => {
-      if (!selectedDate) return true;
-      const gDate = g.Date || g.Day || g.Game_Date || '';
-      const matchesDate = gDate === selectedDate || gDate.includes(selectedDate) || selectedDate.includes(gDate);
-      if (!matchesDate) return false;
-      
-      // Filter out games that ended more than 15 minutes ago today
-      if (isGameExpiredToday(g)) return false;
-      
-      return true;
+  let earliestStart = 1440;
+  if (currentFilteredSubset && currentFilteredSubset.length > 0) {
+    currentFilteredSubset.forEach(game => {
+      const startMin = timeToMinutes(game.Start_Time);
+      if (!isNaN(startMin) && startMin < earliestStart) {
+        earliestStart = startMin;
+      }
     });
   }
-
-  if (dayUnexpiredGames.length === 0) {
-    dayUnexpiredGames = data;
-  }
-
-  // 3. Find the next earliest start time among unexpired games for this day across all networks
-  let earliestStart = 1440;
-  dayUnexpiredGames.forEach(game => {
-    const startMin = timeToMinutes(game.Start_Time);
-    if (!isNaN(startMin) && startMin < earliestStart) {
-      earliestStart = startMin;
-    }
-  });
 
   if (earliestStart === 1440 || isNaN(earliestStart)) {
     earliestStart = 600; // Fallback default (10:00 AM)
