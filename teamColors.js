@@ -1,7 +1,7 @@
 // Lookup Table mapping team colors
 const TEAM_COLORS = {
 
-  // Alphabetical Team Hex Color List
+  // Alphabetical Pro & College Team Hex Color List
   "49ers": "#AA0000", "76ers": "#006BB6", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087",
   "Akron": "#041E42", "Alabama": "#9E1B32", "Alabama A&M": "#61162D", "Alaska": "#00205B", "Alaska Anchorage": "#005A36",
   "Angels": "#BA0021", "App State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40",
@@ -21,7 +21,7 @@ const TEAM_COLORS = {
   "Colorado": "#CFB87C", "Colorado College": "#000000", "Colorado State": "#1E4D2B", "Commanders": "#5A1414",
   "Coppin State": "#003056", "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633", "Creighton": "#005CA9", "Cubs": "#0E3386",
   "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F", "Delaware State": "#CC0000",
-  "Denver": "#8B2332", "Devils": "#CE1126", "Diamondbacks": "#A71930", "Dodgers": "#005A9C", "Dolphins": "#008E97",
+  "Denver": "#8B2332", "DePaul": "#003DA5", "Devils": "#CE1126", "Diamondbacks": "#A71930", "Dodgers": "#005A9C", "Dolphins": "#008E97",
   "Drake": "#003087", "Dream": "#C8102E", "Ducks": "#F47A38", "Duke": "#003087", "Eagles": "#004C54",
   "East Carolina": "#582C83", "East Tennessee State": "#002855", "East Texas A&M": "#002F6C", "Eastern Illinois": "#003594",
   "Eastern Kentucky": "#4C151B", "Eastern Michigan": "#006633", "Eastern Washington": "#A10022", "Fairleigh Dickinson": "#72293C",
@@ -40,7 +40,7 @@ const TEAM_COLORS = {
   "Lamar": "#D11919", "Lakers": "#552583", "Lehigh": "#653815", "Liberty": "#6ECEB2", "Liberty University": "#B72025",
   "Lightning": "#002868", "Lindenwood": "#B3A369", "Lions": "#0076B6", "LIU": "#69B3E7", "Louisiana": "#CE181E",
   "Louisiana Tech": "#003087", "Louisville": "#AD0000", "LSU": "#461D7C", "Lynx": "#0C2340", "Magic": "#0077C0", "Maine": "#003263",
-  "Mammoth": "#000000", "Maple Leafs": "#00205B", "Marist": "#C8102E", "Mariners": "#0C2C56", "Marlins": "#00A3E0",
+  "Mammoth": "#000000", "Maple Leafs": "#00205B", "Marist": "#C8102E", "Mariners": "#0C2C56", "Marlins": "#00A3E0", "Marquette": "#003366",
   "Marshall": "#00B359", "Maryland": "#E21A23", "Maryville": "#C8102E", "Mavericks": "#00538C", "McNeese": "#004B87",
   "Memphis": "#003087", "Mercer": "#F26522", "Mercyhurst": "#00594E", "Mercury": "#211747", "Merrimack": "#00205B", "Mets": "#002D72",
   "Miami": "#F47321", "Miami (OH)": "#C41230", "Michigan": "#00274C", "Michigan State": "#18453B", "Michigan Tech": "#FFCD00",
@@ -69,7 +69,7 @@ const TEAM_COLORS = {
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A",
   "Spurs": "#000000", "St. Cloud State": "#CC0000", "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847",
   "Steelers": "#101820", "Stetson": "#005A36", "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02",
-  "Suns": "#1D1160", "Syracuse": "#F76900", "Tarleton State": "#4F2683", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200",
+  "Suns": "#1D1160", "Syracuse": "#F76900", "Tarleton State": "#4F2683", "TBD": "#000000", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200",
   "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F", "Texas": "#BF5700", "Texas A&M": "#500000",
   "Texas State": "#501214", "Texas Tech": "#C30020", "The Citadel": "#3A75C4", "Thunder": "#007AC1", "Tigers": "#0C2340", "Timberwolves": "#0C2340",
   "Titans": "#0C2340", "Toledo": "#15397F", "Trail Blazers": "#E03A3E", "Troy": "#AE1127", "Tulane": "#006747", "Tulsa": "#002D62", "Twins": "#002B5C",
