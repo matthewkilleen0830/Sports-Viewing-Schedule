@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
     "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
-    "XAVIER+", "NBA League Pass"
+    "XAVIER+", "NBA LP"
   ];
 
   // Shared X-Axis time intervals (expressed in minutes from midnight) for vertical grid alignment
