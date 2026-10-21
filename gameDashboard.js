@@ -323,9 +323,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Updates availability of the Ranked NCAA Teams toggle based on filtered games.
+   * Updates availability of the Ranked NCAA Teams toggle based on filtered games across any league.
    */
-  function updateRankedToggleState(forceCheck = false) {
+  function updateRankedToggleState(shouldReset = false) {
     if (!DOM.rankedFilter) return;
 
     const rankedSubset = getFilteredDataExcept("top25");
@@ -336,8 +336,8 @@ document.addEventListener("DOMContentLoaded", function () {
       DOM.rankedFilter.disabled = true;
     } else {
       DOM.rankedFilter.disabled = false;
-      if (forceCheck || DOM.rankedFilter.disabled) {
-        DOM.rankedFilter.checked = true;
+      if (shouldReset) {
+        DOM.rankedFilter.checked = false; // Default to unselected on initial load or date change
       }
     }
   }
@@ -405,16 +405,18 @@ document.addEventListener("DOMContentLoaded", function () {
    * Refreshes all dependent filter slicers and toggle states while preserving user selection on the target dimension.
    */
   function refreshAllSlicersExcept(targetSource = null) {
+    const isDateChangeOrInit = (targetSource === "date" || targetSource === null);
+
     updateGenderSlicerState();
-    updateRankedToggleState(targetSource === "date" || targetSource === null);
+    updateRankedToggleState(isDateChangeOrInit);
 
     const currentState = getActiveSelections();
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
       // Reset leagues to DEFAULT_LEAGUES when a new date is selected
-      const leaguesToUse = (targetSource === "date") ? DEFAULT_LEAGUES : currentState.leagues;
-      const isAllToUse = (targetSource === "date") ? false : currentState.isLeagueAll;
+      const leaguesToUse = isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues;
+      const isAllToUse = isDateChangeOrInit ? false : currentState.isLeagueAll;
       updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
     }
 
