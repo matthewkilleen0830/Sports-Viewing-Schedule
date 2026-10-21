@@ -290,13 +290,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Updates availability and enabled/disabled state of Gender filter checkboxes based on subset.
+   * Updates availability and enabled/disabled state of Gender filter checkboxes based on date subset.
    */
   function updateGenderSlicerState() {
-    const genderSubset = getFilteredDataExcept("gender");
+    const state = getActiveSelections();
+    const dateSubset = window.gameData.filter(d => {
+      if (state.date && d.Date !== state.date) return false;
+      if (isGameExpiredToday(d)) return false;
+      return true;
+    });
 
-    const hasMens = genderSubset.some(d => d.Gender?.trim().toUpperCase() === "M");
-    const hasWomens = genderSubset.some(d => d.Gender?.trim().toUpperCase() === "W");
+    const hasMens = dateSubset.some(d => d.Gender?.trim().toUpperCase() === "M");
+    const hasWomens = dateSubset.some(d => d.Gender?.trim().toUpperCase() === "W");
 
     const genderM = document.getElementById("gender-m");
     const genderW = document.getElementById("gender-w");
