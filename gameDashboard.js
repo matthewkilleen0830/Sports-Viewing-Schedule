@@ -519,7 +519,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (uniqueDates.length === 0) {
       const opt = document.createElement("option");
       opt.value = "";
-      opt.textContent = "No dates available";
+      opt.textContent = "No dates matching selections.";
       DOM.dateFilter.appendChild(opt);
       return;
     }
