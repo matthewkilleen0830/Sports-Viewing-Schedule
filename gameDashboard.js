@@ -130,8 +130,36 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change (Global Override)
+    // Event Listener: Text Search Input Change (Jumps to first available matching date & overrides filters)
     DOM.searchInput?.addEventListener("input", () => {
+      const searchQuery = DOM.searchInput.value.trim().toLowerCase();
+      if (searchQuery) {
+        const matchingGames = window.gameData.filter(d => {
+          if (isGameExpiredToday(d)) return false;
+          const matchup = d.Matchup?.toLowerCase() || "";
+          const league = d.League?.toLowerCase() || "";
+          const network = d.TV_Network?.toLowerCase() || "";
+          const vConf = d.Visitor_Conference?.toLowerCase() || "";
+          const hConf = d.Home_Conference?.toLowerCase() || "";
+          return matchup.includes(searchQuery) ||
+                 league.includes(searchQuery) ||
+                 network.includes(searchQuery) ||
+                 vConf.includes(searchQuery) ||
+                 hConf.includes(searchQuery);
+        });
+
+        if (matchingGames.length > 0) {
+          const firstDate = getFirstAvailableDate(matchingGames);
+          if (firstDate) {
+            updateDateSlicerOptions(window.gameData, firstDate);
+            DOM.dateFilter.value = firstDate;
+          }
+        }
+      } else {
+        const initialDate = getFirstAvailableDate(window.gameData);
+        updateDateSlicerOptions(window.gameData, initialDate);
+      }
+
       refreshAllSlicersExcept();
       applyFilters();
     });
@@ -224,40 +252,34 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Multi-dimensional cross-filter evaluation engine supporting global text search override.
+   * Multi-dimensional cross-filter evaluation engine supporting keyword search combined with active date/slicers.
    */
   function getFilteredDataExcept(excludedFilter = null) {
+    const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
-    // If search input has text, it acts as a global override over all other filters
-    if (searchQuery) {
-      return window.gameData.filter(d => {
-        if (isGameExpiredToday(d)) return false;
-        
+    return window.gameData.filter(d => {
+      if (isGameExpiredToday(d)) return false;
+
+      // Global Keyword Search Filter
+      if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
         const network = d.TV_Network?.toLowerCase() || "";
         const vConf = d.Visitor_Conference?.toLowerCase() || "";
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
-        return matchup.includes(searchQuery) ||
-               league.includes(searchQuery) ||
-               network.includes(searchQuery) ||
-               vConf.includes(searchQuery) ||
-               hConf.includes(searchQuery);
-      });
-    }
+        const matchesSearch = matchup.includes(searchQuery) ||
+                              league.includes(searchQuery) ||
+                              network.includes(searchQuery) ||
+                              vConf.includes(searchQuery) ||
+                              hConf.includes(searchQuery);
 
-    const state = getActiveSelections();
-
-    return window.gameData.filter(d => {
-      // 1. Date Filter
-      if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
-        return false;
+        if (!matchesSearch) return false;
       }
 
-      // Automatically filter out games on today's date that ended over 15 minutes ago
-      if (isGameExpiredToday(d)) {
+      // 1. Date Filter
+      if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
         return false;
       }
 
@@ -380,6 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function refreshAllSlicersExcept(targetSource = null) {
     const isDateChangeOrInit = (targetSource === "date" || targetSource === null);
+    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
     updateRankedToggleState(isDateChangeOrInit);
 
@@ -392,8 +415,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      const leaguesToUse = isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues;
-      const isAllToUse = isDateChangeOrInit ? false : currentState.isLeagueAll;
+      // When keyword search is active, override league filters to default to all leagues checked
+      const leaguesToUse = searchQuery ? [] : (isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues);
+      const isAllToUse = searchQuery ? true : (isDateChangeOrInit ? false : currentState.isLeagueAll);
       updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
     }
 
@@ -482,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return new Date(cleanA) - new Date(cleanB);
     });
 
+    const previousSelection = DOM.dateFilter.value;
     DOM.dateFilter.innerHTML = "";
 
     if (uniqueDates.length === 0) {
@@ -501,6 +526,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (selectedDate && uniqueDates.includes(selectedDate)) {
       DOM.dateFilter.value = selectedDate;
+    } else if (previousSelection && uniqueDates.includes(previousSelection)) {
+      DOM.dateFilter.value = previousSelection;
     } else {
       DOM.dateFilter.value = uniqueDates[0];
     }
