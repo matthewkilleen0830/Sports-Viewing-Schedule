@@ -412,9 +412,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const currentState = getActiveSelections();
 
+    if (targetSource !== "date") {
+      const dateSubset = getFilteredDataExcept("date");
+      updateDateSlicerOptions(dateSubset, currentState.date);
+    }
+
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      // Reset leagues to DEFAULT_LEAGUES when a new date is selected
       const leaguesToUse = isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues;
       const isAllToUse = isDateChangeOrInit ? false : currentState.isLeagueAll;
       updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
@@ -491,10 +495,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Populates the Date dropdown slicer options sorted chronologically.
+   * Populates the Date dropdown slicer options sorted chronologically (adaptive to active filters).
    */
-  function updateDateSlicerOptions(allData, selectedDate) {
-    const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
+  function updateDateSlicerOptions(filteredData, selectedDate) {
+    const uniqueDates = Array.from(new Set(filteredData.map(d => d.Date))).filter(Boolean);
 
     const currentYear = new Date().getFullYear();
     uniqueDates.sort((a, b) => {
@@ -506,6 +510,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     DOM.dateFilter.innerHTML = "";
+
+    if (uniqueDates.length === 0) {
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "No dates available";
+      DOM.dateFilter.appendChild(opt);
+      return;
+    }
+
     uniqueDates.forEach(date => {
       const opt = document.createElement("option");
       opt.value = date;
@@ -515,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (selectedDate && uniqueDates.includes(selectedDate)) {
       DOM.dateFilter.value = selectedDate;
-    } else if (uniqueDates.length > 0) {
+    } else {
       DOM.dateFilter.value = uniqueDates[0];
     }
   }
