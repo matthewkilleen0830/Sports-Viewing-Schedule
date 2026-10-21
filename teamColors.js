@@ -1,7 +1,7 @@
 // Lookup Table mapping team colors
 const TEAM_COLORS = {
 
-  // A
+  // 0-9, A
   "49ers": "#AA0000", "76ers": "#006BB6", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087", "Akron": "#041E42", "Alabama": "#9E1B32", "Alabama A&M": "#61162D",
   "Alaska": "#00205B", "Alaska Anchorage": "#005A36", "Angels": "#BA0021", "App State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40", "Arkansas": "#9D2235", 
   "Arkansas State": "#CC0000", "Arkansas-Pine Bluff": "#FDB913", "Army": "#D4BF91", "Assumption": "#004B87", "Astros": "#002D62", "Athletics": "#003831", "Auburn": "#0C2340", 
