@@ -53,6 +53,20 @@ document.addEventListener("DOMContentLoaded", function () {
     "XAVIER+", "NBA LP"
   ];
 
+  // Default Sports Leagues to display on initial load or date change
+  const DEFAULT_LEAGUES = [
+    "MLB (World Series)",
+    "NBA",
+    "NHL",
+    "NFL",
+    "NCAA Football",
+    "NCAA Basketball (M)",
+    "NCAA Basketball (W)",
+    "WNBA (Finals)",
+    "LPGA Tour",
+    "PGA Tour"
+  ];
+
   // Shared X-Axis time intervals (expressed in minutes from midnight) for vertical grid alignment
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
   const SHARED_X_AXIS_TEXT = [
@@ -139,7 +153,24 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".gender-filter:checked:not(:disabled)")
     ).map(cb => cb.value.toUpperCase());
 
-    const leagueAllChecked = document.getElementById("league_all")?.checked ?? true;
+    const leagueAllEl = document.getElementById("league_all");
+    
+    // On initial load before the league slicer is rendered, default to the requested default leagues
+    if (!leagueAllEl) {
+      return {
+        date: selectedDate,
+        top25Only: top25Only,
+        genders: selectedGenders,
+        leagues: DEFAULT_LEAGUES,
+        isLeagueAll: false,
+        times: [],
+        isTimeAll: true,
+        conferences: [],
+        isConfAll: true
+      };
+    }
+
+    const leagueAllChecked = leagueAllEl.checked;
     const selectedLeagues = leagueAllChecked ? [] : Array.from(
       document.querySelectorAll("#leagueFilter .league-checkbox:checked")
     ).map(cb => cb.value);
@@ -314,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Dynamically renders and binds event listeners for the Sports League checkbox filter panel.
    */
-  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = true) {
+  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
     if (!DOM.leagueFilter) return;
 
     const uniqueLeagues = Array.from(new Set(filteredData.map(d => d.League?.trim()))).filter(Boolean).sort();
@@ -350,6 +381,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const allCheckbox = document.getElementById("league_all");
     const itemCheckboxes = DOM.leagueFilter.querySelectorAll(".league-checkbox");
 
+    if (allCheckbox && itemCheckboxes.length > 0) {
+      allCheckbox.checked = Array.from(itemCheckboxes).every(item => item.checked);
+    }
+
     allCheckbox?.addEventListener("change", (e) => {
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
       refreshAllSlicersExcept("league");
@@ -377,7 +412,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      updateLeagueSlicer(leagueSubset, currentState.leagues, currentState.isLeagueAll);
+      // Reset leagues to DEFAULT_LEAGUES when a new date is selected
+      const leaguesToUse = (targetSource === "date") ? DEFAULT_LEAGUES : currentState.leagues;
+      const isAllToUse = (targetSource === "date") ? false : currentState.isLeagueAll;
+      updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
     }
 
     if (targetSource !== "time") {
