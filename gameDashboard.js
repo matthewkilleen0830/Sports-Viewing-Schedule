@@ -128,14 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
       refreshAllSlicersExcept("top25");
       applyFilters();
     });
-
-    // Event Listeners: Gender Filter Checkboxes (Men's / Women's)
-    document.querySelectorAll(".gender-filter").forEach(cb => {
-      cb.addEventListener("change", () => {
-        refreshAllSlicersExcept("gender");
-        applyFilters();
-      });
-    });
   });
 
   // ===========================================================================
@@ -149,10 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
     const top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
 
-    const selectedGenders = Array.from(
-      document.querySelectorAll(".gender-filter:checked:not(:disabled)")
-    ).map(cb => cb.value.toUpperCase());
-
     const leagueAllEl = document.getElementById("league_all");
     
     // On initial load before the league slicer is rendered, default to the requested default leagues
@@ -160,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return {
         date: selectedDate,
         top25Only: top25Only,
-        genders: selectedGenders,
         leagues: DEFAULT_LEAGUES,
         isLeagueAll: false,
         times: [],
@@ -188,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return {
       date: selectedDate,
       top25Only: top25Only,
-      genders: selectedGenders,
       leagues: selectedLeagues,
       isLeagueAll: leagueAllChecked,
       times: selectedTimes,
@@ -231,13 +217,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Multi-dimensional cross-filter evaluation engine supporting cascading slicer updates.
+   * Multi-dimensional cross-filter evaluation engine supporting fully adaptive cascading slicer updates.
    */
   function getFilteredDataExcept(excludedFilter = null) {
     const state = getActiveSelections();
 
     return window.gameData.filter(d => {
-      // 1. Date Filter (Primary single-choice driver)
+      // 1. Date Filter
       if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
         return false;
       }
@@ -256,26 +242,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // 3. Gender Filter (Men's / Women's)
-      if (excludedFilter !== "gender") {
-        if (state.genders.length === 0) return false;
-        const gameGender = d.Gender?.trim().toUpperCase();
-        if (gameGender && !state.genders.includes(gameGender)) return false;
-      }
-
-      // 4. Ranked NCAA Teams Filter
+      // 3. Ranked NCAA Teams Filter
       if (excludedFilter !== "top25" && state.top25Only) {
         const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
         if (!isTop25) return false;
       }
 
-      // 5. Game Start Time Filter
+      // 4. Game Start Time Filter
       if (excludedFilter !== "time") {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // 6. Conference Filter (Visitor or Home Conference match)
+      // 5. Conference Filter (Visitor or Home Conference match)
       if (excludedFilter !== "conference") {
         if (!state.isConfAll && state.conferences.length === 0) return false;
         if (!state.isConfAll) {
@@ -290,45 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Updates availability and enabled/disabled state of Gender filter checkboxes based on date subset.
-   */
-  function updateGenderSlicerState() {
-    const state = getActiveSelections();
-    const dateSubset = window.gameData.filter(d => {
-      if (state.date && d.Date !== state.date) return false;
-      if (isGameExpiredToday(d)) return false;
-      return true;
-    });
-
-    const hasMens = dateSubset.some(d => d.Gender?.trim().toUpperCase() === "M");
-    const hasWomens = dateSubset.some(d => d.Gender?.trim().toUpperCase() === "W");
-
-    const genderM = document.getElementById("gender-m");
-    const genderW = document.getElementById("gender-w");
-
-    if (genderM) {
-      if (!hasMens) {
-        genderM.checked = false;
-        genderM.disabled = true;
-      } else {
-        if (genderM.disabled) genderM.checked = true;
-        genderM.disabled = false;
-      }
-    }
-
-    if (genderW) {
-      if (!hasWomens) {
-        genderW.checked = false;
-        genderW.disabled = true;
-      } else {
-        if (genderW.disabled) genderW.checked = true;
-        genderW.disabled = false;
-      }
-    }
-  }
-
-  /**
-   * Updates availability of the Ranked NCAA Teams toggle based on filtered games across any league.
+   * Updates availability of the Ranked NCAA Teams toggle based on cross-filtered games.
    */
   function updateRankedToggleState(shouldReset = false) {
     if (!DOM.rankedFilter) return;
@@ -399,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
+                              Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("league");
         applyFilters();
       });
@@ -407,12 +348,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Refreshes all dependent filter slicers and toggle states while preserving user selection on the target dimension.
+   * Refreshes all dependent filter slicers and toggle states while preserving user selections across dimensions.
    */
   function refreshAllSlicersExcept(targetSource = null) {
     const isDateChangeOrInit = (targetSource === "date" || targetSource === null);
 
-    updateGenderSlicerState();
     updateRankedToggleState(isDateChangeOrInit);
 
     const currentState = getActiveSelections();
@@ -584,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
+                              Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("time");
         applyFilters();
       });
@@ -641,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
+                              Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("conference");
         applyFilters();
       });
