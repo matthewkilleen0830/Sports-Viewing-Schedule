@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
     leagueFilter: document.getElementById("leagueFilter"),
     rankedFilter: document.getElementById("rankedFilter"),
     timeFilter: document.getElementById("timeFilter"),
-    conferenceFilter: document.getElementById("conferenceFilter")
+    conferenceFilter: document.getElementById("conferenceFilter"),
+    searchInput: document.getElementById("searchInput")
   };
 
   // ===========================================================================
@@ -126,6 +127,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
       refreshAllSlicersExcept("top25");
+      applyFilters();
+    });
+
+    // Event Listener: Text Search Input Change (Global Override)
+    DOM.searchInput?.addEventListener("input", () => {
+      refreshAllSlicersExcept();
       applyFilters();
     });
   });
@@ -217,9 +224,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Multi-dimensional cross-filter evaluation engine supporting fully adaptive cascading slicer updates.
+   * Multi-dimensional cross-filter evaluation engine supporting global text search override.
    */
   function getFilteredDataExcept(excludedFilter = null) {
+    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
+
+    // If search input has text, it acts as a global override over all other filters
+    if (searchQuery) {
+      return window.gameData.filter(d => {
+        if (isGameExpiredToday(d)) return false;
+        
+        const matchup = d.Matchup?.toLowerCase() || "";
+        const league = d.League?.toLowerCase() || "";
+        const network = d.TV_Network?.toLowerCase() || "";
+        const vConf = d.Visitor_Conference?.toLowerCase() || "";
+        const hConf = d.Home_Conference?.toLowerCase() || "";
+
+        return matchup.includes(searchQuery) ||
+               league.includes(searchQuery) ||
+               network.includes(searchQuery) ||
+               vConf.includes(searchQuery) ||
+               hConf.includes(searchQuery);
+      });
+    }
+
     const state = getActiveSelections();
 
     return window.gameData.filter(d => {
