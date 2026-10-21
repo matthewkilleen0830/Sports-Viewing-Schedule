@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
     "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
-    "XAVIER+", "NBA LP"
+    "XAVIER+", "NBA LP", "MNMT"
   ];
 
   // Default Sports Leagues to display on initial load or date change
@@ -851,7 +851,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bargap: 0.15,               
       autosize: true,
       margin: {
-        l: 66,
+        l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN
