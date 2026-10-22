@@ -122,14 +122,19 @@ const TEAM_COLORS = {
   // Y
   "Yale": "#00356B", "Yankees": "#0C2340", "Youngstown State": "#E4002B",
 
-  // Host Golf
-  "Sheshan GC": "#00426B", "Pine Beach Golf Links": "#00426B", "Kuala Lumpur": "#00426B",
-  "Port Royal GC": "#2E7D32",  "Vidanta Vallarta": "#2E7D32", "Diamante El Cardonal": "#2E7D32",
+  // Host LPGA Tour
+  "Sheshan GC": "#F75D5D", "Pine Beach Golf Links": "#F75D5D", "Kuala Lumpur": "#F75D5D",
+
+  // Host PGA Tour
+  "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#003C80", "Diamante El Cardonal": "#003C80",
   
   // Host Tennis
-  "Melbourne Park": "#1E8FD5"
+  "Melbourne Park": "#1E8FD5", "Roland Garros": "#BB5522", "Wimbledon": "#046A38", "BJK National Tennis Center": "#FFD400",
 
-  // Host Racing
-  
+  // Host Auto Racing
+  "Daytona International Speedway": "#E4002B", "Talladega Superspeedway": "#E4002B", "Charlotte Motor Speedway": "#E4002B", "Indianapolis Motor Speedway": "#0072B4",
+
+  // Host Horse Racing
+  "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D"
 
 };
