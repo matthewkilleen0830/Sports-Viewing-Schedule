@@ -86,10 +86,67 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // ===========================================================================
-  // 3. DATA LOADING & INITIALIZATION
+  // 3. TIMEZONE CONVERSION UTILITY (CENTRAL TIME -> LOCAL TIME)
+  // ===========================================================================
+
+  /**
+   * Converts a Central Time date and time string into an exact epoch timestamp, 
+   * which JavaScript then automatically interprets in the user's local time zone.
+   */
+  function centralDateTimeToEpoch(dateStr, timeStr, currentYear) {
+    if (!dateStr || !timeStr) return 0;
+    
+    let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    if (!/\b20\d{2}\b/.test(cleanStr)) {
+      cleanStr = `${cleanStr}, ${currentYear}`;
+    }
+    const tempDate = new Date(cleanStr);
+    const month = tempDate.getMonth();
+    const day = tempDate.getDate();
+    const year = tempDate.getFullYear();
+
+    const [time, ampm] = timeStr.split(' ');
+    if (!time) return 0;
+    let [h, m] = time.split(':').map(Number);
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+
+    // Construct nominal UTC time, then correct for America/Chicago offset at that specific date/time
+    const utcGuess = Date.UTC(year, month, day, h, m, 0);
+    
+    const options = { 
+      timeZone: 'America/Chicago', 
+      year: 'numeric', 
+      month: 'numeric', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric', 
+      second: 'numeric', 
+      hour12: false 
+    };
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const parts = formatter.formatToParts(new Date(utcGuess));
+    const chicagoParts = {};
+    parts.forEach(p => chicagoParts[p.type] = p.value);
+    
+    const chicagoAsUtc = Date.UTC(
+      chicagoParts.year,
+      chicagoParts.month - 1,
+      chicagoParts.day,
+      chicagoParts.hour === 24 ? 0 : chicagoParts.hour,
+      chicagoParts.minute,
+      chicagoParts.second
+    );
+    
+    const offsetMs = chicagoAsUtc - utcGuess;
+    return utcGuess - offsetMs;
+  }
+
+  // ===========================================================================
+  // 4. DATA LOADING & INITIALIZATION
   // ===========================================================================
   
-  // Load raw schedule data from CSV, sanitize UTF-8 BOM characters, and initialize dashboard
+  // Load raw schedule data from CSV, sanitize UTF-8 BOM, convert from Central Time to Local Time
   d3.csv("currentWeek/weekFull.csv", raw => {
     const clean = {};
     Object.keys(raw).forEach(key => {
@@ -97,8 +154,41 @@ document.addEventListener("DOMContentLoaded", function () {
       clean[normalizedKey] = raw[key];
     });
     return clean;
-  }).then(data => {
-    window.gameData = data;
+  }).then(rawRows => {
+    const currentYear = new Date().getFullYear();
+
+    // Map backend Central Time data to the user's local time zone
+    window.gameData = rawRows.map(d => {
+      const startEpoch = centralDateTimeToEpoch(d.Date, d.Start_Time, currentYear);
+      const endEpoch = centralDateTimeToEpoch(d.Date, d.End_Time, currentYear);
+      
+      let adjustedEndEpoch = endEpoch;
+      if (adjustedEndEpoch < startEpoch) {
+        adjustedEndEpoch += 24 * 60 * 60 * 1000; // Handle overnight games crossing midnight
+      }
+
+      const localStart = new Date(startEpoch);
+      const localEnd = new Date(adjustedEndEpoch);
+
+      const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+      const localDateStr = localStart.toLocaleDateString('en-US', dateOptions);
+
+      const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
+      const localStartStr = localStart.toLocaleTimeString('en-US', timeOptions);
+      const localEndStr = localEnd.toLocaleTimeString('en-US', timeOptions);
+
+      return {
+        ...d,
+        Original_Date: d.Date,
+        Original_Start_Time: d.Start_Time,
+        Original_End_Time: d.End_Time,
+        Date: localDateStr,
+        Start_Time: localStartStr,
+        End_Time: localEndStr,
+        _startEpoch: startEpoch,
+        _endEpoch: adjustedEndEpoch
+      };
+    });
 
     // Determine initial date selection and populate date dropdown options
     const initialDate = getFirstAvailableDate(window.gameData);
@@ -167,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===========================================================================
-  // 4. FILTERING & STATE MANAGEMENT FUNCTIONS
+  // 5. FILTERING & STATE MANAGEMENT FUNCTIONS
   // ===========================================================================
 
   /**
@@ -221,16 +311,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Checks if a game scheduled for today has already concluded more than 15 minutes ago.
+   * Checks if a game scheduled for today has already concluded more than 15 minutes ago (Local Time).
    */
   function isGameExpiredToday(d) {
     const now = new Date();
-    const currentYear = now.getFullYear();
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
     if (cleanStr && !/\b20\d{2}\b/.test(cleanStr)) {
-      cleanStr = `${cleanStr}, ${currentYear}`;
+      cleanStr = `${cleanStr}, ${now.getFullYear()}`;
     }
     const gameDateParsed = cleanStr ? new Date(cleanStr) : null;
     if (!gameDateParsed) return false;
@@ -416,7 +505,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      // When keyword search is active, override league filters to default to all leagues checked
       const leaguesToUse = searchQuery ? [] : (isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues);
       const isAllToUse = searchQuery ? true : (isDateChangeOrInit ? false : currentState.isLeagueAll);
       updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
@@ -674,7 +762,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const homeTeamRaw = parts[parts.length - 1].trim();
 
-    if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
+    if (typeof TEAM_COLORS !== 'undefined' && Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
       return TEAM_COLORS[homeTeamRaw];
     }
 
@@ -683,7 +771,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/\s*\([^)]*\)/g, '')
       .trim();
 
-    if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
+    if (typeof TEAM_COLORS !== 'undefined' && Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
       return TEAM_COLORS[homeTeamClean];
     }
 
@@ -696,6 +784,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function timeToMinutes(t) {
     if (!t) return 0;
     const [time, ampm] = t.split(' ');
+    if (!time) return 0;
     let [h, m] = time.split(':').map(Number);
     if (ampm === 'PM' && h !== 12) h += 12;
     if (ampm === 'AM' && h === 12) h = 0;
@@ -741,7 +830,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 5. CHART RENDERING & VISUALIZATION (PLOTLY)
+  // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
   /**
@@ -871,7 +960,7 @@ document.addEventListener("DOMContentLoaded", function () {
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       barmode: 'stack',
-      bargap: 0.15,              
+      bargap: 0.15,               
       autosize: true,
       margin: {
         l: 67,
@@ -920,7 +1009,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 6. GLOBAL TIMERS & EVENT LISTENERS
+  // 7. GLOBAL TIMERS & EVENT LISTENERS
   // ===========================================================================
 
   // Auto-refresh active charts every 60 seconds (if refresh function is defined)
