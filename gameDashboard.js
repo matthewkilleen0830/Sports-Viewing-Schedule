@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleBtn.classList.add("attention-flash");
     setTimeout(() => {
       toggleBtn.classList.remove("attention-flash");
-    }, 3500);
+    }, 5600);
 
     // Handle click events to toggle sidebar expansion and trigger Plotly re-renders
     toggleBtn.addEventListener("click", function () {
