@@ -644,10 +644,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Applies active filters, splits dataset into linear broadcast vs. digital streaming, and triggers rendering.
+   * Applies active filters, updates chart title dates, splits dataset into linear broadcast vs. digital streaming, and triggers rendering.
    */
   function applyFilters() {
     const filtered = getFilteredDataExcept(null);
+    const selectedDateText = DOM.dateFilter ? DOM.dateFilter.value : "";
+
+    // Automatically update the selected date text in both chart header titles
+    document.querySelectorAll('.chart-date-label').forEach(el => {
+      el.textContent = selectedDateText ? `— ${selectedDateText}` : "";
+    });
 
     const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
     const digitalData = filtered.filter(d => DIGITAL_NETWORKS.includes(d.TV_Network));
