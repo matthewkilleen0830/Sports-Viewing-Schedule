@@ -55,7 +55,7 @@ const TEAM_COLORS = {
   
   // L
   "Lafayette": "#9E1B32", "Lake Superior State": "#005A36", "Lamar": "#D11919", "Lakers": "#552583", "Lehigh": "#653815", "Liberty": "#6ECEB2", "Liberty University": "#B72025",
-  "Lightning": "#002868", "Lindenwood": "#B3A369", "Lions": "#0076B6", "LIU": "#69B3E7", "Louisiana": "#CE181E", "Louisiana Tech": "#003087", "Louisville": "#AD0000", 
+  "Lightning": "#002868", "Lindenwood": "#B3A369", "LionsUsual": "#0076B6", "Lions": "#111111", "LIU": "#69B3E7", "Louisiana": "#CE181E", "Louisiana Tech": "#003087", "Louisville": "#AD0000", 
   "LSU": "#461D7C", "Lynx": "#0C2340",
   
   // M
