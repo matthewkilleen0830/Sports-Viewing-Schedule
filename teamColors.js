@@ -1,11 +1,13 @@
 // Lookup Table mapping team colors
 const TEAM_COLORS = {
 
-  // 0-9, A
-  "49ers": "#AA0000", "76ers": "#006BB6", "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087", "Akron": "#041E42", "Alabama": "#9E1B32", "Alabama A&M": "#61162D",
-  "Alaska": "#00205B", "Alaska Anchorage": "#005A36", "Angels": "#BA0021", "App State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40", "Arkansas": "#9D2235", 
-  "Arkansas State": "#CC0000", "Arkansas-Pine Bluff": "#FDB913", "Army": "#D4BF91", "Assumption": "#004B87", "Astros": "#002D62", "Athletics": "#003831", "Auburn": "#0C2340", 
-  "Augustana": "#002D62", "Austin Peay": "#C41230", "Avalanche": "#6F263D", 
+  // 0-9
+  "49ers": "#AA0000", "76ers": "#006BB6",
+
+  // A
+  "Abilene Christian": "#4C2A85", "Aces": "#000000", "Air Force": "#003087", "Akron": "#041E42", "Alabama": "#9E1B32", "Alabama A&M": "#61162D", "Alaska": "#00205B", "Alaska Anchorage": "#005A36", 
+  "Angels": "#BA0021", "App State": "#000000", "Arizona": "#CC0003", "Arizona State": "#8C1D40", "Arkansas": "#9D2235", "Arkansas State": "#CC0000", "Arkansas-Pine Bluff": "#FDB913", 
+  "Army": "#D4BF91", "Assumption": "#004B87", "Astros": "#002D62", "Athletics": "#003831", "Auburn": "#0C2340", "Augustana": "#002D62", "Austin Peay": "#C41230", "Avalanche": "#6F263D", 
   
   // B
   "Ball State": "#BA0C2F", "Baylor": "#154734", "Bears": "#0B162A", "Bemidji State": "#004B49", "Bengals": "#FB4F14", "Bentley": "#00205B", "Bills": "#00338D", "Blackhawks": "#CF0A2C",
@@ -120,7 +122,14 @@ const TEAM_COLORS = {
   // Y
   "Yale": "#00356B", "Yankees": "#0C2340", "Youngstown State": "#E4002B",
 
-  // Host Golf Courses
-  "Sheshan GC": "#076652", "Port Royal GC": "#076652", "Pine Beach Golf Links": "#076652", "Vidanta Vallarta": "#076652", "Diamante El Cardonal": "#076652"
+  // Host Golf
+  "Sheshan GC": "#00426B", "Pine Beach Golf Links": "#00426B", "Kuala Lumpur": "#00426B",
+  "Port Royal GC": "#2E7D32",  "Vidanta Vallarta": "#2E7D32", "Diamante El Cardonal": "#2E7D32",
   
+  // Host Tennis
+  "Melbourne Park": "#1E8FD5"
+
+  // Host Racing
+  
+
 };
