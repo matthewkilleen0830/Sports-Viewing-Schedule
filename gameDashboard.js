@@ -860,6 +860,9 @@ document.addEventListener("DOMContentLoaded", function () {
       earliestStart = 600; // Fallback default (10:00 AM)
     }
 
+    // Add a small 10-minute padding buffer so the first bar doesn't touch the edge
+    const paddedStart = Math.max(0, earliestStart - 10);
+
     const END_OF_DAY_MINUTES = 1500; // 1:00 AM
 
     // Configure Plotly chart layout parameters
@@ -881,7 +884,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fixedrange: true,
         side: 'top',
         type: 'linear',
-        range: [earliestStart, END_OF_DAY_MINUTES],
+        range: [paddedStart, END_OF_DAY_MINUTES],
         tickmode: 'array',
         tickvals: SHARED_X_AXIS_VALS,
         ticktext: SHARED_X_AXIS_TEXT,
