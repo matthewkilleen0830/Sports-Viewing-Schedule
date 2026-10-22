@@ -829,7 +829,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calculate dynamic container height based on total rows required
     const ROW_HEIGHT = 37;
     const TOP_MARGIN = 45;
-    const BOTTOM_MARGIN = 5;
+    const BOTTOM_MARGIN = 29;
     
     const totalRows = yTicks.length;
     const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_MARGIN + BOTTOM_MARGIN;
