@@ -1,6 +1,6 @@
-# Live Men's and Women's Sports Broadcast Dashboard
+# Live Sports Broadcast Dashboard
 
-An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of all broadcast and streaming game schedules with real-time dynamic filtering.
+An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional sports leagues and collegiate athletics with real-time dynamic filtering.
 
 ![Live Sports Dashboard Banner](images/headerBanner.png)
 
@@ -8,30 +8,35 @@ An interactive, single-page web dashboard designed to simplify your daily live s
 
 ## Live Demo
 
-Check out the live interactive application hosted on GitHub Pages:
+Check out the live interactive application hosted on GitHub Pages:  
 👉 **[https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/](https://matthewkilleen0830.github.io/Sports-Viewing-Schedule/)**
 
 ---
 
 ## ✨ Features & Functionality
 
-* **Dual Schedule Visualizations**:
+- **Dual Synchronized Timelines**:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., CBS, FOX, ESPN, etc.).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, Prime Video, etc.).
-* **Collapsible Slicers & Adaptive Filter Panel**:
-  * **Day/Date Selection**: Instant focus on specific days.
-  * **Ranked Teams Toggle**: One-click filter to highlight college ranked teams and matchups.
-  * **Category Toggle**: Multi-select filter for Men's or Women's sports.
-  * **Sports/League Toggle**: Multi-select filter to dial in your sports selections.
-  * **Game Time Slicer**: Dynamic multi-select filter adapting to available game start times for selected days.
-  * **Conference Slicer**: Multi-select conference filter that dynamically updates based on active day/date, ranked, category, league, and start time constraints.
-* **Art Deco Dark Theme**:
-  * Clean, polished, custom CSS UI tailored for shiny gold accents.
+  * **Synchronized Bounds & Post-Game Filtering**: Both timeline charts automatically calculate intelligent x-axis bounds—starting at the earliest scheduled matchup and dynamically filtering out games 30 minutes after their completion time to eliminate dead air.
+- **Comprehensive League & Professional Coverage**:
+  * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
+- **Fully Inter-Adaptive Filter Architecture**:
+  * **Team Search Filter**: Adaptive real-time text input filter to quickly pinpoint specific teams across all schedules.
+  * **Day/Date Selection**: Instant focus on specific days within the rolling dataset.
+  * **Sports/League Toggle**: Multi-select filter with optimized default settings to minimize visual clutter on initial load.
+  * **Ranked Teams Toggle**: One-click toggle to isolate ranked collegiate matchups.
+  * **Game Time Slicer**: Dynamic multi-select filter adapting to active game start times.
+  * **Conference Slicer**: Dynamic conference filter cross-adapting with active day, league, team, and time selections to eliminate dead-end choices.
+- **API-Driven Data Pipeline**:
+  * Powered by an automated data extraction and transformation pipeline that standardizes multi-sport schedules, handles time zone normalization (`America/Chicago`), transforms incoming data, passes validation checks, and aggregates live game datasets into `weekFull.csv`.
+- **Art Deco Dark Theme**:
+  * Clean, polished, custom CSS UI tailored with gold accents and responsive sidebar controls.
   * Custom team color branding and high-contrast timeline bars for seamless visual scanning.
-* **Full Analytics Integration**:
+- **Full Analytics Integration**:
   * Integrated **Google Analytics 4 (GA4)** for tracking real-time user activity, slicer interactions, and device metrics.
   * Configured with dual IPv4 & IPv6 internal traffic exclusion rules to keep development metrics clean.
-* **SEO & Social Share Ready**:
+- **SEO & Social Share Ready**:
   * Fully equipped with **Open Graph** and **Twitter Card** metadata for rich media link previews across iMessage, X, LinkedIn, and Discord.
   * Embedded **Schema.org (JSON-LD)** structured data for enhanced search engine indexing.
 
@@ -44,6 +49,7 @@ Check out the live interactive application hosted on GitHub Pages:
 | **Frontend Framework** | HTML5, Modern CSS3, JavaScript (Vanilla ES6+) |
 | **UI Layout** | Bootstrap 5.3 |
 | **Data Visualization** | Plotly.js |
+| **Data Pipeline** | Python (API Extraction & Schedule Aggregation), Power Query (Transformation Rules) |
 | **Hosting & Deployment**| GitHub Pages |
 | **Analytics** | Google Analytics 4 (gtag.js) |
 | **Typography & Assets**| Google Fonts, Custom SVG Icons |
@@ -53,13 +59,13 @@ Check out the live interactive application hosted on GitHub Pages:
 ## 📁 Repository Structure
 
 ```text
-├── index.html            # Main HTML entry point with layout & SEO metadata
-├── styles.css            # Custom Art Deco dark-theme styling & responsive rules
-├── gameDashboard.js      # Dynamic data fetching, filter logic, and Plotly chart rendering
-├── teamColors.js         # Key pairs of unique teams and home color hex codes
 ├── currentWeek/          # Active schedule data directory
-│   └── weekFull.csv      # Rolling 7 Day matchup dataset
+│   └── weekFull.csv      # API-aggregated rolling matchup dataset
 ├── images/               # Visual asset directory
 │   ├── favicon.png       # Browser favicon icon
 │   └── headerBanner.png  # Dashboard header banner & Open Graph preview image
-└── README.md             # Project documentation
+├── gameDashboard.js      # Inter-adaptive filter logic, timeline synchronization, and Plotly rendering
+├── index.html            # Main HTML entry point with layout & SEO metadata
+├── README.md             # Project documentation
+├── styles.css            # Custom dark-theme styling, animations & responsive rules
+└── teamColors.js         # Key-value map of team names to hex color codes
