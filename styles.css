@@ -198,6 +198,7 @@ html, body {
    7. TYPOGRAPHY & GOLD ACCENT GRADIENTS FOR HEADINGS AND LABELS
    =========================================================================== */
 
+/* Shared gradient and text styling for headers */
 .filter-panel h1, 
 .filter-panel h2, 
 .filter-panel h3, 
@@ -214,6 +215,12 @@ html, body {
   font-weight: 600;
   letter-spacing: 0.3px;
   display: inline-block;
+}
+
+/* Fluid responsive sizing specifically for the chart titles */
+.chart-container .chart-title {
+  font-size: clamp(0.75rem, 3.8vw, 1.1rem);
+  line-height: 1.3;
 }
 
 .filter-panel label {
@@ -418,5 +425,20 @@ html, body {
 
   .filter-panel {
     border-radius: 0 12px 12px 0;
+  }
+}
+
+/* Base style for the timezone note */
+.chart-title .timezone-note {
+  font-size: 0.6em;
+  font-style: italic;
+}
+
+/* On mobile portrait, force it to a new line and add a slight indent */
+@media (max-width: 576px) and (orientation: portrait) {
+  .chart-title .timezone-note {
+    display: block;      /* Drops it to its own line */
+    margin-left: 0.75rem; /* Adds a nice leading indent */
+    margin-top: 2px;     /* Optional breathing room from the title above */
   }
 }
