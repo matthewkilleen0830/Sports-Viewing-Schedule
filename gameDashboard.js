@@ -10,16 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Automatically collapse the filter sidebar on smaller viewports (< 1200px)
     if (window.innerWidth < 1200) {
       sidebar.classList.add("collapsed");
-      toggleBtn.setAttribute("title", "Show Filters");
     }
 
-    // Trigger an attention-flashing visual cue if the sidebar loads collapsed
-    if (sidebar.classList.contains("collapsed")) {
-      toggleBtn.classList.add("attention-flash");
-      setTimeout(() => {
-        toggleBtn.classList.remove("attention-flash");
-      }, 3500);
-    }
+    // Set initial tooltip based on whether sidebar loaded collapsed or expanded
+    const isInitialCollapsed = sidebar.classList.contains("collapsed");
+    toggleBtn.setAttribute("title", isInitialCollapsed ? "Show Filters" : "Hide Filters");
+
+    // Trigger an attention-flashing visual cue on page load/refresh on any device
+    toggleBtn.classList.add("attention-flash");
+    setTimeout(() => {
+      toggleBtn.classList.remove("attention-flash");
+    }, 3500);
 
     // Handle click events to toggle sidebar expansion and trigger Plotly re-renders
     toggleBtn.addEventListener("click", function () {
@@ -270,10 +271,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                              league.includes(searchQuery) ||
-                              network.includes(searchQuery) ||
-                              vConf.includes(searchQuery) ||
-                              hConf.includes(searchQuery);
+                            league.includes(searchQuery) ||
+                            network.includes(searchQuery) ||
+                            vConf.includes(searchQuery) ||
+                            hConf.includes(searchQuery);
 
         if (!matchesSearch) return false;
       }
@@ -390,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                              Array.from(itemCheckboxes).every(item => item.checked);
+                            Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("league");
         applyFilters();
       });
@@ -579,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                              Array.from(itemCheckboxes).every(item => item.checked);
+                            Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("time");
         applyFilters();
       });
@@ -636,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function () {
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                              Array.from(itemCheckboxes).every(item => item.checked);
+                            Array.from(itemCheckboxes).every(item => item.checked);
         refreshAllSlicersExcept("conference");
         applyFilters();
       });
@@ -867,7 +868,7 @@ document.addEventListener("DOMContentLoaded", function () {
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       barmode: 'stack',
-      bargap: 0.15,               
+      bargap: 0.15,              
       autosize: true,
       margin: {
         l: 67,
