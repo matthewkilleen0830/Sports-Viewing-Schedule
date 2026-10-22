@@ -652,7 +652,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Automatically update the selected date text in both chart header titles
     document.querySelectorAll('.chart-date-label').forEach(el => {
-      el.textContent = selectedDateText ? `— ${selectedDateText}` : "";
+      el.textContent = selectedDateText ? `\u00A0\u00A0${selectedDateText}` : "";
     });
 
     const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
