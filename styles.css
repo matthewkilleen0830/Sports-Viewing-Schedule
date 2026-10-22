@@ -126,7 +126,7 @@ html, body {
 }
 
 .filter-toggle-btn.attention-flash {
-  animation: toggleAttention 0.7s ease-in-out 5;
+  animation: toggleAttention 0.7s ease-in-out 8;
 }
 
 .toggle-arrow {
