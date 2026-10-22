@@ -133,8 +133,9 @@ const TEAM_COLORS = {
 
   // Host Auto Racing
   "Daytona International Speedway": "#E4002B", "Talladega Superspeedway": "#E4002B", "Charlotte Motor Speedway": "#E4002B", "Indianapolis Motor Speedway": "#0072B4",
+  "Atlanta Motor Speedway": "#E4002B", "Pocono Raceway": "#E4002B", "Michigan International Speedway": "#E4002B", "Homestead-Miami Speedway": "#E4002B",
 
   // Host Horse Racing
-  "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D"
+  "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D", "Keeneland": "#197D5C"
 
 };
