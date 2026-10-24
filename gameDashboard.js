@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "NCAA Football",
     "NCAA Basketball (M)",
     "NCAA Basketball (W)",
-    "WNBA (Finals)",
     "LPGA Tour",
     "PGA Tour"
   ];
