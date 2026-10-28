@@ -1,6 +1,6 @@
 # Live Sports Broadcast Dashboard
 
-An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional sports leagues and collegiate athletics with real-time dynamic filtering.
+An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional and collegiate sports leagues with real-time dynamic filtering.
 
 ![Live Sports Dashboard Banner](images/headerBanner.png)
 
@@ -15,21 +15,25 @@ Check out the live interactive application hosted on GitHub Pages:
 
 ## ✨ Features & Functionality
 
-- **Dual Synchronized Timelines**:
+- **Dual Synchronized Timelines & Dynamic Autorange**:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., CBS, FOX, ESPN, etc.).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, Prime Video, etc.).
-  * **Synchronized Bounds & Post-Game Filtering**: Both timeline charts automatically calculate intelligent x-axis bounds—starting at the earliest scheduled matchup and dynamically filtering out games 30 minutes after their completion time to eliminate dead air.
+  * **Synced Dynamic Autorange**: Completely revamped chart axis architecture that dynamically scales to the day's actual schedule bounds without being clipped by hardcoded time caps, keeping gridlines and hour markers perfectly aligned.
+  * **Post-Game Filtering**: Automatically filters out completed games past their buffer windows to eliminate dead air.
 - **Comprehensive League & Professional Coverage**:
   * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
-- **Fully Inter-Adaptive Filter Architecture**:
-  * **Team Search Filter**: Adaptive real-time text input filter to quickly pinpoint specific teams across all schedules.
-  * **Day/Date Selection**: Instant focus on specific days within the rolling dataset.
+- **Fully Inter-Adaptive & Superseding Filter Architecture**:
+  * **Universal Search Supersession**: Global text search filter that strictly supersedes all other UI controls. Typing a query (e.g., "Indiana") instantly displays every matching game across the dataset regardless of default filters or active constraints.
+  * **Intelligent Non-NCAA Conference Exemption**: Professional and non-NCAA leagues (such as the NFL, NHL, and PGA Tour) automatically bypass collegiate conference filters, enabling seamless multi-league viewing alongside targeted college conference filters without manual workarounds.
+  * **Day/Date Selection & Robust Persistence**: Instant focus on specific days within the rolling dataset. Deselecting sports leagues while viewing future dates safely preserves your selected date rather than defaulting back to the start of the dataset.
   * **Sports/League Toggle**: Multi-select filter with optimized default settings to minimize visual clutter on initial load.
   * **Ranked Teams Toggle**: One-click toggle to isolate ranked collegiate matchups.
   * **Game Time Slicer**: Dynamic multi-select filter adapting to active game start times.
   * **Conference Slicer**: Dynamic conference filter cross-adapting with active day, league, team, and time selections to eliminate dead-end choices.
+- **Local Time Zone Standardization**:
+  * Automatically translates backend data schedule calculations into the user's local device time zone for effortless, accurate viewing.
 - **API-Driven Data Pipeline**:
-  * Powered by an automated data extraction and transformation pipeline that standardizes multi-sport schedules, handles time zone normalization (`America/Chicago`), transforms incoming data, passes validation checks, and aggregates live game datasets into `weekFull.csv`.
+  * Powered by an automated data extraction and transformation pipeline that standardizes multi-sport schedules, handles time zone normalization, transforms incoming data, passes validation checks, and aggregates live game datasets into `weekFull.csv`.
 - **Art Deco Dark Theme**:
   * Clean, polished, custom CSS UI tailored with gold accents and responsive sidebar controls.
   * Custom team color branding and high-contrast timeline bars for seamless visual scanning.
@@ -62,7 +66,6 @@ Check out the live interactive application hosted on GitHub Pages:
 ├── currentWeek/          # Active schedule data directory
 │   └── weekFull.csv      # API-aggregated rolling matchup dataset
 ├── images/               # Visual asset directory
-│   ├── favicon.png       # Browser favicon icon
 │   └── headerBanner.png  # Dashboard header banner & Open Graph preview image
 ├── gameDashboard.js      # Inter-adaptive filter logic, timeline synchronization, and Plotly rendering
 ├── index.html            # Main HTML entry point with layout & SEO metadata
