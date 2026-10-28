@@ -55,15 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
     "NFL",
     "NCAA Football",
     "NCAA Basketball (M)",
-    "NCAA Basketball (W)",
-    "LPGA Tour",
-    "PGA Tour"
   ];
 
-  const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
+  const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
   const SHARED_X_AXIS_TEXT = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
-    '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'
+    '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM'
   ];
 
   const DOM = {
@@ -75,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput: document.getElementById("searchInput")
   };
 
-  // Persistent User Filter State Object
+  // Persistent User Filter State & Modification Flag
+  let userHasModifiedFilters = false;
   const filterState = {
     leagues: [...DEFAULT_LEAGUES],
     isLeagueAll: false,
@@ -208,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
+      userHasModifiedFilters = true;
       filterState.top25Only = DOM.rankedFilter.checked && !DOM.rankedFilter.disabled;
       refreshAllSlicersExcept("top25");
       applyFilters();
@@ -215,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event Listener: Text Search Input Change
     DOM.searchInput?.addEventListener("input", () => {
+      userHasModifiedFilters = true;
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
       if (searchQuery) {
         const matchingGames = window.gameData.filter(d => {
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
     if (!DOM.leagueFilter) return;
 
-    const uniqueLeagues = Array.from(new Set(filteredData.map(d => d.League?.trim()))).filter(Boolean).sort();
+    const uniqueLeagues = Array.from(new Set(window.gameData.map(d => d.League?.trim()))).filter(Boolean).sort();
 
     DOM.leagueFilter.innerHTML = "";
 
@@ -433,6 +433,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemCheckboxes = DOM.leagueFilter.querySelectorAll(".league-checkbox");
 
     allCheckbox?.addEventListener("change", (e) => {
+      userHasModifiedFilters = true;
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
       syncStateFromDOM();
       refreshAllSlicersExcept("league");
@@ -441,6 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
+        userHasModifiedFilters = true;
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
                             Array.from(itemCheckboxes).every(item => item.checked);
         syncStateFromDOM();
@@ -487,6 +489,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
 
     allCheckbox?.addEventListener("change", (e) => {
+      userHasModifiedFilters = true;
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
       syncStateFromDOM();
       refreshAllSlicersExcept("time");
@@ -495,6 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
+        userHasModifiedFilters = true;
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
                             Array.from(itemCheckboxes).every(item => item.checked);
         syncStateFromDOM();
@@ -545,6 +549,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
 
     allCheckbox?.addEventListener("change", (e) => {
+      userHasModifiedFilters = true;
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
       syncStateFromDOM();
       refreshAllSlicersExcept("conference");
@@ -553,6 +558,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
+        userHasModifiedFilters = true;
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
                             Array.from(itemCheckboxes).every(item => item.checked);
         syncStateFromDOM();
@@ -564,8 +570,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function refreshAllSlicersExcept(targetSource = null) {
     const isInit = (targetSource === null);
+    const isDateChange = (targetSource === "date");
 
     if (isInit) {
+      userHasModifiedFilters = false;
+      filterState.leagues = [...DEFAULT_LEAGUES];
+      filterState.isLeagueAll = false;
+      filterState.conferences = [];
+      filterState.isConfAll = true;
+      filterState.times = [];
+      filterState.isTimeAll = true;
+      filterState.top25Only = false;
+    } else if (isDateChange && !userHasModifiedFilters) {
       filterState.leagues = [...DEFAULT_LEAGUES];
       filterState.isLeagueAll = false;
       filterState.conferences = [];
@@ -577,10 +593,14 @@ document.addEventListener("DOMContentLoaded", function () {
       syncStateFromDOM();
     }
 
-    updateRankedToggleState(isInit);
+    updateRankedToggleState(isInit || (isDateChange && !userHasModifiedFilters));
 
-    if (isInit || targetSource === "date") {
-      const dateSourceData = targetSource === "date" ? getFilteredDataExcept("date") : window.gameData;
+    if (isInit || targetSource !== "date") {
+      const subsetWithoutDate = getFilteredDataExcept("date");
+      const firstMatchDate = getFirstAvailableDate(subsetWithoutDate);
+      updateDateSlicerOptions(subsetWithoutDate, firstMatchDate);
+    } else {
+      const dateSourceData = getFilteredDataExcept("date");
       updateDateSlicerOptions(dateSourceData, filterState.date);
     }
 
@@ -705,11 +725,33 @@ document.addEventListener("DOMContentLoaded", function () {
       el.textContent = selectedDateText ? `\u00A0\u00A0${selectedDateText}` : "";
     });
 
+    // Calculate synced dynamic X-axis range across ALL filtered games for the view
+    let earliestStart = 1440;
+    let latestEnd = 0;
+
+    if (filtered && filtered.length > 0) {
+      filtered.forEach(game => {
+        const start = timeToMinutes(game.Start_Time);
+        let end = timeToMinutes(game.End_Time);
+        if (end < start) end += 1440;
+
+        if (!isNaN(start) && start < earliestStart) earliestStart = start;
+        if (!isNaN(end) && end > latestEnd) latestEnd = end;
+      });
+    }
+
+    if (earliestStart === 1440 || isNaN(earliestStart)) earliestStart = 600;
+    if (latestEnd === 0 || isNaN(latestEnd)) latestEnd = 1440;
+
+    const paddedStart = Math.max(0, earliestStart - 10);
+    const paddedEnd = Math.max(paddedStart + 60, latestEnd + 15);
+    const syncedXRange = [paddedStart, paddedEnd];
+
     const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
     const digitalData = filtered.filter(d => DIGITAL_NETWORKS.includes(d.TV_Network));
 
-    renderChart('barChart', primaryData, false);
-    renderChart('digitalChart', digitalData, true);
+    renderChart('barChart', primaryData, false, syncedXRange);
+    renderChart('digitalChart', digitalData, true, syncedXRange);
   }
 
   function getHomeTeamColor(matchup) {
@@ -785,7 +827,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
-  function renderChart(targetId, data, isDigital = false) {
+  function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500]) {
     const container = document.getElementById(targetId);
 
     if (!data || data.length === 0) {
@@ -878,24 +920,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.style.height = `${calculatedPlotHeight}px`;
 
-    const currentFilteredSubset = getFilteredDataExcept(null);
-
-    let earliestStart = 1440;
-    if (currentFilteredSubset && currentFilteredSubset.length > 0) {
-      currentFilteredSubset.forEach(game => {
-        const startMin = timeToMinutes(game.Start_Time);
-        if (!isNaN(startMin) && startMin < earliestStart) {
-          earliestStart = startMin;
-        }
-      });
-    }
-
-    if (earliestStart === 1440 || isNaN(earliestStart)) {
-      earliestStart = 600;
-    }
-
-    const paddedStart = Math.max(0, earliestStart - 10);
-    const END_OF_DAY_MINUTES = 1500;
+    const [rangeStart, rangeEnd] = xAxisRange;
+    const tickIndices = [];
+    SHARED_X_AXIS_VALS.forEach((val, idx) => {
+      if (val >= rangeStart - 60 && val <= rangeEnd + 60) {
+        tickIndices.push(idx);
+      }
+    });
+    const tickvals = tickIndices.map(i => SHARED_X_AXIS_VALS[i]);
+    const ticktext = tickIndices.map(i => SHARED_X_AXIS_TEXT[i]);
 
     const layout = {
       height: calculatedPlotHeight,
@@ -915,10 +948,10 @@ document.addEventListener("DOMContentLoaded", function () {
         fixedrange: true,
         side: 'top',
         type: 'linear',
-        range: [paddedStart, END_OF_DAY_MINUTES],
+        range: [rangeStart, rangeEnd],
         tickmode: 'array',
-        tickvals: SHARED_X_AXIS_VALS,
-        ticktext: SHARED_X_AXIS_TEXT,
+        tickvals: tickvals,
+        ticktext: ticktext,
         tickangle: -30,
         tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
         ticks: 'outside',
