@@ -7,29 +7,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.getElementById("sidebarWrapper");
 
   if (toggleBtn && sidebar) {
-    // Automatically collapse the filter sidebar on smaller viewports (< 1200px)
     if (window.innerWidth < 1200) {
       sidebar.classList.add("collapsed");
     }
 
-    // Set initial tooltip based on whether sidebar loaded collapsed or expanded
     const isInitialCollapsed = sidebar.classList.contains("collapsed");
     toggleBtn.setAttribute("title", isInitialCollapsed ? "Show Filters" : "Hide Filters");
 
-    // Trigger an attention-flashing visual cue on page load/refresh on any device
     toggleBtn.classList.add("attention-flash");
     setTimeout(() => {
       toggleBtn.classList.remove("attention-flash");
     }, 5600);
 
-    // Handle click events to toggle sidebar expansion and trigger Plotly re-renders
     toggleBtn.addEventListener("click", function () {
       sidebar.classList.toggle("collapsed");
 
       const isCollapsed = sidebar.classList.contains("collapsed");
       toggleBtn.setAttribute("title", isCollapsed ? "Show Filters" : "Hide Filters");
 
-      // Give CSS transitions time to finish before resizing Plotly charts to fit new width
       setTimeout(() => {
         window.dispatchEvent(new Event("resize"));
         const barChart = document.getElementById("barChart");
@@ -46,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 2. CONSTANTS & DOM ELEMENT CACHE
   // ===========================================================================
   
-  // List of television networks classified as streaming/digital rather than linear broadcast
   const DIGITAL_NETWORKS = [
     "ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
@@ -54,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV"
   ];
 
-  // Default Sports Leagues to display on initial load or date change
   const DEFAULT_LEAGUES = [
     "MLB (World Series)",
     "NBA",
@@ -67,14 +60,12 @@ document.addEventListener("DOMContentLoaded", function () {
     "PGA Tour"
   ];
 
-  // Shared X-Axis time intervals (expressed in minutes from midnight) for vertical grid alignment
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
   const SHARED_X_AXIS_TEXT = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
     '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'
   ];
 
-  // Cached DOM references for filter container elements
   const DOM = {
     dateFilter: document.getElementById("dateFilter"),
     leagueFilter: document.getElementById("leagueFilter"),
@@ -84,14 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput: document.getElementById("searchInput")
   };
 
+  // Persistent User Filter State Object
+  const filterState = {
+    leagues: [...DEFAULT_LEAGUES],
+    isLeagueAll: false,
+    conferences: [],
+    isConfAll: true,
+    times: [],
+    isTimeAll: true,
+    top25Only: false
+  };
+
   // ===========================================================================
   // 3. TIMEZONE CONVERSION UTILITY (CENTRAL TIME -> LOCAL TIME)
   // ===========================================================================
 
-  /**
-   * Converts a Central Time date and time string into an exact epoch timestamp, 
-   * which JavaScript then automatically interprets in the user's local time zone.
-   */
   function centralDateTimeToEpoch(dateStr, timeStr, currentYear) {
     if (!dateStr || !timeStr) return 0;
     
@@ -110,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (ampm === 'PM' && h !== 12) h += 12;
     if (ampm === 'AM' && h === 12) h = 0;
 
-    // Construct nominal UTC time, then correct for America/Chicago offset at that specific date/time
     const utcGuess = Date.UTC(year, month, day, h, m, 0);
     
     const options = { 
@@ -145,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 4. DATA LOADING & INITIALIZATION
   // ===========================================================================
   
-  // Load raw schedule data from CSV, sanitize UTF-8 BOM, convert from Central Time to Local Time
   d3.csv("currentWeek/weekFull.csv", raw => {
     const clean = {};
     Object.keys(raw).forEach(key => {
@@ -156,14 +152,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }).then(rawRows => {
     const currentYear = new Date().getFullYear();
 
-    // Map backend Central Time data to the user's local time zone
     window.gameData = rawRows.map(d => {
       const startEpoch = centralDateTimeToEpoch(d.Date, d.Start_Time, currentYear);
       const endEpoch = centralDateTimeToEpoch(d.Date, d.End_Time, currentYear);
       
       let adjustedEndEpoch = endEpoch;
       if (adjustedEndEpoch < startEpoch) {
-        adjustedEndEpoch += 24 * 60 * 60 * 1000; // Handle overnight games crossing midnight
+        adjustedEndEpoch += 24 * 60 * 60 * 1000;
       }
 
       const localStart = new Date(startEpoch);
@@ -189,15 +184,12 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
 
-    // Determine initial date selection and populate date dropdown options
     const initialDate = getFirstAvailableDate(window.gameData);
     updateDateSlicerOptions(window.gameData, initialDate);
     
-    // Build initial filter slicers and render charts
-    refreshAllSlicersExcept();
+    refreshAllSlicersExcept(null);
     applyFilters();
 
-    // Trigger window resize event shortly after load to ensure Plotly dimensions render correctly
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
       const barChart = document.getElementById("barChart");
@@ -216,11 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
+      filterState.top25Only = DOM.rankedFilter.checked && !DOM.rankedFilter.disabled;
       refreshAllSlicersExcept("top25");
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change (Jumps to first available matching date & overrides filters)
+    // Event Listener: Text Search Input Change
     DOM.searchInput?.addEventListener("input", () => {
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
       if (searchQuery) {
@@ -250,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateDateSlicerOptions(window.gameData, initialDate);
       }
 
-      refreshAllSlicersExcept();
+      refreshAllSlicersExcept(null);
       applyFilters();
     });
   });
@@ -259,59 +252,40 @@ document.addEventListener("DOMContentLoaded", function () {
   // 5. FILTERING & STATE MANAGEMENT FUNCTIONS
   // ===========================================================================
 
-  /**
-   * Retrieves the current user-selected state across all active filter controls.
-   */
-  function getActiveSelections() {
-    const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
-    const top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
+  function syncStateFromDOM() {
+    filterState.date = DOM.dateFilter ? DOM.dateFilter.value : null;
+    filterState.top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
 
     const leagueAllEl = document.getElementById("league_all");
-    
-    // On initial load before the league slicer is rendered, default to the requested default leagues
-    if (!leagueAllEl) {
-      return {
-        date: selectedDate,
-        top25Only: top25Only,
-        leagues: DEFAULT_LEAGUES,
-        isLeagueAll: false,
-        times: [],
-        isTimeAll: true,
-        conferences: [],
-        isConfAll: true
-      };
+    if (leagueAllEl) {
+      filterState.isLeagueAll = leagueAllEl.checked;
+      filterState.leagues = filterState.isLeagueAll ? [] : Array.from(
+        document.querySelectorAll("#leagueFilter .league-checkbox:checked")
+      ).map(cb => cb.value);
     }
 
-    const leagueAllChecked = leagueAllEl.checked;
-    const selectedLeagues = leagueAllChecked ? [] : Array.from(
-      document.querySelectorAll("#leagueFilter .league-checkbox:checked")
-    ).map(cb => cb.value);
+    const timeAllEl = document.getElementById("time_all");
+    if (timeAllEl) {
+      filterState.isTimeAll = timeAllEl.checked;
+      filterState.times = filterState.isTimeAll ? [] : Array.from(
+        document.querySelectorAll("#timeFilter .time-checkbox:checked")
+      ).map(cb => cb.value);
+    }
 
-    const timeAllChecked = document.getElementById("time_all")?.checked ?? true;
-    const selectedTimes = timeAllChecked ? [] : Array.from(
-      document.querySelectorAll("#timeFilter .time-checkbox:checked")
-    ).map(cb => cb.value);
-
-    const confAllChecked = document.getElementById("conf_all")?.checked ?? true;
-    const selectedConferences = confAllChecked ? [] : Array.from(
-      document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
-    ).map(cb => cb.value);
-
-    return {
-      date: selectedDate,
-      top25Only: top25Only,
-      leagues: selectedLeagues,
-      isLeagueAll: leagueAllChecked,
-      times: selectedTimes,
-      isTimeAll: timeAllChecked,
-      conferences: selectedConferences,
-      isConfAll: confAllChecked
-    };
+    const confAllEl = document.getElementById("conf_all");
+    if (confAllEl) {
+      filterState.isConfAll = confAllEl.checked;
+      filterState.conferences = filterState.isConfAll ? [] : Array.from(
+        document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
+      ).map(cb => cb.value);
+    }
   }
 
-  /**
-   * Checks if a game scheduled for today has already concluded more than 15 minutes ago (Local Time).
-   */
+  function getActiveSelections() {
+    syncStateFromDOM();
+    return filterState;
+  }
+
   function isGameExpiredToday(d) {
     const now = new Date();
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -340,9 +314,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return false;
   }
 
-  /**
-   * Multi-dimensional cross-filter evaluation engine supporting keyword search combined with active date/slicers.
-   */
   function getFilteredDataExcept(excludedFilter = null) {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
@@ -350,7 +321,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d)) return false;
 
-      // Global Keyword Search Filter
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -393,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // 5. Conference Filter (Visitor or Home Conference match)
+      // 5. Conference Filter
       if (excludedFilter !== "conference") {
         if (!state.isConfAll && state.conferences.length === 0) return false;
         if (!state.isConfAll) {
@@ -407,10 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * Updates availability of the Ranked NCAA Teams toggle based on cross-filtered games.
-   */
-  function updateRankedToggleState(shouldReset = false) {
+  function updateRankedToggleState(isInit = false) {
     if (!DOM.rankedFilter) return;
 
     const rankedSubset = getFilteredDataExcept("top25");
@@ -419,17 +386,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!hasTop25) {
       DOM.rankedFilter.checked = false;
       DOM.rankedFilter.disabled = true;
+      filterState.top25Only = false;
     } else {
       DOM.rankedFilter.disabled = false;
-      if (shouldReset) {
-        DOM.rankedFilter.checked = false; // Default to unselected on initial load
+      if (isInit) {
+        DOM.rankedFilter.checked = false;
+        filterState.top25Only = false;
+      } else {
+        DOM.rankedFilter.checked = filterState.top25Only;
       }
     }
   }
 
-  /**
-   * Dynamically renders and binds event listeners for the Sports League checkbox filter panel.
-   */
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
     if (!DOM.leagueFilter) return;
 
@@ -442,7 +410,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Render "All Leagues" master checkbox
     const allDiv = document.createElement("div");
     allDiv.className = "form-check border-bottom pb-1 mb-2";
     allDiv.innerHTML = `
@@ -451,7 +418,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     DOM.leagueFilter.appendChild(allDiv);
 
-    // Render individual league checkboxes
     uniqueLeagues.forEach((league, idx) => {
       const isChecked = isAllChecked || selectedLeagues.includes(league);
       const div = document.createElement("div");
@@ -466,12 +432,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const allCheckbox = document.getElementById("league_all");
     const itemCheckboxes = DOM.leagueFilter.querySelectorAll(".league-checkbox");
 
-    if (allCheckbox && itemCheckboxes.length > 0) {
-      allCheckbox.checked = Array.from(itemCheckboxes).every(item => item.checked);
-    }
-
     allCheckbox?.addEventListener("change", (e) => {
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+      syncStateFromDOM();
       refreshAllSlicersExcept("league");
       applyFilters();
     });
@@ -480,51 +443,163 @@ document.addEventListener("DOMContentLoaded", function () {
       cb.addEventListener("change", () => {
         allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
                             Array.from(itemCheckboxes).every(item => item.checked);
+        syncStateFromDOM();
         refreshAllSlicersExcept("league");
         applyFilters();
       });
     });
   }
 
-  /**
-   * Refreshes all dependent filter slicers and toggle states while preserving user selections across dimensions and date changes.
-   */
+  function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
+    if (!DOM.timeFilter) return;
+
+    const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
+      .filter(Boolean)
+      .sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
+
+    DOM.timeFilter.innerHTML = "";
+
+    if (uniqueTimes.length === 0) {
+      DOM.timeFilter.innerHTML = `<div class="text-muted small p-1">No times available</div>`;
+      return;
+    }
+
+    const allDiv = document.createElement("div");
+    allDiv.className = "form-check border-bottom pb-1 mb-2";
+    allDiv.innerHTML = `
+      <input class="form-check-input" type="checkbox" id="time_all" ${isAllChecked ? 'checked' : ''}>
+      <label class="form-check-label fw-bold" for="time_all">All Times</label>
+    `;
+    DOM.timeFilter.appendChild(allDiv);
+
+    uniqueTimes.forEach((time, idx) => {
+      const isChecked = isAllChecked || selectedTimes.includes(time);
+      const div = document.createElement("div");
+      div.className = "form-check";
+      div.innerHTML = `
+        <input class="form-check-input time-checkbox" type="checkbox" value="${time}" id="time_${idx}" ${isChecked ? 'checked' : ''}>
+        <label class="form-check-label" for="time_${idx}">${time}</label>
+      `;
+      DOM.timeFilter.appendChild(div);
+    });
+
+    const allCheckbox = document.getElementById("time_all");
+    const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
+
+    allCheckbox?.addEventListener("change", (e) => {
+      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+      syncStateFromDOM();
+      refreshAllSlicersExcept("time");
+      applyFilters();
+    });
+
+    itemCheckboxes.forEach(cb => {
+      cb.addEventListener("change", () => {
+        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                            Array.from(itemCheckboxes).every(item => item.checked);
+        syncStateFromDOM();
+        refreshAllSlicersExcept("time");
+        applyFilters();
+      });
+    });
+  }
+
+  function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
+    if (!DOM.conferenceFilter) return;
+
+    const extractedConfs = new Set();
+    filteredData.forEach(d => {
+      if (d.Visitor_Conference) extractedConfs.add(d.Visitor_Conference.trim());
+      if (d.Home_Conference) extractedConfs.add(d.Home_Conference.trim());
+    });
+
+    const orderedConfs = Array.from(extractedConfs).filter(Boolean).sort((a, b) => a.localeCompare(b));
+
+    DOM.conferenceFilter.innerHTML = "";
+
+    if (orderedConfs.length === 0) {
+      DOM.conferenceFilter.innerHTML = `<div class="text-muted small p-1">No conferences available</div>`;
+      return;
+    }
+
+    const allDiv = document.createElement("div");
+    allDiv.className = "form-check border-bottom pb-1 mb-2";
+    allDiv.innerHTML = `
+      <input class="form-check-input" type="checkbox" id="conf_all" ${isAllChecked ? 'checked' : ''}>
+      <label class="form-check-label fw-bold" for="conf_all">All Conferences</label>
+    `;
+    DOM.conferenceFilter.appendChild(allDiv);
+
+    orderedConfs.forEach((conf, idx) => {
+      const isChecked = isAllChecked || selectedConferences.includes(conf);
+      const div = document.createElement("div");
+      div.className = "form-check";
+      div.innerHTML = `
+        <input class="form-check-input conf-checkbox" type="checkbox" value="${conf}" id="conf_${idx}" ${isChecked ? 'checked' : ''}>
+        <label class="form-check-label" for="conf_${idx}">${conf}</label>
+      `;
+      DOM.conferenceFilter.appendChild(div);
+    });
+
+    const allCheckbox = document.getElementById("conf_all");
+    const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
+
+    allCheckbox?.addEventListener("change", (e) => {
+      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+      syncStateFromDOM();
+      refreshAllSlicersExcept("conference");
+      applyFilters();
+    });
+
+    itemCheckboxes.forEach(cb => {
+      cb.addEventListener("change", () => {
+        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                            Array.from(itemCheckboxes).every(item => item.checked);
+        syncStateFromDOM();
+        refreshAllSlicersExcept("conference");
+        applyFilters();
+      });
+    });
+  }
+
   function refreshAllSlicersExcept(targetSource = null) {
     const isInit = (targetSource === null);
-    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
-    // Reset ranked toggle only on initial landing page load; preserve user's choice when changing dates
+    if (isInit) {
+      filterState.leagues = [...DEFAULT_LEAGUES];
+      filterState.isLeagueAll = false;
+      filterState.conferences = [];
+      filterState.isConfAll = true;
+      filterState.times = [];
+      filterState.isTimeAll = true;
+      filterState.top25Only = false;
+    } else {
+      syncStateFromDOM();
+    }
+
     updateRankedToggleState(isInit);
 
-    const currentState = getActiveSelections();
-
-    if (targetSource !== "date") {
-      const dateSubset = getFilteredDataExcept("date");
-      updateDateSlicerOptions(dateSubset, currentState.date);
+    if (isInit || targetSource === "date") {
+      const dateSourceData = targetSource === "date" ? getFilteredDataExcept("date") : window.gameData;
+      updateDateSlicerOptions(dateSourceData, filterState.date);
     }
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      // Use DEFAULT_LEAGUES strictly on initial load (isInit); preserve user-selected leagues when changing dates or other filters
-      const leaguesToUse = searchQuery ? [] : (isInit ? DEFAULT_LEAGUES : currentState.leagues);
-      const isAllToUse = searchQuery ? true : (isInit ? false : currentState.isLeagueAll);
-      updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
+      updateLeagueSlicer(leagueSubset, filterState.leagues, filterState.isLeagueAll);
     }
 
     if (targetSource !== "time") {
       const timeSubset = getFilteredDataExcept("time");
-      updateTimeSlicer(timeSubset, currentState.times, currentState.isTimeAll);
+      updateTimeSlicer(timeSubset, filterState.times, filterState.isTimeAll);
     }
 
     if (targetSource !== "conference") {
       const confSubset = getFilteredDataExcept("conference");
-      updateConferenceSlicer(confSubset, currentState.conferences, currentState.isConfAll);
+      updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
     }
   }
 
-  /**
-   * Intelligent logic to determine the most relevant initial date to display on dashboard load.
-   */
   function getFirstAvailableDate(allData) {
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -581,9 +656,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
   }
 
-  /**
-   * Populates the Date dropdown slicer options sorted chronologically (adaptive to active filters).
-   */
   function updateDateSlicerOptions(filteredData, selectedDate) {
     const uniqueDates = Array.from(new Set(filteredData.map(d => d.Date))).filter(Boolean);
 
@@ -621,126 +693,14 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       DOM.dateFilter.value = uniqueDates[0];
     }
+    filterState.date = DOM.dateFilter.value;
   }
 
-  /**
-   * Dynamically renders and binds event listeners for the Game Start Time checkbox filter panel.
-   */
-  function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
-    const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
-      .filter(Boolean)
-      .sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
-
-    DOM.timeFilter.innerHTML = "";
-
-    if (uniqueTimes.length === 0) {
-      DOM.timeFilter.innerHTML = `<div class="text-muted small p-1">No times available</div>`;
-      return;
-    }
-
-    const allDiv = document.createElement("div");
-    allDiv.className = "form-check border-bottom pb-1 mb-2";
-    allDiv.innerHTML = `
-      <input class="form-check-input" type="checkbox" id="time_all" ${isAllChecked ? 'checked' : ''}>
-      <label class="form-check-label fw-bold" for="time_all">All Times</label>
-    `;
-    DOM.timeFilter.appendChild(allDiv);
-
-    uniqueTimes.forEach((time, idx) => {
-      const isChecked = isAllChecked || selectedTimes.includes(time);
-      const div = document.createElement("div");
-      div.className = "form-check";
-      div.innerHTML = `
-        <input class="form-check-input time-checkbox" type="checkbox" value="${time}" id="time_${idx}" ${isChecked ? 'checked' : ''}>
-        <label class="form-check-label" for="time_${idx}">${time}</label>
-      `;
-      DOM.timeFilter.appendChild(div);
-    });
-
-    const allCheckbox = document.getElementById("time_all");
-    const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
-
-    allCheckbox?.addEventListener("change", (e) => {
-      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
-      refreshAllSlicersExcept("time");
-      applyFilters();
-    });
-
-    itemCheckboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
-        refreshAllSlicersExcept("time");
-        applyFilters();
-      });
-    });
-  }
-
-  /**
-   * Dynamically renders and binds event listeners for the Conference checkbox filter panel.
-   */
-  function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
-    const extractedConfs = new Set();
-    filteredData.forEach(d => {
-      if (d.Visitor_Conference) extractedConfs.add(d.Visitor_Conference.trim());
-      if (d.Home_Conference) extractedConfs.add(d.Home_Conference.trim());
-    });
-
-    const orderedConfs = Array.from(extractedConfs).filter(Boolean).sort((a, b) => a.localeCompare(b));
-
-    DOM.conferenceFilter.innerHTML = "";
-
-    if (orderedConfs.length === 0) {
-      DOM.conferenceFilter.innerHTML = `<div class="text-muted small p-1">No conferences available</div>`;
-      return;
-    }
-
-    const allDiv = document.createElement("div");
-    allDiv.className = "form-check border-bottom pb-1 mb-2";
-    allDiv.innerHTML = `
-      <input class="form-check-input" type="checkbox" id="conf_all" ${isAllChecked ? 'checked' : ''}>
-      <label class="form-check-label fw-bold" for="conf_all">All Conferences</label>
-    `;
-    DOM.conferenceFilter.appendChild(allDiv);
-
-    orderedConfs.forEach((conf, idx) => {
-      const isChecked = isAllChecked || selectedConferences.includes(conf);
-      const div = document.createElement("div");
-      div.className = "form-check";
-      div.innerHTML = `
-        <input class="form-check-input conf-checkbox" type="checkbox" value="${conf}" id="conf_${idx}" ${isChecked ? 'checked' : ''}>
-        <label class="form-check-label" for="conf_${idx}">${conf}</label>
-      `;
-      DOM.conferenceFilter.appendChild(div);
-    });
-
-    const allCheckbox = document.getElementById("conf_all");
-    const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
-
-    allCheckbox?.addEventListener("change", (e) => {
-      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
-      refreshAllSlicersExcept("conference");
-      applyFilters();
-    });
-
-    itemCheckboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
-        refreshAllSlicersExcept("conference");
-        applyFilters();
-      });
-    });
-  }
-
-  /**
-   * Applies active filters, updates chart title dates, splits dataset into linear broadcast vs. digital streaming, and triggers rendering.
-   */
   function applyFilters() {
+    syncStateFromDOM();
     const filtered = getFilteredDataExcept(null);
     const selectedDateText = DOM.dateFilter ? DOM.dateFilter.value : "";
 
-    // Automatically update the selected date text in both chart header titles
     document.querySelectorAll('.chart-date-label').forEach(el => {
       el.textContent = selectedDateText ? `\u00A0\u00A0${selectedDateText}` : "";
     });
@@ -752,9 +712,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderChart('digitalChart', digitalData, true);
   }
 
-  /**
-   * Matches a game matchup string to the home team's brand hex color from TEAM_COLORS lookup.
-   */
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#D3D3D3';
 
@@ -779,9 +736,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return '#D3D3D3';
   }
 
-  /**
-   * Helper function to convert 12-hour time string (e.g. "7:30 PM") into total minutes from midnight.
-   */
   function timeToMinutes(t) {
     if (!t) return 0;
     const [time, ampm] = t.split(' ');
@@ -792,9 +746,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return h * 60 + m;
   }
 
-  /**
-   * Bin-packing algorithm to stack overlapping game time windows into non-conflicting sub-rows.
-   */
   function resolveOverlapSubRows(games) {
     games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
 
@@ -834,13 +785,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
-  /**
-   * Renders or updates a Plotly horizontal Gantt-style timeline chart for broadcast networks or streaming platforms.
-   */
   function renderChart(targetId, data, isDigital = false) {
     const container = document.getElementById(targetId);
 
-    // Handle empty data state by rendering a placeholder message
     if (!data || data.length === 0) {
       container.style.height = '120px';
       Plotly.newPlot(targetId, [], {
@@ -862,7 +809,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    // Process each network group and construct Plotly bar traces for each game
     grouped.forEach((games, network) => {
       const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
 
@@ -923,7 +869,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Calculate dynamic container height based on total rows required
     const ROW_HEIGHT = 37;
     const TOP_MARGIN = 45;
     const BOTTOM_MARGIN = 29;
@@ -933,7 +878,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.style.height = `${calculatedPlotHeight}px`;
 
-    // Determine earliest game start time to dynamically clamp X-axis starting range
     const currentFilteredSubset = getFilteredDataExcept(null);
 
     let earliestStart = 1440;
@@ -947,15 +891,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (earliestStart === 1440 || isNaN(earliestStart)) {
-      earliestStart = 600; // Fallback default (10:00 AM)
+      earliestStart = 600;
     }
 
-    // Add a small 10-minute padding buffer so the first bar doesn't touch the edge
     const paddedStart = Math.max(0, earliestStart - 10);
+    const END_OF_DAY_MINUTES = 1500;
 
-    const END_OF_DAY_MINUTES = 1500; // 1:00 AM
-
-    // Configure Plotly chart layout parameters
     const layout = {
       height: calculatedPlotHeight,
       paper_bgcolor: 'rgba(0,0,0,0)',
@@ -1005,7 +946,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = { responsive: true, displayModeBar: false };
 
-    // Render the Plotly chart inside the target container
     Plotly.newPlot(targetId, traces, layout, config);
   }
 
@@ -1013,14 +953,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // 7. GLOBAL TIMERS & EVENT LISTENERS
   // ===========================================================================
 
-  // Auto-refresh active charts every 60 seconds (if refresh function is defined)
   setInterval(() => {
     if (typeof refreshActiveCharts === 'function') {
       refreshActiveCharts();
     }
   }, 60000);
 
-  // Debounced window resize event listener to trigger responsive Plotly chart scaling
   let resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
