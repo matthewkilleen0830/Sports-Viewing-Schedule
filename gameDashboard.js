@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "NFL",
     "NCAA Football",
     "NCAA Basketball (M)",
+    "NCAA Basketball (W)",
+    "LPGA Tour",
+    "PGA Tour"
   ];
 
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
@@ -212,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change
+    // Event Listener: Text Search Input Change (Supersedes everything)
     DOM.searchInput?.addEventListener("input", () => {
       userHasModifiedFilters = true;
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
@@ -321,6 +324,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d)) return false;
 
+      // SEARCH SUPERSEDENCE: If user has entered a search query, check it first.
+      // If it matches, bypass all other UI filter restrictions completely!
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -334,9 +339,18 @@ document.addEventListener("DOMContentLoaded", function () {
                               vConf.includes(searchQuery) ||
                               hConf.includes(searchQuery);
 
-        if (!matchesSearch) return false;
+        if (matchesSearch) {
+          // If searching, still respect date filter if selected, or return all matching games across dates
+          if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+            return false;
+          }
+          return true;
+        } else {
+          return false;
+        }
       }
 
+      // Standard Filtering Logic (when search query is empty)
       // 1. Date Filter
       if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
         return false;
@@ -876,7 +890,7 @@ document.addEventListener("DOMContentLoaded", function () {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
-          text: isDigital ? 'No streaming events matching selections.' : 'No network events matching selections.',
+          text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
           font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
         },
         xaxis: { visible: false },
@@ -978,12 +992,11 @@ document.addEventListener("DOMContentLoaded", function () {
       bargap: 0.15,               
       autosize: true,
       margin: {
-        // l: 67,
+        l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN
       },
-      automargin: true,
       dragmode: false,
       xaxis: {
         fixedrange: true,
