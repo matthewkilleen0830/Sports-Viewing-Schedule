@@ -354,10 +354,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // 3. Ranked NCAA Teams Filter
+      // 3. Ranked NCAA Teams Filter (Only applies to NCAA leagues if ranked is checked)
       if (excludedFilter !== "top25" && state.top25Only) {
-        const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
-        if (!isTop25) return false;
+        const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
+        if (isNcaaLeague) {
+          const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
+          if (!isTop25) return false;
+        }
       }
 
       // 4. Game Start Time Filter
@@ -366,10 +369,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // 5. Conference Filter
+      // 5. Conference Filter (Only applies to NCAA leagues; non-NCAA leagues bypass conference filter)
       if (excludedFilter !== "conference") {
-        if (!state.isConfAll && state.conferences.length === 0) return false;
-        if (!state.isConfAll) {
+        const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
+        if (isNcaaLeague && !state.isConfAll) {
+          if (state.conferences.length === 0) return false;
           const vConf = d.Visitor_Conference?.trim();
           const hConf = d.Home_Conference?.trim();
           if (!state.conferences.includes(vConf) && !state.conferences.includes(hConf)) return false;
