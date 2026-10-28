@@ -978,11 +978,12 @@ document.addEventListener("DOMContentLoaded", function () {
       bargap: 0.15,               
       autosize: true,
       margin: {
-        l: 67,
+        // l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN
       },
+      automargin: true,
       dragmode: false,
       xaxis: {
         fixedrange: true,
