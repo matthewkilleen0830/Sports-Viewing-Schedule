@@ -887,7 +887,7 @@ document.addEventListener("DOMContentLoaded", function () {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
-          text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
+          text: isDigital ? 'No streaming events matching selections.' : 'No network events matching selections.',
           font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
         },
         xaxis: { visible: false },
