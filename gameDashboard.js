@@ -54,7 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "NHL",
     "NFL",
     "NCAA Football",
-    "NCAA Basketball (M)"
+    "NCAA Basketball (M)",
+    "NCAA Basketball (W)",
+    "LPGA Tour",
+    "PGA Tour"
   ];
 
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
@@ -207,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
       userHasModifiedFilters = true;
-      filterState.top25Only = DOM.rankedFilter.checked && !DOM.rankedFilter.disabled;
+      filterState.top25Only = DOM.rankedFilter.checked;
       refreshAllSlicersExcept("top25");
       applyFilters();
     });
@@ -254,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function syncStateFromDOM() {
     filterState.date = DOM.dateFilter ? DOM.dateFilter.value : null;
-    filterState.top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
+    filterState.top25Only = DOM.rankedFilter ? DOM.rankedFilter.checked : false;
 
     const leagueAllEl = document.getElementById("league_all");
     if (leagueAllEl) {
@@ -377,11 +380,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function getRankedScopeData() {
+    const state = getActiveSelections();
+    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
+
+    return window.gameData.filter(d => {
+      if (isGameExpiredToday(d)) return false;
+
+      if (searchQuery) {
+        const matchup = d.Matchup?.toLowerCase() || "";
+        const league = d.League?.toLowerCase() || "";
+        const network = d.TV_Network?.toLowerCase() || "";
+        const vConf = d.Visitor_Conference?.toLowerCase() || "";
+        const hConf = d.Home_Conference?.toLowerCase() || "";
+        if (!matchup.includes(searchQuery) && !league.includes(searchQuery) && !network.includes(searchQuery) && !vConf.includes(searchQuery) && !hConf.includes(searchQuery)) {
+          return false;
+        }
+      }
+
+      if (state.date && d.Date !== state.date) return false;
+
+      if (!state.isLeagueAll) {
+        if (state.leagues.length === 0) return false;
+        const gameLeague = d.League?.trim();
+        if (!state.leagues.includes(gameLeague)) return false;
+      }
+
+      return true;
+    });
+  }
+
   function updateRankedToggleState(isInit = false) {
     if (!DOM.rankedFilter) return;
 
-    const rankedSubset = getFilteredDataExcept("top25");
-    const hasTop25 = rankedSubset.some(d => d.Ranked && d.Ranked.trim().toUpperCase() === "Y");
+    const rankedScope = getRankedScopeData();
+    const hasTop25 = rankedScope.some(d => d.Ranked && d.Ranked.trim().toUpperCase() === "Y");
 
     if (!hasTop25) {
       DOM.rankedFilter.checked = false;
