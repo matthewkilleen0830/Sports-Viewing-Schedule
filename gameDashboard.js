@@ -359,10 +359,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                            league.includes(searchQuery) ||
-                            network.includes(searchQuery) ||
-                            vConf.includes(searchQuery) ||
-                            hConf.includes(searchQuery);
+                              league.includes(searchQuery) ||
+                              network.includes(searchQuery) ||
+                              vConf.includes(searchQuery) ||
+                              hConf.includes(searchQuery);
 
         if (!matchesSearch) return false;
       }
@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       DOM.rankedFilter.disabled = false;
       if (shouldReset) {
-        DOM.rankedFilter.checked = false; // Default to unselected on initial load or date change
+        DOM.rankedFilter.checked = false; // Default to unselected on initial load
       }
     }
   }
@@ -487,13 +487,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Refreshes all dependent filter slicers and toggle states while preserving user selections across dimensions.
+   * Refreshes all dependent filter slicers and toggle states while preserving user selections across dimensions and date changes.
    */
   function refreshAllSlicersExcept(targetSource = null) {
-    const isDateChangeOrInit = (targetSource === "date" || targetSource === null);
+    const isInit = (targetSource === null);
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
-    updateRankedToggleState(isDateChangeOrInit);
+    // Reset ranked toggle only on initial landing page load; preserve user's choice when changing dates
+    updateRankedToggleState(isInit);
 
     const currentState = getActiveSelections();
 
@@ -504,8 +505,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      const leaguesToUse = searchQuery ? [] : (isDateChangeOrInit ? DEFAULT_LEAGUES : currentState.leagues);
-      const isAllToUse = searchQuery ? true : (isDateChangeOrInit ? false : currentState.isLeagueAll);
+      // Use DEFAULT_LEAGUES strictly on initial load (isInit); preserve user-selected leagues when changing dates or other filters
+      const leaguesToUse = searchQuery ? [] : (isInit ? DEFAULT_LEAGUES : currentState.leagues);
+      const isAllToUse = searchQuery ? true : (isInit ? false : currentState.isLeagueAll);
       updateLeagueSlicer(leagueSubset, leaguesToUse, isAllToUse);
     }
 
