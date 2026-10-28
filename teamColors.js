@@ -70,7 +70,7 @@ const TEAM_COLORS = {
   "New Mexico State": "#891216", "Niagara": "#002D62", "Nicholls": "#C41230", "Norfolk State": "#007A3D", "North Alabama": "#9E1B32", "North Carolina": "#7BAFD4", 
   "North Carolina Central": "#841F2B", "North Dakota": "#006A4E", "North Dakota State": "#00583D", "North Texas": "#00853E", "Northeastern": "#CC0000", "Northern Arizona": "#002447",
   "Northern Colorado": "#002A54", "Northern Illinois": "#C8102E", "Northern Michigan": "#006633", "Northwestern": "#4E2A84", "Northwestern State": "#F15A22", "Notre Dame": "#0C2340", 
-  "Nuggets": "#0E2240",
+  "Nuggets": "#0E2240", "Northern Iowa": "#4B116F",
   
   // O
   "Ohio": "#00694E", "Ohio State": "#BB0000", "Oilers": "#041E42", "Oklahoma": "#841617", "Oklahoma State": "#FE5C00", "Old Dominion": "#003057", "Ole Miss": "#006BA6", "Omaha": "#000000", 
@@ -79,7 +79,7 @@ const TEAM_COLORS = {
   // P
   "Pacers": "#002D62", "Packers": "#203731", "Padres": "#2F241D", "Panthers": "#C8102E", "FL Panthers": "#C8102E", "Patriots": "#002244", "Pelicans": "#002B5C", "Penguins": "#FCB514", "Penn State": "#001E44",
   "Phillies": "#E81828", "Pirates": "#27251F", "Pistons": "#1D428A", "Pitt": "#003594", "Portland State": "#154734", "Post": "#F68B1F", "Prairie View A&M": "#330066", "Predators": "#FFB81C", 
-  "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000", "Purdue": "#000000",
+  "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000", "Purdue": "#000000", "Purdue Fort Wayne": "#CFB991",
   
   // Q
   "Quinnipiac": "#0A2240",
@@ -104,7 +104,7 @@ const TEAM_COLORS = {
 
   // U
   "UAB": "#215732", "UC Davis": "#002855", "UCF": "#BA9B37", "UCLA": "#2D68C4", "UConn": "#000E2E", "UIW": "#C41230", "UL Monroe": "#531B2B", "UMass": "#881C1C", "UMass Lowell": "#0067C5", 
-  "UMBC": "#000000", "UNI": "#4B116F", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000", "UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", 
+  "UMBC": "#000000", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000", "UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", 
   "Utah": "#BE0000", "Utah State": "#00263A", "Utah Tech": "#BA1C21", "UTSA": "#0C2340",
   
   // V
