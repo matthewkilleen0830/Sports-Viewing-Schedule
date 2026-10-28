@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "NHL",
     "NFL",
     "NCAA Football",
-    "NCAA Basketball (M)",
+    "NCAA Basketball (M)"
   ];
 
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
@@ -571,6 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function refreshAllSlicersExcept(targetSource = null) {
     const isInit = (targetSource === null);
     const isDateChange = (targetSource === "date");
+    const currentSelectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
 
     if (isInit) {
       userHasModifiedFilters = false;
@@ -597,8 +598,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isInit || targetSource !== "date") {
       const subsetWithoutDate = getFilteredDataExcept("date");
-      const firstMatchDate = getFirstAvailableDate(subsetWithoutDate);
-      updateDateSlicerOptions(subsetWithoutDate, firstMatchDate);
+      const dateSourceData = (subsetWithoutDate.length > 0) ? subsetWithoutDate : window.gameData;
+      const firstMatchDate = getFirstAvailableDate(dateSourceData);
+      
+      const targetDate = (currentSelectedDate && dateSourceData.some(d => d.Date === currentSelectedDate))
+        ? currentSelectedDate
+        : firstMatchDate;
+
+      updateDateSlicerOptions(dateSourceData, targetDate);
     } else {
       const dateSourceData = getFilteredDataExcept("date");
       updateDateSlicerOptions(dateSourceData, filterState.date);
@@ -725,7 +732,6 @@ document.addEventListener("DOMContentLoaded", function () {
       el.textContent = selectedDateText ? `\u00A0\u00A0${selectedDateText}` : "";
     });
 
-    // Calculate synced dynamic X-axis range across ALL filtered games for the view
     let earliestStart = 1440;
     let latestEnd = 0;
 
