@@ -55,9 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "NFL",
     "NCAA Football",
     "NCAA Basketball (M)",
-    "NCAA Basketball (W)",
-    "LPGA Tour",
-    "PGA Tour"
   ];
 
   const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
