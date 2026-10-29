@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco", "USAHockeyTV.com", "[OffAir]", "TBA", "hudl", "NEC FR",
     "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
-    "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV"
+    "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV", "SLN", "BlazerVision",
+    "DAZN MIN", "Thunder App", "Pelicans.com", "DAZN MEM", "ClipperVision", "DAZN (YES)",
+    "Bucks App"
   ];
 
   const DEFAULT_LEAGUES = [
@@ -989,11 +991,12 @@ document.addEventListener("DOMContentLoaded", function () {
       bargap: 0.15,               
       autosize: true,
       margin: {
-        l: 67,
+        // l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN
       },
+      automargin: true,
       dragmode: false,
       xaxis: {
         fixedrange: true,
