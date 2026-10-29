@@ -95,7 +95,7 @@ const TEAM_COLORS = {
   "Senators": "#C8102E", "Seton Hall": "#004488", "Sharks": "#006D75", "Sky": "#418FDE", "SMU": "#0033A0", "South Alabama": "#00205B", "South Carolina": "#73000A", "South Carolina State": "#800000", "South Dakota": "#AD0000", "South Dakota State": "#0033A0",
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A", "Spurs": "#000000", "St. Cloud State": "#CC0000", 
   "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
-  "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Suns": "#1D1160", "Syracuse": "#F76900",
+  "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Suns": "#1D1160", "Syracuse": "#F76900", "Saint Mary's": "#06315B",
   
   // T
   "Tarleton State": "#4F2683", "TBD": "#000000", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200", "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F",
@@ -124,9 +124,10 @@ const TEAM_COLORS = {
 
   // Host LPGA Tour
   "Sheshan GC": "#F75D5D", "Pine Beach Golf Links": "#F75D5D", "Kuala Lumpur": "#F75D5D",
+  "Taiheiyo Club": "#F75D5D",
 
   // Host PGA Tour
-  "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#003C80", "Diamante El Cardonal": "#003C80",
+  "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#0A1F62", "Diamante El Cardonal": "#003C80",
   
   // Host Tennis
   "Melbourne Park": "#1E8FD5", "Roland Garros": "#BB5522", "Wimbledon": "#046A38", "BJK National Tennis Center": "#FFD400",
