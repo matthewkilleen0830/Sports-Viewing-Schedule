@@ -138,6 +138,16 @@ document.addEventListener("DOMContentLoaded", function () {
     return utcGuess - offsetMs;
   }
 
+  function timeToMinutes(t) {
+    if (!t) return 0;
+    const [time, ampm] = t.split(' ');
+    if (!time) return 0;
+    let [h, m] = time.split(':').map(Number);
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    return h * 60 + m;
+  }
+
   // ===========================================================================
   // 4. DATA LOADING & INITIALIZATION
   // ===========================================================================
@@ -171,6 +181,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const localStartStr = localStart.toLocaleTimeString('en-US', timeOptions);
       const localEndStr = localEnd.toLocaleTimeString('en-US', timeOptions);
 
+      // PERFORMANCE OPTIMIZATION 1 & 2: Pre-calculate minutes and normalized date timestamps
+      const startMins = timeToMinutes(localStartStr);
+      let endMins = timeToMinutes(localEndStr);
+      if (endMins < startMins) endMins += 1440;
+
+      let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+      if (cleanStr && !/\b20\d{2}\b/.test(cleanStr)) {
+        cleanStr = `${cleanStr}, ${currentYear}`;
+      }
+      const gameDateParsed = cleanStr ? new Date(cleanStr) : null;
+      const gameNormalizedTime = gameDateParsed ? new Date(gameDateParsed.getFullYear(), gameDateParsed.getMonth(), gameDateParsed.getDate()).getTime() : 0;
+
       return {
         ...d,
         Original_Date: d.Date,
@@ -180,7 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
         Start_Time: localStartStr,
         End_Time: localEndStr,
         _startEpoch: startEpoch,
-        _endEpoch: adjustedEndEpoch
+        _endEpoch: adjustedEndEpoch,
+        _startMins: startMins,
+        _endMins: endMins,
+        _gameNormalizedTime: gameNormalizedTime,
+        _isNcaa: Boolean(d.League && d.League.trim().toUpperCase().startsWith("NCAA")),
+        _cleanLeague: d.League?.trim() || "",
+        _cleanVisitorConf: d.Visitor_Conference?.trim() || "",
+        _cleanHomeConf: d.Home_Conference?.trim() || ""
       };
     });
 
@@ -219,8 +248,12 @@ document.addEventListener("DOMContentLoaded", function () {
       userHasModifiedFilters = true;
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
       if (searchQuery) {
+        const now = new Date();
+        const startOfTodayTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const nowTime = now.getTime();
+
         const matchingGames = window.gameData.filter(d => {
-          if (isGameExpiredToday(d)) return false;
+          if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
           const matchup = d.Matchup?.toLowerCase() || "";
           const league = d.League?.toLowerCase() || "";
           const network = d.TV_Network?.toLowerCase() || "";
@@ -288,37 +321,23 @@ document.addEventListener("DOMContentLoaded", function () {
     return filterState;
   }
 
-  function isGameExpiredToday(d) {
-    const now = new Date();
-    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  // PERFORMANCE OPTIMIZATION 2: Accept pre-calculated timestamps to avoid repeated Date instantiations in loops
+  function isGameExpiredToday(d, startOfTodayTime, nowTime) {
+    if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
-    let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
-    if (cleanStr && !/\b20\d{2}\b/.test(cleanStr)) {
-      cleanStr = `${cleanStr}, ${now.getFullYear()}`;
-    }
-    const gameDateParsed = cleanStr ? new Date(cleanStr) : null;
-    if (!gameDateParsed) return false;
+    const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
+    const thresholdTimestamp = gameEndTimestamp + 15 * 60000;
 
-    const gameNormalized = new Date(gameDateParsed.getFullYear(), gameDateParsed.getMonth(), gameDateParsed.getDate());
-
-    if (gameNormalized.getTime() === startOfToday.getTime()) {
-      const startMins = timeToMinutes(d.Start_Time);
-      let endMins = timeToMinutes(d.End_Time);
-      if (endMins < startMins) endMins += 1440;
-
-      const gameEndTimestamp = startOfToday.getTime() + endMins * 60000;
-      const thresholdTimestamp = gameEndTimestamp + 15 * 60000;
-
-      if (now.getTime() >= thresholdTimestamp) {
-        return true;
-      }
-    }
-    return false;
+    return nowTime >= thresholdTimestamp;
   }
 
   function getFilteredDataExcept(excludedFilter = null) {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
+    
+    const now = new Date();
+    const startOfTodayTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const nowTime = now.getTime();
 
     const isExcluded = (name) => {
       if (!excludedFilter) return false;
@@ -327,10 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     return window.gameData.filter(d => {
-      if (isGameExpiredToday(d)) return false;
+      if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
 
-      // SEARCH SUPERSEDENCE: If user has entered a search query, check it first.
-      // If it matches, bypass all other UI filter restrictions completely!
+      // SEARCH SUPERSEDENCE
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -345,7 +363,6 @@ document.addEventListener("DOMContentLoaded", function () {
                               hConf.includes(searchQuery);
 
         if (matchesSearch) {
-          // If searching, still respect date filter if selected, or return all matching games across dates
           if (!isExcluded("date") && state.date && d.Date !== state.date) {
             return false;
           }
@@ -355,44 +372,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // Standard Filtering Logic (when search query is empty)
-      // 1. Date Filter
+      // Standard Filtering Logic
       if (!isExcluded("date") && state.date && d.Date !== state.date) {
         return false;
       }
 
-      // 2. League Filter
       if (!isExcluded("league")) {
         if (!state.isLeagueAll && state.leagues.length === 0) return false;
         if (!state.isLeagueAll) {
-          const gameLeague = d.League?.trim();
-          if (!state.leagues.includes(gameLeague)) return false;
+          if (!state.leagues.includes(d._cleanLeague)) return false;
         }
       }
 
-      // 3. Ranked NCAA Teams Filter (Only applies to NCAA leagues if ranked is checked)
       if (!isExcluded("top25") && state.top25Only) {
-        const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
-        if (isNcaaLeague) {
+        if (d._isNcaa) {
           const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
           if (!isTop25) return false;
         }
       }
 
-      // 4. Game Start Time Filter
       if (!isExcluded("time")) {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // 5. Conference Filter (Only applies to NCAA leagues; non-NCAA leagues bypass conference filter)
       if (!isExcluded("conference")) {
-        const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
-        if (isNcaaLeague && !state.isConfAll) {
+        if (d._isNcaa && !state.isConfAll) {
           if (state.conferences.length === 0) return false;
-          const vConf = d.Visitor_Conference?.trim();
-          const hConf = d.Home_Conference?.trim();
-          if (!state.conferences.includes(vConf) && !state.conferences.includes(hConf)) return false;
+          if (!state.conferences.includes(d._cleanVisitorConf) && !state.conferences.includes(d._cleanHomeConf)) return false;
         }
       }
 
@@ -405,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
     return window.gameData.filter(d => {
-      if (isGameExpiredToday(d)) return false;
+      if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
 
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
@@ -422,8 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!state.isLeagueAll) {
         if (state.leagues.length === 0) return false;
-        const gameLeague = d.League?.trim();
-        if (!state.leagues.includes(gameLeague)) return false;
+        if (!state.leagues.includes(d._cleanLeague)) return false;
       }
 
       return true;
@@ -451,174 +457,122 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
-    if (!DOM.leagueFilter) return;
+  // ===========================================================================
+  // PERFORMANCE OPTIMIZATION 3 & 4: Reusable Checkbox Slicer & Scroll Preservation
+  // ===========================================================================
+  function renderCheckboxSlicer(containerEl, allId, itemClass, allLabel, items, selectedItems, isAllChecked, onChangeCallback) {
+    if (!containerEl) return;
+    
+    // Preserve current scroll position to avoid jumpiness
+    const scrollTop = containerEl.scrollTop;
 
-    const uniqueLeagues = Array.from(new Set(window.gameData.map(d => d.League?.trim()))).filter(Boolean).sort();
+    containerEl.innerHTML = "";
 
-    DOM.leagueFilter.innerHTML = "";
-
-    if (uniqueLeagues.length === 0) {
-      DOM.leagueFilter.innerHTML = `<div class="text-muted small p-1">No leagues available</div>`;
+    if (items.length === 0) {
+      containerEl.innerHTML = `<div class="text-muted small p-1">No items available</div>`;
       return;
     }
 
     const allDiv = document.createElement("div");
     allDiv.className = "form-check border-bottom pb-1 mb-2";
     allDiv.innerHTML = `
-      <input class="form-check-input" type="checkbox" id="league_all" ${isAllChecked ? 'checked' : ''}>
-      <label class="form-check-label fw-bold" for="league_all">All Leagues</label>
+      <input class="form-check-input" type="checkbox" id="${allId}" ${isAllChecked ? 'checked' : ''}>
+      <label class="form-check-label fw-bold" for="${allId}">${allLabel}</label>
     `;
-    DOM.leagueFilter.appendChild(allDiv);
+    containerEl.appendChild(allDiv);
 
-    uniqueLeagues.forEach((league, idx) => {
-      const isChecked = isAllChecked || selectedLeagues.includes(league);
+    items.forEach((item, idx) => {
+      const isChecked = isAllChecked || selectedItems.includes(item);
       const div = document.createElement("div");
       div.className = "form-check";
       div.innerHTML = `
-        <input class="form-check-input league-checkbox" type="checkbox" value="${league}" id="league_${idx}" ${isChecked ? 'checked' : ''}>
-        <label class="form-check-label" for="league_${idx}">${league}</label>
+        <input class="form-check-input ${itemClass}" type="checkbox" value="${item}" id="${allId}_${idx}" ${isChecked ? 'checked' : ''}>
+        <label class="form-check-label" for="${allId}_${idx}">${item}</label>
       `;
-      DOM.leagueFilter.appendChild(div);
+      containerEl.appendChild(div);
     });
 
-    const allCheckbox = document.getElementById("league_all");
-    const itemCheckboxes = DOM.leagueFilter.querySelectorAll(".league-checkbox");
+    const allCheckbox = document.getElementById(allId);
+    const itemCheckboxes = containerEl.querySelectorAll(`.${itemClass}`);
 
     allCheckbox?.addEventListener("change", (e) => {
       userHasModifiedFilters = true;
       itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
       syncStateFromDOM();
-      refreshAllSlicersExcept("league");
-      applyFilters();
+      onChangeCallback();
     });
 
     itemCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
         userHasModifiedFilters = true;
-        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
+        allCheckbox.checked = itemCheckboxes.length > 0 && Array.from(itemCheckboxes).every(item => item.checked);
         syncStateFromDOM();
-        refreshAllSlicersExcept("league");
-        applyFilters();
+        onChangeCallback();
       });
     });
+
+    containerEl.scrollTop = scrollTop;
+  }
+
+  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
+    const uniqueLeagues = Array.from(new Set(window.gameData.map(d => d._cleanLeague))).filter(Boolean).sort();
+    renderCheckboxSlicer(
+      DOM.leagueFilter,
+      "league_all",
+      "league-checkbox",
+      "All Leagues",
+      uniqueLeagues,
+      selectedLeagues,
+      isAllChecked,
+      () => {
+        refreshAllSlicersExcept("league");
+        applyFilters();
+      }
+    );
   }
 
   function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
-    if (!DOM.timeFilter) return;
-
     const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
       .filter(Boolean)
       .sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
 
-    DOM.timeFilter.innerHTML = "";
-
-    if (uniqueTimes.length === 0) {
-      DOM.timeFilter.innerHTML = `<div class="text-muted small p-1">No times available</div>`;
-      return;
-    }
-
-    const allDiv = document.createElement("div");
-    allDiv.className = "form-check border-bottom pb-1 mb-2";
-    allDiv.innerHTML = `
-      <input class="form-check-input" type="checkbox" id="time_all" ${isAllChecked ? 'checked' : ''}>
-      <label class="form-check-label fw-bold" for="time_all">All Times</label>
-    `;
-    DOM.timeFilter.appendChild(allDiv);
-
-    uniqueTimes.forEach((time, idx) => {
-      const isChecked = isAllChecked || selectedTimes.includes(time);
-      const div = document.createElement("div");
-      div.className = "form-check";
-      div.innerHTML = `
-        <input class="form-check-input time-checkbox" type="checkbox" value="${time}" id="time_${idx}" ${isChecked ? 'checked' : ''}>
-        <label class="form-check-label" for="time_${idx}">${time}</label>
-      `;
-      DOM.timeFilter.appendChild(div);
-    });
-
-    const allCheckbox = document.getElementById("time_all");
-    const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
-
-    allCheckbox?.addEventListener("change", (e) => {
-      userHasModifiedFilters = true;
-      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
-      syncStateFromDOM();
-      refreshAllSlicersExcept("time");
-      applyFilters();
-    });
-
-    itemCheckboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        userHasModifiedFilters = true;
-        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
-        syncStateFromDOM();
+    renderCheckboxSlicer(
+      DOM.timeFilter,
+      "time_all",
+      "time-checkbox",
+      "All Times",
+      uniqueTimes,
+      selectedTimes,
+      isAllChecked,
+      () => {
         refreshAllSlicersExcept("time");
         applyFilters();
-      });
-    });
+      }
+    );
   }
 
   function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
-    if (!DOM.conferenceFilter) return;
-
     const extractedConfs = new Set();
     filteredData.forEach(d => {
-      if (d.Visitor_Conference) extractedConfs.add(d.Visitor_Conference.trim());
-      if (d.Home_Conference) extractedConfs.add(d.Home_Conference.trim());
+      if (d._cleanVisitorConf) extractedConfs.add(d._cleanVisitorConf);
+      if (d._cleanHomeConf) extractedConfs.add(d._cleanHomeConf);
     });
 
     const orderedConfs = Array.from(extractedConfs).filter(Boolean).sort((a, b) => a.localeCompare(b));
 
-    DOM.conferenceFilter.innerHTML = "";
-
-    if (orderedConfs.length === 0) {
-      DOM.conferenceFilter.innerHTML = `<div class="text-muted small p-1">No conferences available</div>`;
-      return;
-    }
-
-    const allDiv = document.createElement("div");
-    allDiv.className = "form-check border-bottom pb-1 mb-2";
-    allDiv.innerHTML = `
-      <input class="form-check-input" type="checkbox" id="conf_all" ${isAllChecked ? 'checked' : ''}>
-      <label class="form-check-label fw-bold" for="conf_all">All Conferences</label>
-    `;
-    DOM.conferenceFilter.appendChild(allDiv);
-
-    orderedConfs.forEach((conf, idx) => {
-      const isChecked = isAllChecked || selectedConferences.includes(conf);
-      const div = document.createElement("div");
-      div.className = "form-check";
-      div.innerHTML = `
-        <input class="form-check-input conf-checkbox" type="checkbox" value="${conf}" id="conf_${idx}" ${isChecked ? 'checked' : ''}>
-        <label class="form-check-label" for="conf_${idx}">${conf}</label>
-      `;
-      DOM.conferenceFilter.appendChild(div);
-    });
-
-    const allCheckbox = document.getElementById("conf_all");
-    const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
-
-    allCheckbox?.addEventListener("change", (e) => {
-      userHasModifiedFilters = true;
-      itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
-      syncStateFromDOM();
-      refreshAllSlicersExcept("conference");
-      applyFilters();
-    });
-
-    itemCheckboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        userHasModifiedFilters = true;
-        allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
-                            Array.from(itemCheckboxes).every(item => item.checked);
-        syncStateFromDOM();
+    renderCheckboxSlicer(
+      DOM.conferenceFilter,
+      "conf_all",
+      "conf-checkbox",
+      "All Conferences",
+      orderedConfs,
+      selectedConferences,
+      isAllChecked,
+      () => {
         refreshAllSlicersExcept("conference");
         applyFilters();
-      });
-    });
+      }
+    );
   }
 
   function refreshAllSlicersExcept(targetSource = null) {
@@ -675,7 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (targetSource !== "conference") {
-      // Exclude both date and conference so the conference list is purely adaptive to selected leagues (ignoring day date)
+      // ADAPTIVE CONFERENCE FILTER: Exclude both date and conference so conferences adapt purely to selected leagues
       const confSubset = getFilteredDataExcept(["date", "conference"]);
       updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
     }
@@ -712,11 +666,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (todaysGames.length > 0) {
         let maxEndMinutes = -1;
         todaysGames.forEach(g => {
-          const startMins = timeToMinutes(g.Start_Time);
-          let endMins = timeToMinutes(g.End_Time);
-          if (endMins < startMins) endMins += 1440;
-          if (endMins > maxEndMinutes) {
-            maxEndMinutes = endMins;
+          if (g._endMins > maxEndMinutes) {
+            maxEndMinutes = g._endMins;
           }
         });
 
@@ -791,12 +742,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (filtered && filtered.length > 0) {
       filtered.forEach(game => {
-        const start = timeToMinutes(game.Start_Time);
-        let end = timeToMinutes(game.End_Time);
-        if (end < start) end += 1440;
-
-        if (!isNaN(start) && start < earliestStart) earliestStart = start;
-        if (!isNaN(end) && end > latestEnd) latestEnd = end;
+        if (!isNaN(game._startMins) && game._startMins < earliestStart) earliestStart = game._startMins;
+        if (!isNaN(game._endMins) && game._endMins > latestEnd) latestEnd = game._endMins;
       });
     }
 
@@ -838,40 +785,27 @@ document.addEventListener("DOMContentLoaded", function () {
     return '#D3D3D3';
   }
 
-  function timeToMinutes(t) {
-    if (!t) return 0;
-    const [time, ampm] = t.split(' ');
-    if (!time) return 0;
-    let [h, m] = time.split(':').map(Number);
-    if (ampm === 'PM' && h !== 12) h += 12;
-    if (ampm === 'AM' && h === 12) h = 0;
-    return h * 60 + m;
-  }
-
   function resolveOverlapSubRows(games) {
-    games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
+    // Sort using pre-calculated _startMins
+    games.sort((a, b) => a._startMins - b._startMins);
 
     const subRowEndTimes = [];
     const assignedGames = [];
 
     games.forEach(game => {
-      const start = timeToMinutes(game.Start_Time);
-      const end = timeToMinutes(game.End_Time);
-      const effectiveEnd = end >= start ? end : end + 1440;
-
       let rowIndex = -1;
       for (let i = 0; i < subRowEndTimes.length; i++) {
-        if (subRowEndTimes[i] <= start) {
+        if (subRowEndTimes[i] <= game._startMins) {
           rowIndex = i;
           break;
         }
       }
 
       if (rowIndex === -1) {
-        subRowEndTimes.push(effectiveEnd);
+        subRowEndTimes.push(game._endMins);
         rowIndex = subRowEndTimes.length - 1;
       } else {
-        subRowEndTimes[rowIndex] = effectiveEnd;
+        subRowEndTimes[rowIndex] = game._endMins;
       }
 
       assignedGames.push({
@@ -921,9 +855,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       assignedGames.forEach(game => {
-        const start = timeToMinutes(game.Start_Time);
-        const end = timeToMinutes(game.End_Time);
-        const duration = end >= start ? (end - start) : (end + 1440 - start);
+        const duration = game._endMins >= game._startMins ? (game._endMins - game._startMins) : (game._endMins + 1440 - game._startMins);
         const teamHexColor = getHomeTeamColor(game.Matchup);
         const internalRowKey = `${network}_row_${game.subRowIndex}`;
         const isRanked = game.Matchup.includes('#');
@@ -935,7 +867,7 @@ document.addEventListener("DOMContentLoaded", function () {
           orientation: 'h',
           y: [internalRowKey],
           x: [duration],
-          base: [start],
+          base: [game._startMins],
           name: game.Matchup,
           textfont: {
             size: 16,
