@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const localStartStr = localStart.toLocaleTimeString('en-US', timeOptions);
       const localEndStr = localEnd.toLocaleTimeString('en-US', timeOptions);
 
-      // PERFORMANCE OPTIMIZATION 1 & 2: Pre-calculate minutes and normalized date timestamps
       const startMins = timeToMinutes(localStartStr);
       let endMins = timeToMinutes(localEndStr);
       if (endMins < startMins) endMins += 1440;
@@ -321,7 +320,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return filterState;
   }
 
-  // PERFORMANCE OPTIMIZATION 2: Accept pre-calculated timestamps to avoid repeated Date instantiations in loops
   function isGameExpiredToday(d, startOfTodayTime, nowTime) {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
@@ -411,6 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
+    // NOTE: Date check is omitted here so ranked availability is evaluated across all dates for selected leagues
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
 
@@ -424,8 +423,6 @@ document.addEventListener("DOMContentLoaded", function () {
           return false;
         }
       }
-
-      if (state.date && d.Date !== state.date) return false;
 
       if (!state.isLeagueAll) {
         if (state.leagues.length === 0) return false;
@@ -457,15 +454,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ===========================================================================
-  // PERFORMANCE OPTIMIZATION 3 & 4: Reusable Checkbox Slicer & Scroll Preservation
-  // ===========================================================================
   function renderCheckboxSlicer(containerEl, allId, itemClass, allLabel, items, selectedItems, isAllChecked, onChangeCallback) {
     if (!containerEl) return;
     
-    // Preserve current scroll position to avoid jumpiness
     const scrollTop = containerEl.scrollTop;
-
     containerEl.innerHTML = "";
 
     if (items.length === 0) {
@@ -629,7 +621,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (targetSource !== "conference") {
-      // ADAPTIVE CONFERENCE FILTER: Exclude both date and conference so conferences adapt purely to selected leagues
       const confSubset = getFilteredDataExcept(["date", "conference"]);
       updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
     }
@@ -786,7 +777,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function resolveOverlapSubRows(games) {
-    // Sort using pre-calculated _startMins
     games.sort((a, b) => a._startMins - b._startMins);
 
     const subRowEndTimes = [];
