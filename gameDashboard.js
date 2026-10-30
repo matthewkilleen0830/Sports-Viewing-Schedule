@@ -320,6 +320,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
+    const isExcluded = (name) => {
+      if (!excludedFilter) return false;
+      if (Array.isArray(excludedFilter)) return excludedFilter.includes(name);
+      return excludedFilter === name;
+    };
+
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d)) return false;
 
@@ -340,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (matchesSearch) {
           // If searching, still respect date filter if selected, or return all matching games across dates
-          if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+          if (!isExcluded("date") && state.date && d.Date !== state.date) {
             return false;
           }
           return true;
@@ -351,12 +357,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Standard Filtering Logic (when search query is empty)
       // 1. Date Filter
-      if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+      if (!isExcluded("date") && state.date && d.Date !== state.date) {
         return false;
       }
 
       // 2. League Filter
-      if (excludedFilter !== "league") {
+      if (!isExcluded("league")) {
         if (!state.isLeagueAll && state.leagues.length === 0) return false;
         if (!state.isLeagueAll) {
           const gameLeague = d.League?.trim();
@@ -365,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // 3. Ranked NCAA Teams Filter (Only applies to NCAA leagues if ranked is checked)
-      if (excludedFilter !== "top25" && state.top25Only) {
+      if (!isExcluded("top25") && state.top25Only) {
         const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
         if (isNcaaLeague) {
           const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
@@ -374,13 +380,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // 4. Game Start Time Filter
-      if (excludedFilter !== "time") {
+      if (!isExcluded("time")) {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
       // 5. Conference Filter (Only applies to NCAA leagues; non-NCAA leagues bypass conference filter)
-      if (excludedFilter !== "conference") {
+      if (!isExcluded("conference")) {
         const isNcaaLeague = d.League && d.League.trim().toUpperCase().startsWith("NCAA");
         if (isNcaaLeague && !state.isConfAll) {
           if (state.conferences.length === 0) return false;
@@ -669,7 +675,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (targetSource !== "conference") {
-      const confSubset = getFilteredDataExcept("conference");
+      // Exclude both date and conference so the conference list is purely adaptive to selected leagues (ignoring day date)
+      const confSubset = getFilteredDataExcept(["date", "conference"]);
       updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
     }
   }
@@ -991,7 +998,6 @@ document.addEventListener("DOMContentLoaded", function () {
       bargap: 0.15,               
       autosize: true,
       margin: {
-        // l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN
