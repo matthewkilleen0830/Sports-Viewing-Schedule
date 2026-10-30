@@ -36,7 +36,7 @@ const TEAM_COLORS = {
   
   // G
   "Gardner-Webb": "#CC0000", "Georgetown": "#041E42", "Georgia": "#BA0C2F", "Georgia Southern": "#00152B", "Georgia State": "#0039A6", "Georgia Tech": "#B3A369", "Giants": "#FD5A1E", 
-  "NY Giants": "#0B2265", "Golden Knights": "#B3995D", "Gonzaga": "#041E42", "Green Bay": "#006747", "Grizzlies": "#5D76A9", "Guardians": "#0C2340",
+  "NY Giants": "#0B2265", "Golden Knights": "#B3995D", "Gonzaga": "#041E42", "Green Bay": "#006747", "Grizzlies": "#5D76A9", "Guardians": "#0C2340", "George Mason": "#005239",
 
   // H
   "Harvard": "#A51C30", "Hawai'i": "#024731", "Hawks": "#C8102E", "Heat": "#98002E", "Holy Cross": "#60269E", "Hornets": "#1D1160", "Houston": "#C8102E", "Houston Christian": "#002F6C", 
@@ -91,7 +91,7 @@ const TEAM_COLORS = {
   
   // S
   "Sabres": "#003087", "Sacred Heart": "#C8102E", "Sacramento State": "#043927", "St. Anselm": "#002B5C", "Saint Michael's": "#55318C", "Saints": "#D3BC8D", "Sam Houston": "#F47920", 
-  "Samford": "#CC0000", "San Diego": "#007A33", "San Diego State": "#000000", "San José State": "#0055A2", "SE Louisiana": "#244A31", "SE Missouri State": "#CE1126", "Seahawks": "#002244", 
+  "Samford": "#CC0000", "San Diego": "#007A33", "San Diego State": "#000000", "San José State": "#0055A2", "SE Louisiana": "#244A31", "Southeast Missouri State": "#CE1126", "Seahawks": "#002244", 
   "Senators": "#C8102E", "Seton Hall": "#004488", "Sharks": "#006D75", "Sky": "#418FDE", "SMU": "#0033A0", "South Alabama": "#00205B", "South Carolina": "#73000A", "South Carolina State": "#800000", "South Dakota": "#AD0000", "South Dakota State": "#0033A0",
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A", "Spurs": "#000000", "St. Cloud State": "#CC0000", 
   "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
