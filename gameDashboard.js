@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
     "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV", "SLN", "BlazerVision",
     "DAZN MIN", "Thunder App", "Pelicans.com", "DAZN MEM", "ClipperVision", "DAZN (YES)",
-    "Bucks App"
+    "Bucks App", "Summit", "Suns Live"
   ];
 
   const DEFAULT_LEAGUES = [
