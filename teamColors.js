@@ -56,7 +56,7 @@ const TEAM_COLORS = {
   // L
   "Lafayette": "#9E1B32", "Lake Superior State": "#005A36", "Lamar": "#D11919", "Lakers": "#552583", "Lehigh": "#653815", "Liberty": "#6ECEB2", "Liberty University": "#B72025",
   "Lightning": "#002868", "Lindenwood": "#B3A369", "Lions": "#0076B6", "LIU": "#69B3E7", "Louisiana": "#CE181E", "Louisiana Tech": "#003087", "Louisville": "#AD0000", 
-  "LSU": "#461D7C", "Lynx": "#0C2340",
+  "LSU": "#461D7C", "Lynx": "#0C2340", "Little Rock": "#6E2639",
   
   // M
   "Magic": "#0077C0", "Maine": "#003263", "Mammoth": "#000000", "Maple Leafs": "#00205B", "Marist": "#C8102E", "Mariners": "#0C2C56", "Marlins": "#00A3E0", "Marquette": "#003366",
@@ -96,6 +96,7 @@ const TEAM_COLORS = {
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A", "Spurs": "#000000", "St. Cloud State": "#CC0000", 
   "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
   "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Suns": "#1D1160", "Syracuse": "#F76900", "Saint Mary's": "#06315B",
+  "San Francisco": "#00543C",
   
   // T
   "Tarleton State": "#4F2683", "TBD": "#000000", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200", "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F",
