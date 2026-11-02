@@ -59,10 +59,15 @@ document.addEventListener("DOMContentLoaded", function () {
     "NCAA Basketball (M)",
   ];
 
-  const SHARED_X_AXIS_VALS = [480, 540, 600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500, 1560, 1620];
+  const SHARED_X_AXIS_VALS = [
+    0, 60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 
+    720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 
+    1440, 1500, 1560, 1620, 1680, 1740
+  ];
   const SHARED_X_AXIS_TEXT = [
-    '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
-    '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM'
+    '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM', '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', 
+    '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', 
+    '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM'
   ];
 
   const DOM = {
@@ -355,10 +360,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                              league.includes(searchQuery) ||
-                              network.includes(searchQuery) ||
-                              vConf.includes(searchQuery) ||
-                              hConf.includes(searchQuery);
+                            league.includes(searchQuery) ||
+                            network.includes(searchQuery) ||
+                            vConf.includes(searchQuery) ||
+                            hConf.includes(searchQuery);
 
         if (matchesSearch) {
           if (!isExcluded("date") && state.date && d.Date !== state.date) {
