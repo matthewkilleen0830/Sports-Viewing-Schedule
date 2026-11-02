@@ -760,7 +760,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#D3D3D3';
 
-    const parts = matchup.split(/\s+(?:at|vs\.?)\s+/i);
+    // Condition 3: If the matchup does not contain the string " at ", use #C28C19
+    if (!matchup.toLowerCase().includes(' at ')) {
+      return '#C28C19';
+    }
+
+    const parts = matchup.split(/\s+at\s+/i);
     if (parts.length < 2) return '#D3D3D3';
 
     const homeTeamRaw = parts[parts.length - 1].trim();
@@ -778,6 +783,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return TEAM_COLORS[homeTeamClean];
     }
 
+    // Condition 1: Fall back to grey color (#D3D3D3) for data validation if team is missing from TEAM_COLORS
     return '#D3D3D3';
   }
 
