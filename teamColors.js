@@ -29,7 +29,7 @@ const TEAM_COLORS = {
   
   // E
   "Eagles": "#004C54", "East Carolina": "#582C83", "East Tennessee State": "#002855", "East Texas A&M": "#002F6C", "Eastern Illinois": "#003594", "Eastern Kentucky": "#4C151B", 
-  "Eastern Michigan": "#006633", "Eastern Washington": "#A10022", "ESPN": "#C28C19",
+  "Eastern Michigan": "#006633", "Eastern Washington": "#A10022",
   
   // F
   "Fairleigh Dickinson": "#72293C", "Falcons": "#A71930", "Ferris State": "#BA0C2F", "Fever": "#041E42", "Flames": "#C8102E", "Florida": "#0021A5", "Florida Atlantic": "#003366", 
