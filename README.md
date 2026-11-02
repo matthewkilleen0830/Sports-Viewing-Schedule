@@ -1,4 +1,4 @@
-# Live Sports Broadcast Dashboard
+# Live Sports Broadcast Dashboard v1.4.0
 
 An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional and collegiate sports leagues with real-time dynamic filtering.
 
@@ -18,7 +18,8 @@ Check out the live interactive application hosted on GitHub Pages:
 - **Dual Synchronized Timelines & Dynamic Autorange**:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., CBS, FOX, ESPN, etc.).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, Prime Video, etc.).
-  * **Synced Dynamic Autorange**: Completely revamped chart axis architecture that dynamically scales to the day's actual schedule bounds without being clipped by hardcoded time caps, keeping gridlines and hour markers perfectly aligned.
+  * **Synced Dynamic Autorange**: Completely revamped chart axis architecture that dynamically scales to active filters and the user's local device time zone without being clipped by hardcoded time caps.
+  * **Expanded 24-Hour Timeline & Gridlines**: Comprehensive time axis configuration fully supporting international time zones and early-morning schedule shifts (such as 2:00 AM and 3:00 AM local time) complete with vertical gridlines.
   * **Post-Game Filtering**: Automatically filters out completed games past their buffer windows to eliminate dead air.
 - **Comprehensive League & Professional Coverage**:
   * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
@@ -31,12 +32,12 @@ Check out the live interactive application hosted on GitHub Pages:
   * **Game Time Slicer**: Dynamic multi-select filter adapting to active game start times.
   * **Conference Slicer**: Dynamic conference filter cross-adapting with active day, league, team, and time selections to eliminate dead-end choices.
 - **Local Time Zone Standardization**:
-  * Automatically translates backend data schedule calculations into the user's local device time zone for effortless, accurate viewing.
+  * Automatically translates backend data schedule calculations into the user's local device time zone for effortless, accurate cross-region viewing.
 - **API-Driven Data Pipeline**:
   * Powered by an automated data extraction and transformation pipeline that standardizes multi-sport schedules, handles time zone normalization, transforms incoming data, passes validation checks, and aggregates live game datasets into `weekFull.csv`.
-- **Art Deco Dark Theme**:
+- **Art Deco Dark Theme & Special Event Styling**:
   * Clean, polished, custom CSS UI tailored with gold accents and responsive sidebar controls.
-  * Custom team color branding and high-contrast timeline bars for seamless visual scanning.
+  * Custom team color branding and high-contrast timeline bars, featuring specialized color formatting for non-game programming and studio specials, alongside fallback data validation for missing team colors.
 - **Full Analytics Integration**:
   * Integrated **Google Analytics 4 (GA4)** for tracking real-time user activity, slicer interactions, and device metrics.
   * Configured with dual IPv4 & IPv6 internal traffic exclusion rules to keep development metrics clean.
