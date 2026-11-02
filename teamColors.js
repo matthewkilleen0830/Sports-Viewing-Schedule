@@ -21,6 +21,7 @@ const TEAM_COLORS = {
   "Charlotte": "#00502F", "Chattanooga": "#003865", "Chiefs": "#E31837", "Cincinnati": "#000000", "Clarkson": "#004B49", "Clemson": "#F56600", "Clippers": "#C8102E", "Coastal Carolina": "#006F71", 
   "Colgate": "#821019", "Colts": "#002C5F", "Colorado": "#CFB87C", "Colorado College": "#000000", "Colorado State": "#1E4D2B", "Commanders": "#5A1414", "Coppin State": "#003056",
   "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633", "Creighton": "#005CA9", "Cubs": "#0E3386",
+  "Chicago State": "#006666", "Cal State Bakersfield": "#003594",
 
   // D
   "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F", "Delaware State": "#CC0000", "Denver": "#8B2332", "DePaul": "#003DA5", "Devils": "#CE1126", 
@@ -40,7 +41,7 @@ const TEAM_COLORS = {
 
   // H
   "Harvard": "#A51C30", "Hawai'i": "#024731", "Hawks": "#C8102E", "Heat": "#98002E", "Holy Cross": "#60269E", "Hornets": "#1D1160", "Houston": "#C8102E", "Houston Christian": "#002F6C", 
-  "Howard": "#002147", "Hurricanes": "#CC0000",
+  "Howard": "#002147", "Hurricanes": "#CC0000", "High Point": "#330072",
   
   // I
   "Idaho": "#B3A369", "Idaho State": "#F47920", "Illinois": "#E84A27", "Illinois State": "#CE1126", "Incarnate Word": "#CB333B", "Indiana": "#990000", "Indiana State": "#00437A", 
@@ -70,7 +71,7 @@ const TEAM_COLORS = {
   "New Mexico State": "#891216", "Niagara": "#002D62", "Nicholls": "#C41230", "Norfolk State": "#007A3D", "North Alabama": "#9E1B32", "North Carolina": "#7BAFD4", 
   "North Carolina Central": "#841F2B", "North Dakota": "#006A4E", "North Dakota State": "#00583D", "North Texas": "#00853E", "Northeastern": "#CC0000", "Northern Arizona": "#002447",
   "Northern Colorado": "#002A54", "Northern Illinois": "#C8102E", "Northern Michigan": "#006633", "Northwestern": "#4E2A84", "Northwestern State": "#F15A22", "Notre Dame": "#0C2340", 
-  "Nuggets": "#0E2240", "Northern Iowa": "#4B116F",
+  "Nuggets": "#0E2240", "Northern Iowa": "#4B116F", "Northern Kentucky": "#FFC72C",
   
   // O
   "Ohio": "#00694E", "Ohio State": "#BB0000", "Oilers": "#041E42", "Oklahoma": "#841617", "Oklahoma State": "#FE5C00", "Old Dominion": "#003057", "Ole Miss": "#006BA6", "Omaha": "#000000", 
@@ -96,7 +97,7 @@ const TEAM_COLORS = {
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A", "Spurs": "#000000", "St. Cloud State": "#CC0000", 
   "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
   "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Suns": "#1D1160", "Syracuse": "#F76900", "Saint Mary's": "#06315B",
-  "San Francisco": "#00543C",
+  "San Francisco": "#00543C", "Southern Indiana": "#CF102D",
   
   // T
   "Tarleton State": "#4F2683", "TBD": "#000000", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200", "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F",
@@ -107,6 +108,7 @@ const TEAM_COLORS = {
   "UAB": "#215732", "UC Davis": "#002855", "UCF": "#BA9B37", "UCLA": "#2D68C4", "UConn": "#000E2E", "UIW": "#C41230", "UL Monroe": "#531B2B", "UMass": "#881C1C", "UMass Lowell": "#0067C5", 
   "UMBC": "#000000", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000", "UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", 
   "Utah": "#BE0000", "Utah State": "#00263A", "Utah Tech": "#BA1C21", "UTSA": "#0C2340",
+  "UC San Diego": "#182B49", "UIC": "#AC1E2D",
   
   // V
   "Valkyries": "#B896D4", "Valparaiso": "#613312", "Vanderbilt": "#866D4B", "Vermont": "#005A36", "Vikings": "#4F2683", "Villanova": "#00205B", "Virginia": "#232D4B", "Virginia Tech": "#630031", 
@@ -116,6 +118,7 @@ const TEAM_COLORS = {
   "Wake Forest": "#9E7E38", "Warriors": "#1D428A", "Washington": "#4B2E83", "Washington State": "#981E32", "Weber State": "#4B2682", "West Florida": "#007A87", "West Georgia": "#002F6C", 
   "West Virginia": "#002855", "Western Carolina": "#51267B", "Western Illinois": "#663399", "Western Kentucky": "#BD0F26", "Western Michigan": "#5C1322", "White Sox": "#000000", "Wild": "#154734", 
   "William & Mary": "#115740", "Windsor": "#005A36", "Wings": "#0C2340", "Wisconsin": "#C5050C", "Wizards": "#002B5C", "Wofford": "#B3A369", "Wyoming": "#492F24",
+  "Winthrop": "#6B0D0E", "Wichita State": "#000000",
   
   // X
   "Xavier": "#0C2340",
