@@ -38,6 +38,7 @@ const TEAM_COLORS = {
   // G
   "Gardner-Webb": "#CC0000", "Georgetown": "#041E42", "Georgia": "#BA0C2F", "Georgia Southern": "#00152B", "Georgia State": "#0039A6", "Georgia Tech": "#B3A369", "Giants": "#FD5A1E", 
   "NY Giants": "#0B2265", "Golden Knights": "#B3995D", "Gonzaga": "#041E42", "Green Bay": "#006747", "Grizzlies": "#5D76A9", "Guardians": "#0C2340", "George Mason": "#005239",
+  "Grand Canyon": "#522398",
 
   // H
   "Harvard": "#A51C30", "Hawai'i": "#024731", "Hawks": "#C8102E", "Heat": "#98002E", "Holy Cross": "#60269E", "Hornets": "#1D1160", "Houston": "#C8102E", "Houston Christian": "#002F6C", 
