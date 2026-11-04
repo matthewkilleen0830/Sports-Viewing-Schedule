@@ -129,10 +129,14 @@ const TEAM_COLORS = {
 
   // Host LPGA Tour
   "Sheshan GC": "#F75D5D", "Pine Beach Golf Links": "#F75D5D", "Kuala Lumpur": "#F75D5D",
-  "Taiheiyo Club": "#F75D5D",
+  "Taiheiyo Club": "#005337", "Pelican GC": "#AB9A6F", "Tiburon GC": "#D59F0F", "Lake Nona G&CC": "#b6874f",
 
   // Host PGA Tour
-  "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#0A1F62", "Diamante El Cardonal": "#003C80",
+  "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#0A1F62", "Diamante El Cardonal": "#6EB0C7", "Barton Creek": "#0D503D", "Sea Island GC": "#201A0B", "PGA West": "#BF6E39",
+  "Torrey Pines GC": "#115882", "Pebble Beach GL": "#004d41", "TPC Scottsdale": "#e81d25", "The Riviera CC": "#046646", "PGA National": "#133d3c", "Trump National Doral": "#211d1d",
+  "TPC Sawgrass": "#e81d25", "Memorial Park GC": "#2d5077", "Bay Hill": "#fff200", "Augusta National GC": "#006747", "Harbour Town GL": "#D8250F", "TPC Louisiana": "#e81d25",
+  "TPC San Antonio": "#e81d25", "TPC Craig Ranch": "#e81d25", "PGA Frisco": "#d31d29", "Colonial GC": "#26327b", "Innisbrook Copperhead": "#B87333", "Dunes G&BC": "#f3e58a",
+  "Muirfield Village GC": "#a1a3a3",
   
   // Host Tennis
   "Melbourne Park": "#1E8FD5", "Roland Garros": "#BB5522", "Wimbledon": "#046A38", "BJK National Tennis Center": "#FFD400",
