@@ -843,6 +843,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
+    // Responsive narrow/tall font selection for mobile/tablet vs desktop
+    const isNarrow = window.innerWidth < 1200;
+    const matchupFontSize = isNarrow ? '17px' : '22px';
+    const leagueFontSize = isNarrow ? '12px' : '16px';
+    const fontStack = "'Arial Narrow', Arial, sans-serif";
+
     grouped.forEach((games, network) => {
       const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
 
@@ -858,7 +864,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const internalRowKey = `${network}_row_${game.subRowIndex}`;
         const isRanked = game.Matchup.includes('#');
         const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
-        const formattedLabel = `<span style="font-size: 22px;">${matchupText}</span><br><span style="font-size: 16px; opacity: 0.85;">${game.League}</span>`;
+        const formattedLabel = `<span style="font-family: ${fontStack}; font-size: ${matchupFontSize};">${matchupText}</span><br><span style="font-family: ${fontStack}; font-size: ${leagueFontSize}; opacity: 0.85;">${game.League}</span>`;
 
         traces.push({
           type: 'bar',
@@ -868,7 +874,7 @@ document.addEventListener("DOMContentLoaded", function () {
           base: [game._startMins],
           name: game.Matchup,
           textfont: {
-            size: 16,
+            size: isNarrow ? 14 : 16,
           },
           marker: { 
             color: teamHexColor,
@@ -879,7 +885,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textposition: 'inside',
           insidetextanchor: 'middle',
           insidetextfont: { 
-            family: 'Segoe UI, Arial, sans-serif',
+            family: fontStack,
             color: '#ffffff'
           },
           hoverlabel: {
@@ -893,7 +899,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '<b>' + game.Matchup + '</b><br>' +
             'League: ' + game.League + '<br>' +
             'Live Broadcast: ' + network + '<br>' +
-            'Start Time: %{customdata[0]}<extra></extra>',
+            'Scheduled Start: %{customdata[0]}<extra></extra>',
           customdata: [[
             game.Start_Time
           ]]
