@@ -948,6 +948,7 @@ document.addEventListener("DOMContentLoaded", function () {
         type: 'line',
         xref: 'x',
         yref: 'paper',
+        layer: 'below',
         x0: currentMins,
         x1: currentMins,
         y0: 0,
