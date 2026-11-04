@@ -944,22 +944,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const shapes = [];
     if (isToday && currentMins >= rangeStart && currentMins <= rangeEnd) {
-      shapes.push({
-        type: 'line',
-        xref: 'x',
-        yref: 'paper',
-        layer: 'below',
-        x0: currentMins,
-        x1: currentMins,
-        y0: 0,
-        y1: 1,
-        line: {
-          color: '#d4af37', // subtle gold
-          width: 1.5,
-          dash: 'dash'
-        }
-      });
-    }
+    shapes.push({
+      type: 'line',
+      xref: 'x',
+      yref: 'paper',
+      layer: 'above',
+      x0: currentMins,
+      x1: currentMins,
+      y0: 0,
+      y1: 1,
+      line: {
+        color: '#ff0000',
+        width: 0.75
+      }
+    });
+  }
 
     const layout = {
       height: calculatedPlotHeight,
