@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const DEFAULT_LEAGUES = [
-    "MLB (World Series)",
+    "MLB",
     "NBA",
     "NHL",
     "NFL",
