@@ -745,7 +745,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (earliestStart === 1440 || isNaN(earliestStart)) earliestStart = 600;
     if (latestEnd === 0 || isNaN(latestEnd)) latestEnd = 1440;
 
-    const paddedStart = Math.max(0, earliestStart - 10);
+    const paddedStart = Math.max(0, earliestStart - 15);
     const paddedEnd = Math.max(paddedStart + 60, latestEnd + 15);
     const syncedXRange = [paddedStart, paddedEnd];
 
