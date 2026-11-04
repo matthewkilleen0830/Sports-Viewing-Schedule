@@ -414,7 +414,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
-    // NOTE: Date check is omitted here so ranked availability is evaluated across all dates for selected leagues
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
 
@@ -760,7 +759,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#D3D3D3';
 
-    // Condition 3: If the matchup does not contain the string " at ", use #C28C19
     if (!matchup.toLowerCase().includes(' at ')) {
       return '#C28C19';
     }
@@ -783,7 +781,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return TEAM_COLORS[homeTeamClean];
     }
 
-    // Condition 1: Fall back to grey color (#D3D3D3) for data validation if team is missing from TEAM_COLORS
     return '#D3D3D3';
   }
 
@@ -923,6 +920,40 @@ document.addEventListener("DOMContentLoaded", function () {
     const tickvals = tickIndices.map(i => SHARED_X_AXIS_VALS[i]);
     const ticktext = tickIndices.map(i => SHARED_X_AXIS_TEXT[i]);
 
+    // ==========================================
+    // CALCULATE "NOW" VERTICAL LINE (IF TODAY)
+    // ==========================================
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const selectedDateText = DOM.dateFilter ? DOM.dateFilter.value : "";
+    
+    let cleanSelected = selectedDateText.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    if (!/\b20\d{2}\b/.test(cleanSelected)) cleanSelected = `${cleanSelected}, ${currentYear}`;
+    const selectedDateParsed = new Date(cleanSelected);
+    const startOfSelected = new Date(selectedDateParsed.getFullYear(), selectedDateParsed.getMonth(), selectedDateParsed.getDate()).getTime();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    
+    const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+    
+    const shapes = [];
+    if (isToday && currentMins >= rangeStart && currentMins <= rangeEnd) {
+      shapes.push({
+        type: 'line',
+        xref: 'x',
+        yref: 'paper',
+        x0: currentMins,
+        x1: currentMins,
+        y0: 0,
+        y1: 1,
+        line: {
+          color: '#d4af37', // subtle gold
+          width: 1.5,
+          dash: 'dash'
+        }
+      });
+    }
+
     const layout = {
       height: calculatedPlotHeight,
       paper_bgcolor: 'rgba(0,0,0,0)',
@@ -930,6 +961,7 @@ document.addEventListener("DOMContentLoaded", function () {
       barmode: 'stack',
       bargap: 0.15,               
       autosize: true,
+      shapes: shapes,
       margin: {
         r: 0,
         t: TOP_MARGIN,
@@ -984,6 +1016,11 @@ document.addEventListener("DOMContentLoaded", function () {
       refreshActiveCharts();
     }
   }, 60000);
+
+  // Advance the "now" line every 5 minutes while preserving all active filter states
+  setInterval(() => {
+    applyFilters();
+  }, 300000);
 
   let resizeTimer;
   window.addEventListener('resize', function() {
