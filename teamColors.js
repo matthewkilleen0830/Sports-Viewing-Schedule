@@ -21,7 +21,7 @@ const TEAM_COLORS = {
   "Charlotte": "#00502F", "Chattanooga": "#003865", "Chiefs": "#E31837", "Cincinnati": "#000000", "Clarkson": "#004B49", "Clemson": "#F56600", "Clippers": "#C8102E", "Coastal Carolina": "#006F71", 
   "Colgate": "#821019", "Colts": "#002C5F", "Colorado": "#CFB87C", "Colorado College": "#000000", "Colorado State": "#1E4D2B", "Commanders": "#5A1414", "Coppin State": "#003056",
   "Cornell": "#B31B1B", "Cowboys": "#003594", "Coyotes": "#8C2633", "Creighton": "#005CA9", "Cubs": "#0E3386",
-  "Chicago State": "#006666", "Cal State Bakersfield": "#003594",
+  "Chicago State": "#006666", "Cal State Bakersfield": "#003594", "Columbia": "#7BA4DB",
 
   // D
   "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F", "Delaware State": "#CC0000", "Denver": "#8B2332", "DePaul": "#003DA5", "Devils": "#CE1126", 
@@ -66,6 +66,7 @@ const TEAM_COLORS = {
   "Mercury": "#211747", "Merrimack": "#00205B", "Mets": "#002D72", "Miami": "#F47321", "Miami (OH)": "#C41230", "Michigan": "#00274C", "Michigan State": "#18453B", "Michigan Tech": "#FFCD00",
   "Middle Tennessee": "#0066CC", "Minnesota": "#7A003C", "Minnesota Duluth": "#4A121A", "Minnesota State": "#4B2E83", "Mississippi State": "#660000", "Missouri": "#000000", 
   "Missouri State": "#5E0009", "Montana": "#660000", "Montana State": "#00205B", "Morehead State": "#002F6C", "Morgan State": "#FF6600", "Murray State": "#002147", "Mystics": "#C8102E",
+  "Milwaukee": "#000000",
   
   // N
   "Nationals": "#AB0003", "Navy": "#0C2340", "NC State": "#CC0000", "Nebraska": "#E31837", "Nets": "#000000", "Nevada": "#003366", "New Hampshire": "#00205B", "New Mexico": "#BA0C2F", 
@@ -113,7 +114,7 @@ const TEAM_COLORS = {
   
   // V
   "Valkyries": "#B896D4", "Valparaiso": "#613312", "Vanderbilt": "#866D4B", "Vermont": "#005A36", "Vikings": "#4F2683", "Villanova": "#00205B", "Virginia": "#232D4B", "Virginia Tech": "#630031", 
-  "VMI": "#E4002B",
+  "VMI": "#E4002B", "VCU": "#FFB300",
   
   // W
   "Wake Forest": "#9E7E38", "Warriors": "#1D428A", "Washington": "#4B2E83", "Washington State": "#981E32", "Weber State": "#4B2682", "West Florida": "#007A87", "West Georgia": "#002F6C", 
