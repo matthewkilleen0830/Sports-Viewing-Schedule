@@ -815,7 +815,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return { assignedGames, totalSubRows: subRowEndTimes.length };
   }
 
-  // ===========================================================================
+ // ===========================================================================
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
@@ -843,8 +843,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    // Responsive narrow/tall font selection for mobile/tablet vs desktop
+    // Responsive narrow/tall font selection & mobile portrait check
     const isNarrow = window.innerWidth < 1200;
+    const isMobilePortrait = isNarrow && window.innerHeight > window.innerWidth;
+
     const matchupFontSize = isNarrow ? '17px' : '22px';
     const leagueFontSize = isNarrow ? '12px' : '16px';
     const fontStack = "'Arial Narrow', Arial, sans-serif";
@@ -916,15 +918,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.style.height = `${calculatedPlotHeight}px`;
 
-    const [rangeStart, rangeEnd] = xAxisRange;
-    const tickIndices = [];
-    SHARED_X_AXIS_VALS.forEach((val, idx) => {
-      if (val >= rangeStart - 60 && val <= rangeEnd + 60) {
-        tickIndices.push(idx);
-      }
-    });
-    const tickvals = tickIndices.map(i => SHARED_X_AXIS_VALS[i]);
-    const ticktext = tickIndices.map(i => SHARED_X_AXIS_TEXT[i]);
+    const [rawRangeStart, rawRangeEnd] = xAxisRange;
+    let rangeStart = rawRangeStart;
+    let rangeEnd = rawRangeEnd;
+
+    // Limit initial x-axis window to 3 hours (180 minutes) in mobile portrait view
+    if (isMobilePortrait) {
+      rangeEnd = Math.min(rawRangeEnd, rangeStart + 180);
+    }
+
+    // Helper to generate dynamic ticks based on current x-axis viewport range
+    function getTicksForRange(rStart, rEnd) {
+      const tickIndices = [];
+      SHARED_X_AXIS_VALS.forEach((val, idx) => {
+        if (val >= rStart - 120 && val <= rEnd + 120) {
+          tickIndices.push(idx);
+        }
+      });
+      return {
+        tickvals: tickIndices.map(i => SHARED_X_AXIS_VALS[i]),
+        ticktext: tickIndices.map(i => SHARED_X_AXIS_TEXT[i])
+      };
+    }
+
+    const initialTicks = getTicksForRange(rangeStart, rangeEnd);
 
     // ==========================================
     // CALCULATE "NOW" VERTICAL LINE (IF TODAY)
@@ -944,21 +961,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const shapes = [];
     if (isToday && currentMins >= rangeStart && currentMins <= rangeEnd) {
-    shapes.push({
-      type: 'line',
-      xref: 'x',
-      yref: 'paper',
-      layer: 'above',
-      x0: currentMins,
-      x1: currentMins,
-      y0: 0,
-      y1: 1,
-      line: {
-        color: '#ff0000',
-        width: 0.75
-      }
-    });
-  }
+      shapes.push({
+        type: 'line',
+        xref: 'x',
+        yref: 'paper',
+        layer: 'above',
+        x0: currentMins,
+        x1: currentMins,
+        y0: 0,
+        y1: 1,
+        line: {
+          color: '#ff0000',
+          width: 0.75
+        }
+      });
+    }
 
     const layout = {
       height: calculatedPlotHeight,
@@ -974,15 +991,15 @@ document.addEventListener("DOMContentLoaded", function () {
         b: BOTTOM_MARGIN
       },
       automargin: true,
-      dragmode: false,
+      dragmode: isMobilePortrait ? 'pan' : false,
       xaxis: {
-        fixedrange: true,
+        fixedrange: !isMobilePortrait,
         side: 'top',
         type: 'linear',
         range: [rangeStart, rangeEnd],
         tickmode: 'array',
-        tickvals: tickvals,
-        ticktext: ticktext,
+        tickvals: initialTicks.tickvals,
+        ticktext: initialTicks.ticktext,
         tickangle: -30,
         tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
         ticks: 'outside',
@@ -1010,7 +1027,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = { responsive: true, displayModeBar: false };
 
-    Plotly.newPlot(targetId, traces, layout, config);
+    Plotly.newPlot(targetId, traces, layout, config).then(plotDiv => {
+      // Listen to pan/zoom relayout events and synchronize both charts
+      plotDiv.on('plotly_relayout', function(eventData) {
+        if (window._isSyncingCharts) return;
+
+        const r0 = eventData['xaxis.range[0]'];
+        const r1 = eventData['xaxis.range[1]'];
+
+        if (r0 !== undefined && r1 !== undefined) {
+          window._isSyncingCharts = true;
+
+          const updatedTicks = getTicksForRange(r0, r1);
+
+          // Update current chart
+          Plotly.relayout(plotDiv, {
+            'xaxis.range': [r0, r1],
+            'xaxis.tickvals': updatedTicks.tickvals,
+            'xaxis.ticktext': updatedTicks.ticktext
+          });
+
+          // Sync the other chart
+          const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
+          const otherDiv = document.getElementById(otherId);
+          if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
+            const otherTicks = getTicksForRange(r0, r1);
+            Plotly.relayout(otherDiv, {
+              'xaxis.range': [r0, r1],
+              'xaxis.tickvals': otherTicks.tickvals,
+              'xaxis.ticktext': otherTicks.ticktext
+            });
+          }
+
+          setTimeout(() => {
+            window._isSyncingCharts = false;
+          }, 50);
+        }
+      });
+    });
   }
 
   // ===========================================================================
@@ -1032,13 +1086,8 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      const plotlyContainers = document.querySelectorAll('.plotly-chart');
-      plotlyContainers.forEach(container => {
-        if (window.Plotly && container.clientHeight > 0) {
-          Plotly.Plots.resize(container);
-        }
-      });
-    }, 100);
+      applyFilters();
+    }, 150);
   });
 
 });
