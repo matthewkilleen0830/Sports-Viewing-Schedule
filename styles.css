@@ -405,15 +405,15 @@ html, body {
   }
 
   .charts-column {
-    padding-left: 1.75rem !important;
+    padding-left: 1rem !important;
     /* padding-right: 0.25rem !important; */
-    padding-right: 1.75rem;
+    padding-right: 1rem;
     gap: 1rem;
   }
 
   .chart-container {
     /* padding: 0.75rem 0.25rem 0.25rem 0.25rem; */
-    padding: 0.75rem 0.5rem 0.25rem 0.25rem;
+    padding: 0.75rem 0.5rem 0.25rem 0.1rem;
     border-radius: 10px;
   }
 }
@@ -436,6 +436,8 @@ html, body {
   font-size: 0.6em;
   font-style: italic;
 }
+
+
 
 /* On mobile portrait, force it to a new line and add a slight indent */
 @media (max-width: 576px) and (orientation: portrait) {
