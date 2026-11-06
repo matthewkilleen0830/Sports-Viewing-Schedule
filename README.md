@@ -1,4 +1,4 @@
-# Live Sports Broadcast Dashboard v1.4.0
+# Live Sports Broadcast Dashboard v1.5.0
 
 An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional and collegiate sports leagues with real-time dynamic filtering.
 
@@ -15,12 +15,19 @@ Check out the live interactive application hosted on GitHub Pages:
 
 ## ✨ Features & Functionality
 
-- **Dual Synchronized Timelines & Dynamic Autorange**:
+- **Dual Synchronized Timelines & Panning**:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., CBS, FOX, ESPN, etc.).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, Prime Video, etc.).
-  * **Synced Dynamic Autorange**: Completely revamped chart axis architecture that dynamically scales to active filters and the user's local device time zone without being clipped by hardcoded time caps.
+  * **Cross-Chart Timeline Synchronization**: Panning, scrolling, or scrubbing either the Linear Broadcast or Digital Streaming chart dynamically moves both visualization grids in lockstep.
+  * **Persistent Viewport Position**: Remembers and retains the user's panned and scrolled horizontal timeline viewport position across state changes, sidebar toggles, and minor redraws, eliminating unwanted jumps.
   * **Expanded 24-Hour Timeline & Gridlines**: Comprehensive time axis configuration fully supporting international time zones and early-morning schedule shifts (such as 2:00 AM and 3:00 AM local time) complete with vertical gridlines.
-  * **Post-Game Filtering**: Automatically filters out completed games past their buffer windows to eliminate dead air.
+  * **Post-Game Filtering**: Automatically filters out completed games past their scheduled windows (but including 15 minutes for possible OT) to eliminate dead air.
+- **Dynamic Mobile Portrait View & Axis Redesign**:
+  * **Focused Initial Window & Touch Panning**: Mobile portrait layouts default to an initial focused 3-hour (180-minute) window equipped with smooth touch-panning (`dragmode: 'pan'`) and vertical page-scroll support (`touch-action: pan-y`).
+  * **Snug Axis Margins**: Fixed y-axis layout configuration (`automargin: false` with custom margin bounds) that eliminates excessive side whitespace and pulls broadcast network labels snugly against the container edge.
+  * **Dynamic Hour Grid Generation**: Granular hour-by-hour gridlines and time labels are calculated and rendered on the fly as the user pans and scrolls horizontally.
+- **Real-Time "Now" Vertical Line Indicator**:
+  * Features an automated time-tracking red indicator line for current-day schedules that updates dynamically via background timers to mark the precise current time minute-by-minute.
 - **Comprehensive League & Professional Coverage**:
   * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
 - **Fully Inter-Adaptive & Superseding Filter Architecture**:
