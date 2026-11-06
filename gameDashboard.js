@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Persistent User Filter State & Modification Flag
   let userHasModifiedFilters = false;
+  let currentUserXRange = null; // Stores user panned/scrolled timeline position across redraws
+
   const filterState = {
     leagues: [...DEFAULT_LEAGUES],
     isLeagueAll: false,
@@ -233,8 +235,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 100);
 
-    // Event Listener: Date Slicer Change
+    // Event Listener: Date Slicer Change (Resets timeline pan position)
     DOM.dateFilter?.addEventListener("change", () => {
+      currentUserXRange = null;
       refreshAllSlicersExcept("date");
       applyFilters();
     });
@@ -247,9 +250,10 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change (Supersedes everything)
+    // Event Listener: Text Search Input Change (Resets timeline pan position)
     DOM.searchInput?.addEventListener("input", () => {
       userHasModifiedFilters = true;
+      currentUserXRange = null;
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
       if (searchQuery) {
         const now = new Date();
@@ -815,7 +819,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return { assignedGames, totalSubRows: subRowEndTimes.length };
   }
 
- // ===========================================================================
+  // ===========================================================================
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
@@ -922,8 +926,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let rangeStart = rawRangeStart;
     let rangeEnd = rawRangeEnd;
 
-    // Limit initial x-axis window to 3 hours (180 minutes) in mobile portrait view
-    if (isMobilePortrait) {
+    // Retain user's panned/scrolled x-axis position if available, otherwise default to initial 3-hour window in mobile portrait
+    if (currentUserXRange) {
+      rangeStart = currentUserXRange[0];
+      rangeEnd = currentUserXRange[1];
+    } else if (isMobilePortrait) {
       rangeEnd = Math.min(rawRangeEnd, rangeStart + 180);
     }
 
@@ -988,7 +995,7 @@ document.addEventListener("DOMContentLoaded", function () {
       margin: {
         r: 0,
         t: TOP_MARGIN,
-        b: BOTTOM_MARGIN
+        b: BOTTOM_MARGIN,
       },
       automargin: true,
       dragmode: isMobilePortrait ? 'pan' : false,
@@ -1020,7 +1027,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tickmode: 'array',
         tickvals: yTicks,
         ticktext: yTickLabels,
-        tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' }
+        tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' }
       },
       showlegend: false
     };
@@ -1028,7 +1035,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const config = { responsive: true, displayModeBar: false };
 
     Plotly.newPlot(targetId, traces, layout, config).then(plotDiv => {
-      // Listen to pan/zoom relayout events and synchronize both charts
+      // Listen to pan/zoom relayout events, save user range, and synchronize both charts
       plotDiv.on('plotly_relayout', function(eventData) {
         if (window._isSyncingCharts) return;
 
@@ -1037,6 +1044,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (r0 !== undefined && r1 !== undefined) {
           window._isSyncingCharts = true;
+          currentUserXRange = [r0, r1]; // Persist scroll/pan position
 
           const updatedTicks = getTicksForRange(r0, r1);
 
