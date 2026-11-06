@@ -355,7 +355,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
 
-      // SEARCH SUPERSEDENCE
+      // Date Filtering
+      if (!isExcluded("date") && state.date && d.Date !== state.date) {
+        return false;
+      }
+
+      // Additive Search Filtering (Respects league, time, conference, and ranked filters instead of bypassing them)
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -369,21 +374,12 @@ document.addEventListener("DOMContentLoaded", function () {
                               vConf.includes(searchQuery) ||
                               hConf.includes(searchQuery);
 
-        if (matchesSearch) {
-          if (!isExcluded("date") && state.date && d.Date !== state.date) {
-            return false;
-          }
-          return true;
-        } else {
+        if (!matchesSearch) {
           return false;
         }
       }
 
-      // Standard Filtering Logic
-      if (!isExcluded("date") && state.date && d.Date !== state.date) {
-        return false;
-      }
-
+      // League Filtering
       if (!isExcluded("league")) {
         if (!state.isLeagueAll && state.leagues.length === 0) return false;
         if (!state.isLeagueAll) {
@@ -391,6 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // Ranked Filtering
       if (!isExcluded("top25") && state.top25Only) {
         if (d._isNcaa) {
           const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
@@ -398,11 +395,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      // Time Filtering
       if (!isExcluded("time")) {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
+      // Conference Filtering
       if (!isExcluded("conference")) {
         if (d._isNcaa && !state.isConfAll) {
           if (state.conferences.length === 0) return false;
@@ -420,6 +419,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
+
+      // Respect currently selected date so ranked toggle evaluates specifically for the chosen day
+      if (state.date && d.Date !== state.date) {
+        return false;
+      }
 
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
@@ -515,7 +519,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
-    // UPDATED: Derive unique leagues reactively from filteredData (respecting search, date, etc.)
     const uniqueLeagues = Array.from(new Set(filteredData.map(d => d._cleanLeague))).filter(Boolean).sort();
     renderCheckboxSlicer(
       DOM.leagueFilter,
@@ -580,10 +583,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const isInit = (targetSource === null);
     const isDateChange = (targetSource === "date");
     const currentSelectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
+    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim() : "";
 
     if (isInit) {
       userHasModifiedFilters = false;
-      filterState.leagues = [...DEFAULT_LEAGUES];
+      if (!searchQuery) {
+        filterState.leagues = [...DEFAULT_LEAGUES];
+      }
       filterState.isLeagueAll = false;
       filterState.conferences = [];
       filterState.isConfAll = true;
@@ -591,7 +597,9 @@ document.addEventListener("DOMContentLoaded", function () {
       filterState.isTimeAll = true;
       filterState.top25Only = false;
     } else if (isDateChange && !userHasModifiedFilters) {
-      filterState.leagues = [...DEFAULT_LEAGUES];
+      if (!searchQuery) {
+        filterState.leagues = [...DEFAULT_LEAGUES];
+      }
       filterState.isLeagueAll = false;
       filterState.conferences = [];
       filterState.isConfAll = true;
@@ -600,6 +608,13 @@ document.addEventListener("DOMContentLoaded", function () {
       filterState.top25Only = false;
     } else {
       syncStateFromDOM();
+    }
+
+    if (searchQuery && (isInit || isDateChange)) {
+      const leagueSubset = getFilteredDataExcept("league");
+      const uniqueLeagues = Array.from(new Set(leagueSubset.map(d => d._cleanLeague))).filter(Boolean);
+      filterState.leagues = [...uniqueLeagues];
+      filterState.isLeagueAll = false;
     }
 
     updateRankedToggleState(isInit || (isDateChange && !userHasModifiedFilters));
@@ -621,6 +636,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
+      if (searchQuery && (isInit || isDateChange)) {
+        const uniqueLeagues = Array.from(new Set(leagueSubset.map(d => d._cleanLeague))).filter(Boolean);
+        filterState.leagues = [...uniqueLeagues];
+      }
       updateLeagueSlicer(leagueSubset, filterState.leagues, filterState.isLeagueAll);
     }
 
@@ -968,7 +987,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentMins = now.getHours() * 60 + now.getMinutes();
     
     const shapes = [];
-    // UPDATED: Always include "now" line if today, regardless of current viewport range (`rangeStart`/`rangeEnd`)
     if (isToday) {
       shapes.push({
         type: 'line',
