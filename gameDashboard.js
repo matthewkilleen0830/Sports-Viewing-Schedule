@@ -993,11 +993,13 @@ document.addEventListener("DOMContentLoaded", function () {
       autosize: true,
       shapes: shapes,
       margin: {
+        l: 67,
         r: 0,
         t: TOP_MARGIN,
         b: BOTTOM_MARGIN,
+        pad: 0
       },
-      automargin: true,
+      automargin: false,
       dragmode: isMobilePortrait ? 'pan' : false,
       xaxis: {
         fixedrange: !isMobilePortrait,
@@ -1019,6 +1021,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       yaxis: {
         fixedrange: true,
+        automargin: false,
         ticksuffix: '',
         autorange: 'reversed',
         ticks: 'outside',
@@ -1079,16 +1082,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // 7. GLOBAL TIMERS & EVENT LISTENERS
   // ===========================================================================
 
+  // Instantly refresh / update the "now" vertical red line every 30 seconds
+  setInterval(() => {
+    applyFilters();
+  }, 30000);
+
   setInterval(() => {
     if (typeof refreshActiveCharts === 'function') {
       refreshActiveCharts();
     }
   }, 60000);
-
-  // Advance the "now" line every 5 minutes while preserving all active filter states
-  setInterval(() => {
-    applyFilters();
-  }, 300000);
 
   let resizeTimer;
   window.addEventListener('resize', function() {
