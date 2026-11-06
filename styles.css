@@ -349,6 +349,7 @@ html, body {
 .plotly-chart {
   width: 100% !important;
   min-width: 0 !important;
+  touch-action: pan-y;
 }
 
 .chart-container text {
@@ -405,12 +406,14 @@ html, body {
 
   .charts-column {
     padding-left: 1.75rem !important;
-    padding-right: 0.25rem !important;
+    /* padding-right: 0.25rem !important; */
+    padding-right: 1.75rem;
     gap: 1rem;
   }
 
   .chart-container {
-    padding: 0.75rem 0.25rem 0.25rem 0.25rem;
+    /* padding: 0.75rem 0.25rem 0.25rem 0.25rem; */
+    padding: 0.75rem 0.5rem 0.25rem 0.25rem;
     border-radius: 10px;
   }
 }
