@@ -364,10 +364,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                            league.includes(searchQuery) ||
-                            network.includes(searchQuery) ||
-                            vConf.includes(searchQuery) ||
-                            hConf.includes(searchQuery);
+                              league.includes(searchQuery) ||
+                              network.includes(searchQuery) ||
+                              vConf.includes(searchQuery) ||
+                              hConf.includes(searchQuery);
 
         if (matchesSearch) {
           if (!isExcluded("date") && state.date && d.Date !== state.date) {
@@ -515,7 +515,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
-    const uniqueLeagues = Array.from(new Set(window.gameData.map(d => d._cleanLeague))).filter(Boolean).sort();
+    // UPDATED: Derive unique leagues reactively from filteredData (respecting search, date, etc.)
+    const uniqueLeagues = Array.from(new Set(filteredData.map(d => d._cleanLeague))).filter(Boolean).sort();
     renderCheckboxSlicer(
       DOM.leagueFilter,
       "league_all",
@@ -967,7 +968,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentMins = now.getHours() * 60 + now.getMinutes();
     
     const shapes = [];
-    if (isToday && currentMins >= rangeStart && currentMins <= rangeEnd) {
+    // UPDATED: Always include "now" line if today, regardless of current viewport range (`rangeStart`/`rangeEnd`)
+    if (isToday) {
       shapes.push({
         type: 'line',
         xref: 'x',
@@ -989,7 +991,7 @@ document.addEventListener("DOMContentLoaded", function () {
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       barmode: 'stack',
-      bargap: 0.15,               
+      bargap: 0.15,            
       autosize: true,
       shapes: shapes,
       margin: {
