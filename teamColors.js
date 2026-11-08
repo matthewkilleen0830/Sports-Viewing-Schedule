@@ -25,11 +25,11 @@ const TEAM_COLORS = {
 
   // D
   "Dartmouth": "#00693E", "Davidson": "#AC1A2F", "Dayton": "#E4002B", "Delaware": "#00539F", "Delaware State": "#CC0000", "Denver": "#8B2332", "DePaul": "#003DA5", "Devils": "#CE1126", 
-  "Diamondbacks": "#A71930", "Dodgers": "#005A9C", "Dolphins": "#008E97", "Drake": "#003087", "Dream": "#C8102E", "Ducks": "#F47A38", "Duke": "#003087", 
+  "Diamondbacks": "#A71930", "Dodgers": "#005A9C", "Dolphins": "#008E97", "Drake": "#003087", "Dream": "#C8102E", "Ducks": "#F47A38", "Duke": "#003087", "Detroit Mercy": "#A6093D",
   
   // E
   "Eagles": "#004C54", "East Carolina": "#582C83", "East Tennessee State": "#002855", "East Texas A&M": "#002F6C", "Eastern Illinois": "#003594", "Eastern Kentucky": "#4C151B", 
-  "Eastern Michigan": "#006633", "Eastern Washington": "#A10022",
+  "Eastern Michigan": "#006633", "Eastern Washington": "#A10022", "Evansville": "#52237F",
   
   // F
   "Fairleigh Dickinson": "#72293C", "Falcons": "#A71930", "Ferris State": "#BA0C2F", "Fever": "#041E42", "Flames": "#C8102E", "Florida": "#0021A5", "Florida Atlantic": "#003366", 
@@ -82,7 +82,7 @@ const TEAM_COLORS = {
   // P
   "Pacers": "#002D62", "Packers": "#203731", "Padres": "#2F241D", "Panthers": "#C8102E", "FL Panthers": "#C8102E", "Patriots": "#002244", "Pelicans": "#002B5C", "Penguins": "#FCB514", "Penn State": "#001E44",
   "Phillies": "#E81828", "Pirates": "#27251F", "Pistons": "#1D428A", "Pitt": "#003594", "Portland State": "#154734", "Post": "#F68B1F", "Prairie View A&M": "#330066", "Predators": "#FFB81C", 
-  "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000", "Purdue": "#000000", "Purdue Fort Wayne": "#CFB991",
+  "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000", "Purdue": "#000000", "Purdue Fort Wayne": "#CFB991", "Pennsylvania": "#990000",
   
   // Q
   "Quinnipiac": "#0A2240",
@@ -110,7 +110,7 @@ const TEAM_COLORS = {
   "UAB": "#215732", "UC Davis": "#002855", "UCF": "#BA9B37", "UCLA": "#2D68C4", "UConn": "#000E2E", "UIW": "#C41230", "UL Monroe": "#531B2B", "UMass": "#881C1C", "UMass Lowell": "#0067C5", 
   "UMBC": "#000000", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000", "UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", 
   "Utah": "#BE0000", "Utah State": "#00263A", "Utah Tech": "#BA1C21", "UTSA": "#0C2340",
-  "UC San Diego": "#182B49", "UIC": "#AC1E2D",
+  "UC San Diego": "#182B49", "UIC": "#AC1E2D", "UC Santa Barbara": "#003660",
   
   // V
   "Valkyries": "#B896D4", "Valparaiso": "#613312", "Vanderbilt": "#866D4B", "Vermont": "#005A36", "Vikings": "#4F2683", "Villanova": "#00205B", "Virginia": "#232D4B", "Virginia Tech": "#630031", 
