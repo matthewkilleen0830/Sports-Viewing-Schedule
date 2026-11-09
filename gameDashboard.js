@@ -889,7 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rangeStart = currentUserXRange[0];
       rangeEnd = currentUserXRange[1];
     } else if (isMobilePortrait) {
-      rangeEnd = Math.min(rawRangeEnd, rangeStart + 180);
+      rangeEnd = Math.min(rawRangeEnd, rangeStart + 150);
     }
 
     function getTicksForRange(rStart, rEnd) {
