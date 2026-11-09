@@ -1,7 +1,7 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Start_Time,End_Time,Visitor_Conference,Home_Conference
 Otterbein,Ohio,"Mon, Nov 09",NCAA Basketball (W),Otterbein at Ohio,ESPN+,N,10:00 AM,12:00 PM,,MAC
 Tennessee Tech,Missouri,"Mon, Nov 09",NCAA Basketball (W),Tennessee Tech at Missouri,SECN+,N,11:00 AM,1:00 PM,SoCon,SEC
-Northwestern State,Oklahoma State,"Mon, Nov 09",NCAA Basketball (W),Northwestern State at #22 Oklahoma State,ESPN+,Y,11:00 AM,1:00 PM,Southland,Big XII
+Northwestern State,Oklahoma State,"Mon, Nov 09",NCAA Basketball (W),Northwestern State at #19 Oklahoma State,ESPN+,Y,11:00 AM,1:00 PM,Southland,Big XII
 Marshall,Ohio State,"Mon, Nov 09",NCAA Basketball (M),Marshall at Ohio State,BTN,N,5:00 PM,7:00 PM,Sun Belt,Big Ten
 Penn State Schuylkill,Buffalo,"Mon, Nov 09",NCAA Basketball (M),Penn State Schuylkill at Buffalo,ESPN+,N,5:30 PM,7:30 PM,,MAC
 Syracuse,Indiana,"Mon, Nov 09",NCAA Basketball (M),Syracuse at Indiana,FS1,N,5:30 PM,7:30 PM,ACC,Big Ten
@@ -9,10 +9,10 @@ South Alabama,UCF,"Mon, Nov 09",NCAA Basketball (W),South Alabama at UCF,ESPN+,N
 Lakers,Hawks,"Mon, Nov 09",NBA,Lakers at Hawks,Spectrum,Y,6:00 PM,8:30 PM,Western Conference,Eastern Conference
 Wagner,UConn,"Mon, Nov 09",NCAA Basketball (M),Wagner at #4 UConn,truTV,Y,6:00 PM,8:00 PM,NEC,Big East
 Grambling,Texas,"Mon, Nov 09",NCAA Basketball (M),Grambling at #7 Texas,SECN,Y,6:00 PM,8:00 PM,SWAC,SEC
-Radford,Tennessee,"Mon, Nov 09",NCAA Basketball (M),Radford at #8 Tennessee,SECN+,Y,6:00 PM,8:00 PM,Big South,SEC
+Radford,Tennessee,"Mon, Nov 09",NCAA Basketball (M),Radford at #11 Tennessee,SECN+,Y,6:00 PM,8:00 PM,Big South,SEC
 Lamar,Texas Tech,"Mon, Nov 09",NCAA Basketball (W),Lamar at Texas Tech,ESPN+,N,6:00 PM,8:00 PM,Southland,Big XII
 Penn State,Dayton,"Mon, Nov 09",NCAA Basketball (W),Penn State at Dayton,ESPN+,N,6:00 PM,8:00 PM,Big Ten,Atlantic 10
-North Florida,Miami,"Mon, Nov 09",NCAA Basketball (M),North Florida at #14 Miami,ACCN,Y,6:00 PM,8:00 PM,Atlantic Sun,ACC
+North Florida,Miami,"Mon, Nov 09",NCAA Basketball (M),North Florida at #17 Miami,ACCN,Y,6:00 PM,8:00 PM,Atlantic Sun,ACC
 Eastern Illinois,Notre Dame,"Mon, Nov 09",NCAA Basketball (M),Eastern Illinois at Notre Dame,ACCNX,N,6:00 PM,8:00 PM,Ohio Valley,ACC
 Bradley,Indiana,"Mon, Nov 09",NCAA Basketball (W),Bradley at Indiana,B1G+,N,6:00 PM,8:00 PM,Missouri Valley,Big Ten
 North Dakota,Clemson,"Mon, Nov 09",NCAA Basketball (M),North Dakota at Clemson,ACCNX,N,6:00 PM,8:00 PM,Summit League,ACC
@@ -22,7 +22,7 @@ Florida Gulf Coast,Georgia,"Mon, Nov 09",NCAA Basketball (M),Florida Gulf Coast 
 Wizards,Pistons,"Mon, Nov 09",NBA,Wizards at Pistons,NBCSN,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Cavaliers,Hornets,"Mon, Nov 09",NBA,Cavaliers at Hornets,DAZN CLE,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Jackson State,Mississippi State,"Mon, Nov 09",NCAA Basketball (M),Jackson State at Mississippi State,SECN+,N,6:30 PM,8:30 PM,SWAC,SEC
-Oakland,Alabama,"Mon, Nov 09",NCAA Basketball (M),Oakland at #20 Alabama,SECN+,Y,6:30 PM,8:30 PM,Horizon League,SEC
+Oakland,Alabama,"Mon, Nov 09",NCAA Basketball (M),Oakland at #18 Alabama,SECN+,Y,6:30 PM,8:30 PM,Horizon League,SEC
 Morehead State,Vanderbilt,"Mon, Nov 09",NCAA Basketball (W),Morehead State at #8 Vanderbilt,SECN+,Y,6:30 PM,8:30 PM,Ohio Valley,SEC
 Grizzlies,Raptors,"Mon, Nov 09",NBA,Grizzlies at Raptors,DAZN MEM,Y,6:30 PM,9:00 PM,Western Conference,Eastern Conference
 Kansas City,Arkansas,"Mon, Nov 09",NCAA Basketball (W),Kansas City at Arkansas,SECN+,N,6:30 PM,8:30 PM,Summit League,SEC
@@ -63,12 +63,12 @@ Delaware State,Pitt,"Tue, Nov 10",NCAA Basketball (W),Delaware State at Pitt,ACC
 Harvard,Boston University,"Tue, Nov 10",NCAA Hockey (M),Harvard at #13 Boston University,ESPN+,Y,6:00 PM,8:30 PM,ECAC,Hockey East
 Southeast Missouri State,Purdue,"Tue, Nov 10",NCAA Basketball (W),Southeast Missouri State at Purdue,B1G+,N,6:00 PM,8:00 PM,Ohio Valley,Big Ten
 Purdue Fort Wayne,Western Michigan,"Tue, Nov 10",NCAA Basketball (W),Purdue Fort Wayne at Western Michigan,ESPN+,N,6:00 PM,8:00 PM,Horizon League,MAC
-San José State,Oklahoma,"Tue, Nov 10",NCAA Basketball (W),San José State at #21 Oklahoma,SECN+,Y,6:00 PM,8:00 PM,Mountain West,SEC
+San José State,Oklahoma,"Tue, Nov 10",NCAA Basketball (W),San José State at #14 Oklahoma,SECN+,Y,6:00 PM,8:00 PM,Mountain West,SEC
 Detroit Mercy,Notre Dame,"Tue, Nov 10",NCAA Basketball (W),Detroit Mercy at #13 Notre Dame,ACCNX,Y,6:00 PM,8:00 PM,Horizon League,ACC
 Lindenwood,Louisville,"Tue, Nov 10",NCAA Basketball (W),Lindenwood at #7 Louisville,ACCNX,Y,6:00 PM,8:00 PM,Ohio Valley,ACC
 Bryant,Providence,"Tue, Nov 10",NCAA Basketball (M),Bryant at Providence,ESPN+,N,6:00 PM,8:00 PM,America East,Big East
 Maryland Eastern Shore,Boston College,"Tue, Nov 10",NCAA Basketball (M),Maryland Eastern Shore at Boston College,ACCNX,N,6:00 PM,8:00 PM,MEAC,ACC
-Michigan State,Duke,"Tue, Nov 10",NCAA Basketball (M),#6 Michigan State at #2 Duke,ESPN,Y,6:00 PM,8:00 PM,Big Ten,ACC
+Michigan State,Duke,"Tue, Nov 10",NCAA Basketball (M),#5 Michigan State at #2 Duke,ESPN,Y,6:00 PM,8:00 PM,Big Ten,ACC
 Avalanche,Maple Leafs,"Tue, Nov 10",NHL,Avalanche at Maple Leafs,ESPN+,Y,6:00 PM,8:30 PM,Western (Central),Eastern (Atlantic)
 Devils,Jets,"Tue, Nov 10",NHL,Devils at Jets,ESPN+,Y,6:00 PM,8:30 PM,Eastern (Metropolitan),Western (Central)
 Western Michigan,Akron,"Tue, Nov 10",NCAA Football,Western Michigan at Akron,CBSSN,N,6:00 PM,9:30 PM,MAC,MAC
@@ -85,15 +85,15 @@ Charleston Southern,Wake Forest,"Tue, Nov 10",NCAA Basketball (M),Charleston Sou
 La Salle,Villanova,"Tue, Nov 10",NCAA Basketball (M),La Salle at Villanova,truTV,N,6:00 PM,8:00 PM,Atlantic 10,Big East
 Virginia Tech,Iowa,"Tue, Nov 10",NCAA Basketball (M),Virginia Tech at Iowa,FS1,N,6:00 PM,8:00 PM,ACC,Big Ten
 South Alabama,UCF,"Tue, Nov 10",NCAA Basketball (M),South Alabama at UCF,ESPN+,N,6:00 PM,8:00 PM,Sun Belt,Big XII
-Memphis,Vanderbilt,"Tue, Nov 10",NCAA Basketball (M),Memphis at #24 Vanderbilt,SECN+,Y,6:15 PM,8:15 PM,AAC,SEC
+Memphis,Vanderbilt,"Tue, Nov 10",NCAA Basketball (M),Memphis at #22 Vanderbilt,SECN+,Y,6:15 PM,8:15 PM,AAC,SEC
 Oral Roberts,Kansas,"Tue, Nov 10",NCAA Basketball (W),Oral Roberts at Kansas,ESPN+,N,6:30 PM,8:30 PM,Summit League,Big XII
 Bucks,Knicks,"Tue, Nov 10",NBA,Bucks at Knicks,Bucks App,Y,6:30 PM,9:00 PM,Eastern Conference,Eastern Conference
 FL Panthers,Blue Jackets,"Tue, Nov 10",NHL,FL Panthers at Blue Jackets,ESPN+,Y,6:30 PM,9:00 PM,Eastern (Atlantic),Eastern (Metropolitan)
-North Carolina A&T,Nebraska,"Tue, Nov 10",NCAA Basketball (W),North Carolina A&T at Nebraska,B1G+,N,7:00 PM,9:00 PM,CAA,Big Ten
-Southern,Minnesota,"Tue, Nov 10",NCAA Basketball (W),Southern at #17 Minnesota,B1G+,Y,7:00 PM,9:00 PM,SWAC,Big Ten
+North Carolina A&T,Nebraska,"Tue, Nov 10",NCAA Basketball (W),North Carolina A&T at #25 Nebraska,B1G+,Y,7:00 PM,9:00 PM,CAA,Big Ten
+Southern,Minnesota,"Tue, Nov 10",NCAA Basketball (W),Southern at #18 Minnesota,B1G+,Y,7:00 PM,9:00 PM,SWAC,Big Ten
 St. Catherine,St. Thomas-Minnesota,"Tue, Nov 10",NCAA Basketball (W),St. Catherine at St. Thomas-Minnesota,Midco Sports,N,7:00 PM,9:00 PM,,Summit League
-Illinois,Texas Tech,"Tue, Nov 10",NCAA Basketball (M),#3 Illinois at #19 Texas Tech,Peacock,Y,7:00 PM,9:00 PM,Big Ten,Big XII
-Southern,Iowa State,"Tue, Nov 10",NCAA Basketball (M),Southern at #18 Iowa State,ESPN+,Y,7:00 PM,9:00 PM,SWAC,Big XII
+Illinois,Texas Tech,"Tue, Nov 10",NCAA Basketball (M),#3 Illinois at #16 Texas Tech,Peacock,Y,7:00 PM,9:00 PM,Big Ten,Big XII
+Southern,Iowa State,"Tue, Nov 10",NCAA Basketball (M),Southern at Iowa State,ESPN+,N,7:00 PM,9:00 PM,SWAC,Big XII
 Houston Christian,South Dakota,"Tue, Nov 10",NCAA Basketball (M),Houston Christian at South Dakota,Midco/Summit,N,7:00 PM,9:00 PM,Southland,Summit League
 McNeese,LSU,"Tue, Nov 10",NCAA Basketball (W),McNeese at #9 LSU,SECN+,Y,7:00 PM,9:00 PM,Southland,SEC
 Prairie View A&M,SMU,"Tue, Nov 10",NCAA Basketball (M),Prairie View A&M at SMU,ACCNX,N,7:00 PM,9:00 PM,SWAC,ACC
@@ -104,9 +104,9 @@ Red Wings,Blues,"Tue, Nov 10",NHL,Red Wings at Blues,TNT/truTV,Y,7:00 PM,9:30 PM
 Ohio,Miami (OH),"Tue, Nov 10",NCAA Football,Ohio at Miami (OH),ESPN2,N,7:00 PM,10:30 PM,MAC,MAC
 Fairfield,Wisconsin,"Tue, Nov 10",NCAA Basketball (M),Fairfield at Wisconsin,BTN,N,7:30 PM,9:30 PM,MAAC,Big Ten
 SE Louisiana,Ole Miss,"Tue, Nov 10",NCAA Basketball (M),SE Louisiana at Ole Miss,SECN+,N,7:30 PM,9:30 PM,Southland,SEC
-Queens University,BYU,"Tue, Nov 10",NCAA Basketball (M),Queens University at #25 BYU,ESPN+,Y,8:00 PM,10:00 PM,Atlantic Sun,Big XII
-Northern Arizona,Arizona,"Tue, Nov 10",NCAA Basketball (M),Northern Arizona at #5 Arizona,ESPN+,Y,8:00 PM,10:00 PM,Big Sky,Big XII
-Bucknell,Virginia,"Tue, Nov 10",NCAA Basketball (M),Bucknell at #9 Virginia,ACCN,Y,8:00 PM,10:00 PM,Patriot League,ACC
+Queens University,BYU,"Tue, Nov 10",NCAA Basketball (M),Queens University at #23 BYU,ESPN+,Y,8:00 PM,10:00 PM,Atlantic Sun,Big XII
+Northern Arizona,Arizona,"Tue, Nov 10",NCAA Basketball (M),Northern Arizona at #12 Arizona,ESPN+,Y,8:00 PM,10:00 PM,Big Sky,Big XII
+Bucknell,Virginia,"Tue, Nov 10",NCAA Basketball (M),Bucknell at #6 Virginia,ACCN,Y,8:00 PM,10:00 PM,Patriot League,ACC
 Weber State,Utah,"Tue, Nov 10",NCAA Basketball (M),Weber State at Utah,ESPN+,N,8:00 PM,10:00 PM,Big Sky,Big XII
 UL Monroe,TCU,"Tue, Nov 10",NCAA Basketball (M),UL Monroe at TCU,ESPN+,N,8:00 PM,10:00 PM,Sun Belt,Big XII
 San Diego,Colorado,"Tue, Nov 10",NCAA Basketball (M),San Diego at Colorado,ESPN+,N,8:00 PM,10:00 PM,West Coast,Big XII
@@ -115,7 +115,7 @@ Hofstra,Arizona State,"Tue, Nov 10",NCAA Basketball (M),Hofstra at Arizona State
 Clippers,Suns,"Tue, Nov 10",NBA,Clippers at Suns,Suns Live,Y,8:00 PM,10:30 PM,Western Conference,Western Conference
 Heat,Jazz,"Tue, Nov 10",NBA,Heat at Jazz,Jazz+,Y,8:00 PM,10:30 PM,Eastern Conference,Western Conference
 Arizona State,UNLV,"Tue, Nov 10",NCAA Basketball (W),Arizona State at UNLV,MW+,N,8:30 PM,10:30 PM,Big XII,Mountain West
-Kansas,Kentucky,"Tue, Nov 10",NCAA Basketball (M),#17 Kansas at #23 Kentucky,ESPN,Y,8:30 PM,10:30 PM,Big XII,SEC
+Kansas,Kentucky,"Tue, Nov 10",NCAA Basketball (M),#15 Kansas at #24 Kentucky,ESPN,Y,8:30 PM,10:30 PM,Big XII,SEC
 Magic,Kings,"Tue, Nov 10",NBA,Magic at Kings,TBA,Y,9:00 PM,11:30 PM,Eastern Conference,Western Conference
 Predators,LA Kings,"Tue, Nov 10",NHL,Predators at LA Kings,ESPN+,Y,9:00 PM,11:30 PM,Western (Central),Western (Pacific)
 Charleston,USC,"Tue, Nov 10",NCAA Basketball (W),Charleston at #3 USC,BTN,Y,9:30 PM,11:30 PM,CAA,Big Ten
@@ -132,27 +132,27 @@ Kennesaw State,Georgia,"Wed, Nov 11",NCAA Basketball (W),Kennesaw State at Georg
 Saint Joseph's,Cincinnati,"Wed, Nov 11",NCAA Basketball (W),Saint Joseph's at Cincinnati,ESPN+,N,5:30 PM,7:30 PM,Atlantic 10,Big XII
 Austin Peay,UCF,"Wed, Nov 11",NCAA Basketball (W),Austin Peay at UCF,ESPN+,N,5:30 PM,7:30 PM,UAC,Big XII
 Oakland,Michigan State,"Wed, Nov 11",NCAA Basketball (W),Oakland at Michigan State,B1G+,N,5:30 PM,7:30 PM,Horizon League,Big Ten
-Evansville,Kentucky,"Wed, Nov 11",NCAA Basketball (W),Evansville at #14 Kentucky,SECN+,Y,5:30 PM,7:30 PM,Missouri Valley,SEC
+Evansville,Kentucky,"Wed, Nov 11",NCAA Basketball (W),Evansville at #12 Kentucky,SECN+,Y,5:30 PM,7:30 PM,Missouri Valley,SEC
 South Dakota,Creighton,"Wed, Nov 11",NCAA Basketball (W),South Dakota at Creighton,Midco/Summit,N,6:00 PM,8:00 PM,Summit League,Big East
 LIU,SMU,"Wed, Nov 11",NCAA Basketball (W),LIU at SMU,ACCNX,N,6:00 PM,8:00 PM,NEC,ACC
 UMass,Harvard,"Wed, Nov 11",NCAA Basketball (W),UMass at Harvard,ESPN+,N,6:00 PM,8:00 PM,MAC,Ivy League
 Monmouth,Rutgers,"Wed, Nov 11",NCAA Basketball (W),Monmouth at Rutgers,B1G+,N,6:00 PM,8:00 PM,CAA,Big Ten
 Lightning,Sabres,"Wed, Nov 11",NHL,Lightning at Sabres,TNT/truTV,Y,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Atlantic)
-UAlbany,Ole Miss,"Wed, Nov 11",NCAA Basketball (W),UAlbany at #19 Ole Miss,SECN+,Y,6:00 PM,8:00 PM,America East,SEC
+UAlbany,Ole Miss,"Wed, Nov 11",NCAA Basketball (W),UAlbany at #21 Ole Miss,SECN+,Y,6:00 PM,8:00 PM,America East,SEC
 Celtics,Raptors,"Wed, Nov 11",NBA,Celtics at Raptors,TBA,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Cavaliers,Knicks,"Wed, Nov 11",NBA,Cavaliers at Knicks,ESPN,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Wizards,Pacers,"Wed, Nov 11",NBA,Wizards at Pacers,MNMT,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
-Liberty University,NC State,"Wed, Nov 11",NCAA Basketball (W),Liberty University at #25 NC State,ACCNX,Y,6:00 PM,8:00 PM,Conference USA,ACC
-North Carolina Central,North Carolina,"Wed, Nov 11",NCAA Basketball (W),North Carolina Central at #12 North Carolina,ACCNX,Y,6:00 PM,8:00 PM,MEAC,ACC
+Liberty University,NC State,"Wed, Nov 11",NCAA Basketball (W),Liberty University at NC State,ACCNX,N,6:00 PM,8:00 PM,Conference USA,ACC
+North Carolina Central,North Carolina,"Wed, Nov 11",NCAA Basketball (W),North Carolina Central at #23 North Carolina,ACCNX,Y,6:00 PM,8:00 PM,MEAC,ACC
 South Dakota State,Texas,"Wed, Nov 11",NCAA Basketball (W),South Dakota State at #6 Texas,SECN,Y,6:00 PM,8:00 PM,Summit League,SEC
 UMass Lowell,UMass,"Wed, Nov 11",NCAA Basketball (M),UMass Lowell at UMass,ESPN+,N,6:00 PM,8:00 PM,America East,MAC
 Saint Peter's,South Carolina,"Wed, Nov 11",NCAA Basketball (M),Saint Peter's at South Carolina,SECN+,N,6:00 PM,8:00 PM,MAAC,SEC
 Villanova,Georgetown,"Wed, Nov 11",NCAA Volleyball (W),Villanova at Georgetown,ESPN+,N,6:00 PM,8:00 PM,Big East,Big East
 Ohio State,Michigan,"Wed, Nov 11",NCAA Volleyball (W),Ohio State at Michigan,B1G+,N,6:00 PM,8:00 PM,Big Ten,Big Ten
-Penn State,Maryland,"Wed, Nov 11",NCAA Volleyball (W),#11 Penn State at Maryland,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
+Penn State,Maryland,"Wed, Nov 11",NCAA Volleyball (W),#10 Penn State at Maryland,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
 Notre Dame,Pitt,"Wed, Nov 11",NCAA Volleyball (W),Notre Dame at #2 Pitt,ACCN,Y,6:00 PM,8:00 PM,ACC,ACC
 South Carolina State,Notre Dame,"Wed, Nov 11",NCAA Basketball (M),South Carolina State at Notre Dame,ACCNX,N,6:00 PM,8:00 PM,MEAC,ACC
-Marquette,Michigan,"Wed, Nov 11",NCAA Basketball (M),Marquette at #16 Michigan,FS1,Y,6:00 PM,8:00 PM,Big East,Big Ten
+Marquette,Michigan,"Wed, Nov 11",NCAA Basketball (M),Marquette at #20 Michigan,FS1,Y,6:00 PM,8:00 PM,Big East,Big Ten
 Colgate,St. John's,"Wed, Nov 11",NCAA Basketball (M),Colgate at #13 St. John's,Peacock,Y,6:00 PM,8:00 PM,Patriot League,Big East
 Troy,Mississippi State,"Wed, Nov 11",NCAA Basketball (W),Troy at Mississippi State,SECN+,N,6:30 PM,8:30 PM,Sun Belt,SEC
 Western Kentucky,Vanderbilt,"Wed, Nov 11",NCAA Basketball (W),Western Kentucky at #8 Vanderbilt,SECN+,Y,6:30 PM,8:30 PM,Conference USA,SEC
@@ -166,16 +166,16 @@ Nets,Pelicans,"Wed, Nov 11",NBA,Nets at Pelicans,DAZN (YES),Y,7:00 PM,9:30 PM,Ea
 Lakers,Bucks,"Wed, Nov 11",NBA,Lakers at Bucks,Spectrum,Y,7:00 PM,9:30 PM,Western Conference,Eastern Conference
 Nuggets,Grizzlies,"Wed, Nov 11",NBA,Nuggets at Grizzlies,TBA,Y,7:00 PM,9:30 PM,Western Conference,Western Conference
 Spurs,Bulls,"Wed, Nov 11",NBA,Spurs at Bulls,DAZN SAS,Y,7:00 PM,9:30 PM,Western Conference,Eastern Conference
-Jacksonville State,Houston,"Wed, Nov 11",NCAA Basketball (M),Jacksonville State at #10 Houston,ESPN+,Y,7:00 PM,9:00 PM,Conference USA,Big XII
-Robert Morris,Arkansas,"Wed, Nov 11",NCAA Basketball (M),Robert Morris at #12 Arkansas,SECN+,Y,7:00 PM,9:00 PM,Horizon League,SEC
+Jacksonville State,Houston,"Wed, Nov 11",NCAA Basketball (M),Jacksonville State at #8 Houston,ESPN+,Y,7:00 PM,9:00 PM,Conference USA,Big XII
+Robert Morris,Arkansas,"Wed, Nov 11",NCAA Basketball (M),Robert Morris at #19 Arkansas,SECN+,Y,7:00 PM,9:00 PM,Horizon League,SEC
 Valparaiso,South Dakota State,"Wed, Nov 11",NCAA Basketball (M),Valparaiso at South Dakota State,Midco/Summit,N,7:00 PM,9:00 PM,Missouri Valley,Summit League
 Macalester,St. Thomas-Minnesota,"Wed, Nov 11",NCAA Basketball (M),Macalester at St. Thomas-Minnesota,Midco/Summit,N,7:00 PM,9:00 PM,,Summit League
-Indiana,Minnesota,"Wed, Nov 11",NCAA Volleyball (W),#21 Indiana at #19 Minnesota,B1G+,Y,7:00 PM,9:00 PM,Big Ten,Big Ten
+Indiana,Minnesota,"Wed, Nov 11",NCAA Volleyball (W),#22 Indiana at #19 Minnesota,B1G+,Y,7:00 PM,9:00 PM,Big Ten,Big Ten
 Flyers,Oilers,"Wed, Nov 11",NHL,Flyers at Oilers,ESPN+,Y,8:00 PM,10:30 PM,Eastern (Metropolitan),Western (Pacific)
 Magic,Jazz,"Wed, Nov 11",NBA,Magic at Jazz,Jazz+,Y,8:00 PM,10:30 PM,Eastern Conference,Western Conference
-Lindenwood,Nebraska,"Wed, Nov 11",NCAA Basketball (M),Lindenwood at Nebraska,FS1,N,8:00 PM,10:00 PM,Ohio Valley,Big Ten
+Lindenwood,Nebraska,"Wed, Nov 11",NCAA Basketball (M),Lindenwood at #25 Nebraska,FS1,Y,8:00 PM,10:00 PM,Ohio Valley,Big Ten
 Auburn,Alabama,"Wed, Nov 11",NCAA Volleyball (W),Auburn at Alabama,SECN,N,8:00 PM,10:00 PM,SEC,SEC
-Arkansas-Pine Bluff,UCLA,"Wed, Nov 11",NCAA Basketball (M),Arkansas-Pine Bluff at #22 UCLA,Peacock,Y,8:00 PM,10:00 PM,SWAC,Big Ten
+Arkansas-Pine Bluff,UCLA,"Wed, Nov 11",NCAA Basketball (M),Arkansas-Pine Bluff at #9 UCLA,Peacock,Y,8:00 PM,10:00 PM,SWAC,Big Ten
 Mammoth,Golden Knights,"Wed, Nov 11",NHL,Mammoth at Golden Knights,TNT/truTV,Y,8:30 PM,11:00 PM,Western (Central),Western (Pacific)
 Warriors,Rockets,"Wed, Nov 11",NBA,Warriors at Rockets,ESPN,Y,8:30 PM,11:00 PM,Western Conference,Western Conference
 Thunder,Trail Blazers,"Wed, Nov 11",NBA,Thunder at Trail Blazers,BlazerVision,Y,9:00 PM,11:30 PM,Western Conference,Western Conference
@@ -187,23 +187,23 @@ UNC Wilmington,Wake Forest,"Thu, Nov 12",NCAA Basketball (W),UNC Wilmington at W
 Hurricanes,Kraken,"Thu, Nov 12",NHL,Hurricanes at Kraken,NHL Net,Y,11:00 AM,1:30 PM,Eastern (Metropolitan),Western (Pacific)
 Washington,UCLA,"Thu, Nov 12",NCAA Volleyball (W),#18 Washington at UCLA,B1G+,Y,1:00 PM,3:00 PM,Big Ten,Big Ten
 Charleston,Cal,"Thu, Nov 12",NCAA Basketball (W),Charleston at Cal,ACCNX,N,1:00 PM,3:00 PM,CAA,ACC
-Wisconsin,Rutgers,"Thu, Nov 12",NCAA Volleyball (W),#7 Wisconsin at Rutgers,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
-Purdue,Michigan State,"Thu, Nov 12",NCAA Volleyball (W),#14 Purdue at Michigan State,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
+Wisconsin,Rutgers,"Thu, Nov 12",NCAA Volleyball (W),#9 Wisconsin at Rutgers,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
+Purdue,Michigan State,"Thu, Nov 12",NCAA Volleyball (W),#13 Purdue at Michigan State,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
 Ohio,Miami (OH),"Thu, Nov 12",NCAA Volleyball (W),Ohio at Miami (OH),ESPN+,N,5:00 PM,7:00 PM,MAC,MAC
 Robert Morris,Delaware,"Thu, Nov 12",NCAA Hockey (W),Robert Morris at Delaware,FloSports,N,5:00 PM,7:15 PM,AHA,AHA
 Vermont,New Hampshire,"Thu, Nov 12",NCAA Hockey (W),Vermont at New Hampshire,ESPN+,N,5:00 PM,7:15 PM,Hockey East,Hockey East
-Oklahoma State,Tulsa,"Thu, Nov 12",NCAA Basketball (W),#22 Oklahoma State at Tulsa,ESPNU,Y,5:00 PM,7:00 PM,Big XII,AAC
+Oklahoma State,Tulsa,"Thu, Nov 12",NCAA Basketball (W),#19 Oklahoma State at Tulsa,ESPNU,Y,5:00 PM,7:00 PM,Big XII,AAC
 Virginia Tech,VCU,"Thu, Nov 12",NCAA Basketball (W),Virginia Tech at VCU,ESPN+,N,5:00 PM,7:00 PM,ACC,Atlantic 10
 South Florida,Florida,"Thu, Nov 12",NCAA Basketball (W),South Florida at Florida,SECN+,N,5:00 PM,7:00 PM,AAC,SEC
 Sacramento State,Buffalo,"Thu, Nov 12",NCAA Basketball (W),Sacramento State at Buffalo,ESPN+,N,5:00 PM,7:00 PM,Big West,MAC
 North Carolina,Duke,"Thu, Nov 12",NCAA Volleyball (W),#20 North Carolina at Duke,ACCNX,Y,5:30 PM,7:30 PM,ACC,ACC
 Tennessee Tech,Indiana,"Thu, Nov 12",NCAA Basketball (M),Tennessee Tech at Indiana,BTN,N,5:30 PM,7:30 PM,SoCon,Big Ten
 Mercyhurst,Penn State,"Thu, Nov 12",NCAA Basketball (M),Mercyhurst at Penn State,B1G+,N,5:30 PM,7:30 PM,NEC,Big Ten
-UConn,Ohio State,"Thu, Nov 12",NCAA Basketball (W),#2 UConn at #18 Ohio State,FS1,Y,5:30 PM,7:30 PM,Big East,Big Ten
+UConn,Ohio State,"Thu, Nov 12",NCAA Basketball (W),#4 UConn at #17 Ohio State,FS1,Y,5:30 PM,7:30 PM,Big East,Big Ten
 Middle Tennessee,Tennessee,"Thu, Nov 12",NCAA Basketball (W),Middle Tennessee at Tennessee,SECN+,N,5:30 PM,7:30 PM,Conference USA,SEC
-Michigan State,Notre Dame,"Thu, Nov 12",NCAA Hockey (M),#3 Michigan State at Notre Dame,TBA,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
+Michigan State,Notre Dame,"Thu, Nov 12",NCAA Hockey (M),#4 Michigan State at Notre Dame,TBA,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
 San Diego State,Texas State,"Thu, Nov 12",NCAA Volleyball (W),San Diego State at Texas State,YouTube,N,6:00 PM,8:00 PM,Pac-12,Pac-12
-Illinois,Nebraska,"Thu, Nov 12",NCAA Volleyball (W),Illinois at #1 Nebraska,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
+Illinois,Nebraska,"Thu, Nov 12",NCAA Volleyball (W),#25 Illinois at #1 Nebraska,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
 Western Michigan,Purdue Fort Wayne,"Thu, Nov 12",NCAA Basketball (M),Western Michigan at Purdue Fort Wayne,ESPN+,N,6:00 PM,8:00 PM,MAC,Horizon League
 Lightning,Blue Jackets,"Thu, Nov 12",NHL,Lightning at Blue Jackets,ESPN+,Y,6:00 PM,8:30 PM,Eastern (Atlantic),Eastern (Metropolitan)
 Mercer,West Virginia,"Thu, Nov 12",NCAA Basketball (M),Mercer at West Virginia,ESPN+,N,6:00 PM,8:00 PM,SoCon,Big XII
@@ -216,8 +216,8 @@ Pistons,Wizards,"Thu, Nov 12",NBA,Pistons at Wizards,MNMT,Y,6:00 PM,8:30 PM,East
 Raptors,76ers,"Thu, Nov 12",NBA,Raptors at 76ers,TBA,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 North Dakota State,Butler,"Thu, Nov 12",NCAA Basketball (W),North Dakota State at Butler,ESPN+,N,6:00 PM,8:00 PM,Summit League,Big East
 North Dakota,Milwaukee,"Thu, Nov 12",NCAA Basketball (W),North Dakota at Milwaukee,ESPN+,N,6:00 PM,8:00 PM,Summit League,Horizon League
-Michigan,Columbia,"Thu, Nov 12",NCAA Basketball (W),#5 Michigan at Columbia,ESPN+,Y,6:00 PM,8:00 PM,Big Ten,Ivy League
-Duke,Norfolk State,"Thu, Nov 12",NCAA Basketball (W),#4 Duke at Norfolk State,MEAC Net,Y,6:00 PM,8:00 PM,ACC,MEAC
+Michigan,Columbia,"Thu, Nov 12",NCAA Basketball (W),#2 Michigan at Columbia,ESPN+,Y,6:00 PM,8:00 PM,Big Ten,Ivy League
+Duke,Norfolk State,"Thu, Nov 12",NCAA Basketball (W),#5 Duke at Norfolk State,MEAC Net,Y,6:00 PM,8:00 PM,ACC,MEAC
 South Carolina,Clemson,"Thu, Nov 12",NCAA Basketball (W),#1 South Carolina at Clemson,ESPN2,Y,6:00 PM,8:00 PM,SEC,ACC
 Saint Peter's,Miami,"Thu, Nov 12",NCAA Basketball (W),Saint Peter's at Miami,ACCNX,N,6:00 PM,8:00 PM,MAAC,ACC
 Maryland Eastern Shore,Georgia Tech,"Thu, Nov 12",NCAA Basketball (W),Maryland Eastern Shore at Georgia Tech,ACCNX,N,6:00 PM,8:00 PM,MEAC,ACC
@@ -233,7 +233,7 @@ Fresno State,Colorado State,"Thu, Nov 12",NCAA Volleyball (W),Fresno State at Co
 North Dakota,South Dakota State,"Thu, Nov 12",NCAA Volleyball (W),North Dakota at South Dakota State,Midco/Summit,N,7:00 PM,9:00 PM,Summit League,Summit League
 North Dakota State,South Dakota,"Thu, Nov 12",NCAA Volleyball (W),North Dakota State at South Dakota,Midco Sports,N,7:00 PM,9:00 PM,Summit League,Summit League
 Iowa,Northwestern,"Thu, Nov 12",NCAA Volleyball (W),Iowa at Northwestern,B1G+,N,7:00 PM,9:00 PM,Big Ten,Big Ten
-BYU,Baylor,"Thu, Nov 12",NCAA Volleyball (W),#8 BYU at #24 Baylor,ESPN+,Y,7:00 PM,9:00 PM,Big XII,Big XII
+BYU,Baylor,"Thu, Nov 12",NCAA Volleyball (W),#7 BYU at #23 Baylor,ESPN+,Y,7:00 PM,9:00 PM,Big XII,Big XII
 Louisville,SMU,"Thu, Nov 12",NCAA Volleyball (W),#3 Louisville at #5 SMU,ESPNU,Y,7:00 PM,9:00 PM,ACC,ACC
 Oklahoma State,Texas A&M,"Thu, Nov 12",NCAA Basketball (M),Oklahoma State at Texas A&M,SECN+,N,7:00 PM,9:00 PM,Big XII,SEC
 Southern,Minnesota,"Thu, Nov 12",NCAA Basketball (M),Southern at Minnesota,B1G+,N,7:00 PM,9:00 PM,SWAC,Big Ten
@@ -248,25 +248,25 @@ Northern Iowa,Iowa,"Thu, Nov 12",NCAA Basketball (W),Northern Iowa at #10 Iowa,B
 Oregon State,Gonzaga,"Thu, Nov 12",NCAA Volleyball (W),Oregon State at Gonzaga,YouTube,N,8:00 PM,10:00 PM,Pac-12,Pac-12
 Utah State,Washington State,"Thu, Nov 12",NCAA Volleyball (W),Utah State at Washington State,YouTube,N,8:00 PM,10:00 PM,Pac-12,Pac-12
 Texas Tech,Utah,"Thu, Nov 12",NCAA Volleyball (W),Texas Tech at Utah,ESPN+,N,8:00 PM,10:00 PM,Big XII,Big XII
-Kansas,Colorado,"Thu, Nov 12",NCAA Volleyball (W),#15 Kansas at #25 Colorado,ESPN+,Y,8:00 PM,10:00 PM,Big XII,Big XII
+Kansas,Colorado,"Thu, Nov 12",NCAA Volleyball (W),#14 Kansas at Colorado,ESPN+,Y,8:00 PM,10:00 PM,Big XII,Big XII
 Oregon,USC,"Thu, Nov 12",NCAA Volleyball (W),#12 Oregon at USC,B1G+,Y,8:00 PM,10:00 PM,Big Ten,Big Ten
-Montana State,BYU,"Thu, Nov 12",NCAA Basketball (M),Montana State at #25 BYU,ESPN+,Y,8:00 PM,10:00 PM,Big Sky,Big XII
+Montana State,BYU,"Thu, Nov 12",NCAA Basketball (M),Montana State at #23 BYU,ESPN+,Y,8:00 PM,10:00 PM,Big Sky,Big XII
 Louisiana,UL Monroe,"Thu, Nov 12",NCAA Football,Louisiana at UL Monroe,ESPN2,N,8:00 PM,11:30 PM,Sun Belt,Sun Belt
 Blues,Mammoth,"Thu, Nov 12",NHL,Blues at Mammoth,ESPN+,Y,8:00 PM,10:30 PM,Western (Central),Western (Central)
 Hornets,Suns,"Thu, Nov 12",NBA,Hornets at Suns,Suns Live,Y,8:00 PM,10:30 PM,Eastern Conference,Western Conference
 Bentley,Air Force,"Thu, Nov 12",NCAA Hockey (M),Bentley at Air Force,FloSports,N,8:05 PM,10:35 PM,AHA,AHA
 Islanders,LA Kings,"Thu, Nov 12",NHL,Islanders at LA Kings,ESPN+,Y,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
 Cal State Bakersfield,Washington,"Thu, Nov 12",NCAA Basketball (W),Cal State Bakersfield at #16 Washington,B1G+,Y,9:00 PM,11:00 PM,Big West,Big Ten
-Arizona,UCLA,"Thu, Nov 12",NCAA Basketball (W),Arizona at #11 UCLA,BTN,Y,9:30 PM,11:30 PM,Big XII,Big Ten
-Oral Roberts,Oklahoma,"Fri, Nov 13",NCAA Basketball (W),Oral Roberts at #21 Oklahoma,SECN+,Y,10:30 AM,12:30 PM,Summit League,SEC
-Providence,UConn,"Fri, Nov 13",NCAA Hockey (W),Providence at #13 UConn,ESPN+,Y,1:00 PM,3:15 PM,Hockey East,Hockey East
+Arizona,UCLA,"Thu, Nov 12",NCAA Basketball (W),Arizona at #10 UCLA,BTN,Y,9:30 PM,11:30 PM,Big XII,Big Ten
+Oral Roberts,Oklahoma,"Fri, Nov 13",NCAA Basketball (W),Oral Roberts at #14 Oklahoma,SECN+,Y,10:30 AM,12:30 PM,Summit League,SEC
+Providence,UConn,"Fri, Nov 13",NCAA Hockey (W),Providence at #11 UConn,ESPN+,Y,1:00 PM,3:15 PM,Hockey East,Hockey East
 Robert Morris,Delaware,"Fri, Nov 13",NCAA Hockey (W),Robert Morris at Delaware,FloSports,N,1:00 PM,3:15 PM,AHA,AHA
 Vermont,New Hampshire,"Fri, Nov 13",NCAA Hockey (W),Vermont at New Hampshire,ESPN+,N,1:00 PM,3:15 PM,Hockey East,Hockey East
-Northeastern,Merrimack,"Fri, Nov 13",NCAA Hockey (W),#4 Northeastern at Merrimack,ESPN+,Y,2:00 PM,4:15 PM,Hockey East,Hockey East
+Northeastern,Merrimack,"Fri, Nov 13",NCAA Hockey (W),#5 Northeastern at Merrimack,ESPN+,Y,2:00 PM,4:15 PM,Hockey East,Hockey East
 Minnesota State,Bemidji State,"Fri, Nov 13",NCAA Hockey (W),Minnesota State at Bemidji State,B1G+,N,3:00 PM,5:15 PM,WCHA,WCHA
 Holy Cross,Maine,"Fri, Nov 13",NCAA Hockey (W),Holy Cross at Maine,ESPN+,N,4:00 PM,6:15 PM,Hockey East,Hockey East
 LIU,Stonehill,"Fri, Nov 13",NCAA Hockey (W),LIU at Stonehill,TBA,N,4:00 PM,6:15 PM,NEWHA,NEWHA
-North Alabama,Miami,"Fri, Nov 13",NCAA Basketball (M),North Alabama at #14 Miami,ACCN,Y,4:00 PM,6:00 PM,UAC,ACC
+North Alabama,Miami,"Fri, Nov 13",NCAA Basketball (M),North Alabama at #17 Miami,ACCN,Y,4:00 PM,6:00 PM,UAC,ACC
 Texas A&M-Corpus Christi,Florida State,"Fri, Nov 13",NCAA Basketball (M),Texas A&M-Corpus Christi at Florida State,ACCNX,N,4:00 PM,6:00 PM,Southland,ACC
 Buffalo,Ohio,"Fri, Nov 13",NCAA Volleyball (W),Buffalo at Ohio,ESPN+,N,4:00 PM,6:00 PM,MAC,MAC
 Butler,Providence,"Fri, Nov 13",NCAA Volleyball (W),Butler at Providence,ESPN+,N,4:00 PM,6:00 PM,Big East,Big East
@@ -278,11 +278,11 @@ Brown,St. Lawrence,"Fri, Nov 13",NCAA Hockey (W),Brown at St. Lawrence,ESPN+,N,5
 Syracuse,RPI,"Fri, Nov 13",NCAA Hockey (W),Syracuse at RPI,ESPN+,N,5:00 PM,7:15 PM,AHA,ECAC
 Harvard,Cornell,"Fri, Nov 13",NCAA Hockey (W),Harvard at #14 Cornell,ESPN+,Y,5:00 PM,7:15 PM,ECAC,ECAC
 Dartmouth,Colgate,"Fri, Nov 13",NCAA Hockey (W),Dartmouth at #8 Colgate,ESPN+,Y,5:00 PM,7:15 PM,ECAC,ECAC
-Yale,Clarkson,"Fri, Nov 13",NCAA Hockey (W),#11 Yale at #9 Clarkson,ESPN+,Y,5:00 PM,7:15 PM,ECAC,ECAC
+Yale,Clarkson,"Fri, Nov 13",NCAA Hockey (W),#13 Yale at #10 Clarkson,ESPN+,Y,5:00 PM,7:15 PM,ECAC,ECAC
 Penn State,Mercyhurst,"Fri, Nov 13",NCAA Hockey (W),#7 Penn State at Mercyhurst,FloSports,Y,5:00 PM,7:15 PM,AHA,AHA
 Lindenwood,RIT,"Fri, Nov 13",NCAA Hockey (W),Lindenwood at RIT,FloSports,N,5:00 PM,7:15 PM,AHA,AHA
 Boston University,Boston College,"Fri, Nov 13",NCAA Hockey (W),Boston University at #15 Boston College,ESPN+,Y,5:00 PM,7:15 PM,Hockey East,Hockey East
-Minnesota Duluth,Ohio State,"Fri, Nov 13",NCAA Hockey (W),#12 Minnesota Duluth at #1 Ohio State,B1G+,Y,5:00 PM,7:15 PM,WCHA,WCHA
+Minnesota Duluth,Ohio State,"Fri, Nov 13",NCAA Hockey (W),#11 Minnesota Duluth at #1 Ohio State,B1G+,Y,5:00 PM,7:15 PM,WCHA,WCHA
 Georgetown,Clemson,"Fri, Nov 13",NCAA Basketball (M),Georgetown at Clemson,ESPNU,N,5:00 PM,7:00 PM,Big East,ACC
 Bryant,Rutgers,"Fri, Nov 13",NCAA Basketball (M),Bryant at Rutgers,BTN,N,5:00 PM,7:00 PM,America East,Big Ten
 Xavier,UConn,"Fri, Nov 13",NCAA Volleyball (W),Xavier at UConn,ESPN+,N,5:00 PM,7:00 PM,Big East,Big East
@@ -297,8 +297,8 @@ Maryland,Rutgers,"Fri, Nov 13",NCAA Volleyball (W),Maryland at Rutgers,B1G+,N,6:
 Virginia Tech,NC State,"Fri, Nov 13",NCAA Volleyball (W),Virginia Tech at NC State,ACCNX,N,6:00 PM,8:00 PM,ACC,ACC
 Florida State,Boston College,"Fri, Nov 13",NCAA Volleyball (W),Florida State at Boston College,ACCNX,N,6:00 PM,8:00 PM,ACC,ACC
 Missouri,Oklahoma,"Fri, Nov 13",NCAA Volleyball (W),Missouri at Oklahoma,SECN+,N,6:00 PM,8:00 PM,SEC,SEC
-Tennessee,Georgia,"Fri, Nov 13",NCAA Volleyball (W),#10 Tennessee at Georgia,SECN+,Y,6:00 PM,8:00 PM,SEC,SEC
-Wisconsin,Ohio State,"Fri, Nov 13",NCAA Volleyball (W),#7 Wisconsin at Ohio State,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
+Tennessee,Georgia,"Fri, Nov 13",NCAA Volleyball (W),#11 Tennessee at Georgia,SECN+,Y,6:00 PM,8:00 PM,SEC,SEC
+Wisconsin,Ohio State,"Fri, Nov 13",NCAA Volleyball (W),#9 Wisconsin at Ohio State,B1G+,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
 Kentucky,South Carolina,"Fri, Nov 13",NCAA Volleyball (W),#6 Kentucky at South Carolina,SECN+,Y,6:00 PM,8:00 PM,SEC,SEC
 Louisville,SMU,"Fri, Nov 13",NCAA Volleyball (W),#3 Louisville at #5 SMU,TBA,Y,6:00 PM,8:00 PM,ACC,ACC
 Georgetown,Creighton,"Fri, Nov 13",NCAA Volleyball (W),Georgetown at Creighton,ESPN+,N,6:00 PM,8:00 PM,Big East,Big East
@@ -307,62 +307,62 @@ Denver,LSU,"Fri, Nov 13",NCAA Basketball (W),Denver at #9 LSU,SECN+,Y,6:00 PM,8:
 Auburn,Texas Tech,"Fri, Nov 13",NCAA Basketball (W),Auburn at Texas Tech,ESPN+,N,6:00 PM,8:00 PM,SEC,Big XII
 Samford,Indiana,"Fri, Nov 13",NCAA Basketball (W),Samford at Indiana,B1G+,N,6:00 PM,8:00 PM,SoCon,Big Ten
 Oregon,Maine,"Fri, Nov 13",NCAA Basketball (W),Oregon at Maine,ESPN+,N,6:00 PM,8:00 PM,Big Ten,America East
-St. Cloud State,Minnesota,"Fri, Nov 13",NCAA Hockey (W),#10 St. Cloud State at #2 Minnesota,B1G+,Y,6:00 PM,8:15 PM,WCHA,WCHA
+St. Cloud State,Minnesota,"Fri, Nov 13",NCAA Hockey (W),#9 St. Cloud State at #2 Minnesota,B1G+,Y,6:00 PM,8:15 PM,WCHA,WCHA
 Georgia,North Carolina,"Fri, Nov 13",NCAA Basketball (M),Georgia at North Carolina,ESPN2,N,6:00 PM,8:00 PM,SEC,ACC
 Troy,NC State,"Fri, Nov 13",NCAA Basketball (M),Troy at NC State,ACCN,N,6:00 PM,8:00 PM,Sun Belt,ACC
 Mount St. Mary's,Virginia Tech,"Fri, Nov 13",NCAA Basketball (M),Mount St. Mary's at Virginia Tech,ACCNX,N,6:00 PM,8:00 PM,MAAC,ACC
 Ohio,Purdue,"Fri, Nov 13",NCAA Basketball (M),Ohio at Purdue,B1G+,N,6:00 PM,8:00 PM,MAC,Big Ten
-Dartmouth,Quinnipiac,"Fri, Nov 13",NCAA Hockey (M),#12 Dartmouth at #6 Quinnipiac,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
+Dartmouth,Quinnipiac,"Fri, Nov 13",NCAA Hockey (M),#11 Dartmouth at #5 Quinnipiac,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
 Harvard,Princeton,"Fri, Nov 13",NCAA Hockey (M),Harvard at Princeton,ESPN+,N,6:00 PM,8:30 PM,ECAC,ECAC
 Colgate,Yale,"Fri, Nov 13",NCAA Hockey (M),Colgate at Yale,ESPN+,N,6:00 PM,8:30 PM,ECAC,ECAC
 Cornell,Brown,"Fri, Nov 13",NCAA Hockey (M),#16 Cornell at Brown,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
-Northeastern,UConn,"Fri, Nov 13",NCAA Hockey (M),Northeastern at #20 UConn,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
+Northeastern,UConn,"Fri, Nov 13",NCAA Hockey (M),#19 Northeastern at UConn,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
 Penn State,Michigan,"Fri, Nov 13",NCAA Hockey (M),Penn State at #2 Michigan,B1G+,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
-Michigan State,Notre Dame,"Fri, Nov 13",NCAA Hockey (M),#3 Michigan State at Notre Dame,TBA,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
-Colorado College,Western Michigan,"Fri, Nov 13",NCAA Hockey (M),#11 Colorado College at #5 Western Michigan,TBA,Y,6:00 PM,8:30 PM,NCHC,NCHC
-Merrimack,Providence,"Fri, Nov 13",NCAA Hockey (M),#15 Merrimack at #9 Providence,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
+Michigan State,Notre Dame,"Fri, Nov 13",NCAA Hockey (M),#4 Michigan State at Notre Dame,TBA,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
+Colorado College,Western Michigan,"Fri, Nov 13",NCAA Hockey (M),#12 Colorado College at #6 Western Michigan,TBA,Y,6:00 PM,8:30 PM,NCHC,NCHC
+Merrimack,Providence,"Fri, Nov 13",NCAA Hockey (M),#15 Merrimack at #10 Providence,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
 Boston College,UMass,"Fri, Nov 13",NCAA Hockey (M),Boston College at UMass,ESPN+,N,6:00 PM,8:30 PM,Hockey East,Hockey East
-Prairie View A&M,Vanderbilt,"Fri, Nov 13",NCAA Basketball (M),Prairie View A&M at #24 Vanderbilt,SECN+,Y,6:00 PM,8:00 PM,SWAC,SEC
-Northern Arizona,Kentucky,"Fri, Nov 13",NCAA Basketball (M),Northern Arizona at #23 Kentucky,SECN+,Y,6:00 PM,8:00 PM,Big Sky,SEC
-Tennessee State,Tennessee,"Fri, Nov 13",NCAA Basketball (M),Tennessee State at #8 Tennessee,SECN+,Y,6:00 PM,8:00 PM,Ohio Valley,SEC
-Northern Iowa,Michigan State,"Fri, Nov 13",NCAA Basketball (M),Northern Iowa at #6 Michigan State,FS1,Y,6:00 PM,8:00 PM,Missouri Valley,Big Ten
+Prairie View A&M,Vanderbilt,"Fri, Nov 13",NCAA Basketball (M),Prairie View A&M at #22 Vanderbilt,SECN+,Y,6:00 PM,8:00 PM,SWAC,SEC
+Northern Arizona,Kentucky,"Fri, Nov 13",NCAA Basketball (M),Northern Arizona at #24 Kentucky,SECN+,Y,6:00 PM,8:00 PM,Big Sky,SEC
+Tennessee State,Tennessee,"Fri, Nov 13",NCAA Basketball (M),Tennessee State at #11 Tennessee,SECN+,Y,6:00 PM,8:00 PM,Ohio Valley,SEC
+Northern Iowa,Michigan State,"Fri, Nov 13",NCAA Basketball (M),Northern Iowa at #5 Michigan State,FS1,Y,6:00 PM,8:00 PM,Missouri Valley,Big Ten
 Sam Houston,Illinois,"Fri, Nov 13",NCAA Basketball (M),Sam Houston at #3 Illinois,B1G+,Y,6:00 PM,8:00 PM,Conference USA,Big Ten
 Merrimack,Florida,"Fri, Nov 13",NCAA Basketball (M),Merrimack at #1 Florida,SECN,Y,6:00 PM,8:00 PM,MAAC,SEC
 RPI,New Hampshire,"Fri, Nov 13",NCAA Hockey (M),RPI at New Hampshire,ESPN+,N,6:00 PM,8:30 PM,ECAC,Hockey East
 Holy Cross,Niagara,"Fri, Nov 13",NCAA Hockey (M),Holy Cross at Niagara,FloSports,N,6:00 PM,8:30 PM,AHA,AHA
-Sacred Heart,Army,"Fri, Nov 13",NCAA Hockey (M),Sacred Heart at #19 Army,TBA,Y,6:00 PM,8:30 PM,AHA,AHA
-Maine,Vermont,"Fri, Nov 13",NCAA Hockey (M),Maine at Vermont,ESPN+,N,6:00 PM,8:30 PM,Hockey East,Hockey East
+Sacred Heart,Army,"Fri, Nov 13",NCAA Hockey (M),Sacred Heart at #18 Army,TBA,Y,6:00 PM,8:30 PM,AHA,AHA
+Maine,Vermont,"Fri, Nov 13",NCAA Hockey (M),Maine at #20 Vermont,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
 Florida State,Pitt,"Fri, Nov 13",NCAA Football,Florida State at Pitt,ESPN,N,6:00 PM,9:30 PM,ACC,ACC
 Bucks,Magic,"Fri, Nov 13",NBA,Bucks at Magic,Bucks App,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
 Knicks,Pacers,"Fri, Nov 13",NBA,Knicks at Pacers,Prime Video,Y,6:00 PM,8:30 PM,Eastern Conference,Eastern Conference
-Omaha,Miami (OH),"Fri, Nov 13",NCAA Hockey (M),Omaha at Miami (OH),NCHC.tv,N,6:05 PM,8:35 PM,NCHC,NCHC
+Omaha,Miami (OH),"Fri, Nov 13",NCAA Hockey (M),Omaha at #17 Miami (OH),NCHC.tv,Y,6:05 PM,8:35 PM,NCHC,NCHC
 Bowling Green,Northern Michigan,"Fri, Nov 13",NCAA Hockey (M),Bowling Green at Northern Michigan,Midco Sports,N,6:07 PM,8:37 PM,CCHA,CCHA
-Union,UMass Lowell,"Fri, Nov 13",NCAA Hockey (M),#17 Union at UMass Lowell,ESPN+,Y,6:15 PM,8:45 PM,ECAC,Hockey East
-LSU,Texas A&M,"Fri, Nov 13",NCAA Volleyball (W),LSU at #17 Texas A&M,SECN+,Y,6:30 PM,8:30 PM,SEC,SEC
-TCU,Kansas State,"Fri, Nov 13",NCAA Volleyball (W),#16 TCU at Kansas State,ESPN+,Y,6:30 PM,8:30 PM,Big XII,Big XII
-Ole Miss,Texas,"Fri, Nov 13",NCAA Volleyball (W),Ole Miss at #13 Texas,SECN+,Y,6:30 PM,8:30 PM,SEC,SEC
+Union,UMass Lowell,"Fri, Nov 13",NCAA Hockey (M),Union at UMass Lowell,ESPN+,N,6:15 PM,8:45 PM,ECAC,Hockey East
+LSU,Texas A&M,"Fri, Nov 13",NCAA Volleyball (W),LSU at #21 Texas A&M,SECN+,Y,6:30 PM,8:30 PM,SEC,SEC
+TCU,Kansas State,"Fri, Nov 13",NCAA Volleyball (W),#17 TCU at Kansas State,ESPN+,Y,6:30 PM,8:30 PM,Big XII,Big XII
+Ole Miss,Texas,"Fri, Nov 13",NCAA Volleyball (W),Ole Miss at #16 Texas,SECN+,Y,6:30 PM,8:30 PM,SEC,SEC
 Saint Michael's,Post,"Fri, Nov 13",NCAA Hockey (W),Saint Michael's at Post,TBA,N,6:30 PM,8:45 PM,NEWHA,NEWHA
 South Dakota,Drake,"Fri, Nov 13",NCAA Basketball (M),South Dakota at Drake,ESPN+,N,6:30 PM,8:30 PM,Summit League,Missouri Valley
 Ohio State,UConn,"Fri, Nov 13",NCAA Basketball (M),Ohio State at #4 UConn,TNT,Y,6:30 PM,8:30 PM,Big Ten,Big East
 Florida,Mississippi State,"Fri, Nov 13",NCAA Volleyball (W),#4 Florida at Mississippi State,SECN+,Y,7:00 PM,9:00 PM,SEC,SEC
 St. John's,DePaul,"Fri, Nov 13",NCAA Volleyball (W),St. John's at DePaul,ESPN+,N,7:00 PM,9:00 PM,Big East,Big East
 Seton Hall,Marquette,"Fri, Nov 13",NCAA Volleyball (W),Seton Hall at Marquette,ESPN+,N,7:00 PM,9:00 PM,Big East,Big East
-Vanderbilt,Arkansas,"Fri, Nov 13",NCAA Volleyball (W),#21 Vanderbilt at Arkansas,SECN+,Y,7:00 PM,9:00 PM,SEC,SEC
-Central Arkansas,Arkansas,"Fri, Nov 13",NCAA Basketball (M),Central Arkansas at #12 Arkansas,SECN+,Y,7:00 PM,9:00 PM,UAC,SEC
-Virginia,Maryland,"Fri, Nov 13",NCAA Basketball (M),#9 Virginia at Maryland,Peacock,Y,7:00 PM,9:00 PM,ACC,Big Ten
+Vanderbilt,Arkansas,"Fri, Nov 13",NCAA Volleyball (W),#15 Vanderbilt at Arkansas,SECN+,Y,7:00 PM,9:00 PM,SEC,SEC
+Central Arkansas,Arkansas,"Fri, Nov 13",NCAA Basketball (M),Central Arkansas at #19 Arkansas,SECN+,Y,7:00 PM,9:00 PM,UAC,SEC
+Virginia,Maryland,"Fri, Nov 13",NCAA Basketball (M),#6 Virginia at Maryland,Peacock,Y,7:00 PM,9:00 PM,ACC,Big Ten
 SIU Edwardsville,Duke,"Fri, Nov 13",NCAA Basketball (M),SIU Edwardsville at #2 Duke,CW,Y,7:00 PM,9:00 PM,Ohio Valley,ACC
 Illinois State,North Dakota State,"Fri, Nov 13",NCAA Basketball (M),Illinois State at North Dakota State,Midco/Summit,N,7:00 PM,9:00 PM,Missouri Valley,Summit League
 Fairleigh Dickinson,Oklahoma,"Fri, Nov 13",NCAA Basketball (M),Fairleigh Dickinson at Oklahoma,SECN+,N,7:00 PM,9:00 PM,NEC,SEC
 Milwaukee,TCU,"Fri, Nov 13",NCAA Basketball (M),Milwaukee at TCU,ESPN+,N,7:00 PM,9:00 PM,Horizon League,Big XII
 Georgia Southern,UCF,"Fri, Nov 13",NCAA Basketball (M),Georgia Southern at UCF,ESPN+,N,7:00 PM,9:00 PM,Sun Belt,Big XII
-North Dakota,St. Thomas-Minnesota,"Fri, Nov 13",NCAA Hockey (M),#10 North Dakota at St. Thomas-Minnesota,NCHC.tv,Y,7:00 PM,9:30 PM,NCHC,NCHC
-Minnesota Duluth,St. Cloud State,"Fri, Nov 13",NCAA Hockey (M),#6 Minnesota Duluth at St. Cloud State,TBA,Y,7:00 PM,9:30 PM,NCHC,NCHC
-Alaska Anchorage,Minnesota,"Fri, Nov 13",NCAA Hockey (M),Alaska Anchorage at #18 Minnesota,B1G+,Y,7:00 PM,9:30 PM,Independents,Big Ten
+North Dakota,St. Thomas-Minnesota,"Fri, Nov 13",NCAA Hockey (M),#8 North Dakota at St. Thomas-Minnesota,NCHC.tv,Y,7:00 PM,9:30 PM,NCHC,NCHC
+Minnesota Duluth,St. Cloud State,"Fri, Nov 13",NCAA Hockey (M),#7 Minnesota Duluth at St. Cloud State,TBA,Y,7:00 PM,9:30 PM,NCHC,NCHC
+Alaska Anchorage,Minnesota,"Fri, Nov 13",NCAA Hockey (M),Alaska Anchorage at Minnesota,B1G+,N,7:00 PM,9:30 PM,Independents,Big Ten
 Ohio State,Wisconsin,"Fri, Nov 13",NCAA Hockey (M),Ohio State at #1 Wisconsin,B1G+,Y,7:00 PM,9:30 PM,Big Ten,Big Ten
 Grizzlies,Pelicans,"Fri, Nov 13",NBA,Grizzlies at Pelicans,Pelicans.com,Y,7:00 PM,9:30 PM,Western Conference,Western Conference
 Hawks,Bulls,"Fri, Nov 13",NBA,Hawks at Bulls,TBA,Y,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
 Cavaliers,Heat,"Fri, Nov 13",NBA,Cavaliers at Heat,DAZN CLE,Y,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
-Ferris State,Augustana,"Fri, Nov 13",NCAA Hockey (M),Ferris State at #8 Augustana,Midco Sports,Y,7:07 PM,9:37 PM,CCHA,CCHA
+Ferris State,Augustana,"Fri, Nov 13",NCAA Hockey (M),Ferris State at #9 Augustana,Midco Sports,Y,7:07 PM,9:37 PM,CCHA,CCHA
 Minnesota State,Bemidji State,"Fri, Nov 13",NCAA Hockey (M),Minnesota State at Bemidji State,Midco Sports,N,7:07 PM,9:37 PM,CCHA,CCHA
 Utah,Boise State,"Fri, Nov 13",NCAA Basketball (W),Utah at Boise State,YouTube,N,7:30 PM,9:30 PM,Big XII,Pac-12
 Jazz,Rockets,"Fri, Nov 13",NBA,Jazz at Rockets,Jazz+,Y,7:30 PM,10:00 PM,Western Conference,Western Conference
@@ -372,16 +372,16 @@ Houston,Montana,"Fri, Nov 13",NCAA Basketball (W),Houston at Montana,TBA,N,8:00 
 Xavier,Mississippi State,"Fri, Nov 13",NCAA Basketball (M),Xavier at Mississippi State,FS1,N,8:00 PM,10:00 PM,Big East,SEC
 Ball State,SMU,"Fri, Nov 13",NCAA Basketball (M),Ball State at SMU,ACCN,N,8:00 PM,10:00 PM,MAC,ACC
 UL Monroe,Arizona State,"Fri, Nov 13",NCAA Basketball (M),UL Monroe at Arizona State,ESPN+,N,8:00 PM,10:00 PM,Sun Belt,Big XII
-Seton Hall,Alabama,"Fri, Nov 13",NCAA Basketball (M),Seton Hall at #20 Alabama,SECN,Y,8:00 PM,10:00 PM,Big East,SEC
-Arizona,Auburn,"Fri, Nov 13",NCAA Basketball (M),#5 Arizona at Auburn,ESPN2,Y,8:00 PM,10:00 PM,Big XII,SEC
+Seton Hall,Alabama,"Fri, Nov 13",NCAA Basketball (M),Seton Hall at #18 Alabama,SECN,Y,8:00 PM,10:00 PM,Big East,SEC
+Arizona,Auburn,"Fri, Nov 13",NCAA Basketball (M),#12 Arizona at Auburn,ESPN2,Y,8:00 PM,10:00 PM,Big XII,SEC
 Stanford,UNLV,"Fri, Nov 13",NCAA Basketball (M),Stanford at UNLV,CBSSN,N,8:00 PM,10:00 PM,ACC,Mountain West
-Lindenwood,Denver,"Fri, Nov 13",NCAA Hockey (M),Lindenwood at #4 Denver,TBA,Y,8:00 PM,10:30 PM,Independents,NCHC
+Lindenwood,Denver,"Fri, Nov 13",NCAA Hockey (M),Lindenwood at #3 Denver,TBA,Y,8:00 PM,10:30 PM,Independents,NCHC
 DePaul,Northwestern,"Fri, Nov 13",NCAA Basketball (M),DePaul at Northwestern,BTN,N,8:00 PM,10:00 PM,Big East,Big Ten
 Illinois,UCLA,"Fri, Nov 13",NCAA Football,Illinois at #8 UCLA,FOX,Y,8:00 PM,11:30 PM,Big Ten,Big Ten
 Bentley,Air Force,"Fri, Nov 13",NCAA Hockey (M),Bentley at Air Force,FloSports,N,8:05 PM,10:35 PM,AHA,AHA
 Warriors,Spurs,"Fri, Nov 13",NBA,Warriors at Spurs,Prime Video,Y,8:30 PM,11:00 PM,Western Conference,Western Conference
 Predators,Golden Knights,"Fri, Nov 13",NHL,Predators at Golden Knights,ESPN+,Y,9:00 PM,11:30 PM,Western (Central),Western (Pacific)
-Clemson,Stanford,"Fri, Nov 13",NCAA Volleyball (W),Clemson at #23 Stanford,ACCNX,Y,9:00 PM,11:00 PM,ACC,ACC
+Clemson,Stanford,"Fri, Nov 13",NCAA Volleyball (W),Clemson at #24 Stanford,ACCNX,Y,9:00 PM,11:00 PM,ACC,ACC
 Georgia Tech,Cal,"Fri, Nov 13",NCAA Volleyball (W),Georgia Tech at Cal,ACCNX,N,9:00 PM,11:00 PM,ACC,ACC
 Stanford,Santa Clara,"Fri, Nov 13",NCAA Basketball (W),Stanford at Santa Clara,ESPN+,N,9:00 PM,11:00 PM,ACC,West Coast
 Trail Blazers,Kings,"Fri, Nov 13",NBA,Trail Blazers at Kings,BlazerVision,Y,9:00 PM,11:30 PM,Western Conference,Western Conference
@@ -403,8 +403,8 @@ Nebraska,Rutgers,"Sat, Nov 14",NCAA Football,Nebraska at Rutgers,BTN,N,11:30 AM,
 Alabama,Vanderbilt,"Sat, Nov 14",NCAA Football,#5 Alabama at Vanderbilt,SECN,Y,11:45 AM,3:15 PM,SEC,SEC
 Montana,North Dakota,"Sat, Nov 14",NCAA Basketball (M),Montana at North Dakota,Midco/Summit,N,12:00 PM,2:00 PM,Big Sky,Summit League
 St. Thomas-Minnesota,Army,"Sat, Nov 14",NCAA Basketball (M),St. Thomas-Minnesota at Army,ESPN+,N,12:00 PM,2:00 PM,Summit League,Patriot League
-Stonehill,Texas Tech,"Sat, Nov 14",NCAA Basketball (M),Stonehill at #19 Texas Tech,ESPN+,Y,12:00 PM,2:00 PM,NEC,Big XII
-Northeastern,Merrimack,"Sat, Nov 14",NCAA Hockey (W),#4 Northeastern at Merrimack,ESPN+,Y,12:00 PM,2:15 PM,Hockey East,Hockey East
+Stonehill,Texas Tech,"Sat, Nov 14",NCAA Basketball (M),Stonehill at #16 Texas Tech,ESPN+,Y,12:00 PM,2:00 PM,NEC,Big XII
+Northeastern,Merrimack,"Sat, Nov 14",NCAA Hockey (W),#5 Northeastern at Merrimack,ESPN+,Y,12:00 PM,2:15 PM,Hockey East,Hockey East
 Penn State,Mercyhurst,"Sat, Nov 14",NCAA Hockey (W),#7 Penn State at Mercyhurst,FloSports,Y,12:00 PM,2:15 PM,AHA,AHA
 Lindenwood,RIT,"Sat, Nov 14",NCAA Hockey (W),Lindenwood at RIT,FloSports,N,12:00 PM,2:15 PM,AHA,AHA
 East Carolina,Charlotte,"Sat, Nov 14",NCAA Football,East Carolina at Charlotte,ESPN+,N,12:00 PM,3:30 PM,AAC,AAC
@@ -420,14 +420,14 @@ Kansas City,St. Thomas-Minnesota,"Sat, Nov 14",NCAA Volleyball (W),Kansas City a
 Saint Michael's,Post,"Sat, Nov 14",NCAA Hockey (W),Saint Michael's at Post,TBA,N,12:15 PM,2:30 PM,NEWHA,NEWHA
 Gardner-Webb,South Carolina,"Sat, Nov 14",NCAA Basketball (M),Gardner-Webb at South Carolina,SECN+,N,1:00 PM,3:00 PM,Big South,SEC
 Miami (OH),Evansville,"Sat, Nov 14",NCAA Basketball (M),Miami (OH) at Evansville,ESPN+,N,1:00 PM,3:00 PM,MAC,Missouri Valley
-UConn,Providence,"Sat, Nov 14",NCAA Hockey (W),#13 UConn at Providence,ESPN+,Y,1:00 PM,3:15 PM,Hockey East,Hockey East
+UConn,Providence,"Sat, Nov 14",NCAA Hockey (W),#11 UConn at Providence,ESPN+,Y,1:00 PM,3:15 PM,Hockey East,Hockey East
 LIU,Stonehill,"Sat, Nov 14",NCAA Hockey (W),LIU at Stonehill,TBA,N,1:00 PM,3:15 PM,NEWHA,NEWHA
-Minnesota,St. Cloud State,"Sat, Nov 14",NCAA Hockey (W),#2 Minnesota at #10 St. Cloud State,B1G+,Y,1:00 PM,3:15 PM,WCHA,WCHA
-Minnesota Duluth,Ohio State,"Sat, Nov 14",NCAA Hockey (W),#12 Minnesota Duluth at #1 Ohio State,B1G+,Y,1:00 PM,3:15 PM,WCHA,WCHA
+Minnesota,St. Cloud State,"Sat, Nov 14",NCAA Hockey (W),#2 Minnesota at #9 St. Cloud State,B1G+,Y,1:00 PM,3:15 PM,WCHA,WCHA
+Minnesota Duluth,Ohio State,"Sat, Nov 14",NCAA Hockey (W),#11 Minnesota Duluth at #1 Ohio State,B1G+,Y,1:00 PM,3:15 PM,WCHA,WCHA
 Kansas State,TCU,"Sat, Nov 14",NCAA Football,Kansas State at TCU,ESPNU,N,1:00 PM,4:30 PM,Big XII,Big XII
 Tulane,Rice,"Sat, Nov 14",NCAA Football,Tulane at Rice,ESPN+,N,1:00 PM,4:30 PM,AAC,AAC
 Kennesaw State,Sam Houston,"Sat, Nov 14",NCAA Football,Kennesaw State at Sam Houston,ESPN+,N,1:00 PM,4:30 PM,Conference USA,Conference USA
-Minnesota,Kansas State,"Sat, Nov 14",NCAA Basketball (W),#17 Minnesota at Kansas State,B1G+,Y,1:00 PM,3:00 PM,Big Ten,Big XII
+Minnesota,Kansas State,"Sat, Nov 14",NCAA Basketball (W),#18 Minnesota at Kansas State,B1G+,Y,1:00 PM,3:00 PM,Big Ten,Big XII
 Wisconsin,Green Bay,"Sat, Nov 14",NCAA Basketball (W),Wisconsin at Green Bay,ESPN+,N,1:00 PM,3:00 PM,Big Ten,Horizon League
 Fresno State,Boise State,"Sat, Nov 14",NCAA Volleyball (W),Fresno State at Boise State,YouTube,N,1:00 PM,3:00 PM,Pac-12,Pac-12
 North Dakota State,South Dakota State,"Sat, Nov 14",NCAA Volleyball (W),North Dakota State at South Dakota State,TBA,N,1:00 PM,3:00 PM,Summit League,Summit League
@@ -437,20 +437,20 @@ St. Thomas-Minnesota,Wisconsin,"Sat, Nov 14",NCAA Hockey (W),St. Thomas-Minnesot
 Tennessee,Texas A&M,"Sat, Nov 14",NCAA Football,#13 Tennessee at Texas A&M,ESPN,Y,2:00 PM,5:30 PM,SEC,SEC
 New Mexico State,Missouri State,"Sat, Nov 14",NCAA Football,New Mexico State at Missouri State,ESPN+,N,2:00 PM,5:30 PM,Conference USA,Conference USA
 Florida International,Delaware,"Sat, Nov 14",NCAA Football,Florida International at Delaware,ESPN+,N,2:00 PM,5:30 PM,Conference USA,Conference USA
-Brown,Clarkson,"Sat, Nov 14",NCAA Hockey (W),Brown at #9 Clarkson,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
+Brown,Clarkson,"Sat, Nov 14",NCAA Hockey (W),Brown at #10 Clarkson,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
 Harvard,Colgate,"Sat, Nov 14",NCAA Hockey (W),Harvard at #8 Colgate,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
 RPI,Syracuse,"Sat, Nov 14",NCAA Hockey (W),RPI at Syracuse,FloSports,N,2:00 PM,4:15 PM,ECAC,AHA
-Yale,St. Lawrence,"Sat, Nov 14",NCAA Hockey (W),#11 Yale at St. Lawrence,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
+Yale,St. Lawrence,"Sat, Nov 14",NCAA Hockey (W),#13 Yale at St. Lawrence,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
 Dartmouth,Cornell,"Sat, Nov 14",NCAA Hockey (W),Dartmouth at #14 Cornell,ESPN+,Y,2:00 PM,4:15 PM,ECAC,ECAC
 Youngstown State,Colorado,"Sat, Nov 14",NCAA Basketball (W),Youngstown State at Colorado,ESPN+,N,2:00 PM,4:00 PM,Horizon League,Big XII
 Cal,UC Santa Barbara,"Sat, Nov 14",NCAA Basketball (W),Cal at UC Santa Barbara,ESPN+,N,2:00 PM,4:00 PM,ACC,Big West
-Texas Tech,BYU,"Sat, Nov 14",NCAA Volleyball (W),Texas Tech at #8 BYU,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
+Texas Tech,BYU,"Sat, Nov 14",NCAA Volleyball (W),Texas Tech at #7 BYU,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
 Xavier,Providence,"Sat, Nov 14",NCAA Volleyball (W),Xavier at Providence,ESPN+,N,2:00 PM,4:00 PM,Big East,Big East
 Oregon State,Washington State,"Sat, Nov 14",NCAA Volleyball (W),Oregon State at Washington State,YouTube,N,2:00 PM,4:00 PM,Pac-12,Pac-12
 Butler,UConn,"Sat, Nov 14",NCAA Volleyball (W),Butler at UConn,ESPN+,N,2:00 PM,4:00 PM,Big East,Big East
 Colorado State,San Diego State,"Sat, Nov 14",NCAA Volleyball (W),Colorado State at San Diego State,YouTube,N,2:00 PM,4:00 PM,Pac-12,Pac-12
-Northeastern,UConn,"Sat, Nov 14",NCAA Hockey (M),Northeastern at #20 UConn,ESPN+,Y,2:00 PM,4:30 PM,Hockey East,Hockey East
-LSU,Gonzaga,"Sat, Nov 14",NCAA Basketball (M),LSU at #15 Gonzaga,USA,Y,2:30 PM,4:30 PM,SEC,Pac-12
+Northeastern,UConn,"Sat, Nov 14",NCAA Hockey (M),#19 Northeastern at UConn,ESPN+,Y,2:00 PM,4:30 PM,Hockey East,Hockey East
+LSU,Gonzaga,"Sat, Nov 14",NCAA Basketball (M),LSU at #14 Gonzaga,USA,Y,2:30 PM,4:30 PM,SEC,Pac-12
 Missouri,Georgia,"Sat, Nov 14",NCAA Football,#18 Missouri at #2 Georgia,ABC,Y,2:30 PM,6:00 PM,SEC,SEC
 USC,Indiana,"Sat, Nov 14",NCAA Football,#20 USC at #4 Indiana,CBS,Y,2:30 PM,6:00 PM,Big Ten,Big Ten
 Baylor,BYU,"Sat, Nov 14",NCAA Football,Baylor at #9 BYU,FOX,Y,2:30 PM,6:00 PM,Big XII,Big XII
@@ -470,7 +470,7 @@ Boston College,Boston University,"Sat, Nov 14",NCAA Hockey (W),#15 Boston Colleg
 Holy Cross,Maine,"Sat, Nov 14",NCAA Hockey (W),Holy Cross at Maine,ESPN+,N,3:00 PM,5:15 PM,Hockey East,Hockey East
 Fresno State,Texas State,"Sat, Nov 14",NCAA Football,Fresno State at Texas State,CW,N,3:00 PM,6:30 PM,Pac-12,Pac-12
 New Mexico,BYU,"Sat, Nov 14",NCAA Basketball (W),New Mexico at BYU,ESPN+,N,3:00 PM,5:00 PM,Mountain West,Big XII
-North Carolina,Pennsylvania,"Sat, Nov 14",NCAA Basketball (W),#12 North Carolina at Pennsylvania,ESPN+,Y,3:00 PM,5:00 PM,ACC,Ivy League
+North Carolina,Pennsylvania,"Sat, Nov 14",NCAA Basketball (W),#23 North Carolina at Pennsylvania,ESPN+,Y,3:00 PM,5:00 PM,ACC,Ivy League
 Toledo,Detroit Mercy,"Sat, Nov 14",NCAA Basketball (M),Toledo at Detroit Mercy,ESPN+,N,3:00 PM,5:00 PM,MAC,Horizon League
 South Dakota State,Northern Colorado,"Sat, Nov 14",NCAA Basketball (M),South Dakota State at Northern Colorado,Summit,N,3:00 PM,5:00 PM,Summit League,Big Sky
 UNC Asheville,Georgia Tech,"Sat, Nov 14",NCAA Basketball (M),UNC Asheville at Georgia Tech,ACCNX,N,3:00 PM,5:00 PM,Big South,ACC
@@ -478,10 +478,10 @@ Southern Utah,Wake Forest,"Sat, Nov 14",NCAA Basketball (M),Southern Utah at Wak
 RPI,UMass Lowell,"Sat, Nov 14",NCAA Hockey (M),RPI at UMass Lowell,ESPN+,N,3:05 PM,5:35 PM,ECAC,Hockey East
 Ole Miss,Oklahoma,"Sat, Nov 14",NCAA Football,#10 Ole Miss at Oklahoma,SECN,Y,3:15 PM,6:45 PM,SEC,SEC
 Washington,Michigan State,"Sat, Nov 14",NCAA Football,Washington at Michigan State,BTN,N,3:15 PM,6:45 PM,Big Ten,Big Ten
-Nebraska,Kansas,"Sat, Nov 14",NCAA Basketball (W),Nebraska at Kansas,B1G+,N,3:30 PM,5:30 PM,Big Ten,Big XII
+Nebraska,Kansas,"Sat, Nov 14",NCAA Basketball (W),#25 Nebraska at Kansas,B1G+,Y,3:30 PM,5:30 PM,Big Ten,Big XII
 Southern Miss,Louisiana Tech,"Sat, Nov 14",NCAA Football,Southern Miss at Louisiana Tech,ESPN+,N,4:00 PM,7:30 PM,Sun Belt,Sun Belt
 Oregon,UCLA,"Sat, Nov 14",NCAA Volleyball (W),#12 Oregon at UCLA,B1G+,Y,4:00 PM,6:00 PM,Big Ten,Big Ten
-Maine,Vermont,"Sat, Nov 14",NCAA Hockey (M),Maine at Vermont,ESPN+,N,4:00 PM,6:30 PM,Hockey East,Hockey East
+Maine,Vermont,"Sat, Nov 14",NCAA Hockey (M),Maine at #20 Vermont,ESPN+,Y,4:00 PM,6:30 PM,Hockey East,Hockey East
 Utah Tech,Cal,"Sat, Nov 14",NCAA Basketball (M),Utah Tech at Cal,ACCNX,N,4:00 PM,6:00 PM,Big Sky,ACC
 Canisius,RIT,"Sat, Nov 14",NCAA Hockey (M),Canisius at RIT,FloSports,N,4:05 PM,6:35 PM,AHA,AHA
 Kansas,West Virginia,"Sat, Nov 14",NCAA Football,Kansas at West Virginia,ESPNU,N,4:30 PM,8:00 PM,Big XII,Big XII
@@ -490,15 +490,15 @@ App State,Marshall,"Sat, Nov 14",NCAA Football,App State at Marshall,ESPN+,N,5:0
 Oregon State,Boise State,"Sat, Nov 14",NCAA Football,Oregon State at #25 Boise State,USA,Y,5:00 PM,8:30 PM,Pac-12,Pac-12
 St. Anselm,Sacred Heart,"Sat, Nov 14",NCAA Hockey (W),St. Anselm at Sacred Heart,ESPN+,N,5:00 PM,7:15 PM,NEWHA,NEWHA
 Northwestern,App State,"Sat, Nov 14",NCAA Basketball (W),Northwestern at App State,TBA,N,5:00 PM,7:00 PM,Big Ten,Sun Belt
-Colorado College,Western Michigan,"Sat, Nov 14",NCAA Hockey (M),#11 Colorado College at #5 Western Michigan,TBA,Y,5:00 PM,7:30 PM,NCHC,NCHC
+Colorado College,Western Michigan,"Sat, Nov 14",NCAA Hockey (M),#12 Colorado College at #6 Western Michigan,TBA,Y,5:00 PM,7:30 PM,NCHC,NCHC
 Colgate,Brown,"Sat, Nov 14",NCAA Hockey (M),Colgate at Brown,ESPN+,N,5:00 PM,7:30 PM,ECAC,ECAC
-Purdue,Michigan,"Sat, Nov 14",NCAA Volleyball (W),#14 Purdue at Michigan,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
+Purdue,Michigan,"Sat, Nov 14",NCAA Volleyball (W),#13 Purdue at Michigan,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
 Holy Cross,Niagara,"Sat, Nov 14",NCAA Hockey (M),Holy Cross at Niagara,FloSports,N,5:00 PM,7:30 PM,AHA,AHA
 North Dakota,South Dakota,"Sat, Nov 14",NCAA Volleyball (W),North Dakota at South Dakota,Midco/Summit,N,5:00 PM,7:00 PM,Summit League,Summit League
 Seton Hall,DePaul,"Sat, Nov 14",NCAA Volleyball (W),Seton Hall at DePaul,ESPN+,N,5:00 PM,7:00 PM,Big East,Big East
 St. John's,Marquette,"Sat, Nov 14",NCAA Volleyball (W),St. John's at Marquette,ESPN+,N,5:00 PM,7:00 PM,Big East,Big East
 Colorado,Providence,"Sat, Nov 14",NCAA Basketball (M),Colorado at Providence,Peacock,N,5:00 PM,7:00 PM,Big XII,Big East
-Omaha,Miami (OH),"Sat, Nov 14",NCAA Hockey (M),Omaha at Miami (OH),NCHC.tv,N,5:05 PM,7:35 PM,NCHC,NCHC
+Omaha,Miami (OH),"Sat, Nov 14",NCAA Hockey (M),Omaha at #17 Miami (OH),NCHC.tv,Y,5:05 PM,7:35 PM,NCHC,NCHC
 Bowling Green,Northern Michigan,"Sat, Nov 14",NCAA Hockey (M),Bowling Green at Northern Michigan,Midco Sports,N,5:07 PM,7:37 PM,CCHA,CCHA
 Lake Superior State,Michigan Tech,"Sat, Nov 14",NCAA Hockey (M),Lake Superior State at #14 Michigan Tech,Midco Sports,Y,5:07 PM,7:37 PM,CCHA,CCHA
 Florida,Kentucky,"Sat, Nov 14",NCAA Football,#24 Florida at #6 Kentucky,ESPN,Y,5:15 PM,8:45 PM,SEC,SEC
@@ -515,14 +515,14 @@ Avalanche,Canadiens,"Sat, Nov 14",NHL,Avalanche at Canadiens,ESPN+,Y,6:00 PM,8:3
 Oilers,Maple Leafs,"Sat, Nov 14",NHL,Oilers at Maple Leafs,NHL Net,Y,6:00 PM,8:30 PM,Western (Pacific),Eastern (Atlantic)
 Wild,Bruins,"Sat, Nov 14",NHL,Wild at Bruins,ESPN+,Y,6:00 PM,8:30 PM,Western (Central),Eastern (Atlantic)
 Nuggets,Pelicans,"Sat, Nov 14",NBA,Nuggets at Pelicans,Pelicans.com,Y,6:00 PM,8:30 PM,Western Conference,Western Conference
-Sacred Heart,Army,"Sat, Nov 14",NCAA Hockey (M),Sacred Heart at #19 Army,TBA,Y,6:00 PM,8:30 PM,AHA,AHA
+Sacred Heart,Army,"Sat, Nov 14",NCAA Hockey (M),Sacred Heart at #18 Army,TBA,Y,6:00 PM,8:30 PM,AHA,AHA
 UMass,Boston College,"Sat, Nov 14",NCAA Hockey (M),UMass at Boston College,ESPN+,N,6:00 PM,8:30 PM,Hockey East,Hockey East
-Union,New Hampshire,"Sat, Nov 14",NCAA Hockey (M),#17 Union at New Hampshire,ESPN+,Y,6:00 PM,8:30 PM,ECAC,Hockey East
-Providence,Merrimack,"Sat, Nov 14",NCAA Hockey (M),#9 Providence at #15 Merrimack,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
-Harvard,Quinnipiac,"Sat, Nov 14",NCAA Hockey (M),Harvard at #6 Quinnipiac,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
-Minnesota Duluth,St. Cloud State,"Sat, Nov 14",NCAA Hockey (M),#6 Minnesota Duluth at St. Cloud State,TBA,Y,6:00 PM,8:30 PM,NCHC,NCHC
-Alaska Anchorage,Minnesota,"Sat, Nov 14",NCAA Hockey (M),Alaska Anchorage at #18 Minnesota,B1G+,Y,6:00 PM,8:30 PM,Independents,Big Ten
-Dartmouth,Princeton,"Sat, Nov 14",NCAA Hockey (M),#12 Dartmouth at Princeton,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
+Union,New Hampshire,"Sat, Nov 14",NCAA Hockey (M),Union at New Hampshire,ESPN+,N,6:00 PM,8:30 PM,ECAC,Hockey East
+Providence,Merrimack,"Sat, Nov 14",NCAA Hockey (M),#10 Providence at #15 Merrimack,ESPN+,Y,6:00 PM,8:30 PM,Hockey East,Hockey East
+Harvard,Quinnipiac,"Sat, Nov 14",NCAA Hockey (M),Harvard at #5 Quinnipiac,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
+Minnesota Duluth,St. Cloud State,"Sat, Nov 14",NCAA Hockey (M),#7 Minnesota Duluth at St. Cloud State,TBA,Y,6:00 PM,8:30 PM,NCHC,NCHC
+Alaska Anchorage,Minnesota,"Sat, Nov 14",NCAA Hockey (M),Alaska Anchorage at Minnesota,B1G+,N,6:00 PM,8:30 PM,Independents,Big Ten
+Dartmouth,Princeton,"Sat, Nov 14",NCAA Hockey (M),#11 Dartmouth at Princeton,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
 Cornell,Yale,"Sat, Nov 14",NCAA Hockey (M),#16 Cornell at Yale,ESPN+,Y,6:00 PM,8:30 PM,ECAC,ECAC
 Iowa,Nebraska,"Sat, Nov 14",NCAA Volleyball (W),Iowa at #1 Nebraska,TBA,Y,6:00 PM,8:00 PM,Big Ten,Big Ten
 Washington,Utah,"Sat, Nov 14",NCAA Basketball (M),Washington at Utah,ESPN+,N,6:00 PM,8:00 PM,Big Ten,Big XII
@@ -530,7 +530,7 @@ Rider,Villanova,"Sat, Nov 14",NCAA Basketball (M),Rider at Villanova,ESPN+,N,6:0
 Ohio State,Wisconsin,"Sat, Nov 14",NCAA Hockey (M),Ohio State at #1 Wisconsin,B1G+,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
 Penn State,Michigan,"Sat, Nov 14",NCAA Hockey (M),Penn State at #2 Michigan,B1G+,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
 Minnesota State,Bemidji State,"Sat, Nov 14",NCAA Hockey (M),Minnesota State at Bemidji State,Midco Sports,N,6:07 PM,8:37 PM,CCHA,CCHA
-Ferris State,Augustana,"Sat, Nov 14",NCAA Hockey (M),Ferris State at #8 Augustana,Midco Sports,Y,6:07 PM,8:37 PM,CCHA,CCHA
+Ferris State,Augustana,"Sat, Nov 14",NCAA Hockey (M),Ferris State at #9 Augustana,Midco Sports,Y,6:07 PM,8:37 PM,CCHA,CCHA
 Stanford,Virginia Tech,"Sat, Nov 14",NCAA Football,Stanford at Virginia Tech,ACCN,N,6:30 PM,10:00 PM,ACC,ACC
 Texas,LSU,"Sat, Nov 14",NCAA Football,#7 Texas at #14 LSU,ABC,Y,6:30 PM,10:00 PM,SEC,SEC
 Purdue,Iowa,"Sat, Nov 14",NCAA Football,Purdue at #19 Iowa,NBC,Y,6:30 PM,10:00 PM,Big Ten,Big Ten
@@ -546,9 +546,9 @@ Pistons,Heat,"Sat, Nov 14",NBA,Pistons at Heat,NBA TV,Y,7:00 PM,9:30 PM,Eastern 
 Nets,Grizzlies,"Sat, Nov 14",NBA,Nets at Grizzlies,DAZN (YES),Y,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Bulls,Timberwolves,"Sat, Nov 14",NBA,Bulls at Timberwolves,DAZN MIN,Y,7:00 PM,9:30 PM,Eastern Conference,Western Conference
 Michigan State,Minnesota,"Sat, Nov 14",NCAA Volleyball (W),Michigan State at #19 Minnesota,TBA,Y,7:00 PM,9:00 PM,Big Ten,Big Ten
-Penn State,Illinois,"Sat, Nov 14",NCAA Volleyball (W),#11 Penn State at Illinois,B1G+,Y,7:00 PM,9:00 PM,Big Ten,Big Ten
-Lindenwood,Denver,"Sat, Nov 14",NCAA Hockey (M),Lindenwood at #4 Denver,TBA,Y,7:00 PM,9:30 PM,Independents,NCHC
-North Dakota,St. Thomas-Minnesota,"Sat, Nov 14",NCAA Hockey (M),#10 North Dakota at St. Thomas-Minnesota,TBA,Y,7:00 PM,9:30 PM,NCHC,NCHC
+Penn State,Illinois,"Sat, Nov 14",NCAA Volleyball (W),#10 Penn State at #25 Illinois,B1G+,Y,7:00 PM,9:00 PM,Big Ten,Big Ten
+Lindenwood,Denver,"Sat, Nov 14",NCAA Hockey (M),Lindenwood at #3 Denver,TBA,Y,7:00 PM,9:30 PM,Independents,NCHC
+North Dakota,St. Thomas-Minnesota,"Sat, Nov 14",NCAA Hockey (M),#8 North Dakota at St. Thomas-Minnesota,TBA,Y,7:00 PM,9:30 PM,NCHC,NCHC
 North Texas,UTSA,"Sat, Nov 14",NCAA Football,North Texas at UTSA,ESPNU,N,8:00 PM,11:30 PM,AAC,AAC
 Sharks,Mammoth,"Sat, Nov 14",NHL,Sharks at Mammoth,ESPN+,Y,8:00 PM,10:30 PM,Western (Pacific),Western (Central)
 Utah State,San Diego State,"Sat, Nov 14",NCAA Football,Utah State at San Diego State,USA,N,8:30 PM,12:00 AM,Pac-12,Pac-12
@@ -556,13 +556,13 @@ Texas Tech,Oklahoma State,"Sat, Nov 14",NCAA Football,#15 Texas Tech at Oklahoma
 Wyoming,UTEP,"Sat, Nov 14",NCAA Football,Wyoming at UTEP,FS1,N,9:00 PM,12:30 AM,Mountain West,Mountain West
 Flames,LA Kings,"Sat, Nov 14",NHL,Flames at LA Kings,ESPN+,Y,9:00 PM,11:30 PM,Western (Pacific),Western (Pacific)
 Islanders,Ducks,"Sat, Nov 14",NHL,Islanders at Ducks,ESPN+,Y,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
-Georgia Tech,Stanford,"Sat, Nov 14",NCAA Volleyball (W),Georgia Tech at #23 Stanford,ACCNX,Y,9:00 PM,11:00 PM,ACC,ACC
+Georgia Tech,Stanford,"Sat, Nov 14",NCAA Volleyball (W),Georgia Tech at #24 Stanford,ACCNX,Y,9:00 PM,11:00 PM,ACC,ACC
 Washington,USC,"Sat, Nov 14",NCAA Volleyball (W),#18 Washington at USC,TBA,Y,9:00 PM,11:00 PM,Big Ten,Big Ten
 Colorado State,Washington State,"Sat, Nov 14",NCAA Football,Colorado State at Washington State,CBSSN,N,9:30 PM,1:00 AM,Pac-12,Pac-12
 North Dakota State,Hawai'i,"Sat, Nov 14",NCAA Football,North Dakota State at Hawai'i,CW,N,10:00 PM,1:30 AM,Mountain West,Mountain West
 Patriots,Lions,"Sun, Nov 15",NFL,Patriots at Lions,FOX,Y,8:30 AM,12:00 PM,AFC East,NFC North
-Northwestern,Indiana,"Sun, Nov 15",NCAA Volleyball (W),Northwestern at #21 Indiana,B1G+,Y,11:00 AM,1:00 PM,Big Ten,Big Ten
-Eastern Michigan,Kentucky,"Sun, Nov 15",NCAA Basketball (W),Eastern Michigan at #14 Kentucky,SECN,Y,11:00 AM,1:00 PM,MAC,SEC
+Northwestern,Indiana,"Sun, Nov 15",NCAA Volleyball (W),Northwestern at #22 Indiana,B1G+,Y,11:00 AM,1:00 PM,Big Ten,Big Ten
+Eastern Michigan,Kentucky,"Sun, Nov 15",NCAA Basketball (W),Eastern Michigan at #12 Kentucky,SECN,Y,11:00 AM,1:00 PM,MAC,SEC
 Samford,Purdue,"Sun, Nov 15",NCAA Basketball (W),Samford at Purdue,B1G+,N,11:00 AM,1:00 PM,SoCon,Big Ten
 Miami,Boston College,"Sun, Nov 15",NCAA Volleyball (W),Miami at Boston College,ACCNX,N,11:30 AM,1:30 PM,ACC,ACC
 Chiefs,Falcons,"Sun, Nov 15",NFL,Chiefs at Falcons,CBS,Y,12:00 PM,3:30 PM,AFC West,NFC South
@@ -574,30 +574,30 @@ Panthers,Saints,"Sun, Nov 15",NFL,Panthers at Saints,FOX,Y,12:00 PM,3:30 PM,NFC 
 Bills,NY Jets,"Sun, Nov 15",NFL,Bills at NY Jets,CBS,Y,12:00 PM,3:30 PM,AFC East,AFC East
 Pacers,76ers,"Sun, Nov 15",NBA,Pacers at 76ers,DAZN IND,Y,12:00 PM,2:30 PM,Eastern Conference,Eastern Conference
 Vanderbilt,Iowa,"Sun, Nov 15",NCAA Basketball (W),#8 Vanderbilt at #10 Iowa,FS1,Y,12:00 PM,2:00 PM,SEC,Big Ten
-Louisville,Memphis,"Sun, Nov 15",NCAA Basketball (M),#11 Louisville at Memphis,ESPN,Y,12:00 PM,2:00 PM,ACC,AAC
-Niagara,Iowa State,"Sun, Nov 15",NCAA Basketball (M),Niagara at #18 Iowa State,ESPN2,Y,12:00 PM,2:00 PM,MAAC,Big XII
-Boise State,Nebraska,"Sun, Nov 15",NCAA Basketball (M),Boise State at Nebraska,BTN,N,12:00 PM,2:00 PM,Pac-12,Big Ten
+Louisville,Memphis,"Sun, Nov 15",NCAA Basketball (M),#10 Louisville at Memphis,ESPN,Y,12:00 PM,2:00 PM,ACC,AAC
+Niagara,Iowa State,"Sun, Nov 15",NCAA Basketball (M),Niagara at Iowa State,ESPN2,N,12:00 PM,2:00 PM,MAAC,Big XII
+Boise State,Nebraska,"Sun, Nov 15",NCAA Basketball (M),Boise State at #25 Nebraska,BTN,Y,12:00 PM,2:00 PM,Pac-12,Big Ten
 Florida State,Syracuse,"Sun, Nov 15",NCAA Volleyball (W),Florida State at Syracuse,ACCNX,N,12:00 PM,2:00 PM,ACC,ACC
 UCF,West Virginia,"Sun, Nov 15",NCAA Volleyball (W),UCF at West Virginia,ESPN+,N,12:00 PM,2:00 PM,Big XII,Big XII
 Virginia Tech,Wake Forest,"Sun, Nov 15",NCAA Volleyball (W),Virginia Tech at Wake Forest,ACCNX,N,12:00 PM,2:00 PM,ACC,ACC
 Virginia,NC State,"Sun, Nov 15",NCAA Volleyball (W),Virginia at NC State,ACCNX,N,12:00 PM,2:00 PM,ACC,ACC
 Duke,North Carolina,"Sun, Nov 15",NCAA Volleyball (W),Duke at #20 North Carolina,ACCN,Y,12:00 PM,2:00 PM,ACC,ACC
-Ole Miss,Texas A&M,"Sun, Nov 15",NCAA Volleyball (W),Ole Miss at #17 Texas A&M,SECN+,Y,12:00 PM,2:00 PM,SEC,SEC
-Tennessee,South Carolina,"Sun, Nov 15",NCAA Volleyball (W),#10 Tennessee at South Carolina,SECN+,Y,12:00 PM,2:00 PM,SEC,SEC
+Ole Miss,Texas A&M,"Sun, Nov 15",NCAA Volleyball (W),Ole Miss at #21 Texas A&M,SECN+,Y,12:00 PM,2:00 PM,SEC,SEC
+Tennessee,South Carolina,"Sun, Nov 15",NCAA Volleyball (W),#11 Tennessee at South Carolina,SECN+,Y,12:00 PM,2:00 PM,SEC,SEC
 USC,South Carolina,"Sun, Nov 15",NCAA Basketball (W),#3 USC at #1 South Carolina,ABC,Y,12:00 PM,2:00 PM,Big Ten,SEC
-Fairleigh Dickinson,Ohio State,"Sun, Nov 15",NCAA Basketball (W),Fairleigh Dickinson at #18 Ohio State,B1G+,Y,12:00 PM,2:00 PM,NEC,Big Ten
-Columbia,Maryland,"Sun, Nov 15",NCAA Basketball (W),Columbia at #20 Maryland,B1G+,Y,12:00 PM,2:00 PM,Ivy League,Big Ten
-NC State,Seton Hall,"Sun, Nov 15",NCAA Basketball (W),#25 NC State at Seton Hall,ESPN+,Y,12:00 PM,2:00 PM,ACC,Big East
+Fairleigh Dickinson,Ohio State,"Sun, Nov 15",NCAA Basketball (W),Fairleigh Dickinson at #17 Ohio State,B1G+,Y,12:00 PM,2:00 PM,NEC,Big Ten
+Columbia,Maryland,"Sun, Nov 15",NCAA Basketball (W),Columbia at #19 Maryland,B1G+,Y,12:00 PM,2:00 PM,Ivy League,Big Ten
+NC State,Seton Hall,"Sun, Nov 15",NCAA Basketball (W),NC State at Seton Hall,ESPN+,N,12:00 PM,2:00 PM,ACC,Big East
 Oakland,Miami (OH),"Sun, Nov 15",NCAA Basketball (W),Oakland at Miami (OH),ESPN+,N,12:00 PM,2:00 PM,Horizon League,MAC
 Western Michigan,Dayton,"Sun, Nov 15",NCAA Basketball (W),Western Michigan at Dayton,ESPN+,N,12:00 PM,2:00 PM,MAC,Atlantic 10
 New Hampshire,Boston College,"Sun, Nov 15",NCAA Basketball (M),New Hampshire at Boston College,ACCNX,N,12:30 PM,2:30 PM,America East,ACC
 St. Thomas-Minnesota,Wisconsin,"Sun, Nov 15",NCAA Hockey (W),St. Thomas-Minnesota at #3 Wisconsin,B1G+,Y,1:00 PM,3:15 PM,WCHA,WCHA
 Villanova,Creighton,"Sun, Nov 15",NCAA Volleyball (W),Villanova at Creighton,TBA,N,1:00 PM,3:00 PM,Big East,Big East
-LSU,Texas,"Sun, Nov 15",NCAA Volleyball (W),LSU at #13 Texas,SECN+,Y,1:00 PM,3:00 PM,SEC,SEC
-Arizona State,Arizona,"Sun, Nov 15",NCAA Volleyball (W),#9 Arizona State at Arizona,ESPN+,Y,1:00 PM,3:00 PM,Big XII,Big XII
+LSU,Texas,"Sun, Nov 15",NCAA Volleyball (W),LSU at #16 Texas,SECN+,Y,1:00 PM,3:00 PM,SEC,SEC
+Arizona State,Arizona,"Sun, Nov 15",NCAA Volleyball (W),#8 Arizona State at Arizona,ESPN+,Y,1:00 PM,3:00 PM,Big XII,Big XII
 Kentucky,Georgia,"Sun, Nov 15",NCAA Volleyball (W),#6 Kentucky at Georgia,SECN+,Y,1:00 PM,3:00 PM,SEC,SEC
 Notre Dame,SMU,"Sun, Nov 15",NCAA Volleyball (W),Notre Dame at #5 SMU,ACCNX,Y,1:00 PM,3:00 PM,ACC,ACC
-William & Mary,Michigan,"Sun, Nov 15",NCAA Basketball (M),William & Mary at #16 Michigan,B1G+,Y,1:00 PM,3:00 PM,CAA,Big Ten
+William & Mary,Michigan,"Sun, Nov 15",NCAA Basketball (M),William & Mary at #20 Michigan,B1G+,Y,1:00 PM,3:00 PM,CAA,Big Ten
 Cal State Bakersfield,North Dakota State,"Sun, Nov 15",NCAA Basketball (M),Cal State Bakersfield at North Dakota State,Midco/Summit,N,1:00 PM,3:00 PM,Big West,Summit League
 Valparaiso,Toledo,"Sun, Nov 15",NCAA Basketball (W),Valparaiso at Toledo,ESPN+,N,1:00 PM,3:00 PM,Missouri Valley,MAC
 Milwaukee,Indiana,"Sun, Nov 15",NCAA Basketball (W),Milwaukee at Indiana,B1G+,N,1:00 PM,3:00 PM,Horizon League,Big Ten
@@ -606,23 +606,23 @@ Virginia,Old Dominion,"Sun, Nov 15",NCAA Basketball (W),Virginia at Old Dominion
 Michigan State,Harvard,"Sun, Nov 15",NCAA Basketball (W),Michigan State at Harvard,ESPN+,N,1:00 PM,3:00 PM,Big Ten,Ivy League
 Georgia State,Georgia Tech,"Sun, Nov 15",NCAA Basketball (W),Georgia State at Georgia Tech,ACCNX,N,1:00 PM,3:00 PM,Sun Belt,ACC
 Florida,Florida State,"Sun, Nov 15",NCAA Basketball (W),Florida at Florida State,ACCNX,N,1:00 PM,3:00 PM,SEC,ACC
-Oklahoma State,South Dakota State,"Sun, Nov 15",NCAA Basketball (W),#22 Oklahoma State at South Dakota State,CBSSN,Y,1:00 PM,3:00 PM,Big XII,Summit League
-Southern,Oklahoma,"Sun, Nov 15",NCAA Basketball (W),Southern at #21 Oklahoma,SECN+,Y,1:00 PM,3:00 PM,SWAC,SEC
+Oklahoma State,South Dakota State,"Sun, Nov 15",NCAA Basketball (W),#19 Oklahoma State at South Dakota State,CBSSN,Y,1:00 PM,3:00 PM,Big XII,Summit League
+Southern,Oklahoma,"Sun, Nov 15",NCAA Basketball (W),Southern at #14 Oklahoma,SECN+,Y,1:00 PM,3:00 PM,SWAC,SEC
 Missouri,Marquette,"Sun, Nov 15",NCAA Basketball (M),Missouri at Marquette,Peacock,N,1:30 PM,3:30 PM,SEC,Big East
 Cincinnati,Maryland Eastern Shore,"Sun, Nov 15",NCAA Basketball (W),Cincinnati at Maryland Eastern Shore,MEAC Net,N,1:30 PM,3:30 PM,Big XII,MEAC
 Elon,Wake Forest,"Sun, Nov 15",NCAA Basketball (W),Elon at Wake Forest,ACCNX,N,2:00 PM,4:00 PM,CAA,ACC
 Missouri,Arkansas,"Sun, Nov 15",NCAA Volleyball (W),Missouri at Arkansas,SECN+,N,2:00 PM,4:00 PM,SEC,SEC
-Baylor,Colorado,"Sun, Nov 15",NCAA Volleyball (W),#24 Baylor at #25 Colorado,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
-Vanderbilt,Oklahoma,"Sun, Nov 15",NCAA Volleyball (W),#21 Vanderbilt at Oklahoma,SECN+,Y,2:00 PM,4:00 PM,SEC,SEC
-TCU,Kansas,"Sun, Nov 15",NCAA Volleyball (W),#16 TCU at #15 Kansas,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
+Baylor,Colorado,"Sun, Nov 15",NCAA Volleyball (W),#23 Baylor at Colorado,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
+Vanderbilt,Oklahoma,"Sun, Nov 15",NCAA Volleyball (W),#15 Vanderbilt at Oklahoma,SECN+,Y,2:00 PM,4:00 PM,SEC,SEC
+TCU,Kansas,"Sun, Nov 15",NCAA Volleyball (W),#17 TCU at #14 Kansas,ESPN+,Y,2:00 PM,4:00 PM,Big XII,Big XII
 Florida,Alabama,"Sun, Nov 15",NCAA Volleyball (W),#4 Florida at Alabama,SECN+,Y,2:00 PM,4:00 PM,SEC,SEC
 Auburn,Mississippi State,"Sun, Nov 15",NCAA Volleyball (W),Auburn at Mississippi State,SECN+,N,2:00 PM,4:00 PM,SEC,SEC
 Baylor,Texas,"Sun, Nov 15",NCAA Basketball (M),Baylor at #7 Texas,ESPN,Y,2:00 PM,4:00 PM,Big XII,SEC
 Creighton,Iowa,"Sun, Nov 15",NCAA Basketball (M),Creighton at Iowa,FS1,N,2:00 PM,4:00 PM,Big East,Big Ten
-Marshall,Duke,"Sun, Nov 15",NCAA Basketball (W),Marshall at #4 Duke,ACCN,Y,2:00 PM,4:00 PM,Sun Belt,ACC
+Marshall,Duke,"Sun, Nov 15",NCAA Basketball (W),Marshall at #5 Duke,ACCN,Y,2:00 PM,4:00 PM,Sun Belt,ACC
 Abilene Christian,TCU,"Sun, Nov 15",NCAA Basketball (W),Abilene Christian at #15 TCU,ESPN+,Y,2:00 PM,4:00 PM,UAC,Big XII
-Louisiana Tech,Ole Miss,"Sun, Nov 15",NCAA Basketball (W),Louisiana Tech at #19 Ole Miss,SECN+,Y,2:00 PM,4:00 PM,Sun Belt,SEC
-Southeast Missouri State,Illinois,"Sun, Nov 15",NCAA Basketball (W),Southeast Missouri State at #23 Illinois,B1G+,Y,2:00 PM,4:00 PM,Ohio Valley,Big Ten
+Louisiana Tech,Ole Miss,"Sun, Nov 15",NCAA Basketball (W),Louisiana Tech at #21 Ole Miss,SECN+,Y,2:00 PM,4:00 PM,Sun Belt,SEC
+Southeast Missouri State,Illinois,"Sun, Nov 15",NCAA Basketball (W),Southeast Missouri State at #22 Illinois,B1G+,Y,2:00 PM,4:00 PM,Ohio Valley,Big Ten
 Lindenwood,Missouri,"Sun, Nov 15",NCAA Basketball (W),Lindenwood at Missouri,SECN+,N,2:00 PM,4:00 PM,Ohio Valley,SEC
 SE Louisiana,Texas Tech,"Sun, Nov 15",NCAA Basketball (W),SE Louisiana at Texas Tech,ESPN+,N,2:00 PM,4:00 PM,Southland,Big XII
 East Texas A&M,Baylor,"Sun, Nov 15",NCAA Basketball (W),East Texas A&M at Baylor,ESPN+,N,2:00 PM,4:00 PM,Southland,Big XII
@@ -643,10 +643,10 @@ Gonzaga,Stanford,"Sun, Nov 15",NCAA Basketball (W),Gonzaga at Stanford,ACCNX,N,4
 Stetson,Clemson,"Sun, Nov 15",NCAA Basketball (W),Stetson at Clemson,ACCN,N,4:00 PM,6:00 PM,Atlantic Sun,ACC
 Spurs,Jazz,"Sun, Nov 15",NBA,Spurs at Jazz,Jazz+,Y,4:00 PM,6:30 PM,Western Conference,Western Conference
 Pepperdine,Oregon,"Sun, Nov 15",NCAA Basketball (M),Pepperdine at Oregon,B1G+,N,4:00 PM,6:00 PM,West Coast,Big Ten
-UConn,Louisville,"Sun, Nov 15",NCAA Basketball (W),#2 UConn at #7 Louisville,ESPN,Y,4:30 PM,6:30 PM,Big East,ACC
+UConn,Louisville,"Sun, Nov 15",NCAA Basketball (W),#4 UConn at #7 Louisville,ESPN,Y,4:30 PM,6:30 PM,Big East,ACC
 Canisius,Buffalo,"Sun, Nov 15",NCAA Basketball (M),Canisius at Buffalo,ESPN+,N,4:30 PM,6:30 PM,MAAC,MAC
 UIC,Iowa State,"Sun, Nov 15",NCAA Basketball (W),UIC at Iowa State,ESPN+,N,5:00 PM,7:00 PM,Missouri Valley,Big XII
-Princeton,UCLA,"Sun, Nov 15",NCAA Basketball (W),Princeton at #11 UCLA,BTN,Y,5:00 PM,7:00 PM,Ivy League,Big Ten
+Princeton,UCLA,"Sun, Nov 15",NCAA Basketball (W),Princeton at #10 UCLA,BTN,Y,5:00 PM,7:00 PM,Ivy League,Big Ten
 Mavericks,Celtics,"Sun, Nov 15",NBA,Mavericks at Celtics,MavsTV,Y,5:00 PM,7:30 PM,Western Conference,Eastern Conference
 Knicks,Raptors,"Sun, Nov 15",NBA,Knicks at Raptors,TBA,Y,5:00 PM,7:30 PM,Eastern Conference,Eastern Conference
 Canisius,Syracuse,"Sun, Nov 15",NCAA Basketball (W),Canisius at Syracuse,ACCN,N,6:00 PM,8:00 PM,MAAC,ACC
@@ -667,17 +667,17 @@ Canucks,Golden Knights,"Sun, Nov 15",NHL,Canucks at Golden Knights,ESPN+,Y,8:00 
 Predators,Sharks,"Sun, Nov 15",NHL,Predators at Sharks,ESPN+,Y,8:00 PM,10:30 PM,Western (Central),Western (Pacific)
 NCAAF,NCAAF,"Tue, Nov 10",NCAA Football,CFP Rankings Show,ESPN,Y,8:00 PM,8:30 PM,,
 LPGA Tour,LPGA Tour,"Thu, Nov 12",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
-PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,8:30 AM,5:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,8:30 AM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Fri, Nov 13",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
-PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,8:30 AM,5:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,8:30 AM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Sat, Nov 14",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,CNBC,Y,1:00 PM,4:00 PM,LPGA Tour (CME),LPGA Tour (CME)
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,College GameDay,ESPN,Y,8:00 AM,11:00 AM,,
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,SEC Nation,SECN,Y,8:00 AM,11:45 AM,,
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,Big Noon Kickoff,FOX,Y,9:00 AM,11:00 AM,,
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,B1G Tailgate,BTN,Y,9:00 AM,11:30 AM,,
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,ACC Huddle,ACCN,Y,9:00 AM,11:00 AM,,
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,"College GameDay (Boise, ID)",ESPN,Y,8:00 AM,11:00 AM,,
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,"SEC Nation (Athens, GA)",SECN,Y,8:00 AM,11:45 AM,,
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,"Big Noon Kickoff (Tucson, AZ)",FOX,Y,9:00 AM,11:00 AM,,
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,"B1G Tailgate (East Lansing, MI)",BTN,Y,9:00 AM,11:30 AM,,
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football,ACC Huddle (Live in Studio),ACCN,Y,9:00 AM,11:00 AM,,
 PGA Tour,PGA Tour,"Sat, Nov 14",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Sun, Nov 15",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,CNBC,Y,12:30 PM,3:30 PM,LPGA Tour (CME),LPGA Tour (CME)
 PGA Tour,PGA Tour,"Sun, Nov 15",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
