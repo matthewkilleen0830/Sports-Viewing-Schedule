@@ -129,15 +129,20 @@ const TEAM_COLORS = {
   "Yale": "#00356B", "Yankees": "#0C2340", "Youngstown State": "#E4002B",
 
   // Host LPGA Tour
-  "Sheshan GC": "#F75D5D", "Pine Beach Golf Links": "#F75D5D", "Kuala Lumpur": "#F75D5D",
-  "Taiheiyo Club": "#005337", "Pelican GC": "#AB9A6F", "Tiburon GC": "#D59F0F", "Lake Nona G&CC": "#b6874f",
+  "Sheshan GC": "#F75D5D", "Pine Beach Golf Links": "#F75D5D", "Kuala Lumpur": "#F75D5D", "Taiheiyo Club": "#005337", "Pelican GC": "#AB9A6F", "Tiburon GC": "#D59F0F",
+  "Lake Nona G&CC": "#b6874f", "Siam CC Old Course": "#06693a", "Sentosa Tanjong": "#0173b7", "The Clearwater Bay GC": "#33473e", "Nanea GC": "#cc7525", "Kapalua Plantation Course": "#87003a",
+  "Whirlwind GC Cattail Course": "#cf7518", "Sharon Heights Golf & CC": "#9a7a51", "Wilshire CC": "#015b01", "Mayakoba": "#71a042", "Mountain Ridge CC": "#d3b13a", "Corning CC": "#375e3f",
+  "Inverness Club": "#8a2432", "Seaview Hotel & GC": "#015a9c", "Blythefield CC": "#ab0033", "Congressional CC": "#ca992c", "Evian Resort GC": "#af0f65", "Royal St. George's GC": "#c21c1d",
+  "Royal Ottawa GC": "#004712", "TPC Boston": "#e81d25", "Lake Merced GC": "#146334", "Columbia Edgewater CC": "#397665", "Pinnacle CC": "#15284b", "Midland CC": "#305a82",
 
   // Host PGA Tour
   "Port Royal GC": "#003C80",  "Vidanta Vallarta": "#0A1F62", "Diamante El Cardonal": "#6EB0C7", "Barton Creek": "#0D503D", "Sea Island GC": "#201A0B", "PGA West": "#BF6E39",
-  "Torrey Pines GC": "#115882", "Pebble Beach GL": "#004d41", "TPC Scottsdale": "#e81d25", "The Riviera CC": "#046646", "PGA National": "#133d3c", "Trump National Doral": "#211d1d",
-  "TPC Sawgrass": "#e81d25", "Memorial Park GC": "#2d5077", "Bay Hill": "#fff200", "Augusta National GC": "#006747", "Harbour Town GL": "#D8250F", "TPC Louisiana": "#e81d25",
+  "Torrey Pines GC": "#115882", "Pebble Beach Golf Links": "#004d41", "TPC Scottsdale": "#e81d25", "The Riviera CC": "#046646", "PGA National": "#133d3c", "Trump National Doral": "#211d1d",
+  "TPC Sawgrass": "#e81d25", "Memorial Park GC": "#2d5077", "Bay Hill": "#fff200", "Augusta National GC": "#006747", "Harbour Town Golf Links": "#D8250F", "TPC Louisiana": "#e81d25",
   "TPC San Antonio": "#e81d25", "TPC Craig Ranch": "#e81d25", "PGA Frisco": "#d31d29", "Colonial GC": "#26327b", "Innisbrook Copperhead": "#B87333", "Dunes G&BC": "#f3e58a",
-  "Muirfield Village GC": "#a1a3a3",
+  "Muirfield Village GC": "#a1a3a3", "TPC Toronto": "#e81d25", "TPC River Highlands": "#e81d25", "TPC Deere Run": "#e81d25", "The Renaissance Club": "#09133c", "Hurstbourne CC": "#b18b2e",
+  "St. Andrews Old Course": "#250918", "Corales GC": "#8abc40", "TPC Twin Cities": "#e81d25", "Silverado Resort": "#3252a5", "Sedgefield CC": "#d2bb2a", "TPC Southwind": "#e81d25",
+  "Liberty National GC": "#498271", "East Lake GC": "#bb8f2d", "Adare Manor": "#9bcfce",
   
   // Host Tennis
   "Melbourne Park": "#1E8FD5", "Roland Garros": "#BB5522", "Wimbledon": "#046A38", "BJK National Tennis Center": "#FFD400",
@@ -148,6 +153,7 @@ const TEAM_COLORS = {
   "Circuit of the Americas": "#E10600",
 
   // Host Horse Racing
-  "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D", "Keeneland": "#197D5C"
+  "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D", "Keeneland": "#197D5C", "Gulfstream Park": "#010f3c", "Santa Anita Park": "#daae71",
+  "Fair Grounds Race Course": "#582e94", "Oaklawn Park": "#017ccc", "Monmouth Park Racetrack": "#075639", "Saratoga Race Course": "#ed1f2d", "Del Mar Racetrack": "#58bdec"
 
 };
