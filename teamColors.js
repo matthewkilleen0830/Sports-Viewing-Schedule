@@ -66,7 +66,7 @@ const TEAM_COLORS = {
   "Mercury": "#211747", "Merrimack": "#00205B", "Mets": "#002D72", "Miami": "#F47321", "Miami (OH)": "#C41230", "Michigan": "#00274C", "Michigan State": "#18453B", "Michigan Tech": "#FFCD00",
   "Middle Tennessee": "#0066CC", "Minnesota": "#7A003C", "Minnesota Duluth": "#4A121A", "Minnesota State": "#4B2E83", "Mississippi State": "#660000", "Missouri": "#000000", 
   "Missouri State": "#5E0009", "Montana": "#660000", "Montana State": "#00205B", "Morehead State": "#002F6C", "Morgan State": "#FF6600", "Murray State": "#002147", "Mystics": "#C8102E",
-  "Milwaukee": "#000000",
+  "Milwaukee": "#000000", "Maryland Eastern Shore": "#651D32",
   
   // N
   "Nationals": "#AB0003", "Navy": "#0C2340", "NC State": "#CC0000", "Nebraska": "#E31837", "Nets": "#000000", "Nevada": "#003366", "New Hampshire": "#00205B", "New Mexico": "#BA0C2F", 
