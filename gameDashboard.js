@@ -50,15 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "Bucks App", "Summit", "Suns Live", "MavsTV", "DAZN SAS", "MEAC Network", "DAZN CLE", "Jazz+", "Midco/Summit", "DAZN IND",
   ];
 
-  const DEFAULT_LEAGUES = [
-    "MLB",
-    "NBA",
-    "NHL",
-    "NFL",
-    "NCAA Football",
-    "NCAA Basketball (M)",
-  ];
-
   const SHARED_X_AXIS_VALS = [
     0, 60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 
     720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 
@@ -84,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentUserXRange = null; // Stores user panned/scrolled timeline position across redraws
 
   const filterState = {
-    leagues: [...DEFAULT_LEAGUES],
-    isLeagueAll: false,
+    leagues: [],
+    isLeagueAll: true,
     conferences: [],
     isConfAll: true,
     times: [],
@@ -235,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 100);
 
-    // Event Listener: Date Slicer Change (Resets timeline pan position)
+    // Event Listener: Date Slicer Change (Retains user filter selections)
     DOM.dateFilter?.addEventListener("change", () => {
       currentUserXRange = null;
       refreshAllSlicersExcept("date");
@@ -250,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change (Resets timeline pan position)
+    // Event Listener: Text Search Input Change
     DOM.searchInput?.addEventListener("input", () => {
       userHasModifiedFilters = true;
       currentUserXRange = null;
@@ -360,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
 
-      // Additive Search Filtering (Respects league, time, conference, and ranked filters instead of bypassing them)
+      // Additive Search Filtering
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -420,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
 
-      // Respect currently selected date so ranked toggle evaluates specifically for the chosen day
       if (state.date && d.Date !== state.date) {
         return false;
       }
@@ -518,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
     containerEl.scrollTop = scrollTop;
   }
 
-  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = false) {
+  function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = true) {
     const uniqueLeagues = Array.from(new Set(filteredData.map(d => d._cleanLeague))).filter(Boolean).sort();
     renderCheckboxSlicer(
       DOM.leagueFilter,
@@ -587,37 +577,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isInit) {
       userHasModifiedFilters = false;
-      if (!searchQuery) {
-        filterState.leagues = [...DEFAULT_LEAGUES];
-      }
-      filterState.isLeagueAll = false;
+      filterState.leagues = [];
+      filterState.isLeagueAll = true;
       filterState.conferences = [];
       filterState.isConfAll = true;
       filterState.times = [];
       filterState.isTimeAll = true;
       filterState.top25Only = false;
-    } else if (isDateChange && !userHasModifiedFilters) {
-      if (!searchQuery) {
-        filterState.leagues = [...DEFAULT_LEAGUES];
-      }
-      filterState.isLeagueAll = false;
-      filterState.conferences = [];
-      filterState.isConfAll = true;
-      filterState.times = [];
-      filterState.isTimeAll = true;
-      filterState.top25Only = false;
+    } else if (isDateChange) {
+      syncStateFromDOM();
     } else {
       syncStateFromDOM();
     }
 
-    if (searchQuery && (isInit || isDateChange)) {
-      const leagueSubset = getFilteredDataExcept("league");
-      const uniqueLeagues = Array.from(new Set(leagueSubset.map(d => d._cleanLeague))).filter(Boolean);
-      filterState.leagues = [...uniqueLeagues];
-      filterState.isLeagueAll = false;
-    }
-
-    updateRankedToggleState(isInit || (isDateChange && !userHasModifiedFilters));
+    updateRankedToggleState(isInit);
 
     if (isInit || targetSource !== "date") {
       const subsetWithoutDate = getFilteredDataExcept("date");
@@ -636,10 +609,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (targetSource !== "league") {
       const leagueSubset = getFilteredDataExcept("league");
-      if (searchQuery && (isInit || isDateChange)) {
-        const uniqueLeagues = Array.from(new Set(leagueSubset.map(d => d._cleanLeague))).filter(Boolean);
-        filterState.leagues = [...uniqueLeagues];
-      }
       updateLeagueSlicer(leagueSubset, filterState.leagues, filterState.isLeagueAll);
     }
 
@@ -867,7 +836,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    // Responsive narrow/tall font selection & mobile portrait check
     const isNarrow = window.innerWidth < 1200;
     const isMobilePortrait = isNarrow && window.innerHeight > window.innerWidth;
 
@@ -946,7 +914,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let rangeStart = rawRangeStart;
     let rangeEnd = rawRangeEnd;
 
-    // Retain user's panned/scrolled x-axis position if available, otherwise default to initial 3-hour window in mobile portrait
     if (currentUserXRange) {
       rangeStart = currentUserXRange[0];
       rangeEnd = currentUserXRange[1];
@@ -954,7 +921,6 @@ document.addEventListener("DOMContentLoaded", function () {
       rangeEnd = Math.min(rawRangeEnd, rangeStart + 180);
     }
 
-    // Helper to generate dynamic ticks based on current x-axis viewport range
     function getTicksForRange(rStart, rEnd) {
       const tickIndices = [];
       SHARED_X_AXIS_VALS.forEach((val, idx) => {
@@ -970,9 +936,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const initialTicks = getTicksForRange(rangeStart, rangeEnd);
 
-    // ==========================================
-    // CALCULATE "NOW" VERTICAL LINE (IF TODAY)
-    // ==========================================
     const now = new Date();
     const currentYear = now.getFullYear();
     const selectedDateText = DOM.dateFilter ? DOM.dateFilter.value : "";
@@ -1058,7 +1021,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const config = { responsive: true, displayModeBar: false };
 
     Plotly.newPlot(targetId, traces, layout, config).then(plotDiv => {
-      // Listen to pan/zoom relayout events, save user range, and synchronize both charts
       plotDiv.on('plotly_relayout', function(eventData) {
         if (window._isSyncingCharts) return;
 
@@ -1067,18 +1029,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (r0 !== undefined && r1 !== undefined) {
           window._isSyncingCharts = true;
-          currentUserXRange = [r0, r1]; // Persist scroll/pan position
+          currentUserXRange = [r0, r1];
 
           const updatedTicks = getTicksForRange(r0, r1);
 
-          // Update current chart
           Plotly.relayout(plotDiv, {
             'xaxis.range': [r0, r1],
             'xaxis.tickvals': updatedTicks.tickvals,
             'xaxis.ticktext': updatedTicks.ticktext
           });
 
-          // Sync the other chart
           const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
           const otherDiv = document.getElementById(otherId);
           if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
@@ -1102,7 +1062,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 7. GLOBAL TIMERS & EVENT LISTENERS
   // ===========================================================================
 
-  // Instantly refresh / update the "now" vertical red line every 30 seconds
   setInterval(() => {
     applyFilters();
   }, 30000);
