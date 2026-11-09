@@ -70,9 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput: document.getElementById("searchInput")
   };
 
-  // Persistent User Filter State & Modification Flag
   let userHasModifiedFilters = false;
-  let currentUserXRange = null; // Stores user panned/scrolled timeline position across redraws
+  let currentUserXRange = null;
 
   const filterState = {
     leagues: [],
@@ -81,12 +80,26 @@ document.addEventListener("DOMContentLoaded", function () {
     isConfAll: true,
     times: [],
     isTimeAll: true,
-    top25Only: false
+    top25Only: false,
+    date: null
   };
 
   // ===========================================================================
-  // 3. TIMEZONE CONVERSION UTILITY (CENTRAL TIME -> LOCAL TIME)
+  // 3. OPTIMIZED TIMEZONE CONVERSION UTILITY (MEMOIZED)
   // ===========================================================================
+
+  const chicagoFormatter = new Intl.DateTimeFormat('en-US', { 
+    timeZone: 'America/Chicago', 
+    year: 'numeric', 
+    month: 'numeric', 
+    day: 'numeric', 
+    hour: 'numeric', 
+    minute: 'numeric', 
+    second: 'numeric', 
+    hour12: false 
+  });
+
+  const offsetCache = {};
 
   function centralDateTimeToEpoch(dateStr, timeStr, currentYear) {
     if (!dateStr || !timeStr) return 0;
@@ -107,32 +120,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (ampm === 'AM' && h === 12) h = 0;
 
     const utcGuess = Date.UTC(year, month, day, h, m, 0);
+    const cacheKey = `${year}-${month}-${day}`;
     
-    const options = { 
-      timeZone: 'America/Chicago', 
-      year: 'numeric', 
-      month: 'numeric', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: 'numeric', 
-      second: 'numeric', 
-      hour12: false 
-    };
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-    const parts = formatter.formatToParts(new Date(utcGuess));
-    const chicagoParts = {};
-    parts.forEach(p => chicagoParts[p.type] = p.value);
+    let offsetMs = offsetCache[cacheKey];
+    if (offsetMs === undefined) {
+      const parts = chicagoFormatter.formatToParts(new Date(utcGuess));
+      const chicagoParts = {};
+      parts.forEach(p => chicagoParts[p.type] = p.value);
+      
+      const chicagoAsUtc = Date.UTC(
+        chicagoParts.year,
+        chicagoParts.month - 1,
+        chicagoParts.day,
+        chicagoParts.hour === 24 ? 0 : chicagoParts.hour,
+        chicagoParts.minute,
+        chicagoParts.second
+      );
+      
+      offsetMs = chicagoAsUtc - utcGuess;
+      offsetCache[cacheKey] = offsetMs;
+    }
     
-    const chicagoAsUtc = Date.UTC(
-      chicagoParts.year,
-      chicagoParts.month - 1,
-      chicagoParts.day,
-      chicagoParts.hour === 24 ? 0 : chicagoParts.hour,
-      chicagoParts.minute,
-      chicagoParts.second
-    );
-    
-    const offsetMs = chicagoAsUtc - utcGuess;
     return utcGuess - offsetMs;
   }
 
@@ -226,14 +234,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 100);
 
-    // Event Listener: Date Slicer Change (Retains user filter selections)
     DOM.dateFilter?.addEventListener("change", () => {
       currentUserXRange = null;
       refreshAllSlicersExcept("date");
       applyFilters();
     });
 
-    // Event Listener: Ranked Teams Checkbox Change
     DOM.rankedFilter?.addEventListener("change", () => {
       userHasModifiedFilters = true;
       filterState.top25Only = DOM.rankedFilter.checked;
@@ -241,7 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
-    // Event Listener: Text Search Input Change
     DOM.searchInput?.addEventListener("input", () => {
       userHasModifiedFilters = true;
       currentUserXRange = null;
@@ -346,12 +351,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
 
-      // Date Filtering
       if (!isExcluded("date") && state.date && d.Date !== state.date) {
         return false;
       }
 
-      // Additive Search Filtering
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
         const league = d.League?.toLowerCase() || "";
@@ -360,25 +363,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                              league.includes(searchQuery) ||
-                              network.includes(searchQuery) ||
-                              vConf.includes(searchQuery) ||
-                              hConf.includes(searchQuery);
+                            league.includes(searchQuery) ||
+                            network.includes(searchQuery) ||
+                            vConf.includes(searchQuery) ||
+                            hConf.includes(searchQuery);
 
-        if (!matchesSearch) {
-          return false;
-        }
+        if (!matchesSearch) return false;
       }
 
-      // League Filtering
       if (!isExcluded("league")) {
         if (!state.isLeagueAll && state.leagues.length === 0) return false;
-        if (!state.isLeagueAll) {
-          if (!state.leagues.includes(d._cleanLeague)) return false;
-        }
+        if (!state.isLeagueAll && !state.leagues.includes(d._cleanLeague)) return false;
       }
 
-      // Ranked Filtering
       if (!isExcluded("top25") && state.top25Only) {
         if (d._isNcaa) {
           const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
@@ -386,13 +383,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // Time Filtering
       if (!isExcluded("time")) {
         if (!state.isTimeAll && state.times.length === 0) return false;
         if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
       }
 
-      // Conference Filtering
       if (!isExcluded("conference")) {
         if (d._isNcaa && !state.isConfAll) {
           if (state.conferences.length === 0) return false;
@@ -411,9 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.gameData.filter(d => {
       if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
 
-      if (state.date && d.Date !== state.date) {
-        return false;
-      }
+      if (state.date && d.Date !== state.date) return false;
 
       if (searchQuery) {
         const matchup = d.Matchup?.toLowerCase() || "";
@@ -573,7 +566,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const isInit = (targetSource === null);
     const isDateChange = (targetSource === "date");
     const currentSelectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
-    const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim() : "";
 
     if (isInit) {
       userHasModifiedFilters = false;
@@ -584,15 +576,13 @@ document.addEventListener("DOMContentLoaded", function () {
       filterState.times = [];
       filterState.isTimeAll = true;
       filterState.top25Only = false;
-    } else if (isDateChange) {
-      syncStateFromDOM();
     } else {
       syncStateFromDOM();
     }
 
     updateRankedToggleState(isInit);
 
-    if (isInit || targetSource !== "date") {
+    if (isInit || !isDateChange) {
       const subsetWithoutDate = getFilteredDataExcept("date");
       const dateSourceData = (subsetWithoutDate.length > 0) ? subsetWithoutDate : window.gameData;
       const firstMatchDate = getFirstAvailableDate(dateSourceData);
@@ -629,40 +619,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
-
     if (uniqueDates.length === 0) return null;
 
     const parsedDates = uniqueDates.map(dateStr => {
       let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
-
       if (!/\b20\d{2}\b/.test(cleanStr)) {
         cleanStr = `${cleanStr}, ${currentYear}`;
       }
-
       const parsed = new Date(cleanStr);
       const normalized = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
-
       return { originalStr: dateStr, parsedDate: normalized };
     });
 
     parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
 
     const todayItem = parsedDates.find(item => item.parsedDate.getTime() === startOfToday.getTime());
-
     if (todayItem) {
       const todaysGames = allData.filter(d => d.Date === todayItem.originalStr);
       if (todaysGames.length > 0) {
         let maxEndMinutes = -1;
         todaysGames.forEach(g => {
-          if (g._endMins > maxEndMinutes) {
-            maxEndMinutes = g._endMins;
-          }
+          if (g._endMins > maxEndMinutes) maxEndMinutes = g._endMins;
         });
 
         if (maxEndMinutes !== -1) {
           const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
           const thresholdTime = new Date(latestEndDateTime.getTime() + 15 * 60000);
-
           if (now.getTime() < thresholdTime.getTime()) {
             return todayItem.originalStr;
           }
@@ -678,8 +660,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateDateSlicerOptions(filteredData, selectedDate) {
     const uniqueDates = Array.from(new Set(filteredData.map(d => d.Date))).filter(Boolean);
-
     const currentYear = new Date().getFullYear();
+
     uniqueDates.sort((a, b) => {
       let cleanA = a.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
       let cleanB = b.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
@@ -751,16 +733,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#D3D3D3';
-
-    if (!matchup.toLowerCase().includes(' at ')) {
-      return '#C28C19';
-    }
+    if (!matchup.toLowerCase().includes(' at ')) return '#C28C19';
 
     const parts = matchup.split(/\s+at\s+/i);
     if (parts.length < 2) return '#D3D3D3';
 
     const homeTeamRaw = parts[parts.length - 1].trim();
-
     if (typeof TEAM_COLORS !== 'undefined' && Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
       return TEAM_COLORS[homeTeamRaw];
     }
@@ -809,7 +787,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
+  // 6. CHART RENDERING & VISUALIZATION (PLOTLY - OPTIMIZED WITH PLOTLY.REACT)
   // ===========================================================================
 
   function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500]) {
@@ -817,7 +795,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!data || data.length === 0) {
       container.style.height = '120px';
-      Plotly.newPlot(targetId, [], {
+      Plotly.react(targetId, [], {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
@@ -867,9 +845,7 @@ document.addEventListener("DOMContentLoaded", function () {
           x: [duration],
           base: [game._startMins],
           name: game.Matchup,
-          textfont: {
-            size: isNarrow ? 14 : 16,
-          },
+          textfont: { size: isNarrow ? 14 : 16 },
           marker: { 
             color: teamHexColor,
             line: { color: '#eab308', width: 1.25 },
@@ -883,10 +859,7 @@ document.addEventListener("DOMContentLoaded", function () {
             color: '#ffffff'
           },
           hoverlabel: {
-            font: {
-              family: 'Segoe UI, Arial, sans-serif',
-              size: 20,
-            },
+            font: { family: 'Segoe UI, Arial, sans-serif', size: 20 },
             bgcolor: teamHexColor
           },
           hovertemplate:
@@ -894,9 +867,7 @@ document.addEventListener("DOMContentLoaded", function () {
             'League: ' + game.League + '<br>' +
             'Live Broadcast: ' + network + '<br>' +
             'Scheduled Start: %{customdata[0]}<extra></extra>',
-          customdata: [[
-            game.Start_Time
-          ]]
+          customdata: [[game.Start_Time]]
         });
       });
     });
@@ -960,10 +931,7 @@ document.addEventListener("DOMContentLoaded", function () {
         x1: currentMins,
         y0: 0,
         y1: 1,
-        line: {
-          color: '#ff0000',
-          width: 0.75
-        }
+        line: { color: '#ff0000', width: 0.75 }
       });
     }
 
@@ -972,16 +940,10 @@ document.addEventListener("DOMContentLoaded", function () {
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       barmode: 'stack',
-      bargap: 0.15,            
+      bargap: 0.15,      
       autosize: true,
       shapes: shapes,
-      margin: {
-        l: 67,
-        r: 0,
-        t: TOP_MARGIN,
-        b: BOTTOM_MARGIN,
-        pad: 0
-      },
+      margin: { l: 67, r: 0, t: TOP_MARGIN, b: BOTTOM_MARGIN, pad: 0 },
       automargin: false,
       dragmode: isMobilePortrait ? 'pan' : false,
       xaxis: {
@@ -1020,41 +982,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = { responsive: true, displayModeBar: false };
 
-    Plotly.newPlot(targetId, traces, layout, config).then(plotDiv => {
-      plotDiv.on('plotly_relayout', function(eventData) {
-        if (window._isSyncingCharts) return;
+    // Use Plotly.react for high-performance updates without full DOM teardown
+    Plotly.react(targetId, traces, layout, config).then(plotDiv => {
+      if (!plotDiv._hasRelayoutListener) {
+        plotDiv._hasRelayoutListener = true;
+        plotDiv.on('plotly_relayout', function(eventData) {
+          if (window._isSyncingCharts) return;
 
-        const r0 = eventData['xaxis.range[0]'];
-        const r1 = eventData['xaxis.range[1]'];
+          const r0 = eventData['xaxis.range[0]'];
+          const r1 = eventData['xaxis.range[1]'];
 
-        if (r0 !== undefined && r1 !== undefined) {
-          window._isSyncingCharts = true;
-          currentUserXRange = [r0, r1];
+          if (r0 !== undefined && r1 !== undefined) {
+            window._isSyncingCharts = true;
+            currentUserXRange = [r0, r1];
 
-          const updatedTicks = getTicksForRange(r0, r1);
+            const updatedTicks = getTicksForRange(r0, r1);
 
-          Plotly.relayout(plotDiv, {
-            'xaxis.range': [r0, r1],
-            'xaxis.tickvals': updatedTicks.tickvals,
-            'xaxis.ticktext': updatedTicks.ticktext
-          });
-
-          const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
-          const otherDiv = document.getElementById(otherId);
-          if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
-            const otherTicks = getTicksForRange(r0, r1);
-            Plotly.relayout(otherDiv, {
+            Plotly.relayout(plotDiv, {
               'xaxis.range': [r0, r1],
-              'xaxis.tickvals': otherTicks.tickvals,
-              'xaxis.ticktext': otherTicks.ticktext
+              'xaxis.tickvals': updatedTicks.tickvals,
+              'xaxis.ticktext': updatedTicks.ticktext
             });
-          }
 
-          setTimeout(() => {
-            window._isSyncingCharts = false;
-          }, 50);
-        }
-      });
+            const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
+            const otherDiv = document.getElementById(otherId);
+            if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
+              const otherTicks = getTicksForRange(r0, r1);
+              Plotly.relayout(otherDiv, {
+                'xaxis.range': [r0, r1],
+                'xaxis.tickvals': otherTicks.tickvals,
+                'xaxis.ticktext': otherTicks.ticktext
+              });
+            }
+
+            setTimeout(() => {
+              window._isSyncingCharts = false;
+            }, 50);
+          }
+        });
+      }
     });
   }
 
