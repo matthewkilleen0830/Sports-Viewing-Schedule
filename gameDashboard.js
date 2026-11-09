@@ -901,7 +901,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    const ROW_HEIGHT = 37;
+    const ROW_HEIGHT = 45;
     const TOP_MARGIN = 45;
     const BOTTOM_MARGIN = 29;
     
