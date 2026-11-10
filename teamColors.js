@@ -154,6 +154,9 @@ const TEAM_COLORS = {
 
   // Host Horse Racing
   "Churchill Downs": "#D6964A", "Pimlico Race Course": "#F5D033", "Belmont Park": "#04663D", "Keeneland": "#197D5C", "Gulfstream Park": "#010f3c", "Santa Anita Park": "#daae71",
-  "Fair Grounds Race Course": "#582e94", "Oaklawn Park": "#017ccc", "Monmouth Park Racetrack": "#075639", "Saratoga Race Course": "#ed1f2d", "Del Mar Racetrack": "#58bdec"
+  "Fair Grounds Race Course": "#582e94", "Oaklawn Park": "#017ccc", "Monmouth Park Racetrack": "#075639", "Saratoga Race Course": "#ed1f2d", "Del Mar Racetrack": "#58bdec",
+
+  // Host Stadiums
+  "Lucas Oil Stadium": "#058acd", "AT&T Stadium": "#ac1f2d", "Bank of America Stadium": "#013ba6", "Ford Field": "#00a160", "Mercedes-Benz Stadium": "#1d366c"
 
 };
