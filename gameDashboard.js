@@ -732,8 +732,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getHomeTeamColor(matchup) {
-    if (!matchup) return '#D3D3D3';
-    if (!matchup.toLowerCase().includes(' at ')) return '#C28C19';
+    if (!matchup) return '#D3D3D3';  // if home team not found in teamColors.js
+
+    if (/\bBowl\b/.test(matchup)) return '#FFFFFF'; // if exactly "Bowl" is found in matchup string
+
+    // Pregame or other Shows
+    if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; // if exactly "Big Noon Kickoff" is found in matchup string
+    if (/\bCollege GameDay\b/.test(matchup)) return '#f16722'; // if exactly "College GameDay" is found in matchup string
+    if (/\bACC Huddle\b/.test(matchup)) return '#017684'; // if exactly "ACC Huddle" is found in matchup string
+    if (/\bSEC Nation\b/.test(matchup)) return '#1d366c'; // if exactly "SEC Nation" is found in matchup string
+    if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; // if exactly "B1G Tailgate" is found in matchup string
+    if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; // if exactly "CFP Rankings" is found in matchup string
+
+    // if (!matchup.toLowerCase().includes(' at ')) return '#C28C19'; // if matchup string does not include " at "
 
     const parts = matchup.split(/\s+at\s+/i);
     if (parts.length < 2) return '#D3D3D3';
