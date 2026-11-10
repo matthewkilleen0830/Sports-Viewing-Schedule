@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "CACC Net", "FloSports", "Prime Video", "ACCNX", "SECN+", "America East", "FloCollege", "MEAC Net", "N/A", "MW+", "-- TBA --", "",
     "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV", "SLN", "BlazerVision",
     "DAZN MIN", "Thunder App", "Pelicans.com", "DAZN MEM", "ClipperVision", "DAZN (YES)",
-    "Bucks App", "Summit", "Suns Live", "MavsTV", "DAZN SAS", "MEAC Network", "DAZN CLE", "Jazz+", "Midco/Summit", "DAZN IND", "NEC Front Row"
+    "Bucks App", "Summit", "Suns Live", "MavsTV", "DAZN SAS", "MEAC Network", "DAZN CLE", "Jazz+", "Midco/Summit", "DAZN IND", "NEC Front Row",
+    "Paramount+"
   ];
 
   const SHARED_X_AXIS_VALS = [
@@ -732,9 +733,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getHomeTeamColor(matchup) {
-    if (!matchup) return '#D3D3D3';  // if home team not found in teamColors.js
+    if (!matchup) return '#FFFFFF';  // if home team not found in teamColors.js
 
-    if (/\bBowl\b/.test(matchup)) return '#FFFFFF'; // if exactly "Bowl" is found in matchup string
+    if (/\bBowl\b/.test(matchup)) return '#1E3A8A'; // if exactly "Bowl" is found in matchup string
 
     // Pregame or other Shows
     if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; // if exactly "Big Noon Kickoff" is found in matchup string
@@ -743,11 +744,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (/\bSEC Nation\b/.test(matchup)) return '#1d366c'; // if exactly "SEC Nation" is found in matchup string
     if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; // if exactly "B1G Tailgate" is found in matchup string
     if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; // if exactly "CFP Rankings" is found in matchup string
+    
+    if (/\bUFC\b/.test(matchup)) return '#d20a0a'; // if exactly "UFC" is found in matchup string
+
+    if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1'; // if exactly "NCAA Tournament Selection Show" is found in matchup string
+
+    if (/\bLive From\b/.test(matchup)) return '#003a6f'; // if exactly "Live From" is found in matchup string
+    if (/\bBreakfast\b/.test(matchup)) return '#593987'; // if exactly "Breakfast" is found in matchup string; overrides " at " color matching
+    if (/\bNASCAR RaceDay\b/.test(matchup)) return '#E4002B'; // if exactly "NASCAR RaceDay" is found in matchup string; overrides " at " color matching
+
+
+    // Neutral site handler for non-Bowl Games
+    // if (/\b vs \b/.test(matchup)) return '#000000'; // if exactly " vs " is found in matchup string
 
     // if (!matchup.toLowerCase().includes(' at ')) return '#C28C19'; // if matchup string does not include " at "
 
     const parts = matchup.split(/\s+at\s+/i);
-    if (parts.length < 2) return '#D3D3D3';
+    if (parts.length < 2) return '#FFFFFF';
 
     const homeTeamRaw = parts[parts.length - 1].trim();
     if (typeof TEAM_COLORS !== 'undefined' && Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
