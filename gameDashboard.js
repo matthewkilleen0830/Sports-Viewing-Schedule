@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleBtn.classList.add("attention-flash");
     setTimeout(() => {
       toggleBtn.classList.remove("attention-flash");
-    }, 5600);
+    }, 15000);
 
     toggleBtn.addEventListener("click", function () {
       sidebar.classList.toggle("collapsed");
