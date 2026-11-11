@@ -21,7 +21,7 @@ Check out the live interactive application hosted on GitHub Pages:
   * **Cross-Chart Timeline Synchronization**: Panning, scrolling, or scrubbing either the Linear Broadcast or Digital Streaming chart dynamically moves both visualization grids in lockstep.
   * **Persistent Viewport Position**: Remembers and retains the user's panned and scrolled horizontal timeline viewport position across state changes, sidebar toggles, and minor redraws, eliminating unwanted jumps.
   * **Expanded 24-Hour Timeline & Gridlines**: Comprehensive time axis configuration fully supporting international time zones and early-morning schedule shifts (such as 2:00 AM and 3:00 AM local time) complete with vertical gridlines.
-  * **Post-Game Filtering**: Automatically filters out completed games past their scheduled windows (but including 15 minutes for possible OT) to eliminate dead air.
+  * **Post-Game Filtering**: Automatically filters out completed games an hour past their scheduled windows to both allow for delayed starts, abnormally long games, overtime period(s), and to eliminate dead air.
 - **Dynamic Mobile Portrait View & Axis Redesign**:
   * **Focused Initial Window & Touch Panning**: Mobile portrait layouts default to an initial focused 3-hour (180-minute) window equipped with smooth touch-panning (`dragmode: 'pan'`) and vertical page-scroll support (`touch-action: pan-y`).
   * **Snug Axis Margins**: Fixed y-axis layout configuration (`automargin: false` with custom margin bounds) that eliminates excessive side whitespace and pulls broadcast network labels snugly against the container edge.
