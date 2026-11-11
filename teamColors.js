@@ -13,7 +13,7 @@ const TEAM_COLORS = {
   "Ball State": "#BA0C2F", "Baylor": "#154734", "Bears": "#0B162A", "Bemidji State": "#004B49", "Bengals": "#FB4F14", "Bentley": "#00205B", "Bills": "#00338D", "Blackhawks": "#CF0A2C",
   "Blue Jackets": "#002654", "Blue Jays": "#134A8E", "Blues": "#002F87", "Boise State": "#0033A0", "Boston College": "#98002E", "Boston University": "#CC0000", "Bowling Green": "#4F2C1D", 
   "Braves": "#13274F", "Brewers": "#0A2351", "Broncos": "#FB4F14", "Brown": "#4E3629", "Browns": "#311D00", "Bruins": "#FFB81C", "Buccaneers": "#D50A0A", "Bucknell": "#003865",
-  "Bucks": "#00471B", "Buffalo": "#005BBB", "Bulls": "#CE1141", "Butler": "#002D62", "BYU": "#0062B8", 
+  "Bucks": "#00471B", "Buffalo": "#005BBB", "Bulls": "#CE1141", "Butler": "#002D62", "BYU": "#0062B8", "Belmont": "#C8102E",
   
   // C
   "Cal": "#002676", "Cal Poly": "#003831", "Canadiens": "#AF1E2D", "Canisius": "#002D62", "Canucks": "#00205B", "Capitals": "#C8102E", "Cardinals": "#C41E3A", "AZ Cardinals": "#97233F", 
