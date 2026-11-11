@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
     const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 15 * 60000;
+    const thresholdTimestamp = gameEndTimestamp + 20 * 60000;  // minutes after scheduled end to filter out matchup
 
     return nowTime >= thresholdTimestamp;
   }
