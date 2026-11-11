@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "XAVIER+", "NBA LP", "MNMT", "Apple TV", "Patriot League TV", "SLN", "BlazerVision",
     "DAZN MIN", "Thunder App", "Pelicans.com", "DAZN MEM", "ClipperVision", "DAZN (YES)",
     "Bucks App", "Summit", "Suns Live", "MavsTV", "DAZN SAS", "MEAC Network", "DAZN CLE", "Jazz+", "Midco/Summit", "DAZN IND", "NEC Front Row",
-    "Paramount+"
+    "Paramount+", "PTB Live"
   ];
 
   const SHARED_X_AXIS_VALS = [
