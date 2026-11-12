@@ -68,6 +68,18 @@ document.addEventListener("DOMContentLoaded", function () {
     rankedFilter: document.getElementById("rankedFilter"),
     timeFilter: document.getElementById("timeFilter"),
     conferenceFilter: document.getElementById("conferenceFilter"),
+    networkDropdown: document.getElementById("networkDropdown"),
+    networkDropdownBtn: document.getElementById("networkDropdownBtn"),
+    networkDropdownMenu: document.getElementById("networkDropdownMenu"),
+    networkFilter: document.getElementById("networkFilter"),
+    networkSearchInput: document.getElementById("networkSearchInput"),
+    networkSearchClear: document.getElementById("networkSearchClear"),
+    matchupDropdown: document.getElementById("matchupDropdown"),
+    matchupDropdownBtn: document.getElementById("matchupDropdownBtn"),
+    matchupDropdownMenu: document.getElementById("matchupDropdownMenu"),
+    matchupFilter: document.getElementById("matchupFilter"),
+    matchupSearchInput: document.getElementById("matchupSearchInput"),
+    matchupSearchClear: document.getElementById("matchupSearchClear"),
     searchInput: document.getElementById("searchInput")
   };
 
@@ -81,9 +93,81 @@ document.addEventListener("DOMContentLoaded", function () {
     isConfAll: true,
     times: [],
     isTimeAll: true,
+    networks: [],
+    isNetworkAll: true,
+    matchups: [],
+    isMatchupAll: true,
     top25Only: false,
     date: null
   };
+
+  // ===========================================================================
+  // EXCEL-STYLE DROPDOWN OPEN / CLOSE / OUTSIDE-CLICK HANDLERS
+  // ===========================================================================
+
+  function setupExcelDropdown(dropdownEl, btnEl, menuEl, searchInputEl, clearBtnEl) {
+    if (!dropdownEl || !btnEl || !menuEl) return;
+
+    btnEl.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = menuEl.classList.contains("show");
+
+      // Close any other open Excel dropdowns first
+      document.querySelectorAll(".excel-dropdown-menu.show").forEach(m => {
+        m.classList.remove("show");
+        m.previousElementSibling?.setAttribute("aria-expanded", "false");
+      });
+
+      if (!isOpen) {
+        menuEl.classList.add("show");
+        btnEl.setAttribute("aria-expanded", "true");
+        if (searchInputEl) {
+          setTimeout(() => searchInputEl.focus(), 10);
+        }
+      }
+    });
+
+    menuEl.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    if (searchInputEl && clearBtnEl) {
+      searchInputEl.addEventListener("input", () => {
+        clearBtnEl.classList.toggle("d-none", searchInputEl.value.length === 0);
+      });
+
+      clearBtnEl.addEventListener("click", (e) => {
+        e.stopPropagation();
+        searchInputEl.value = "";
+        clearBtnEl.classList.add("d-none");
+        searchInputEl.dispatchEvent(new Event("input"));
+        searchInputEl.focus();
+      });
+    }
+  }
+
+  setupExcelDropdown(
+    DOM.networkDropdown,
+    DOM.networkDropdownBtn,
+    DOM.networkDropdownMenu,
+    DOM.networkSearchInput,
+    DOM.networkSearchClear
+  );
+
+  setupExcelDropdown(
+    DOM.matchupDropdown,
+    DOM.matchupDropdownBtn,
+    DOM.matchupDropdownMenu,
+    DOM.matchupSearchInput,
+    DOM.matchupSearchClear
+  );
+
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".excel-dropdown-menu.show").forEach(menu => {
+      menu.classList.remove("show");
+      menu.previousElementSibling?.setAttribute("aria-expanded", "false");
+    });
+  });
 
   // ===========================================================================
   // 3. OPTIMIZED TIMEZONE CONVERSION UTILITY (MEMOIZED)
@@ -248,6 +332,16 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     });
 
+    DOM.networkSearchInput?.addEventListener("input", () => {
+      const subset = getFilteredDataExcept("network");
+      updateNetworkSlicer(subset);
+    });
+
+    DOM.matchupSearchInput?.addEventListener("input", () => {
+      const subset = getFilteredDataExcept("matchup");
+      updateMatchupSlicer(subset);
+    });
+
     DOM.searchInput?.addEventListener("input", () => {
       userHasModifiedFilters = true;
       currentUserXRange = null;
@@ -319,6 +413,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
       ).map(cb => cb.value);
     }
+    // Note: filterState.networks & filterState.matchups are managed directly
+    // by the Excel dropdown event handlers so search filtering never wipes hidden selections.
   }
 
   function getActiveSelections() {
@@ -330,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
     const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 40 * 60000;  // 40 minutes after scheduled end to filter out matchup
+    const thresholdTimestamp = gameEndTimestamp + 40 * 60000; 
 
     return nowTime >= thresholdTimestamp;
   }
@@ -394,6 +490,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (state.conferences.length === 0) return false;
           if (!state.conferences.includes(d._cleanVisitorConf) && !state.conferences.includes(d._cleanHomeConf)) return false;
         }
+      }
+
+      if (!isExcluded("network")) {
+        if (!state.isNetworkAll && state.networks.length === 0) return false;
+        if (!state.isNetworkAll && !state.networks.includes(d.TV_Network)) return false;
+      }
+
+      if (!isExcluded("matchup")) {
+        if (!state.isMatchupAll && state.matchups.length === 0) return false;
+        if (!state.isMatchupAll && !state.matchups.includes(d.Matchup)) return false;
       }
 
       return true;
@@ -502,13 +608,166 @@ document.addEventListener("DOMContentLoaded", function () {
     containerEl.scrollTop = scrollTop;
   }
 
+  // ===========================================================================
+  // EXCEL-STYLE DROPDOWN RENDERER (WITH SEARCH-AWARE SELECT ALL & SUMMARY TEXT)
+  // ===========================================================================
+
+  function updateExcelButtonLabel(btnEl, allLabel, allItems, selectedSet, isAllState) {
+    if (!btnEl) return;
+    const textSpan = btnEl.querySelector(".excel-btn-text");
+    if (!textSpan) return;
+
+    if (isAllState || (allItems.length > 0 && selectedSet.size === allItems.length)) {
+      textSpan.textContent = allLabel;
+    } else if (selectedSet.size === 0) {
+      textSpan.textContent = "None selected";
+    } else if (selectedSet.size === 1) {
+      textSpan.textContent = Array.from(selectedSet)[0];
+    } else {
+      textSpan.textContent = `${selectedSet.size} selected`;
+    }
+  }
+
+  function renderExcelDropdownSlicer({
+    containerEl,
+    btnEl,
+    searchInputEl,
+    allId,
+    itemClass,
+    allLabel,
+    allItems,
+    stateKeyAll,
+    stateKeyList,
+    onChangeCallback
+  }) {
+    if (!containerEl) return;
+
+    const scrollTop = containerEl.scrollTop;
+    containerEl.innerHTML = "";
+
+    const query = searchInputEl ? searchInputEl.value.trim().toLowerCase() : "";
+    const visibleItems = query
+      ? allItems.filter(item => item.toLowerCase().includes(query))
+      : allItems;
+
+    // Build active selection Set from filterState
+    const isAllState = filterState[stateKeyAll];
+    const selectedSet = isAllState
+      ? new Set(allItems)
+      : new Set(filterState[stateKeyList].filter(v => allItems.includes(v)));
+
+    updateExcelButtonLabel(btnEl, allLabel, allItems, selectedSet, isAllState);
+
+    if (allItems.length === 0) {
+      containerEl.innerHTML = `<div class="text-muted small p-2">No items available</div>`;
+      return;
+    }
+
+    if (visibleItems.length === 0) {
+      containerEl.innerHTML = `<div class="text-muted small p-2">No matches for "${searchInputEl.value}"</div>`;
+      return;
+    }
+
+    // Master "(Select All)" or "(Select All Search Results)" checkbox
+    const allVisibleChecked = visibleItems.every(item => selectedSet.has(item));
+    const someVisibleChecked = visibleItems.some(item => selectedSet.has(item));
+    const masterLabelText = query ? `(Select All Search Results)` : `(Select All)`;
+
+    const allDiv = document.createElement("div");
+    allDiv.className = "form-check excel-select-all";
+    allDiv.innerHTML = `
+      <input class="form-check-input" type="checkbox" id="${allId}" ${allVisibleChecked ? 'checked' : ''}>
+      <label class="form-check-label fw-bold" for="${allId}">${masterLabelText}</label>
+    `;
+    containerEl.appendChild(allDiv);
+
+    const allCheckbox = document.getElementById(allId);
+    if (allCheckbox && !allVisibleChecked && someVisibleChecked) {
+      allCheckbox.indeterminate = true;
+    }
+
+    visibleItems.forEach((item, idx) => {
+      const isChecked = selectedSet.has(item);
+      const div = document.createElement("div");
+      div.className = "form-check excel-item-row";
+      div.innerHTML = `
+        <input class="form-check-input ${itemClass}" type="checkbox" value="${item.replace(/"/g, '&quot;')}" id="${allId}_${idx}" ${isChecked ? 'checked' : ''}>
+        <label class="form-check-label" for="${allId}_${idx}">${item}</label>
+      `;
+      containerEl.appendChild(div);
+    });
+
+    const itemCheckboxes = containerEl.querySelectorAll(`.${itemClass}`);
+
+    function commitSelectionSet(nextSet) {
+      if (nextSet.size === allItems.length && allItems.length > 0) {
+        filterState[stateKeyAll] = true;
+        filterState[stateKeyList] = [];
+      } else {
+        filterState[stateKeyAll] = false;
+        filterState[stateKeyList] = Array.from(nextSet);
+      }
+      updateExcelButtonLabel(btnEl, allLabel, allItems, nextSet, filterState[stateKeyAll]);
+    }
+
+    allCheckbox?.addEventListener("change", (e) => {
+      userHasModifiedFilters = true;
+      const shouldSelect = e.target.checked;
+      const nextSet = new Set(selectedSet);
+
+      visibleItems.forEach(item => {
+        if (shouldSelect) {
+          nextSet.add(item);
+        } else {
+          nextSet.delete(item);
+        }
+      });
+
+      itemCheckboxes.forEach(cb => cb.checked = shouldSelect);
+      allCheckbox.indeterminate = false;
+
+      commitSelectionSet(nextSet);
+      onChangeCallback();
+    });
+
+    itemCheckboxes.forEach(cb => {
+      cb.addEventListener("change", (e) => {
+        userHasModifiedFilters = true;
+        const val = e.target.value;
+        const nextSet = new Set(selectedSet);
+
+        if (e.target.checked) {
+          nextSet.add(val);
+        } else {
+          nextSet.delete(val);
+        }
+
+        // Update local reference for subsequent clicks before full re-render
+        selectedSet.clear();
+        nextSet.forEach(v => selectedSet.add(v));
+
+        const nowAllVis = visibleItems.every(item => nextSet.has(item));
+        const nowSomeVis = visibleItems.some(item => nextSet.has(item));
+        if (allCheckbox) {
+          allCheckbox.checked = nowAllVis;
+          allCheckbox.indeterminate = !nowAllVis && nowSomeVis;
+        }
+
+        commitSelectionSet(nextSet);
+        onChangeCallback();
+      });
+    });
+
+    containerEl.scrollTop = scrollTop;
+  }
+
   function updateLeagueSlicer(filteredData, selectedLeagues = [], isAllChecked = true) {
     const uniqueLeagues = Array.from(new Set(filteredData.map(d => d._cleanLeague))).filter(Boolean).sort();
     renderCheckboxSlicer(
       DOM.leagueFilter,
       "league_all",
       "league-checkbox",
-      "All Leagues",
+      "All Sports/Leagues",
       uniqueLeagues,
       selectedLeagues,
       isAllChecked,
@@ -563,6 +822,44 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  function updateNetworkSlicer(filteredData) {
+    const uniqueNetworks = Array.from(new Set(filteredData.map(d => d.TV_Network))).filter(Boolean).sort();
+    renderExcelDropdownSlicer({
+      containerEl: DOM.networkFilter,
+      btnEl: DOM.networkDropdownBtn,
+      searchInputEl: DOM.networkSearchInput,
+      allId: "network_all",
+      itemClass: "network-checkbox",
+      allLabel: "All Networks/Platforms",
+      allItems: uniqueNetworks,
+      stateKeyAll: "isNetworkAll",
+      stateKeyList: "networks",
+      onChangeCallback: () => {
+        refreshAllSlicersExcept("network");
+        applyFilters();
+      }
+    });
+  }
+
+  function updateMatchupSlicer(filteredData) {
+    const uniqueMatchups = Array.from(new Set(filteredData.map(d => d.Matchup))).filter(Boolean).sort();
+    renderExcelDropdownSlicer({
+      containerEl: DOM.matchupFilter,
+      btnEl: DOM.matchupDropdownBtn,
+      searchInputEl: DOM.matchupSearchInput,
+      allId: "matchup_all",
+      itemClass: "matchup-checkbox",
+      allLabel: "All Matchups/Events",
+      allItems: uniqueMatchups,
+      stateKeyAll: "isMatchupAll",
+      stateKeyList: "matchups",
+      onChangeCallback: () => {
+        refreshAllSlicersExcept("matchup");
+        applyFilters();
+      }
+    });
+  }
+
   function refreshAllSlicersExcept(targetSource = null) {
     const isInit = (targetSource === null);
     const isDateChange = (targetSource === "date");
@@ -576,7 +873,16 @@ document.addEventListener("DOMContentLoaded", function () {
       filterState.isConfAll = true;
       filterState.times = [];
       filterState.isTimeAll = true;
+      filterState.networks = [];
+      filterState.isNetworkAll = true;
+      filterState.matchups = [];
+      filterState.isMatchupAll = true;
       filterState.top25Only = false;
+
+      if (DOM.networkSearchInput) DOM.networkSearchInput.value = "";
+      if (DOM.networkSearchClear) DOM.networkSearchClear.classList.add("d-none");
+      if (DOM.matchupSearchInput) DOM.matchupSearchInput.value = "";
+      if (DOM.matchupSearchClear) DOM.matchupSearchClear.classList.add("d-none");
     } else {
       syncStateFromDOM();
     }
@@ -611,6 +917,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (targetSource !== "conference") {
       const confSubset = getFilteredDataExcept(["date", "conference"]);
       updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
+    }
+
+    if (targetSource !== "network") {
+      const networkSubset = getFilteredDataExcept("network");
+      updateNetworkSlicer(networkSubset);
+    }
+
+    if (targetSource !== "matchup") {
+      const matchupSubset = getFilteredDataExcept("matchup");
+      updateMatchupSlicer(matchupSubset);
     }
   }
 
@@ -733,31 +1049,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getHomeTeamColor(matchup) {
-    if (!matchup) return '#FFFFFF';  // if home team not found in teamColors.js
+    if (!matchup) return '#FFFFFF'; 
 
-    if (/\bBowl\b/.test(matchup)) return '#1E3A8A'; // if exactly "Bowl" is found in matchup string
+    if (/\bBowl\b/.test(matchup)) return '#1E3A8A'; 
 
-    // Pregame or other Shows
-    if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; // if exactly "Big Noon Kickoff" is found in matchup string
-    if (/\bCollege GameDay\b/.test(matchup)) return '#f16722'; // if exactly "College GameDay" is found in matchup string
-    if (/\bACC Huddle\b/.test(matchup)) return '#017684'; // if exactly "ACC Huddle" is found in matchup string
-    if (/\bSEC Nation\b/.test(matchup)) return '#1d366c'; // if exactly "SEC Nation" is found in matchup string
-    if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; // if exactly "B1G Tailgate" is found in matchup string
-    if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; // if exactly "CFP Rankings" is found in matchup string
+    if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; 
+    if (/\bCollege GameDay\b/.test(matchup)) return '#f16722'; 
+    if (/\bACC Huddle\b/.test(matchup)) return '#017684'; 
+    if (/\bSEC Nation\b/.test(matchup)) return '#1d366c'; 
+    if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; 
+    if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; 
     
-    if (/\bUFC\b/.test(matchup)) return '#d20a0a'; // if exactly "UFC" is found in matchup string
+    if (/\bUFC\b/.test(matchup)) return '#d20a0a'; 
 
-    if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1'; // if exactly "NCAA Tournament Selection Show" is found in matchup string
+    if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1'; 
 
-    if (/\bLive From\b/.test(matchup)) return '#003a6f'; // if exactly "Live From" is found in matchup string
-    if (/\bBreakfast\b/.test(matchup)) return '#593987'; // if exactly "Breakfast" is found in matchup string; overrides " at " color matching
-    if (/\bNASCAR RaceDay\b/.test(matchup)) return '#E4002B'; // if exactly "NASCAR RaceDay" is found in matchup string; overrides " at " color matching
-
-
-    // Neutral site handler for non-Bowl Games
-    // if (/\b vs \b/.test(matchup)) return '#000000'; // if exactly " vs " is found in matchup string
-
-    // if (!matchup.toLowerCase().includes(' at ')) return '#C28C19'; // if matchup string does not include " at "
+    if (/\bLive From\b/.test(matchup)) return '#003a6f'; 
+    if (/\bBreakfast\b/.test(matchup)) return '#593987'; 
+    if (/\bNASCAR RaceDay\b/.test(matchup)) return '#E4002B'; 
 
     const parts = matchup.split(/\s+at\s+/i);
     if (parts.length < 2) return '#FFFFFF';
@@ -913,7 +1222,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rangeStart = currentUserXRange[0];
       rangeEnd = currentUserXRange[1];
     } else if (isMobilePortrait) {
-      rangeEnd = Math.min(rawRangeEnd, rangeStart + 165); // 2:45 timeline window for mobile portrait
+      rangeEnd = Math.min(rawRangeEnd, rangeStart + 165); 
     }
 
     function getTicksForRange(rStart, rEnd) {
@@ -1006,7 +1315,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const config = { responsive: true, displayModeBar: false };
 
-    // Use Plotly.react for high-performance updates without full DOM teardown
     Plotly.react(targetId, traces, layout, config).then(plotDiv => {
       if (!plotDiv._hasRelayoutListener) {
         plotDiv._hasRelayoutListener = true;
