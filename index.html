@@ -101,6 +101,12 @@
           <h5 class="mb-3">Selections</h5>
 
           <!-- Text Search Global Override Filter -->
+          <style>
+            #searchInput::placeholder {
+              color: #5d5f61;
+              opacity: 1;
+            }
+          </style>
           <div class="mb-3">
             <label for="searchInput" class="form-label fw-semibold">Team Search</label>
             <input type="text" id="searchInput" class="form-control" placeholder="Search teams...">
@@ -114,7 +120,7 @@
 
           <!-- Sports League Dynamic Filter Container -->
           <div class="mb-3">
-            <label class="form-label fw-semibold">Sports League</label>
+            <label class="form-label fw-semibold">Sport/League</label>
             <div id="leagueFilter" class="checkbox-panel"></div>
           </div>
 
@@ -128,16 +134,64 @@
             </div>
           </div>
 
-          <!-- Game Start Time Dynamic Filter Container -->
+          <!-- Event Start Time Dynamic Filter Container -->
           <div class="mb-3">
-            <label for="timeFilter" class="form-label fw-semibold">Start Time</label>
+            <label for="timeFilter" class="form-label fw-semibold">Scheduled Start</label>
             <div id="timeFilter" class="checkbox-panel"></div>
           </div>
-          
+
           <!-- Conference Dynamic Filter Container -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Conference</label>
             <div id="conferenceFilter" class="checkbox-panel"></div>
+          </div>
+
+          <!-- TV Network Excel-Style Searchable Dropdown Filter -->
+          <!-- Network/Platform Dropdown Search Override -->
+          <style>
+            #networkSearchInput::placeholder {
+            color: #5d5f61;
+            opacity: 1;
+            }
+          </style>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Network/Platform</label>
+              <div class="excel-dropdown" id="networkDropdown">
+                <button type="button" class="excel-dropdown-btn form-select text-start" id="networkDropdownBtn" aria-expanded="false">
+                  <span class="excel-btn-text">All Networks/Platforms</span>
+                </button>
+                <div class="excel-dropdown-menu" id="networkDropdownMenu">
+                  <div class="excel-search-wrapper">
+                    <input type="text" id="networkSearchInput" class="form-control form-control-sm" placeholder="Deselect All to Search..." autocomplete="off">
+                      <button type="button" class="excel-search-clear d-none" id="networkSearchClear" title="Clear search">&times;</button>
+                  </div>
+                  <div id="networkFilter" class="excel-checkbox-list"></div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Matchup Excel-Style Searchable Dropdown Filter -->
+          <!-- Matchup/Event Dropdown Search Override -->
+          <style>
+            #matchupSearchInput::placeholder {
+              color: #5d5f61;
+              opacity: 1;
+            }
+          </style>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Matchup/Event</label>
+              <div class="excel-dropdown" id="matchupDropdown">
+                <button type="button" class="excel-dropdown-btn form-select text-start" id="matchupDropdownBtn" aria-expanded="false">
+                  <span class="excel-btn-text">All Events</span>
+                </button>
+                <div class="excel-dropdown-menu" id="matchupDropdownMenu">
+                  <div class="excel-search-wrapper">
+                    <input type="text" id="matchupSearchInput" class="form-control form-control-sm" placeholder="Deselect All to Search..." autocomplete="off">
+                    <button type="button" class="excel-search-clear d-none" id="matchupSearchClear" title="Clear search">&times;</button>
+                  </div>
+                  <div id="matchupFilter" class="excel-checkbox-list"></div>
+                </div>
+              </div>
           </div>
 
         </div>
@@ -147,16 +201,16 @@
       <div class="charts-column flex-grow-1" id="chartsColumn">
         
         <!-- Linear Broadcast Networks Chart Container -->
-<div class="chart-container top-chart" id="networkChartContainer">
-  <h6 class="mb-2 chart-title"><span class="chart-date-label"></span> &mdash; Linear Broadcast Networks <i class="timezone-note">(in User Time)</i></h6>
-  <div id="barChart" class="plotly-chart"></div>
-</div>
+        <div class="chart-container top-chart" id="networkChartContainer">
+          <h6 class="mb-2 chart-title"><span class="chart-date-label"></span> &mdash; Linear Broadcast Networks <i class="timezone-note">(in User Time)</i></h6>
+          <div id="barChart" class="plotly-chart"></div>
+        </div>
 
-<!-- Digital Streaming Platforms Chart Container -->
-<div class="chart-container top-chart" id="digitalChartContainer">
-  <h6 class="mb-2 chart-title"><span class="chart-date-label"></span> &mdash; Digital Streaming Platforms <i class="timezone-note">(in User Time)</i></h6>
-  <div id="digitalChart" class="plotly-chart"></div>
-</div>
+        <!-- Digital Streaming Platforms Chart Container -->
+        <div class="chart-container top-chart" id="digitalChartContainer">
+          <h6 class="mb-2 chart-title"><span class="chart-date-label"></span> &mdash; Digital Streaming Platforms <i class="timezone-note">(in User Time)</i></h6>
+          <div id="digitalChart" class="plotly-chart"></div>
+        </div>
 
       </div>
 
