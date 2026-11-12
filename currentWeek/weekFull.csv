@@ -1,11 +1,11 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Start_Time,End_Time,Visitor_Conference,Home_Conference
-PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,4:35 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,5:30 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Thu, Nov 12",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
 UNC Wilmington,Wake Forest,"Thu, Nov 12",NCAA Basketball (W),UNC Wilmington at Wake Forest,ACCNX,N,10:30 AM,12:30 PM,CAA,ACC
 Hurricanes,Kraken,"Thu, Nov 12",NHL,Hurricanes at Kraken,NHL Net,Y,11:00 AM,1:30 PM,Eastern (Metropolitan),Western (Pacific)
 Charleston,Cal,"Thu, Nov 12",NCAA Basketball (W),Charleston at Cal,ACCNX,N,1:00 PM,3:00 PM,CAA,ACC
 Washington,UCLA,"Thu, Nov 12",NCAA Volleyball (W),#18 Washington at UCLA,B1G+,Y,1:00 PM,3:00 PM,Big Ten,Big Ten
-PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 Purdue,Michigan State,"Thu, Nov 12",NCAA Volleyball (W),#13 Purdue at Michigan State,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
 Wisconsin,Rutgers,"Thu, Nov 12",NCAA Volleyball (W),#9 Wisconsin at Rutgers,B1G+,Y,5:00 PM,7:00 PM,Big Ten,Big Ten
 Virginia Tech,VCU,"Thu, Nov 12",NCAA Basketball (W),Virginia Tech at VCU,ESPN+,N,5:00 PM,7:00 PM,ACC,Atlantic 10
@@ -77,7 +77,7 @@ Bentley,Air Force,"Thu, Nov 12",NCAA Hockey (M),Bentley at Air Force,FloSports,N
 Cal State Bakersfield,Washington,"Thu, Nov 12",NCAA Basketball (W),Cal State Bakersfield at #16 Washington,B1G+,Y,9:00 PM,11:00 PM,Big West,Big Ten
 Islanders,LA Kings,"Thu, Nov 12",NHL,Islanders at LA Kings,ESPN+,Y,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
 Arizona,UCLA,"Thu, Nov 12",NCAA Basketball (W),Arizona at #10 UCLA,BTN,Y,9:30 PM,11:30 PM,Big XII,Big Ten
-PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,4:30 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,5:30 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Fri, Nov 13",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
 Oral Roberts,Oklahoma,"Fri, Nov 13",NCAA Basketball (W),Oral Roberts at #14 Oklahoma,SECN+,Y,10:30 AM,12:30 PM,Summit League,SEC
 Vermont,New Hampshire,"Fri, Nov 13",NCAA Hockey (W),Vermont at New Hampshire,ESPN+,N,1:00 PM,3:15 PM,Hockey East,Hockey East
@@ -152,7 +152,7 @@ Denver,LSU,"Fri, Nov 13",NCAA Basketball (W),Denver at #9 LSU,SECN+,Y,6:00 PM,8:
 Missouri,Oklahoma,"Fri, Nov 13",NCAA Volleyball (W),Missouri at Oklahoma,SECN+,N,6:00 PM,8:00 PM,SEC,SEC
 Tennessee,Georgia,"Fri, Nov 13",NCAA Volleyball (W),#11 Tennessee at Georgia,SECN+,Y,6:00 PM,8:00 PM,SEC,SEC
 Kentucky,South Carolina,"Fri, Nov 13",NCAA Volleyball (W),#6 Kentucky at South Carolina,SECN+,Y,6:00 PM,8:00 PM,SEC,SEC
-Michigan State,Notre Dame,"Fri, Nov 13",NCAA Hockey (M),#4 Michigan State at Notre Dame,TBA,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
+Michigan State,Notre Dame,"Fri, Nov 13",NCAA Hockey (M),#4 Michigan State at Notre Dame,Peacock,Y,6:00 PM,8:30 PM,Big Ten,Big Ten
 Colorado College,Western Michigan,"Fri, Nov 13",NCAA Hockey (M),#12 Colorado College at #6 Western Michigan,TBA,Y,6:00 PM,8:30 PM,NCHC,NCHC
 Sacred Heart,Army,"Fri, Nov 13",NCAA Hockey (M),Sacred Heart at #18 Army,TBA,Y,6:00 PM,8:30 PM,AHA,AHA
 Assumption,Franklin Pierce,"Fri, Nov 13",NCAA Hockey (W),Assumption at Franklin Pierce,TBA,N,6:00 PM,8:15 PM,NEWHA,NEWHA
