@@ -1,5 +1,6 @@
 ﻿Visitor,Home,Date,League,Matchup,TV_Network,Ranked,Start_Time,End_Time,Visitor_Conference,Home_Conference
-PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,1:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Thu, Nov 12",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,1:00 PM,5:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Thu, Nov 12",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
 UNC Wilmington,Wake Forest,"Thu, Nov 12",NCAA Basketball (W),UNC Wilmington at Wake Forest,ACCNX,N,10:30 AM,12:30 PM,CAA,ACC
 Hurricanes,Kraken,"Thu, Nov 12",NHL,Hurricanes at Kraken,NHL Net,Y,11:00 AM,1:30 PM,Eastern (Metropolitan),Western (Pacific)
@@ -77,7 +78,8 @@ Bentley,Air Force,"Thu, Nov 12",NCAA Hockey (M),Bentley at Air Force,FloSports,N
 Cal State Bakersfield,Washington,"Thu, Nov 12",NCAA Basketball (W),Cal State Bakersfield at #16 Washington,B1G+,Y,9:00 PM,11:00 PM,Big West,Big Ten
 Islanders,LA Kings,"Thu, Nov 12",NHL,Islanders at LA Kings,ESPN+,Y,9:00 PM,11:30 PM,Eastern (Metropolitan),Western (Pacific)
 Arizona,UCLA,"Thu, Nov 12",NCAA Basketball (W),Arizona at #10 UCLA,BTN,Y,9:30 PM,11:30 PM,Big XII,Big Ten
-PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,4:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,7:00 AM,1:00 PM,PGA Tour (Fall),PGA Tour (Fall)
+PGA Tour,PGA Tour,"Fri, Nov 13",PGA Tour,Austin Championship at Barton Creek,ESPN+,Y,1:00 PM,5:00 PM,PGA Tour (Fall),PGA Tour (Fall)
 LPGA Tour,LPGA Tour,"Fri, Nov 13",LPGA Tour,The ANNIKA driven by Gainbridge at Pelican GC,Golf Chnl,Y,10:00 AM,1:00 PM,LPGA Tour (CME),LPGA Tour (CME)
 Oral Roberts,Oklahoma,"Fri, Nov 13",NCAA Basketball (W),Oral Roberts at #14 Oklahoma,SECN+,Y,10:30 AM,12:30 PM,Summit League,SEC
 Vermont,New Hampshire,"Fri, Nov 13",NCAA Hockey (W),Vermont at New Hampshire,ESPN+,N,1:00 PM,3:15 PM,Hockey East,Hockey East
@@ -210,8 +212,8 @@ Houston,Colorado,"Fri, Nov 13",NCAA Football,#14 Houston at Colorado,ESPN,Y,9:15
 Thunder,Clippers,"Fri, Nov 13",NBA,Thunder at Clippers,Thunder App,Y,9:30 PM,12:00 AM,Western Conference,Western Conference
 NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),College GameDay (Boise State University),ESPN,Y,8:00 AM,11:00 AM,Pac-12,Pac-12
 NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),SEC Nation (University of Georgia),SECN,Y,8:00 AM,11:45 AM,SEC,SEC
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),ACC Huddle (Live in Studio),ACCN,Y,9:00 AM,11:00 AM,ACC,ACC
-NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),B1G Tailgate (Live in Studio),BTN,Y,9:00 AM,11:30 AM,Big Ten,Big Ten
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),ACC Huddle (ACC Network Studio),ACCN,Y,9:00 AM,11:00 AM,ACC,ACC
+NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),B1G Tailgate (Big Ten Network Studio),BTN,Y,9:00 AM,11:30 AM,Big Ten,Big Ten
 NCAAF,NCAAF,"Sat, Nov 14",NCAA Football (Pregame),Big Noon Kickoff (University of Arizona),FOX,Y,9:00 AM,11:00 AM,Big XII,Big XII
 Duke,Miami,"Sat, Nov 14",NCAA Football,Duke at #7 Miami,ABC,Y,11:00 AM,2:30 PM,ACC,ACC
 Syracuse,NC State,"Sat, Nov 14",NCAA Football,Syracuse at NC State,ACCN,N,11:00 AM,2:30 PM,ACC,ACC
