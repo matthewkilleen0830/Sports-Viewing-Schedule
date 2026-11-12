@@ -413,8 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
       ).map(cb => cb.value);
     }
-    // Note: filterState.networks & filterState.matchups are managed directly
-    // by the Excel dropdown event handlers so search filtering never wipes hidden selections.
   }
 
   function getActiveSelections() {
@@ -650,7 +648,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ? allItems.filter(item => item.toLowerCase().includes(query))
       : allItems;
 
-    // Build active selection Set from filterState
     const isAllState = filterState[stateKeyAll];
     const selectedSet = isAllState
       ? new Set(allItems)
@@ -668,7 +665,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Master "(Select All)" or "(Select All Search Results)" checkbox
     const allVisibleChecked = visibleItems.every(item => selectedSet.has(item));
     const someVisibleChecked = visibleItems.some(item => selectedSet.has(item));
     const masterLabelText = query ? `(Select All Search Results)` : `(Select All)`;
@@ -742,7 +738,6 @@ document.addEventListener("DOMContentLoaded", function () {
           nextSet.delete(val);
         }
 
-        // Update local reference for subsequent clicks before full re-render
         selectedSet.clear();
         nextSet.forEach(v => selectedSet.add(v));
 
@@ -1037,7 +1032,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (earliestStart === 1440 || isNaN(earliestStart)) earliestStart = 600;
     if (latestEnd === 0 || isNaN(latestEnd)) latestEnd = 1440;
 
-    const paddedStart = Math.max(0, earliestStart - 15);
+    // Check if today is selected and earliest matchup start time is more than 3 hours old (180 mins)
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    let cleanSelected = selectedDateText.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    if (!/\b20\d{2}\b/.test(cleanSelected)) cleanSelected = `${cleanSelected}, ${currentYear}`;
+    const selectedDateParsed = new Date(cleanSelected);
+    const startOfSelected = !isNaN(selectedDateParsed) ? new Date(selectedDateParsed.getFullYear(), selectedDateParsed.getMonth(), selectedDateParsed.getDate()).getTime() : 0;
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+    const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+
+    let paddedStart = Math.max(0, earliestStart - 15);
+    if (isToday && (currentMins - earliestStart > 180)) {
+      paddedStart = Math.max(0, currentMins - 40);
+    }
+
     const paddedEnd = Math.max(paddedStart + 60, latestEnd + 15);
     const syncedXRange = [paddedStart, paddedEnd];
 
