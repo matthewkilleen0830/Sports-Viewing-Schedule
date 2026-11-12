@@ -187,9 +187,8 @@ html, body {
   top: clamp(2rem, 6vw, 6rem);
   z-index: 100;
   height: fit-content;
-  max-height: auto;
   width: 100%;
-  overflow-y: auto;
+  overflow: visible;
   box-sizing: border-box;
 }
 
@@ -198,7 +197,6 @@ html, body {
    7. TYPOGRAPHY & GOLD ACCENT GRADIENTS FOR HEADINGS AND LABELS
    =========================================================================== */
 
-/* Shared gradient and text styling for headers */
 .filter-panel h1, 
 .filter-panel h2, 
 .filter-panel h3, 
@@ -217,13 +215,13 @@ html, body {
   display: inline-block;
 }
 
-/* Fluid responsive sizing specifically for the chart titles */
 .chart-container .chart-title {
   font-size: clamp(0.75rem, 3.8vw, 1.1rem);
   line-height: 1.3;
 }
 
-.filter-panel label {
+.filter-panel > .mb-3 > label,
+.filter-panel .ranked-toggle-wrapper label {
   background: linear-gradient(180deg, #fffbeb 0%, #fef08a 60%, #facc15 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -262,7 +260,7 @@ html, body {
   border-radius: 0.375rem;
   padding: 0.5rem 0.75rem;
   color: #f0f0f0;
-  max-height: 180px;
+  max-height: 190px;
   min-height: auto;
 }
 
@@ -295,6 +293,12 @@ html, body {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
 }
 
+.form-check-input:indeterminate {
+  background-color: #ca8a04;
+  border-color: #fef08a;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+}
+
 .form-check-input:focus {
   border-color: #fffbeb;
   outline: 0;
@@ -307,23 +311,147 @@ html, body {
 
 
 /* ===========================================================================
+   8B. EXCEL-STYLE SEARCHABLE DROPDOWN SLICERS
+   =========================================================================== */
+
+.excel-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.excel-dropdown-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-right: 2.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23facc15' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;
+  background-size: 16px 12px !important;
+}
+
+.excel-btn-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.excel-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: #0b0d0f;
+  border: 2px solid #facc15;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.95), 0 0 14px rgba(250, 204, 21, 0.25);
+  z-index: 1150;
+  overflow: hidden;
+}
+
+.excel-dropdown-menu.show {
+  display: block;
+}
+
+.excel-search-wrapper {
+  position: relative;
+  padding: 0.5rem;
+  background: #14171c;
+  border-bottom: 1px solid rgba(202, 138, 4, 0.5);
+}
+
+.excel-search-wrapper input.form-control {
+  padding-right: 1.75rem;
+  border-width: 1.5px;
+  font-size: 0.875rem;
+}
+
+.excel-search-clear {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #facc15;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.excel-search-clear:hover {
+  color: #ffffff;
+}
+
+.excel-checkbox-list {
+  max-height: 210px;
+  overflow-y: auto;
+  padding: 0.35rem 0.65rem 0.5rem 0.65rem;
+  color: #f0f0f0;
+}
+
+.excel-select-all {
+  position: sticky;
+  top: -0.35rem;
+  background: #0b0d0f;
+  z-index: 2;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(202, 138, 4, 0.45);
+}
+
+.excel-select-all .form-check-label {
+  color: #fef08a;
+}
+
+.excel-item-row {
+  margin-bottom: 0.25rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 4px;
+}
+
+.excel-item-row:hover {
+  background-color: rgba(250, 204, 21, 0.08);
+}
+
+.excel-item-row .form-check-label {
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  display: block;
+}
+
+
+/* ===========================================================================
    9. CUSTOM GOLD SCROLLBARS
    =========================================================================== */
 
 .filter-panel::-webkit-scrollbar,
-.checkbox-panel::-webkit-scrollbar {
+.checkbox-panel::-webkit-scrollbar,
+.excel-checkbox-list::-webkit-scrollbar {
   width: 6px;
 }
 
 .filter-panel::-webkit-scrollbar-track,
-.checkbox-panel::-webkit-scrollbar-track {
+.checkbox-panel::-webkit-scrollbar-track,
+.excel-checkbox-list::-webkit-scrollbar-track {
   background: transparent;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
 .filter-panel::-webkit-scrollbar-thumb,
-.checkbox-panel::-webkit-scrollbar-thumb {
+.checkbox-panel::-webkit-scrollbar-thumb,
+.excel-checkbox-list::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #fffbeb 0%, #facc15 50%, #78350f 100%);
   border-radius: 3px;
 }
@@ -387,7 +515,6 @@ html, body {
    12. RESPONSIVE MEDIA QUERIES (TABLET & MOBILE)
    =========================================================================== */
 
-/* Tablet & Desktop Overlay Mode (< 1200px) */
 @media (max-width: 1199.98px) {
   .sidebar-wrapper {
     position: absolute;
@@ -402,23 +529,22 @@ html, body {
     top: 0;
     border-radius: 0 14px 14px 0;
     min-height: 100%;
+    overflow-y: auto;
+    padding-bottom: 15rem;
   }
 
   .charts-column {
     padding-left: 1rem !important;
-    /* padding-right: 0.25rem !important; */
     padding-right: 1.1rem;
     gap: 1rem;
   }
 
   .chart-container {
-    /* padding: 0.75rem 0.25rem 0.25rem 0.25rem; */
     padding: 0.75rem 0.5rem 0.25rem 0.1rem;
     border-radius: 10px;
   }
 }
 
-/* Mobile Portrait Full-Width Sidebar Override */
 @media (max-width: 767.98px) and (orientation: portrait) {
   .sidebar-wrapper {
     --sidebar-width: calc(100vw - 34px);
@@ -431,19 +557,15 @@ html, body {
   }
 }
 
-/* Base style for the timezone note */
 .chart-title .timezone-note {
   font-size: 0.6em;
   font-style: italic;
 }
 
-
-
-/* On mobile portrait, force it to a new line and add a slight indent */
 @media (max-width: 576px) and (orientation: portrait) {
   .chart-title .timezone-note {
-    display: block;      /* Drops it to its own line */
-    margin-left: 0.75rem; /* Adds a nice leading indent */
-    margin-top: 2px;     /* Optional breathing room from the title above */
+    display: block;     
+    margin-left: 0.75rem; 
+    margin-top: 2px;     
   }
 }
