@@ -34,6 +34,7 @@ const TEAM_COLORS = {
   // F
   "Fairleigh Dickinson": "#72293C", "Falcons": "#A71930", "Ferris State": "#BA0C2F", "Fever": "#041E42", "Flames": "#C8102E", "Florida": "#0021A5", "Florida Atlantic": "#003366", 
   "Florida International": "#081E3F", "Florida State": "#782F40", "Flyers": "#F47920", "Fordham": "#860038", "Franklin Pierce": "#A91938", "Fresno State": "#C41230", "Furman": "#4D1979",
+  "Florida A&M": "#F4811F", 
   
   // G
   "Gardner-Webb": "#CC0000", "Georgetown": "#041E42", "Georgia": "#BA0C2F", "Georgia Southern": "#00152B", "Georgia State": "#0039A6", "Georgia Tech": "#B3A369", "Giants": "#FD5A1E", 
@@ -99,7 +100,7 @@ const TEAM_COLORS = {
   "South Florida": "#006747", "Southern Illinois": "#720000", "Southern Miss": "#000000", "Southern Utah": "#DB0000", "Sparks": "#702F8A", "Spurs": "#000000", "St. Cloud State": "#CC0000", 
   "St. John's": "#BA0C2F", "St. Lawrence": "#AF1E2D", "St. Thomas-Minnesota": "#512888", "Stanford": "#8C1515", "Stars": "#006847", "Steelers": "#101820", "Stetson": "#005A36",
   "Stonehill": "#00205B", "Storm": "#2C5234", "Stephen F. Austin": "#330066", "Sun": "#FC4C02", "Suns": "#1D1160", "Syracuse": "#F76900", "Saint Mary's": "#06315B",
-  "San Francisco": "#00543C", "Southern Indiana": "#CF102D", "Santa Clara": "#862633",
+  "San Francisco": "#00543C", "Southern Indiana": "#CF102D", "Santa Clara": "#862633", "St. Bonaventure": "#54261A", 
   
   // T
   "Tarleton State": "#4F2683", "TBD": "#000000", "TCU": "#4D1979", "Temple": "#9D2235", "Tennessee": "#FF8200", "Tennessee State": "#002147", "Tennessee Tech": "#4B2E83", "Texans": "#03202F",
@@ -110,7 +111,7 @@ const TEAM_COLORS = {
   "UAB": "#215732", "UC Davis": "#002855", "UCF": "#BA9B37", "UCLA": "#2D68C4", "UConn": "#000E2E", "UIW": "#C41230", "UL Monroe": "#531B2B", "UMass": "#881C1C", "UMass Lowell": "#0067C5", 
   "UMBC": "#000000", "Union": "#821019", "UNLV": "#E31837", "US NTDP": "#98002E", "USC": "#990000", "UT Martin": "#002A54", "UT Rio Grand Valley": "#F05A28", "UTEP": "#FF8200", 
   "Utah": "#BE0000", "Utah State": "#00263A", "Utah Tech": "#BA1C21", "UTSA": "#0C2340",
-  "UC San Diego": "#182B49", "UIC": "#AC1E2D", "UC Santa Barbara": "#003660",
+  "UC San Diego": "#182B49", "UIC": "#AC1E2D", "UC Santa Barbara": "#003660", "UT Rio Grande Valley": "#CB4900",
   
   // V
   "Valkyries": "#B896D4", "Valparaiso": "#613312", "Vanderbilt": "#866D4B", "Vermont": "#005A36", "Vikings": "#4F2683", "Villanova": "#00205B", "Virginia": "#232D4B", "Virginia Tech": "#630031", 
