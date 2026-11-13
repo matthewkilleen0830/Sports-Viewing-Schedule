@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
     const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 20 * 60000; 
+    const thresholdTimestamp = gameEndTimestamp + 30 * 60000; 
 
     return nowTime >= thresholdTimestamp;
   }
@@ -1032,7 +1032,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (earliestStart === 1440 || isNaN(earliestStart)) earliestStart = 600;
     if (latestEnd === 0 || isNaN(latestEnd)) latestEnd = 1440;
 
-    // Check if today is selected and earliest matchup start time is more than 2 hours 45 minutes old (165 mins)
+    // Check if today is selected and earliest matchup start time is more than 2 hours 30 minutes old (150 mins)
     const now = new Date();
     const currentYear = now.getFullYear();
     let cleanSelected = selectedDateText.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
@@ -1045,7 +1045,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentMins = now.getHours() * 60 + now.getMinutes();
 
     let paddedStart = Math.max(0, earliestStart - 15);
-    if (isToday && (currentMins - earliestStart > 165)) {
+    if (isToday && (currentMins - earliestStart > 150)) {
       paddedStart = Math.max(0, currentMins - 40);
     }
 
