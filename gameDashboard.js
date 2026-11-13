@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
     const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 30 * 60000; 
+    const thresholdTimestamp = gameEndTimestamp + 60 * 60000;  // 60 min stale-game/OT buffer before filtering-out
 
     return nowTime >= thresholdTimestamp;
   }
