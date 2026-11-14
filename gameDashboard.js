@@ -1062,6 +1062,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function getHomeTeamColor(matchup) {
     if (!matchup) return '#FFFFFF'; 
 
+    if (/\bArmy-Navy\b/.test(matchup)) return '#B22234';
+    
     if (/\bBowl\b/.test(matchup)) return '#1E3A8A'; 
 
     if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; 
