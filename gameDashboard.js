@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation();
       const isOpen = menuEl.classList.contains("show");
 
-      // Close any other open Excel dropdowns first
       document.querySelectorAll(".excel-dropdown-menu.show").forEach(m => {
         m.classList.remove("show");
         m.previousElementSibling?.setAttribute("aria-expanded", "false");
@@ -393,25 +392,86 @@ document.addEventListener("DOMContentLoaded", function () {
     const leagueAllEl = document.getElementById("league_all");
     if (leagueAllEl) {
       filterState.isLeagueAll = leagueAllEl.checked;
-      filterState.leagues = filterState.isLeagueAll ? [] : Array.from(
+      const currentDOMLeagues = Array.from(
         document.querySelectorAll("#leagueFilter .league-checkbox:checked")
       ).map(cb => cb.value);
+
+      if (!filterState.isLeagueAll) {
+        const domCheckboxes = Array.from(document.querySelectorAll("#leagueFilter .league-checkbox"));
+        const domValues = new Set(domCheckboxes.map(cb => cb.value));
+        const unrenderedSelected = filterState.leagues.filter(v => !domValues.has(v));
+        filterState.leagues = Array.from(new Set([...unrenderedSelected, ...currentDOMLeagues]));
+      } else {
+        filterState.leagues = [];
+      }
     }
 
     const timeAllEl = document.getElementById("time_all");
     if (timeAllEl) {
       filterState.isTimeAll = timeAllEl.checked;
-      filterState.times = filterState.isTimeAll ? [] : Array.from(
+      const currentDOMTimes = Array.from(
         document.querySelectorAll("#timeFilter .time-checkbox:checked")
       ).map(cb => cb.value);
+
+      if (!filterState.isTimeAll) {
+        const domCheckboxes = Array.from(document.querySelectorAll("#timeFilter .time-checkbox"));
+        const domValues = new Set(domCheckboxes.map(cb => cb.value));
+        const unrenderedSelected = filterState.times.filter(v => !domValues.has(v));
+        filterState.times = Array.from(new Set([...unrenderedSelected, ...currentDOMTimes]));
+      } else {
+        filterState.times = [];
+      }
     }
 
     const confAllEl = document.getElementById("conf_all");
     if (confAllEl) {
       filterState.isConfAll = confAllEl.checked;
-      filterState.conferences = filterState.isConfAll ? [] : Array.from(
+      const currentDOMConfs = Array.from(
         document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
       ).map(cb => cb.value);
+
+      if (!filterState.isConfAll) {
+        const domCheckboxes = Array.from(document.querySelectorAll("#conferenceFilter .conf-checkbox"));
+        const domValues = new Set(domCheckboxes.map(cb => cb.value));
+        const unrenderedSelected = filterState.conferences.filter(v => !domValues.has(v));
+        filterState.conferences = Array.from(new Set([...unrenderedSelected, ...currentDOMConfs]));
+      } else {
+        filterState.conferences = [];
+      }
+    }
+
+    const networkAllEl = document.getElementById("network_all");
+    if (networkAllEl) {
+      filterState.isNetworkAll = networkAllEl.checked;
+      const currentDOMNetworks = Array.from(
+        document.querySelectorAll("#networkFilter .network-checkbox:checked")
+      ).map(cb => cb.value);
+
+      if (!filterState.isNetworkAll) {
+        const domCheckboxes = Array.from(document.querySelectorAll("#networkFilter .network-checkbox"));
+        const domValues = new Set(domCheckboxes.map(cb => cb.value));
+        const unrenderedSelected = filterState.networks.filter(v => !domValues.has(v));
+        filterState.networks = Array.from(new Set([...unrenderedSelected, ...currentDOMNetworks]));
+      } else {
+        filterState.networks = [];
+      }
+    }
+
+    const matchupAllEl = document.getElementById("matchup_all");
+    if (matchupAllEl) {
+      filterState.isMatchupAll = matchupAllEl.checked;
+      const currentDOMMatchups = Array.from(
+        document.querySelectorAll("#matchupFilter .matchup-checkbox:checked")
+      ).map(cb => cb.value);
+
+      if (!filterState.isMatchupAll) {
+        const domCheckboxes = Array.from(document.querySelectorAll("#matchupFilter .matchup-checkbox"));
+        const domValues = new Set(domCheckboxes.map(cb => cb.value));
+        const unrenderedSelected = filterState.matchups.filter(v => !domValues.has(v));
+        filterState.matchups = Array.from(new Set([...unrenderedSelected, ...currentDOMMatchups]));
+      } else {
+        filterState.matchups = [];
+      }
     }
   }
 
@@ -424,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (d._gameNormalizedTime !== startOfTodayTime) return false;
 
     const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 30 * 60000;  // 30 min stale-game/OT buffer before filtering-out
+    const thresholdTimestamp = gameEndTimestamp + 30 * 60000;
 
     return nowTime >= thresholdTimestamp;
   }
@@ -458,10 +518,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                            league.includes(searchQuery) ||
-                            network.includes(searchQuery) ||
-                            vConf.includes(searchQuery) ||
-                            hConf.includes(searchQuery);
+                              league.includes(searchQuery) ||
+                              network.includes(searchQuery) ||
+                              vConf.includes(searchQuery) ||
+                              hConf.includes(searchQuery);
 
         if (!matchesSearch) return false;
       }
@@ -615,7 +675,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const textSpan = btnEl.querySelector(".excel-btn-text");
     if (!textSpan) return;
 
-    if (isAllState || (allItems.length > 0 && selectedSet.size === allItems.length)) {
+    if (isAllState) {
       textSpan.textContent = allLabel;
     } else if (selectedSet.size === 0) {
       textSpan.textContent = "None selected";
@@ -651,7 +711,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isAllState = filterState[stateKeyAll];
     const selectedSet = isAllState
       ? new Set(allItems)
-      : new Set(filterState[stateKeyList].filter(v => allItems.includes(v)));
+      : new Set([...filterState[stateKeyList]]);
 
     updateExcelButtonLabel(btnEl, allLabel, allItems, selectedSet, isAllState);
 
@@ -695,34 +755,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const itemCheckboxes = containerEl.querySelectorAll(`.${itemClass}`);
 
-    function commitSelectionSet(nextSet) {
-      if (nextSet.size === allItems.length && allItems.length > 0) {
-        filterState[stateKeyAll] = true;
-        filterState[stateKeyList] = [];
-      } else {
-        filterState[stateKeyAll] = false;
-        filterState[stateKeyList] = Array.from(nextSet);
-      }
-      updateExcelButtonLabel(btnEl, allLabel, allItems, nextSet, filterState[stateKeyAll]);
-    }
-
     allCheckbox?.addEventListener("change", (e) => {
       userHasModifiedFilters = true;
       const shouldSelect = e.target.checked;
-      const nextSet = new Set(selectedSet);
-
-      visibleItems.forEach(item => {
-        if (shouldSelect) {
-          nextSet.add(item);
-        } else {
-          nextSet.delete(item);
-        }
-      });
-
       itemCheckboxes.forEach(cb => cb.checked = shouldSelect);
       allCheckbox.indeterminate = false;
 
-      commitSelectionSet(nextSet);
+      filterState[stateKeyAll] = shouldSelect;
+      if (shouldSelect) {
+        filterState[stateKeyList] = [];
+      } else {
+        const visibleSet = new Set(visibleItems);
+        filterState[stateKeyList] = filterState[stateKeyList].filter(v => !visibleSet.has(v));
+      }
+
+      const updatedSet = filterState[stateKeyAll] ? new Set(allItems) : new Set(filterState[stateKeyList]);
+      updateExcelButtonLabel(btnEl, allLabel, allItems, updatedSet, filterState[stateKeyAll]);
       onChangeCallback();
     });
 
@@ -730,25 +778,29 @@ document.addEventListener("DOMContentLoaded", function () {
       cb.addEventListener("change", (e) => {
         userHasModifiedFilters = true;
         const val = e.target.value;
-        const nextSet = new Set(selectedSet);
 
-        if (e.target.checked) {
-          nextSet.add(val);
+        if (filterState[stateKeyAll]) {
+          filterState[stateKeyAll] = false;
+          filterState[stateKeyList] = allItems.filter(item => item !== val);
         } else {
-          nextSet.delete(val);
+          const nextSet = new Set(filterState[stateKeyList]);
+          if (e.target.checked) {
+            nextSet.add(val);
+          } else {
+            nextSet.delete(val);
+          }
+          filterState[stateKeyList] = Array.from(nextSet);
         }
 
-        selectedSet.clear();
-        nextSet.forEach(v => selectedSet.add(v));
-
-        const nowAllVis = visibleItems.every(item => nextSet.has(item));
-        const nowSomeVis = visibleItems.some(item => nextSet.has(item));
+        const updatedSet = new Set(filterState[stateKeyList]);
+        const nowAllVis = visibleItems.every(item => updatedSet.has(item));
+        const nowSomeVis = visibleItems.some(item => updatedSet.has(item));
         if (allCheckbox) {
           allCheckbox.checked = nowAllVis;
           allCheckbox.indeterminate = !nowAllVis && nowSomeVis;
         }
 
-        commitSelectionSet(nextSet);
+        updateExcelButtonLabel(btnEl, allLabel, allItems, updatedSet, filterState[stateKeyAll]);
         onChangeCallback();
       });
     });
@@ -910,7 +962,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (targetSource !== "conference") {
-      const confSubset = getFilteredDataExcept(["date", "conference"]);
+      const confSubset = getFilteredDataExcept("conference");
       updateConferenceSlicer(confSubset, filterState.conferences, filterState.isConfAll);
     }
 
@@ -1032,7 +1084,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (earliestStart === 1440 || isNaN(earliestStart)) earliestStart = 600;
     if (latestEnd === 0 || isNaN(latestEnd)) latestEnd = 1440;
 
-    // Check if today is selected and earliest matchup start time is more than 2 hours 30 minutes old (150 mins)
     const now = new Date();
     const currentYear = now.getFullYear();
     let cleanSelected = selectedDateText.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
