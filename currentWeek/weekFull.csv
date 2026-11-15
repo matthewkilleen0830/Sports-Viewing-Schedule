@@ -477,24 +477,24 @@
 "Fri, Nov 20",NCAA Basketball (W),Baylor at #3 USC,BTN,Y,10:00 PM,12:00 AM,Big XII,Big Ten
 "Fri, Nov 20",NCAA Hockey (M),Alaska Anchorage at Alaska,TBA,N,10:07 PM,12:37 AM,Independents,Independents
 "Fri, Nov 20",NCAA Basketball (M),Queens University at LSU,SECN+,N,11:00 PM,1:00 AM,Atlantic Sun,SEC
-"Fri, Nov 20",NCAA Football,UTSA at UAB,TBA,N,11:00 PM,2:30 AM,AAC,AAC
-"Fri, Nov 20",NCAA Football,North Texas at Tulane,TBA,N,11:00 PM,2:30 AM,AAC,AAC
-"Fri, Nov 20",NCAA Football,Pitt at Louisville,TBA,N,11:00 PM,2:30 AM,ACC,ACC
-"Fri, Nov 20",NCAA Football,#23 Arizona at Kansas State,TBA,Y,11:00 PM,2:30 AM,Big XII,Big XII
-"Fri, Nov 20",NCAA Football,#20 Ohio State at Nebraska,TBA,Y,11:00 PM,2:30 AM,Big Ten,Big Ten
-"Fri, Nov 20",NCAA Football,#14 Houston at West Virginia,TBA,Y,11:00 PM,2:30 AM,Big XII,Big XII
-"Fri, Nov 20",NCAA Football,#13 Wake Forest at Georgia Tech,TBA,Y,11:00 PM,2:30 AM,ACC,ACC
-"Fri, Nov 20",NCAA Football,#12 Texas Tech at Baylor,TBA,Y,11:00 PM,2:30 AM,Big XII,Big XII
-"Fri, Nov 20",NCAA Football,#10 BYU at Kansas,TBA,Y,11:00 PM,2:30 AM,Big XII,Big XII
-"Fri, Nov 20",NCAA Football,#9 Indiana at Washington,TBA,Y,11:00 PM,2:30 AM,Big Ten,Big Ten
-"Fri, Nov 20",NCAA Football,Virginia Tech at #7 Miami,TBA,Y,11:00 PM,2:30 AM,ACC,ACC
-"Fri, Nov 20",NCAA Football,#4 UCLA at Michigan,TBA,Y,11:00 PM,2:30 AM,Big Ten,Big Ten
-"Fri, Nov 20",NCAA Football,#2 Utah at TCU,TBA,Y,11:00 PM,2:30 AM,Big XII,Big XII
+"Sat, Nov 21",NCAA Football,UTSA at UAB,TBA,N,11:00 AM,10:00 PM,AAC,AAC
+"Sat, Nov 21",NCAA Football,North Texas at Tulane,TBA,N,11:00 AM,10:00 PM,AAC,AAC
+"Sat, Nov 21",NCAA Football,Pitt at Louisville,TBA,N,11:00 AM,10:00 PM,ACC,ACC
+"Sat, Nov 21",NCAA Football,#23 Arizona at Kansas State,TBA,Y,11:00 AM,10:00 PM,Big XII,Big XII
+"Sat, Nov 21",NCAA Football,#20 Ohio State at Nebraska,FOX,Y,11:00 AM,2:30 PM,Big Ten,Big Ten
+"Sat, Nov 21",NCAA Football,#14 Houston at West Virginia,TBA,Y,11:00 AM,10:00 PM,Big XII,Big XII
+"Sat, Nov 21",NCAA Football,#13 Wake Forest at Georgia Tech,TBA,Y,11:00 AM,10:00 PM,ACC,ACC
+"Sat, Nov 21",NCAA Football,#12 Texas Tech at Baylor,TBA,Y,11:00 AM,10:00 PM,Big XII,Big XII
+"Sat, Nov 21",NCAA Football,#10 BYU at Kansas,TBA,Y,11:00 AM,10:00 PM,Big XII,Big XII
+"Sat, Nov 21",NCAA Football,#9 Indiana at Washington,Peacock,Y,2:30 PM,6:00 PM,Big Ten,Big Ten
+"Sat, Nov 21",NCAA Football,Virginia Tech at #7 Miami,TBA,Y,11:00 AM,10:00 PM,ACC,ACC
+"Sat, Nov 21",NCAA Football,#4 UCLA at Michigan,CBS,Y,2:30 PM,6:00 PM,Big Ten,Big Ten
+"Sat, Nov 21",NCAA Football,#2 Utah at TCU,TBA,Y,11:00 AM,10:00 PM,Big XII,Big XII
 "Sat, Nov 21",NCAA Football (Pregame),College GameDay (TBA),ESPN,Y,8:00 AM,11:00 AM,,
 "Sat, Nov 21",NCAA Football (Pregame),SEC Nation (TBA),SECN,Y,8:00 AM,11:00 AM,SEC,SEC
 "Sat, Nov 21",NCAA Football (Pregame),ACC Huddle (TBA),ACCN,Y,9:00 AM,11:00 AM,ACC,ACC
 "Sat, Nov 21",NCAA Football (Pregame),B1G Tailgate (University of Illinois),BTN,Y,9:00 AM,11:00 AM,Big Ten,Big Ten
-"Sat, Nov 21",NCAA Football (Pregame),Big Noon Kickoff (TBA),FOX,Y,9:00 AM,11:00 AM,,
+"Sat, Nov 21",NCAA Football (Pregame),Big Noon Kickoff (University of Nebraska),FOX,Y,9:00 AM,11:00 AM,Big Ten,Big Ten
 "Sat, Nov 21",NCAA Football,Syracuse at Boston College,ACCN,N,11:00 AM,2:30 PM,ACC,ACC
 "Sat, Nov 21",NCAA Basketball (W),Morgan State at #19 Maryland,B1G+,Y,11:00 AM,1:00 PM,MEAC,Big Ten
 "Sat, Nov 21",NCAA Basketball (M),Detroit Mercy at #5 Michigan State,BTN,Y,11:00 AM,1:00 PM,Horizon League,Big Ten
@@ -556,8 +556,8 @@
 "Sat, Nov 21",NHL,Blackhawks at Flames,ESPN+,Y,2:30 PM,5:00 PM,Western (Central),Western (Pacific)
 "Sat, Nov 21",NCAA Football,Rutgers at Penn State,FS1,N,2:30 PM,6:00 PM,Big Ten,Big Ten
 "Sat, Nov 21",NCAA Football,Samford at Auburn,SECN,N,2:30 PM,6:00 PM,SoCon,SEC
-"Sat, Nov 21",NCAA Football,Arkansas at #6 Texas,TBA,Y,2:30 PM,6:00 PM,SEC,SEC
-"Sat, Nov 21",NCAA Football,#21 LSU at #8 Tennessee,TBA,Y,2:30 PM,6:00 PM,SEC,SEC
+"Sat, Nov 21",NCAA Football,Arkansas at #6 Texas,ESPN,Y,2:30 PM,6:00 PM,SEC,SEC
+"Sat, Nov 21",NCAA Football,#21 LSU at #8 Tennessee,ABC,Y,2:30 PM,6:00 PM,SEC,SEC
 "Sat, Nov 21",NCAA Hockey (W),Sacred Heart at Saint Michael's,TBA,N,2:30 PM,4:45 PM,NEWHA,NEWHA
 "Sat, Nov 21",NCAA Football,Northern Illinois at North Dakota State,CW,N,3:00 PM,6:30 PM,Mountain West,Mountain West
 "Sat, Nov 21",NCAA Basketball (W),Northern Colorado at BYU,ESPN+,N,3:00 PM,5:00 PM,Big Sky,Big XII
