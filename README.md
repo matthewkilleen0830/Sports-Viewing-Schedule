@@ -1,4 +1,4 @@
-# Live Sports Broadcast Dashboard v1.5.0
+# Live Sports Broadcast Dashboard v1.6.0
 
 An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional and collegiate sports leagues with real-time dynamic filtering.
 
@@ -21,9 +21,9 @@ Check out the live interactive application hosted on GitHub Pages:
   * **Cross-Chart Timeline Synchronization**: Panning, scrolling, or scrubbing either the Linear Broadcast or Digital Streaming chart dynamically moves both visualization grids in lockstep.
   * **Persistent Viewport Position**: Remembers and retains the user's panned and scrolled horizontal timeline viewport position across state changes, sidebar toggles, and minor redraws, eliminating unwanted jumps.
   * **Expanded 24-Hour Timeline & Gridlines**: Comprehensive time axis configuration fully supporting international time zones and early-morning schedule shifts (such as 2:00 AM and 3:00 AM local time) complete with vertical gridlines.
-  * **Post-Game Filtering**: Automatically filters out completed games an hour past their scheduled windows to both allow for delayed starts, abnormally long games, overtime period(s), and to eliminate dead air.
+  * **Post-Game Filtering & Stale-Game Expiration**: Automatically filters out completed games from today's view 30 minutes after their scheduled end time (accounting for overtime and broadcast buffers) and automatically advances the default date to the next active slate once today's final broadcast concludes.
 - **Dynamic Mobile Portrait View & Axis Redesign**:
-  * **Focused Initial Window & Touch Panning**: Mobile portrait layouts default to an initial focused 3-hour (180-minute) window equipped with smooth touch-panning (`dragmode: 'pan'`) and vertical page-scroll support (`touch-action: pan-y`).
+  * **Focused Initial Window & Touch Panning**: Mobile portrait layouts default to an initial focused window equipped with smooth touch-panning (`dragmode: 'pan'`) and vertical page-scroll support (`touch-action: pan-y`).
   * **Snug Axis Margins**: Fixed y-axis layout configuration (`automargin: false` with custom margin bounds) that eliminates excessive side whitespace and pulls broadcast network labels snugly against the container edge.
   * **Dynamic Hour Grid Generation**: Granular hour-by-hour gridlines and time labels are calculated and rendered on the fly as the user pans and scrolls horizontally.
 - **Real-Time "Now" Vertical Line Indicator**:
@@ -31,20 +31,23 @@ Check out the live interactive application hosted on GitHub Pages:
 - **Comprehensive League & Professional Coverage**:
   * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
 - **Fully Inter-Adaptive & Superseding Filter Architecture**:
-  * **Universal Search Supersession**: Global text search filter that strictly supersedes all other UI controls. Typing a query (e.g., "Indiana") instantly displays every matching game across the dataset regardless of default filters or active constraints.
-  * **Intelligent Non-NCAA Conference Exemption**: Professional and non-NCAA leagues (such as the NFL, NHL, and PGA Tour) automatically bypass collegiate conference filters, enabling seamless multi-league viewing alongside targeted college conference filters without manual workarounds.
+  * **Excel-Style Searchable Multi-Select Dropdowns**: Added new **Network/Platform** and **Matchup/Event** filters as searchable, multi-select dropdown menus featuring live text filtering, clear-search buttons, indeterminate checkbox states, and dynamic selection summary badges (`All`, `None selected`, single-item title, or selection count).
+  * **Search-Aware Select All**: Smart `(Select All)` / `(Select All Search Results)` behavior that preserves existing user selections outside the active search view when bulk-toggling filtered results.
+  * **Universal Search Supersession**: Global text search filter that strictly supersedes all other UI controls. Typing a query instantly displays every matching game across the dataset regardless of default filters or active constraints.
+  * **Intelligent Non-NCAA Conference Exemption**: Professional and non-NCAA leagues (such as the NFL, NHL, and PGA Tour) automatically bypass collegiate ranking filters, enabling seamless multi-league viewing alongside targeted college filters without manual workarounds.
   * **Day/Date Selection & Robust Persistence**: Instant focus on specific days within the rolling dataset. Deselecting sports leagues while viewing future dates safely preserves your selected date rather than defaulting back to the start of the dataset.
   * **Sports/League Toggle**: Multi-select filter with optimized default settings to minimize visual clutter on initial load.
-  * **Ranked Teams Toggle**: One-click toggle to isolate ranked collegiate matchups.
+  * **Ranked Teams Toggle**: One-click toggle to isolate ranked collegiate matchups, dynamically enabling or disabling based on active availability in the current filtered scope.
   * **Game Time Slicer**: Dynamic multi-select filter adapting to active game start times.
   * **Conference Slicer**: Dynamic conference filter cross-adapting with active day, league, team, and time selections to eliminate dead-end choices.
+  * **Smart Today-View Timeline Auto-Advancement**: Implements dynamic x-axis start padding for current-day schedules—automatically shifting the initial timeline window to ~40 minutes prior to the current time when the earliest game of the day started more than 2.5 hours ago.
 - **Local Time Zone Standardization**:
   * Automatically translates backend data schedule calculations into the user's local device time zone for effortless, accurate cross-region viewing.
 - **API-Driven Data Pipeline**:
   * Powered by an automated data extraction and transformation pipeline that standardizes multi-sport schedules, handles time zone normalization, transforms incoming data, passes validation checks, and aggregates live game datasets into `weekFull.csv`.
 - **Art Deco Dark Theme & Special Event Styling**:
   * Clean, polished, custom CSS UI tailored with gold accents and responsive sidebar controls.
-  * Custom team color branding and high-contrast timeline bars, featuring specialized color formatting for non-game programming and studio specials, alongside fallback data validation for missing team colors.
+  * Custom team color branding and high-contrast timeline bars, featuring specialized color formatting for major studio shows, special events, and championship broadcasts—including *College GameDay*, *Big Noon Kickoff*, *ACC Huddle*, *SEC Nation*, *B1G Tailgate*, *CFP Rankings*, *NCAA Tournament Selection Show*, *NASCAR RaceDay*, *UFC*, *Army-Navy*, and Bowl games, alongside fallback data validation for missing team colors.
 - **Full Analytics Integration**:
   * Integrated **Google Analytics 4 (GA4)** for tracking real-time user activity, slicer interactions, and device metrics.
   * Configured with dual IPv4 & IPv6 internal traffic exclusion rules to keep development metrics clean.
