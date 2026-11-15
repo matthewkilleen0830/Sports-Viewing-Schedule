@@ -1124,7 +1124,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; 
     if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; 
     
-    if (/\bUFC\b/.test(matchup)) return '#d20a0a'; 
+    if (/\bUFC\b/.test(matchup)) return '#d20a0a';
+
+    if (/\bFormula 1\b/.test(matchup)) return '#fe1d00';
 
     if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1'; 
 
