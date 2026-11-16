@@ -1,7 +1,7 @@
 ﻿Date,League,Matchup,TV_Network,Ranked,Start_Time,End_Time,Visitor_Conference,Home_Conference
 "Mon, Nov 16",NCAA Basketball (W),Le Moyne at Miami,ACCNX,N,10:00 AM,12:00 PM,NEC,ACC
 "Mon, Nov 16",NCAA Basketball (W),Lawrence Tech at Bowling Green,ESPN+,N,10:00 AM,12:00 PM,,MAC
-"Mon, Nov 16",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,1:00 PM,4:00 PM,PGA Tour (FedExCup Fall),PGA Tour (FedExCup Fall)
+"Mon, Nov 16",PGA Tour,Austin Championship at Barton Creek,Golf Chnl,Y,11:00 AM,3:00 PM,PGA Tour (FedExCup Fall),PGA Tour (FedExCup Fall)
 "Mon, Nov 16",NCAA Basketball (W),Penn State at Arizona State,ESPN+,N,3:00 PM,5:00 PM,Big Ten,Big XII
 "Mon, Nov 16",NCAA Basketball (W),Lamar at Texas A&M,SECN+,N,4:00 PM,6:00 PM,Southland,SEC
 "Mon, Nov 16",NCAA Basketball (M),Alcorn State at Maryland,BTN,N,5:00 PM,7:00 PM,SWAC,Big Ten
@@ -29,7 +29,7 @@
 "Mon, Nov 16",NCAA Basketball (M),Mayville State at South Dakota State,Midco/Summit,N,7:00 PM,9:00 PM,,Summit League
 "Mon, Nov 16",NBA,Warriors at Pelicans,Pelicans.com,Y,7:00 PM,9:30 PM,Western Conference,Western Conference
 "Mon, Nov 16",NCAA Basketball (W),Troy at #9 LSU,SECN+,Y,7:00 PM,9:00 PM,Sun Belt,SEC
-"Mon, Nov 16",NFL,Chargers at Ravens,ESPN,Y,7:15 PM,10:45 PM,NFC West,AFC South
+"Mon, Nov 16",NFL,Chargers at Ravens,ESPN,Y,7:15 PM,10:40 PM,NFC West,AFC South
 "Mon, Nov 16",NCAA Basketball (M),SE Louisiana at Texas A&M,SECN+,N,7:30 PM,9:30 PM,Southland,SEC
 "Mon, Nov 16",NCAA Basketball (W),Houston Christian at Utah,ESPN+,N,8:00 PM,10:00 PM,Southland,Big XII
 "Mon, Nov 16",NBA,Suns at Nuggets,Suns Live,Y,8:00 PM,10:30 PM,Western Conference,Western Conference
@@ -239,7 +239,7 @@
 "Thu, Nov 19",NCAA Basketball (M),Texas A&M at TCU,Peacock,N,7:00 PM,9:00 PM,SEC,Big XII
 "Thu, Nov 19",NCAA Basketball (M),Southern Utah at #6 Texas,SECN+,Y,7:00 PM,9:00 PM,Big Sky,SEC
 "Thu, Nov 19",NCAA Basketball (W),Fairleigh Dickinson at #9 LSU,SECN+,Y,7:00 PM,9:00 PM,NEC,SEC
-"Thu, Nov 19",NFL,Colts at Texans,Prime Video,Y,7:15 PM,10:45 PM,AFC South,AFC South
+"Thu, Nov 19",NFL,Colts at Texans,Prime Video,Y,7:15 PM,10:40 PM,AFC South,AFC South
 "Thu, Nov 19",NCAA Basketball (M),Seton Hall at Wisconsin,CBSSN,N,7:30 PM,9:30 PM,Big East,Big Ten
 "Thu, Nov 19",NCAA Volleyball (W),Arizona at #10 BYU,ESPN+,Y,7:30 PM,9:30 PM,Big XII,Big XII
 "Thu, Nov 19",NCAA Basketball (W),Alabama at Florida A&M,ESPNU,N,7:30 PM,9:30 PM,SEC,SWAC
@@ -364,7 +364,7 @@
 "Fri, Nov 20",NCAA Basketball (M),Marshall at North Carolina,ACCN,N,8:00 PM,10:00 PM,Sun Belt,ACC
 "Fri, Nov 20",NCAA Basketball (M),Eastern Illinois at #10 Illinois,BTN,Y,8:00 PM,10:00 PM,Ohio Valley,Big Ten
 "Fri, Nov 20",NCAA Basketball (W),Utah Valley at Utah,ESPN+,N,8:00 PM,10:00 PM,Big West,Big XII
-"Fri, Nov 20",NCAA Football,New Mexico at Wyoming,FS1,N,8:00 PM,8:00 PM,Mountain West,Mountain West
+"Fri, Nov 20",NCAA Football,New Mexico at Wyoming,FS1,N,8:00 PM,11:00 PM,Mountain West,Mountain West
 "Fri, Nov 20",NCAA Hockey (M),St. Thomas-Minnesota at #3 Denver,TBA,Y,8:00 PM,10:30 PM,NCHC,NCHC
 "Fri, Nov 20",NCAA Hockey (M),#18 Miami (OH) at #12 Colorado College,TBA,Y,8:00 PM,10:30 PM,NCHC,NCHC
 "Fri, Nov 20",NBA,Suns at Jazz,Suns Live,Y,8:30 PM,11:00 PM,Western Conference,Western Conference
@@ -576,7 +576,7 @@
 "Sun, Nov 22",NCAA Basketball (W),Southern Indiana at Indiana,B1G+,N,1:00 PM,3:00 PM,Ohio Valley,Big Ten
 "Sun, Nov 22",NCAA Basketball (M),UMass Lowell at Cincinnati,ESPN+,N,1:00 PM,3:00 PM,America East,Big XII
 "Sun, Nov 22",NCAA Volleyball (W),Houston at Texas Tech,ESPN+,N,1:00 PM,3:00 PM,Big XII,Big XII
-"Sun, Nov 22",NCAA Basketball (W),#23 Nebraska at Creighton,FS1,Y,1:00 PM,3:00 PM,Big Ten,Big East
+"Sun, Nov 22",NCAA Basketball (W),#23 Nebraska at Creighton,TBA,Y,1:00 PM,3:00 PM,Big Ten,Big East
 "Sun, Nov 22",NCAA Basketball (M),South Dakota at Utah Tech,TBA,N,1:00 PM,3:00 PM,Summit League,Big Sky
 "Sun, Nov 22",NCAA Basketball (W),Kansas at South Dakota State,ESPN+,N,1:30 PM,3:30 PM,Big XII,Summit League
 "Sun, Nov 22",NCAA Volleyball (W),TBD at #15 Texas,SECN,Y,1:30 PM,3:30 PM,,SEC
@@ -598,9 +598,9 @@
 "Sun, Nov 22",NCAA Volleyball (W),Syracuse at Cal,ACCNX,N,3:00 PM,5:00 PM,ACC,ACC
 "Sun, Nov 22",NCAA Hockey (M),Air Force at Princeton,ESPN+,N,3:00 PM,5:30 PM,AHA,ECAC
 "Sun, Nov 22",NCAA Volleyball (W),North Dakota State at Omaha,TBA,N,3:00 PM,5:00 PM,Summit League,Summit League
-"Sun, Nov 22",NFL,NY Jets at Chargers,FOX,Y,3:05 PM,6:35 PM,AFC East,NFC West
-"Sun, Nov 22",NFL,Raiders at Broncos,CBS,Y,3:25 PM,6:55 PM,AFC West,AFC West
-"Sun, Nov 22",NFL,Jaguars at NY Giants,CBS,Y,3:25 PM,6:55 PM,AFC South,NFC East
+"Sun, Nov 22",NFL,NY Jets at Chargers,FOX,Y,3:05 PM,6:30 PM,AFC East,NFC West
+"Sun, Nov 22",NFL,Raiders at Broncos,CBS,Y,3:25 PM,6:50 PM,AFC West,AFC West
+"Sun, Nov 22",NFL,Jaguars at NY Giants,CBS,Y,3:25 PM,6:50 PM,AFC South,NFC East
 "Sun, Nov 22",NCAA Basketball (M),NJIT at Boston College,ACCN,N,4:00 PM,6:00 PM,America East,ACC
 "Sun, Nov 22",NCAA Basketball (W),Cal Poly at #16 Washington,B1G+,Y,4:00 PM,6:00 PM,Big West,Big Ten
 "Sun, Nov 22",NCAA Basketball (W),Stanford at Portland,ESPN+,N,4:00 PM,6:00 PM,ACC,West Coast
@@ -622,5 +622,5 @@
 "Sun, Nov 22",NCAA Basketball (M),Louisiana at #18 USC,B1G+,Y,7:00 PM,9:00 PM,Sun Belt,Big Ten
 "Sun, Nov 22",NBA,Pacers at Knicks,DAZN IND,Y,7:00 PM,9:30 PM,Eastern Conference,Eastern Conference
 "Sun, Nov 22",NHL,Blackhawks at Canucks,ESPN+,Y,7:00 PM,9:30 PM,Western (Central),Western (Pacific)
-"Sun, Nov 22",NFL,Vikings at 49ers,NBC,Y,7:20 PM,10:50 PM,NFC North,NFC West
+"Sun, Nov 22",NFL,Vikings at 49ers,NBC,Y,7:20 PM,10:45 PM,NFC North,NFC West
 "Sun, Nov 22",NBA,Celtics at Warriors,TBA,Y,7:30 PM,10:00 PM,Eastern Conference,Western Conference
