@@ -1214,7 +1214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    const isNarrow = window.innerWidth < 1290;
+    const isNarrow = window.innerWidth < 1275;  // mobile landscape browser width to determine scrolling vs fixed remaining day view
     const isMobilePortrait = isNarrow && window.innerHeight > window.innerWidth;
 
     const matchupFontSize = isNarrow ? '17px' : '22px';
