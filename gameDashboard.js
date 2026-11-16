@@ -1100,7 +1100,7 @@ document.addEventListener("DOMContentLoaded", function () {
       paddedStart = Math.max(0, currentMins - 40);
     }
 
-    const paddedEnd = Math.max(paddedStart + 60, latestEnd + 15);
+    const paddedEnd = Math.max(paddedStart + 60, latestEnd + 30);
     const syncedXRange = [paddedStart, paddedEnd];
 
     const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
