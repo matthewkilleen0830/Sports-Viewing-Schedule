@@ -1189,8 +1189,79 @@ document.addEventListener("DOMContentLoaded", function () {
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
+  function syncPairedChart(sourceId, r0, r1) {
+    const otherId = (sourceId === 'barChart') ? 'digitalChart' : 'barChart';
+    const otherDiv = document.getElementById(otherId);
+    if (otherDiv && otherDiv.data && otherDiv.data.length > 0 && otherDiv.layout) {
+      Plotly.relayout(otherDiv, {
+        'xaxis.range': [r0, r1]
+      });
+    }
+  }
+
+  function bindChartSyncListener(plotDiv, targetId, container) {
+    if (!plotDiv || typeof plotDiv.on !== 'function') return;
+
+    // Remove any existing listener before re-attaching so Plotly.newPlot resets cleanly
+    if (typeof plotDiv.removeAllListeners === 'function') {
+      plotDiv.removeAllListeners('plotly_relayout');
+    }
+
+    plotDiv.on('plotly_relayout', function (eventData) {
+      if (window._isSyncingCharts || !eventData) return;
+
+      let r0 = eventData['xaxis.range[0]'];
+      let r1 = eventData['xaxis.range[1]'];
+
+      // Also handle array-form range updates emitted by Plotly on programmatic/touch relayouts
+      if ((r0 === undefined || r1 === undefined) && Array.isArray(eventData['xaxis.range'])) {
+        r0 = eventData['xaxis.range'][0];
+        r1 = eventData['xaxis.range'][1];
+      }
+
+      if (r0 !== undefined && r1 !== undefined) {
+        window._isSyncingCharts = true;
+
+        const span = r1 - r0;
+        const minBound = container._minBound;
+        const maxBound = container._maxBound;
+        let clamped = false;
+
+        if (r0 < minBound) {
+          r0 = minBound;
+          r1 = Math.min(maxBound, minBound + span);
+          clamped = true;
+        } else if (r1 > maxBound) {
+          r1 = maxBound;
+          r0 = Math.max(minBound, maxBound - span);
+          clamped = true;
+        }
+
+        currentUserXRange = [r0, r1];
+
+        const tasks = [];
+        if (clamped) {
+          tasks.push(Plotly.relayout(plotDiv, { 'xaxis.range': [r0, r1] }));
+        }
+
+        const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
+        const otherDiv = document.getElementById(otherId);
+        if (otherDiv && otherDiv.data && otherDiv.data.length > 0 && otherDiv.layout) {
+          tasks.push(Plotly.relayout(otherDiv, { 'xaxis.range': [r0, r1] }));
+        }
+
+        Promise.all(tasks).finally(() => {
+          setTimeout(() => {
+            window._isSyncingCharts = false;
+          }, 30);
+        });
+      }
+    });
+  }
+
   function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500]) {
     const container = document.getElementById(targetId);
+    if (!container) return;
 
     if (!data || data.length === 0) {
       container.style.height = '120px';
@@ -1214,7 +1285,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    const isNarrow = window.innerWidth < 1275;  // mobile landscape browser width to determine scrolling vs fixed remaining day view
+    const isNarrow = window.innerWidth < 1275;
     const isMobilePortrait = isNarrow && window.innerHeight > window.innerWidth;
 
     const matchupFontSize = isNarrow ? '17px' : '22px';
@@ -1289,8 +1360,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let rangeEnd = rawRangeEnd;
 
     if (currentUserXRange) {
-      rangeStart = currentUserXRange[0];
-      rangeEnd = currentUserXRange[1];
+      rangeStart = Math.max(rawRangeStart, currentUserXRange[0]);
+      rangeEnd = Math.min(rawRangeEnd, currentUserXRange[1]);
     } else if (isNarrow) {
       const visibleMinutes = isMobilePortrait
         ? 165
@@ -1381,54 +1452,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const renderFn = modeChanged ? Plotly.newPlot : Plotly.react;
 
     renderFn(targetId, traces, layout, config).then(plotDiv => {
-      if (!plotDiv._hasRelayoutListener) {
-        plotDiv._hasRelayoutListener = true;
-        plotDiv.on('plotly_relayout', function(eventData) {
-          if (window._isSyncingCharts) return;
-
-          let r0 = eventData['xaxis.range[0]'];
-          let r1 = eventData['xaxis.range[1]'];
-
-          if (r0 !== undefined && r1 !== undefined) {
-            window._isSyncingCharts = true;
-
-            const span = r1 - r0;
-            const minBound = container._minBound;
-            const maxBound = container._maxBound;
-            let clamped = false;
-
-            if (r0 < minBound) {
-              r0 = minBound;
-              r1 = Math.min(maxBound, minBound + span);
-              clamped = true;
-            } else if (r1 > maxBound) {
-              r1 = maxBound;
-              r0 = Math.max(minBound, maxBound - span);
-              clamped = true;
-            }
-
-            currentUserXRange = [r0, r1];
-
-            if (clamped) {
-              Plotly.relayout(plotDiv, {
-                'xaxis.range': [r0, r1]
-              });
-            }
-
-            const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
-            const otherDiv = document.getElementById(otherId);
-            if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
-              Plotly.relayout(otherDiv, {
-                'xaxis.range': [r0, r1]
-              });
-            }
-
-            setTimeout(() => {
-              window._isSyncingCharts = false;
-            }, 50);
-          }
-        });
-      }
+      bindChartSyncListener(plotDiv, targetId, container);
     });
   }
 
@@ -1447,16 +1471,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 60000);
 
   let lastWindowWidth = window.innerWidth;
+  let lastOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
   let resizeTimer;
-  window.addEventListener('resize', function() {
+
+  function handleViewportChange() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      if (window.innerWidth !== lastWindowWidth) {
+      const currentOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+      if (window.innerWidth !== lastWindowWidth || currentOrientation !== lastOrientation) {
         lastWindowWidth = window.innerWidth;
+        lastOrientation = currentOrientation;
         currentUserXRange = null;
+        window._isSyncingCharts = false;
       }
       applyFilters();
     }, 150);
-  });
+  }
+
+  window.addEventListener('resize', handleViewportChange);
+  window.addEventListener('orientationchange', handleViewportChange);
 
 });
