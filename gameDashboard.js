@@ -1214,7 +1214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const yTicks = [];
     const yTickLabels = [];
 
-    const isNarrow = window.innerWidth < 1200;
+    const isNarrow = window.innerWidth < 1290;
     const isMobilePortrait = isNarrow && window.innerHeight > window.innerWidth;
 
     const matchupFontSize = isNarrow ? '17px' : '22px';
