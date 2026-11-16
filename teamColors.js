@@ -84,6 +84,7 @@ const TEAM_COLORS = {
   "Pacers": "#002D62", "Packers": "#203731", "Padres": "#2F241D", "Panthers": "#C8102E", "FL Panthers": "#C8102E", "Patriots": "#002244", "Pelicans": "#002B5C", "Penguins": "#FCB514", "Penn State": "#001E44",
   "Phillies": "#E81828", "Pirates": "#27251F", "Pistons": "#1D428A", "Pitt": "#003594", "Portland State": "#154734", "Post": "#F68B1F", "Prairie View A&M": "#330066", "Predators": "#FFB81C", 
   "Presbyterian": "#002F6C", "Princeton": "#FF8F00", "Providence": "#000000", "Purdue": "#000000", "Purdue Fort Wayne": "#CFB991", "Pennsylvania": "#990000",
+  "Portland": "#1e1656",
   
   // Q
   "Quinnipiac": "#0A2240",
