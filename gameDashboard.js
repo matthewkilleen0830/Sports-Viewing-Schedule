@@ -1073,7 +1073,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
     const currentMins = now.getHours() * 60 + now.getMinutes();
 
-    // True full-day slate boundaries (used for pan/scroll clamping so users can scroll back)
+    // True full-day slate boundaries (used for pan/scroll clamping so users can scroll back and forward freely)
     const fullDayMinStart = Math.max(0, earliestStart - 15);
     const fullDayMaxEnd = Math.max(fullDayMinStart + 60, latestEnd + 30);
 
@@ -1196,18 +1196,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if (r0 !== undefined && r1 !== undefined) {
         window._isSyncingCharts = true;
 
-        const span = r1 - r0;
         const minBound = container._minBound;
         const maxBound = container._maxBound;
+        const totalBoundsSpan = maxBound - minBound;
+        const span = Math.min(r1 - r0, totalBoundsSpan);
         let clamped = false;
 
         if (r0 < minBound) {
           r0 = minBound;
-          r1 = Math.min(maxBound, minBound + span);
+          r1 = minBound + span;
           clamped = true;
         } else if (r1 > maxBound) {
           r1 = maxBound;
-          r0 = Math.max(minBound, maxBound - span);
+          r0 = maxBound - span;
           clamped = true;
         }
 
@@ -1335,8 +1336,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let rangeEnd = rawRangeEnd;
 
     if (currentUserXRange) {
-      rangeStart = Math.max(boundStart, currentUserXRange[0]);
-      rangeEnd = Math.min(boundEnd, currentUserXRange[1]);
+      const totalBoundsSpan = boundEnd - boundStart;
+      const preservedSpan = Math.min(currentUserXRange[1] - currentUserXRange[0], totalBoundsSpan);
+      rangeStart = Math.max(boundStart, Math.min(currentUserXRange[0], boundEnd - preservedSpan));
+      rangeEnd = rangeStart + preservedSpan;
     } else if (isNarrow) {
       const visibleMinutes = isMobilePortrait
         ? 165
@@ -1373,8 +1376,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    const hasEarlierGamesToScroll = boundStart < rangeStart;
-    const allowHorizontalPan = isNarrow || hasEarlierGamesToScroll;
+    // Keep panning enabled whenever the full day's slate extends beyond the initial viewport
+    // (evaluated against rawRangeStart/rawRangeEnd, NOT the user's current scroll position, so panning left never locks the chart)
+    const hasScrollableTimeline = (boundStart < rawRangeStart) || (boundEnd > rawRangeEnd);
+    const allowHorizontalPan = isNarrow || hasScrollableTimeline;
     const desiredDragMode = allowHorizontalPan ? 'pan' : false;
 
     const layout = {
