@@ -1186,7 +1186,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 6. CHART RENDERING & VISUALIZATION (PLOTLY - OPTIMIZED WITH PLOTLY.REACT)
+  // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
   function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500]) {
@@ -1194,6 +1194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!data || data.length === 0) {
       container.style.height = '120px';
+      container._lastDragMode = null;
       Plotly.react(targetId, [], {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
@@ -1281,30 +1282,22 @@ document.addEventListener("DOMContentLoaded", function () {
     container.style.height = `${calculatedPlotHeight}px`;
 
     const [rawRangeStart, rawRangeEnd] = xAxisRange;
+    container._minBound = rawRangeStart;
+    container._maxBound = rawRangeEnd;
+
     let rangeStart = rawRangeStart;
     let rangeEnd = rawRangeEnd;
 
     if (currentUserXRange) {
       rangeStart = currentUserXRange[0];
       rangeEnd = currentUserXRange[1];
-    } else if (isMobilePortrait) {
-      rangeEnd = Math.min(rawRangeEnd, rangeStart + 165); 
-    }
+    } else if (isNarrow) {
+      const visibleMinutes = isMobilePortrait
+        ? 165
+        : Math.max(240, Math.round(window.innerWidth * 0.36));
 
-    function getTicksForRange(rStart, rEnd) {
-      const tickIndices = [];
-      SHARED_X_AXIS_VALS.forEach((val, idx) => {
-        if (val >= rStart - 120 && val <= rEnd + 120) {
-          tickIndices.push(idx);
-        }
-      });
-      return {
-        tickvals: tickIndices.map(i => SHARED_X_AXIS_VALS[i]),
-        ticktext: tickIndices.map(i => SHARED_X_AXIS_TEXT[i])
-      };
+      rangeEnd = Math.min(rawRangeEnd, rangeStart + visibleMinutes);
     }
-
-    const initialTicks = getTicksForRange(rangeStart, rangeEnd);
 
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -1334,6 +1327,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
+    const desiredDragMode = isNarrow ? 'pan' : false;
+
     const layout = {
       height: calculatedPlotHeight,
       paper_bgcolor: 'rgba(0,0,0,0)',
@@ -1344,15 +1339,15 @@ document.addEventListener("DOMContentLoaded", function () {
       shapes: shapes,
       margin: { l: 67, r: 0, t: TOP_MARGIN, b: BOTTOM_MARGIN, pad: 0 },
       automargin: false,
-      dragmode: isMobilePortrait ? 'pan' : false,
+      dragmode: desiredDragMode,
       xaxis: {
-        fixedrange: !isMobilePortrait,
+        fixedrange: !isNarrow,
         side: 'top',
         type: 'linear',
         range: [rangeStart, rangeEnd],
         tickmode: 'array',
-        tickvals: initialTicks.tickvals,
-        ticktext: initialTicks.ticktext,
+        tickvals: SHARED_X_AXIS_VALS,
+        ticktext: SHARED_X_AXIS_TEXT,
         tickangle: -30,
         tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
         ticks: 'outside',
@@ -1379,37 +1374,52 @@ document.addEventListener("DOMContentLoaded", function () {
       showlegend: false
     };
 
-    const config = { responsive: true, displayModeBar: false };
+    const config = { responsive: true, displayModeBar: false, scrollZoom: false };
 
-    Plotly.react(targetId, traces, layout, config).then(plotDiv => {
+    const modeChanged = container._lastDragMode !== desiredDragMode;
+    container._lastDragMode = desiredDragMode;
+    const renderFn = modeChanged ? Plotly.newPlot : Plotly.react;
+
+    renderFn(targetId, traces, layout, config).then(plotDiv => {
       if (!plotDiv._hasRelayoutListener) {
         plotDiv._hasRelayoutListener = true;
         plotDiv.on('plotly_relayout', function(eventData) {
           if (window._isSyncingCharts) return;
 
-          const r0 = eventData['xaxis.range[0]'];
-          const r1 = eventData['xaxis.range[1]'];
+          let r0 = eventData['xaxis.range[0]'];
+          let r1 = eventData['xaxis.range[1]'];
 
           if (r0 !== undefined && r1 !== undefined) {
             window._isSyncingCharts = true;
+
+            const span = r1 - r0;
+            const minBound = container._minBound;
+            const maxBound = container._maxBound;
+            let clamped = false;
+
+            if (r0 < minBound) {
+              r0 = minBound;
+              r1 = Math.min(maxBound, minBound + span);
+              clamped = true;
+            } else if (r1 > maxBound) {
+              r1 = maxBound;
+              r0 = Math.max(minBound, maxBound - span);
+              clamped = true;
+            }
+
             currentUserXRange = [r0, r1];
 
-            const updatedTicks = getTicksForRange(r0, r1);
-
-            Plotly.relayout(plotDiv, {
-              'xaxis.range': [r0, r1],
-              'xaxis.tickvals': updatedTicks.tickvals,
-              'xaxis.ticktext': updatedTicks.ticktext
-            });
+            if (clamped) {
+              Plotly.relayout(plotDiv, {
+                'xaxis.range': [r0, r1]
+              });
+            }
 
             const otherId = (targetId === 'barChart') ? 'digitalChart' : 'barChart';
             const otherDiv = document.getElementById(otherId);
             if (otherDiv && otherDiv.data && otherDiv.data.length > 0) {
-              const otherTicks = getTicksForRange(r0, r1);
               Plotly.relayout(otherDiv, {
-                'xaxis.range': [r0, r1],
-                'xaxis.tickvals': otherTicks.tickvals,
-                'xaxis.ticktext': otherTicks.ticktext
+                'xaxis.range': [r0, r1]
               });
             }
 
@@ -1436,10 +1446,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 60000);
 
+  let lastWindowWidth = window.innerWidth;
   let resizeTimer;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
+      if (window.innerWidth !== lastWindowWidth) {
+        lastWindowWidth = window.innerWidth;
+        currentUserXRange = null;
+      }
       applyFilters();
     }, 150);
   });
