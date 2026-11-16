@@ -346,12 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentUserXRange = null;
       const searchQuery = DOM.searchInput.value.trim().toLowerCase();
       if (searchQuery) {
-        const now = new Date();
-        const startOfTodayTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-        const nowTime = now.getTime();
-
         const matchingGames = window.gameData.filter(d => {
-          if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
           const matchup = d.Matchup?.toLowerCase() || "";
           const league = d.League?.toLowerCase() || "";
           const network = d.TV_Network?.toLowerCase() || "";
@@ -480,22 +475,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return filterState;
   }
 
-  function isGameExpiredToday(d, startOfTodayTime, nowTime) {
-    if (d._gameNormalizedTime !== startOfTodayTime) return false;
-
-    const gameEndTimestamp = startOfTodayTime + d._endMins * 60000;
-    const thresholdTimestamp = gameEndTimestamp + 30 * 60000;
-
-    return nowTime >= thresholdTimestamp;
-  }
-
   function getFilteredDataExcept(excludedFilter = null) {
     const state = getActiveSelections();
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
-    
-    const now = new Date();
-    const startOfTodayTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-    const nowTime = now.getTime();
 
     const isExcluded = (name) => {
       if (!excludedFilter) return false;
@@ -504,8 +486,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     return window.gameData.filter(d => {
-      if (isGameExpiredToday(d, startOfTodayTime, nowTime)) return false;
-
       if (!isExcluded("date") && state.date && d.Date !== state.date) {
         return false;
       }
@@ -569,8 +549,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchQuery = DOM.searchInput ? DOM.searchInput.value.trim().toLowerCase() : "";
 
     return window.gameData.filter(d => {
-      if (isGameExpiredToday(d, new Date().setHours(0,0,0,0), Date.now())) return false;
-
       if (state.date && d.Date !== state.date) return false;
 
       if (searchQuery) {
@@ -1095,19 +1073,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
     const currentMins = now.getHours() * 60 + now.getMinutes();
 
-    let paddedStart = Math.max(0, earliestStart - 15);
+    // True full-day slate boundaries (used for pan/scroll clamping so users can scroll back)
+    const fullDayMinStart = Math.max(0, earliestStart - 15);
+    const fullDayMaxEnd = Math.max(fullDayMinStart + 60, latestEnd + 30);
+
+    // Initial visible viewport start (focuses near current time on today's slate)
+    let initialStart = fullDayMinStart;
     if (isToday && (currentMins - earliestStart > 150)) {
-      paddedStart = Math.max(0, currentMins - 40);
+      initialStart = Math.max(fullDayMinStart, currentMins - 40);
     }
 
-    const paddedEnd = Math.max(paddedStart + 60, latestEnd + 30);
-    const syncedXRange = [paddedStart, paddedEnd];
+    const initialEnd = Math.max(initialStart + 60, fullDayMaxEnd);
+    const syncedXRange = [initialStart, initialEnd];
+    const fullBoundsRange = [fullDayMinStart, fullDayMaxEnd];
 
     const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
     const digitalData = filtered.filter(d => DIGITAL_NETWORKS.includes(d.TV_Network));
 
-    renderChart('barChart', primaryData, false, syncedXRange);
-    renderChart('digitalChart', digitalData, true, syncedXRange);
+    renderChart('barChart', primaryData, false, syncedXRange, fullBoundsRange);
+    renderChart('digitalChart', digitalData, true, syncedXRange, fullBoundsRange);
   }
 
   function getHomeTeamColor(matchup) {
@@ -1189,16 +1173,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 6. CHART RENDERING & VISUALIZATION (PLOTLY)
   // ===========================================================================
 
-  function syncPairedChart(sourceId, r0, r1) {
-    const otherId = (sourceId === 'barChart') ? 'digitalChart' : 'barChart';
-    const otherDiv = document.getElementById(otherId);
-    if (otherDiv && otherDiv.data && otherDiv.data.length > 0 && otherDiv.layout) {
-      Plotly.relayout(otherDiv, {
-        'xaxis.range': [r0, r1]
-      });
-    }
-  }
-
   function bindChartSyncListener(plotDiv, targetId, container) {
     if (!plotDiv || typeof plotDiv.on !== 'function') return;
 
@@ -1259,7 +1233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500]) {
+  function renderChart(targetId, data, isDigital = false, xAxisRange = [480, 1500], fullBoundsRange = null) {
     const container = document.getElementById(targetId);
     if (!container) return;
 
@@ -1353,15 +1327,16 @@ document.addEventListener("DOMContentLoaded", function () {
     container.style.height = `${calculatedPlotHeight}px`;
 
     const [rawRangeStart, rawRangeEnd] = xAxisRange;
-    container._minBound = rawRangeStart;
-    container._maxBound = rawRangeEnd;
+    const [boundStart, boundEnd] = fullBoundsRange || xAxisRange;
+    container._minBound = boundStart;
+    container._maxBound = boundEnd;
 
     let rangeStart = rawRangeStart;
     let rangeEnd = rawRangeEnd;
 
     if (currentUserXRange) {
-      rangeStart = Math.max(rawRangeStart, currentUserXRange[0]);
-      rangeEnd = Math.min(rawRangeEnd, currentUserXRange[1]);
+      rangeStart = Math.max(boundStart, currentUserXRange[0]);
+      rangeEnd = Math.min(boundEnd, currentUserXRange[1]);
     } else if (isNarrow) {
       const visibleMinutes = isMobilePortrait
         ? 165
@@ -1398,7 +1373,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    const desiredDragMode = isNarrow ? 'pan' : false;
+    const hasEarlierGamesToScroll = boundStart < rangeStart;
+    const allowHorizontalPan = isNarrow || hasEarlierGamesToScroll;
+    const desiredDragMode = allowHorizontalPan ? 'pan' : false;
 
     const layout = {
       height: calculatedPlotHeight,
@@ -1412,7 +1389,7 @@ document.addEventListener("DOMContentLoaded", function () {
       automargin: false,
       dragmode: desiredDragMode,
       xaxis: {
-        fixedrange: !isNarrow,
+        fixedrange: !allowHorizontalPan,
         side: 'top',
         type: 'linear',
         range: [rangeStart, rangeEnd],
