@@ -1008,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (maxEndMinutes !== -1) {
           const latestEndDateTime = new Date(startOfToday.getTime() + maxEndMinutes * 60000);
-          const thresholdTime = new Date(latestEndDateTime.getTime() + 15 * 60000);
+          const thresholdTime = new Date(latestEndDateTime.getTime() + 30 * 60000);
           if (now.getTime() < thresholdTime.getTime()) {
             return todayItem.originalStr;
           }
