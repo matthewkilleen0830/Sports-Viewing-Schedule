@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===========================================================================
-  // 3. OPTIMIZED TIMEZONE CONVERSION UTILITY (MEMOIZED)
+  // 3. OPTIMIZED TIMEZONE CONVERSION & ROBUST SEASON YEAR MAPPING
   // ===========================================================================
 
   const chicagoFormatter = new Intl.DateTimeFormat('en-US', { 
@@ -185,12 +185,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const offsetCache = {};
 
-  function centralDateTimeToEpoch(dateStr, timeStr, currentYear) {
+  function centralDateTimeToEpoch(dateStr, timeStr, defaultYear) {
     if (!dateStr || !timeStr) return 0;
     
     let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
     if (!/\b20\d{2}\b/.test(cleanStr)) {
-      cleanStr = `${cleanStr}, ${currentYear}`;
+      cleanStr = `${cleanStr}, ${defaultYear}`;
     }
     const tempDate = new Date(cleanStr);
     const month = tempDate.getMonth();
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 4. DATA LOADING & INITIALIZATION
+  // 4. DATA LOADING & INITIALIZATION WITH CROSS-YEAR RESOLUTION
   // ===========================================================================
   
   d3.csv("currentWeek/weekFull.csv", raw => {
@@ -250,11 +250,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return clean;
   }).then(rawRows => {
-    const currentYear = new Date().getFullYear();
+    const baseSystemYear = new Date().getFullYear();
 
-    window.gameData = rawRows.map(d => {
-      const startEpoch = centralDateTimeToEpoch(d.Date, d.Start_Time, currentYear);
-      const endEpoch = centralDateTimeToEpoch(d.Date, d.End_Time, currentYear);
+    // Pre-pass to map sequential multi-year schedules accurately across Dec/Jan boundaries
+    let rollingYear = baseSystemYear;
+    let lastMonth = -1;
+
+    const processedRowsWithYears = rawRows.map(d => {
+      let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '') || "";
+      if (!/\b20\d{2}\b/.test(cleanStr)) {
+        cleanStr = `${cleanStr}, ${baseSystemYear}`;
+      }
+      const parsedDate = new Date(cleanStr);
+      const m = !isNaN(parsedDate) ? parsedDate.getMonth() : 0;
+      
+      if (lastMonth !== -1 && m < lastMonth && (lastMonth >= 10 && m <= 2)) {
+        rollingYear++;
+      }
+      lastMonth = m;
+
+      return { row: d, inferredYear: rollingYear };
+    });
+
+    window.gameData = processedRowsWithYears.map(({ row: d, inferredYear }) => {
+      const startEpoch = centralDateTimeToEpoch(d.Date, d.Start_Time, inferredYear);
+      const endEpoch = centralDateTimeToEpoch(d.Date, d.End_Time, inferredYear);
       
       let adjustedEndEpoch = endEpoch;
       if (adjustedEndEpoch < startEpoch) {
@@ -277,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let cleanStr = d.Date?.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
       if (cleanStr && !/\b20\d{2}\b/.test(cleanStr)) {
-        cleanStr = `${cleanStr}, ${currentYear}`;
+        cleanStr = `${cleanStr}, ${inferredYear}`;
       }
       const gameDateParsed = cleanStr ? new Date(cleanStr) : null;
       const gameNormalizedTime = gameDateParsed ? new Date(gameDateParsed.getFullYear(), gameDateParsed.getMonth(), gameDateParsed.getDate()).getTime() : 0;
@@ -498,10 +518,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const hConf = d.Home_Conference?.toLowerCase() || "";
 
         const matchesSearch = matchup.includes(searchQuery) ||
-                              league.includes(searchQuery) ||
-                              network.includes(searchQuery) ||
-                              vConf.includes(searchQuery) ||
-                              hConf.includes(searchQuery);
+                            league.includes(searchQuery) ||
+                            network.includes(searchQuery) ||
+                            vConf.includes(searchQuery) ||
+                            hConf.includes(searchQuery);
 
         if (!matchesSearch) return false;
       }
@@ -957,20 +977,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getFirstAvailableDate(allData) {
     const now = new Date();
-    const currentYear = now.getFullYear();
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
     if (uniqueDates.length === 0) return null;
 
     const parsedDates = uniqueDates.map(dateStr => {
-      let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
-      if (!/\b20\d{2}\b/.test(cleanStr)) {
-        cleanStr = `${cleanStr}, ${currentYear}`;
-      }
-      const parsed = new Date(cleanStr);
-      const normalized = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
-      return { originalStr: dateStr, parsedDate: normalized };
+      const matchingGame = allData.find(d => d.Date === dateStr);
+      const normalizedTime = matchingGame ? matchingGame._gameNormalizedTime : 0;
+      return { originalStr: dateStr, parsedDate: new Date(normalizedTime) };
     });
 
     parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
@@ -1002,14 +1017,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateDateSlicerOptions(filteredData, selectedDate) {
     const uniqueDates = Array.from(new Set(filteredData.map(d => d.Date))).filter(Boolean);
-    const currentYear = new Date().getFullYear();
 
+    // Sort chronologically using pre-calculated game timestamps (handles cross-year Dec -> Jan transitions)
     uniqueDates.sort((a, b) => {
-      let cleanA = a.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
-      let cleanB = b.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
-      if (!/\b20\d{2}\b/.test(cleanA)) cleanA = `${cleanA}, ${currentYear}`;
-      if (!/\b20\d{2}\b/.test(cleanB)) cleanB = `${cleanB}, ${currentYear}`;
-      return new Date(cleanA) - new Date(cleanB);
+      const gameA = filteredData.find(d => d.Date === a);
+      const gameB = filteredData.find(d => d.Date === b);
+      const timeA = gameA ? gameA._gameNormalizedTime : 0;
+      const timeB = gameB ? gameB._gameNormalizedTime : 0;
+      return timeA - timeB;
     });
 
     const previousSelection = DOM.dateFilter.value;
@@ -1073,11 +1088,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
     const currentMins = now.getHours() * 60 + now.getMinutes();
 
-    // True full-day slate boundaries (used for pan/scroll clamping so users can scroll back and forward freely)
     const fullDayMinStart = Math.max(0, earliestStart - 15);
     const fullDayMaxEnd = Math.max(fullDayMinStart + 60, latestEnd + 30);
 
-    // Initial visible viewport start (focuses near current time on today's slate)
     let initialStart = fullDayMinStart;
     if (isToday && (currentMins - earliestStart > 150)) {
       initialStart = Math.max(fullDayMinStart, currentMins - 40);
@@ -1176,7 +1189,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function bindChartSyncListener(plotDiv, targetId, container) {
     if (!plotDiv || typeof plotDiv.on !== 'function') return;
 
-    // Remove any existing listener before re-attaching so Plotly.newPlot resets cleanly
     if (typeof plotDiv.removeAllListeners === 'function') {
       plotDiv.removeAllListeners('plotly_relayout');
     }
@@ -1187,7 +1199,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let r0 = eventData['xaxis.range[0]'];
       let r1 = eventData['xaxis.range[1]'];
 
-      // Also handle array-form range updates emitted by Plotly on programmatic/touch relayouts
       if ((r0 === undefined || r1 === undefined) && Array.isArray(eventData['xaxis.range'])) {
         r0 = eventData['xaxis.range'][0];
         r1 = eventData['xaxis.range'][1];
@@ -1376,8 +1387,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Keep panning enabled whenever the full day's slate extends beyond the initial viewport
-    // (evaluated against rawRangeStart/rawRangeEnd, NOT the user's current scroll position, so panning left never locks the chart)
     const hasScrollableTimeline = (boundStart < rawRangeStart) || (boundEnd > rawRangeEnd);
     const allowHorizontalPan = isNarrow || hasScrollableTimeline;
     const desiredDragMode = allowHorizontalPan ? 'pan' : false;
@@ -1439,12 +1448,38 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===========================================================================
-  // 7. GLOBAL TIMERS & EVENT LISTENERS
+  // 7. OPTIMIZED LIVE TIME LINE TIMER & GLOBAL EVENT LISTENERS
   // ===========================================================================
 
-  setInterval(() => {
-    applyFilters();
-  }, 30000);
+  function updateLiveTimeLine() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const selectedDateText = DOM.dateFilter ? DOM.dateFilter.value : "";
+    if (!selectedDateText) return;
+
+    let cleanSelected = selectedDateText.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+    if (!/\b20\d{2}\b/.test(cleanSelected)) cleanSelected = `${cleanSelected}, ${currentYear}`;
+    const selectedDateParsed = new Date(cleanSelected);
+    const startOfSelected = new Date(selectedDateParsed.getFullYear(), selectedDateParsed.getMonth(), selectedDateParsed.getDate()).getTime();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+    const isToday = !isNaN(startOfSelected) && (startOfSelected === startOfToday);
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+
+    ['barChart', 'digitalChart'].forEach(chartId => {
+      const chartDiv = document.getElementById(chartId);
+      if (chartDiv && chartDiv.layout) {
+        if (isToday) {
+          Plotly.relayout(chartId, { 'shapes[0].x0': currentMins, 'shapes[0].x1': currentMins });
+        } else {
+          Plotly.relayout(chartId, { 'shapes': [] });
+        }
+      }
+    });
+  }
+
+  // Optimized lightweight 30-second live time line update (avoids full chart re-render)
+  setInterval(updateLiveTimeLine, 30000);
 
   setInterval(() => {
     if (typeof refreshActiveCharts === 'function') {
