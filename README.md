@@ -1,4 +1,4 @@
-# Live Sports Broadcast Dashboard v1.6.0
+# Live Sports Broadcast Dashboard v1.7.0
 
 An interactive, single-page web dashboard designed to simplify your daily live sports viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of broadcast and streaming schedules across major American professional and collegiate sports leagues with real-time dynamic filtering.
 
@@ -21,13 +21,15 @@ Check out the live interactive application hosted on GitHub Pages:
   * **Cross-Chart Timeline Synchronization**: Panning, scrolling, or scrubbing either the Linear Broadcast or Digital Streaming chart dynamically moves both visualization grids in lockstep.
   * **Persistent Viewport Position**: Remembers and retains the user's panned and scrolled horizontal timeline viewport position across state changes, sidebar toggles, and minor redraws, eliminating unwanted jumps.
   * **Expanded 24-Hour Timeline & Gridlines**: Comprehensive time axis configuration fully supporting international time zones and early-morning schedule shifts (such as 2:00 AM and 3:00 AM local time) complete with vertical gridlines.
-  * **Post-Game Filtering & Stale-Game Expiration**: Automatically filters out completed games from today's view 30 minutes after their scheduled end time (accounting for overtime and broadcast buffers) and automatically advances the default date to the next active slate once today's final broadcast concludes.
 - **Dynamic Mobile Portrait View & Axis Redesign**:
   * **Focused Initial Window & Touch Panning**: Mobile portrait layouts default to an initial focused window equipped with smooth touch-panning (`dragmode: 'pan'`) and vertical page-scroll support (`touch-action: pan-y`).
   * **Snug Axis Margins**: Fixed y-axis layout configuration (`automargin: false` with custom margin bounds) that eliminates excessive side whitespace and pulls broadcast network labels snugly against the container edge.
   * **Dynamic Hour Grid Generation**: Granular hour-by-hour gridlines and time labels are calculated and rendered on the fly as the user pans and scrolls horizontally.
-- **Real-Time "Now" Vertical Line Indicator**:
-  * Features an automated time-tracking red indicator line for current-day schedules that updates dynamically via background timers to mark the precise current time minute-by-minute.
+- **Optimized Real-Time "Now" Vertical Line Indicator**:
+  * Features a high-performance background timer utilizing lightweight `Plotly.relayout` updates every 30 seconds to adjust the current-day red indicator line in place without triggering full chart re-renders, preserving user zoom scale, pan positions, and active hover tooltips.
+- **Robust Multi-Year & Cross-Season Date Resolution**:
+  * Advanced multi-season parsing tracks winter sports schedules across December into January boundary transitions (automatically rolling year increments when months decrease sequentially).
+  * Strict chronological sorting across date dropdown slicers driven by pre-calculated `_gameNormalizedTime` timestamps.
 - **Comprehensive League & Professional Coverage**:
   * Integrates broad coverage across both major **American professional sports leagues** and **NCAA collegiate athletics**.
 - **Fully Inter-Adaptive & Superseding Filter Architecture**:
