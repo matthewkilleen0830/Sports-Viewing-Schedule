@@ -1329,7 +1329,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    const ROW_HEIGHT = 45;
+    const ROW_HEIGHT = 58;
     const TOP_MARGIN = 45;
     const BOTTOM_MARGIN = 29;
     
