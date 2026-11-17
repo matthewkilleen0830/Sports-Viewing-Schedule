@@ -480,6 +480,15 @@ html, body {
   touch-action: pan-y;
 }
 
+#barChart,
+#digitalChart,
+#barChart .js-plotly-plot,
+#digitalChart .js-plotly-plot,
+#barChart .nsewdrag,
+#digitalChart .nsewdrag {
+  touch-action: pan-y !important;
+}
+
 .chart-container text {
   font-family: 'Segoe UI', Tahoma, sans-serif !important;
   fill: #e2e8f0 !important;
@@ -515,7 +524,7 @@ html, body {
    12. RESPONSIVE MEDIA QUERIES (TABLET & MOBILE)
    =========================================================================== */
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1300px) {
   .sidebar-wrapper {
     position: absolute;
     top: 0;
