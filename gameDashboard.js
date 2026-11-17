@@ -1107,29 +1107,36 @@ document.addEventListener("DOMContentLoaded", function () {
     renderChart('digitalChart', digitalData, true, syncedXRange, fullBoundsRange);
   }
 
-  function getHomeTeamColor(matchup) {
-    if (!matchup) return '#FFFFFF'; 
+  const LEAGUE_COLORS = {  // Add any future exact League overrides here
+    "NCAA Football (Bowl)": "#2B5B84",
+    "NCAA Football (CFP)": "#D4AF37",
+    "NASCAR": "#E4002B",
+    "Formula 1": "#fe1d00",
+    "UFC": "#d20a0a",
+  };
+
+  function getHomeTeamColor(matchup, league = "") {
+    if (!matchup) return '#FFFFFF';
+
+    const cleanLeague = league ? league.trim() : "";
+    if (Object.prototype.hasOwnProperty.call(LEAGUE_COLORS, cleanLeague)) {
+      return LEAGUE_COLORS[cleanLeague];
+    }
 
     if (/\bArmy-Navy\b/.test(matchup)) return '#B22234';
+
+    if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54';
+    if (/\bCollege GameDay\b/.test(matchup)) return '#f16722';
+    if (/\bACC Huddle\b/.test(matchup)) return '#017684';
+    if (/\bSEC Nation\b/.test(matchup)) return '#1d366c';
+    if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9';
+    if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19';
+
     
-    if (/\bBowl\b/.test(matchup)) return '#1E3A8A'; 
+    if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1';
 
-    if (/\bBig Noon Kickoff\b/.test(matchup)) return '#002a54'; 
-    if (/\bCollege GameDay\b/.test(matchup)) return '#f16722'; 
-    if (/\bACC Huddle\b/.test(matchup)) return '#017684'; 
-    if (/\bSEC Nation\b/.test(matchup)) return '#1d366c'; 
-    if (/\bB1G Tailgate\b/.test(matchup)) return '#0f87c9'; 
-    if (/\bCFP Rankings\b/.test(matchup)) return '#C28C19'; 
-    
-    if (/\bUFC\b/.test(matchup)) return '#d20a0a';
-
-    if (/\bFormula 1\b/.test(matchup)) return '#fe1d00';
-
-    if (/\bNCAA Tournament Selection Show\b/.test(matchup)) return '#0f7cc1'; 
-
-    if (/\bLive From\b/.test(matchup)) return '#003a6f'; 
-    if (/\bBreakfast\b/.test(matchup)) return '#593987'; 
-    if (/\bNASCAR RaceDay\b/.test(matchup)) return '#E4002B'; 
+    if (/\bLive From\b/.test(matchup)) return '#003a6f';
+    if (/\bBreakfast\b/.test(matchup)) return '#593987';
 
     const parts = matchup.split(/\s+at\s+/i);
     if (parts.length < 2) return '#FFFFFF';
@@ -1289,7 +1296,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       assignedGames.forEach(game => {
         const duration = game._endMins >= game._startMins ? (game._endMins - game._startMins) : (game._endMins + 1440 - game._startMins);
-        const teamHexColor = getHomeTeamColor(game.Matchup);
+        const teamHexColor = getHomeTeamColor(game.Matchup, game.League);
         const internalRowKey = `${network}_row_${game.subRowIndex}`;
         const isRanked = game.Matchup.includes('#');
         const matchupText = isRanked ? `<b>${game.Matchup}</b>` : game.Matchup;
