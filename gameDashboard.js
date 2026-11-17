@@ -1114,7 +1114,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "Formula 1": "#fe1d00",
     "UFC": "#d20a0a",
     "TGL": "#164a6c",
-    "WTGL": "#ec2c3f"
+    "WTGL": "#ec2c3f",
+    "NHRA": "#ef3a43"
   };
 
   function getHomeTeamColor(matchup, league = "") {
