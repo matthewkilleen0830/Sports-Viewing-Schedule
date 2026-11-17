@@ -554,6 +554,26 @@ html, body {
   }
 }
 
+/* Tablet Landscape (~1280px wide) Right-Side Padding Boost */
+@media (min-width: 769px) and (max-width: 1300px) and (orientation: landscape) {
+  .charts-column {
+    padding-right: 2rem !important;
+  }
+  .chart-container {
+    padding-right: 1.25rem;
+  }
+}
+
+/* Mobile Landscape (~742px wide) Right-Side Padding Boost */
+@media (max-width: 768px) and (orientation: landscape) {
+  .charts-column {
+    padding-right: 1.75rem !important;
+  }
+  .chart-container {
+    padding-right: 1rem;
+  }
+}
+
 @media (max-width: 767.98px) and (orientation: portrait) {
   .sidebar-wrapper {
     --sidebar-width: calc(100vw - 34px);
